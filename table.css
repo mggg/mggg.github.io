@@ -4,7 +4,7 @@
 
 html {
   font-size: 18px;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 body {
@@ -29,7 +29,7 @@ header {
 .logo {
   filter: drop-shadow(0px 2px 1px #aab3b6);
   width: 200px;
-  margin: 0.8rem 1rem;
+  margin: auto 1rem;
 }
 
 nav {
@@ -58,6 +58,7 @@ nav li {
 main {
   margin: 0 auto;
   padding: 2rem 2vw;
+  width: 100%;
 }
 
 h1 {
@@ -68,7 +69,9 @@ h1 {
 }
 
 main > p {
-  max-width: 40rem;
+  max-width: 45rem;
+  margin: 1rem auto;
+  line-height: 2;
 }
 
 /* table */
@@ -78,7 +81,7 @@ table {
     0 2px 4px rgba(0, 0, 0, 0.24);*/
   border-spacing: 0;
   border-collapse: collapse;
-  margin: 1rem 0;
+  margin: 1rem auto;
 }
 
 th,
@@ -143,4 +146,5 @@ tbody th {
 
 .table-container {
   overflow-x: auto;
+  margin: 0 auto;
 }
