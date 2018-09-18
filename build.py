@@ -3,6 +3,8 @@ import itertools
 
 
 def render_cell(item):
+    if item == "":
+        item = "?"
     try:
         parsed_content = int(item)
         return "<td>{:,}</td>".format(parsed_content)
@@ -19,7 +21,12 @@ def render_row(row):
 
 
 def thead():
-    return """<thead>
+    return """
+    <colgroup class="row-labels"></colgroup>
+    <colgroup class="rook" span="5"></colgroup>
+    <colgroup class="queen" span="5">
+    </colgroup>
+    <thead>
       <tr>
         <th></th>
         <th colspan="5" scope="colgroup">Rook</th>

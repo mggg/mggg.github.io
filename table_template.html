@@ -11,12 +11,33 @@
 
 <body>
   <header>
-
+    <img class="logo" src="logo.svg" alt="Metric Geometry and Gerrymandering Group">
+    <nav>
+      <ul>
+        <li>
+          <a href="/">About</a>
+        </li>
+        <li>
+          <a href="/">Metagraph Table</a>
+        </li>
+        <li>
+          <a href="/">Gridlandia
+          </a>
+        </li>
+      </ul>
+    </nav>
   </header>
-  <main>
-    <h1>Table of Known Grid Metagraph Sizes</h1>
 
-    {{table}}
+  <main>
+    <h1>Table of Known Grid Metagraphs</h1>
+    <p>
+      The Metric Geometry and Gerrymandering Group (MGGG) is a small Boston-based team of mathematicians launched by
+      Moon Duchin of Tufts University. Our mission is to study applications of geometry and computing to U.S.
+      redistricting. We believe that gerrymandering of all kinds is a fundamental threat to our democracy.
+    </p>
+    <div class="table-container">
+      {{table}}
+    </div>
   </main>
 </body>
 

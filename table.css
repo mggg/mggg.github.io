@@ -3,46 +3,144 @@
 }
 
 html {
-  font-size: 100%;
+  font-size: 18px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
   margin: 0;
   padding: 0;
-  background: #eaf3f6;
-  overflow: hidden;
 }
+
+/* header */
+
+header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 1rem 2vw;
+  margin: 0 auto;
+  background: #eaf3f6;
+  border-bottom: 1px solid #cad3d6;
+}
+
+.logo {
+  filter: drop-shadow(0px 2px 1px #aab3b6);
+  width: 200px;
+  margin: 0;
+}
+
+nav {
+  margin: auto 0;
+  overflow-x: auto;
+}
+
+nav > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+nav li {
+  margin: 0;
+  padding: 0.4rem 1rem;
+  width: max-content;
+}
+
+/* main */
 
 main {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 0 2vw;
+  margin: 0 auto;
+  padding: 2rem 2vw;
 }
 
+h1 {
+  line-height: 1.2;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+main > p {
+  max-width: 40rem;
+}
+
+/* table */
+
 table {
-  background: white;
   /*  box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12),
     0 2px 4px rgba(0, 0, 0, 0.24);*/
   border-spacing: 0;
   border-collapse: collapse;
+  margin: 1rem 0;
 }
 
 th,
 td {
-  width: max-content;
-  padding: 0.4rem;
+  padding: 0.4rem 0.8rem;
+}
+
+.rook,
+.queen {
+  background: #373737;
 }
 
 thead {
   border-bottom: 1px solid #111;
 }
 
+thead tr:last-child th {
+  text-align: right;
+}
+
+thead th {
+  color: white;
+}
+
 tbody {
   border-bottom: 1px solid #111;
 }
 
-tbody:last-child {
-  border-bottom: none;
+colgroup.rook {
+  border: 1px solid #111;
+}
+
+colgroup.queen {
+  border: 1px solid #111;
+}
+
+tbody:nth-child(odd) {
+  background: #daf3ff;
+}
+
+tbody:nth-child(even) {
+  background: #cbeeff;
+}
+
+tbody:nth-child(odd) th {
+  background: #373737;
+}
+
+tbody:nth-child(even) th {
+  background: #272727;
+}
+
+td {
+  text-align: right;
+  font-family: monospace;
+}
+
+tbody th {
+  min-width: 120px;
+  color: white;
+}
+
+.table-container {
+  overflow-x: auto;
 }
