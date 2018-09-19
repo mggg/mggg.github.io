@@ -5,17 +5,32 @@ import itertools
 def render_cell(item):
     if item == "":
         item = "?"
+    if item == "?":
+        return "<td class=\"unknown\">?</td>"
     try:
         parsed_content = int(item)
-        return "<td>{:,}</td>".format(parsed_content)
+        return "<td>{:,d}</td>".format(parsed_content)
     except ValueError:
         parsed_content = item
         return "<td>{}</td>".format(parsed_content)
 
 
+def get_row_label(grid, parts):
+    links = {"4x4": "/metagraph/4x4.html",
+             "5x5": "/metagraph/5x5.html", "7x7": "/metagraph/7x7.html"}
+
+    content = "{grid} &rarr; {parts}".format(grid=grid, parts=parts)
+
+    if grid in links:
+        content = "<a href=\"{href}\">{content}</a>".format(
+            content=content, href=links[grid])
+        return "<th class=\"link\">{}</th>".format(content)
+
+    return "<th>{}</th>".format(content)
+
+
 def render_row(row):
-    row_label = "<th>{grid} &rarr; {parts}</th>".format(
-        grid=row[0], parts=row[1])
+    row_label = get_row_label(row[0], row[1])
     row_cells = [render_cell(item) for item in row[2:]]
     return "<tr>" + row_label + "".join(row_cells) + "</tr>"
 

@@ -56,8 +56,8 @@ nav li {
 /* main */
 
 main {
-  box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12),
-    0 2px 4px rgba(0, 0, 0, 0.24);
+  /*  box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12),
+    0 2px 4px rgba(0, 0, 0, 0.24);*/
 
   margin: 0 auto;
   padding: 1rem 2vw;
@@ -92,9 +92,12 @@ td {
   padding: 0.4rem 0.8rem;
 }
 
-.rook,
+.rook {
+  background: #cbeeff;
+}
+
 .queen {
-  background: #373737;
+  background: #daf3ff;
 }
 
 thead {
@@ -105,9 +108,9 @@ thead tr:last-child th {
   text-align: right;
 }
 
-thead th {
+/* thead th {
   color: white;
-}
+} */
 
 tbody {
   border-bottom: 1px solid #111;
@@ -121,6 +124,7 @@ colgroup.queen {
   border: 1px solid #111;
 }
 
+/*
 tbody:nth-child(odd) {
   background: #daf3ff;
 }
@@ -136,18 +140,28 @@ tbody:nth-child(odd) th {
 tbody:nth-child(even) th {
   background: #272727;
 }
+*/
 
 td {
   text-align: right;
-  font-family: Consolas, monospace;
 }
 
 tbody th {
   min-width: 120px;
-  color: white;
 }
 
 .table-container {
   overflow-x: auto;
   margin: 0 auto;
+}
+
+/* links */
+
+a,
+a:visited {
+  color: #0099cd;
+}
+
+a:hover {
+  color: #006b9c;
 }
