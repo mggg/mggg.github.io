@@ -6,7 +6,7 @@ def render_cell(item):
     if item == "":
         item = "?"
     if item == "?":
-        return "<td class=\"unknown\">?</td>"
+        return '<td class="unknown">?</td>'
     try:
         parsed_content = int(item)
         return "<td>{:,d}</td>".format(parsed_content)
@@ -16,16 +16,7 @@ def render_cell(item):
 
 
 def get_row_label(grid, parts):
-    links = {"4x4": "/metagraph/4x4.html",
-             "5x5": "/metagraph/5x5.html", "7x7": "/metagraph/7x7.html"}
-
     content = "{grid} &rarr; {parts}".format(grid=grid, parts=parts)
-
-    if grid in links:
-        content = "<a href=\"{href}\">{content}</a>".format(
-            content=content, href=links[grid])
-        return "<th class=\"link\">{}</th>".format(content)
-
     return "<th>{}</th>".format(content)
 
 
@@ -70,9 +61,16 @@ def tbody(rows):
 
 
 def table(rows):
-    row_sets = [list(group)
-                for key, group in itertools.groupby(rows, lambda row: row[0])]
-    return "<table>\n" + thead() + "\n" + "\n".join(tbody(row_set) for row_set in row_sets) + "\n</table>"
+    row_sets = [
+        list(group) for key, group in itertools.groupby(rows, lambda row: row[0])
+    ]
+    return (
+        "<table>\n"
+        + thead()
+        + "\n"
+        + "\n".join(tbody(row_set) for row_set in row_sets)
+        + "\n</table>"
+    )
 
 
 def render_template(template_stream, *args, **template_fields):
@@ -82,7 +80,11 @@ def render_template(template_stream, *args, **template_fields):
     return document
 
 
-def build_template(template_path="./table_template.html", data_path="./table.csv", output_path="./table.html"):
+def build_template(
+    template_path="./table_template.html",
+    data_path="./table.csv",
+    output_path="../table.html",
+):
     with open(data_path) as f:
         next(f)
         rows = csv.reader(f)
@@ -99,5 +101,5 @@ def main():
     build_template()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
