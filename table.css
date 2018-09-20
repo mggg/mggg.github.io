@@ -155,6 +155,11 @@ tbody th {
   margin: 0 auto;
 }
 
+.unknown {
+  background: #373737;
+  color: #999;
+}
+
 /* links */
 
 a,
