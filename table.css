@@ -92,14 +92,6 @@ td {
   padding: 0.4rem 0.8rem;
 }
 
-.rook {
-  background: #cbeeff;
-}
-
-.queen {
-  background: #daf3ff;
-}
-
 thead {
   border-bottom: 1px solid #111;
 }
@@ -122,6 +114,26 @@ colgroup.rook {
 
 colgroup.queen {
   border: 1px solid #111;
+}
+
+.rook {
+  background: #90caf9;
+}
+
+.queen {
+  background: #f9ca90;
+}
+
+.rook-heading,
+.rook-label {
+  background: #19537e;
+  color: white;
+}
+
+.queen-heading,
+.queen-label {
+  color: white;
+  background: #7e5319;
 }
 
 /*
@@ -158,6 +170,12 @@ tbody th {
 .unknown {
   background: #373737;
   color: #999;
+}
+
+td a,
+td a:visited {
+  color: #19537e;
+  font-weight: bold;
 }
 
 /* links */

@@ -26,65 +26,257 @@
     <div class="table-container">
       <table>
 
-    <colgroup class="row-labels"></colgroup>
-    <colgroup class="rook" span="5"></colgroup>
-    <colgroup class="queen" span="5">
-    </colgroup>
-    <thead>
-      <tr>
-        <th></th>
-        <th colspan="5" scope="colgroup">Rook</th>
-        <th colspan="5" scope="colgroup">Queen</th>
-      </tr>
-      <tr>
-        <th></th>
+        <colgroup class="row-labels"></colgroup>
+        <colgroup class="rook" span="5"></colgroup>
+        <colgroup class="queen" span="5">
+        </colgroup>
+        <thead>
+          <tr>
+            <th></th>
+            <th colspan="5" scope="colgroup" class="rook-heading">Rook</th>
+            <th colspan="5" scope="colgroup" class="queen-heading">Queen</th>
+          </tr>
+          <tr>
+            <th></th>
 
-        <th>equal size</th>
-        <th>&plusmn; 1</th>
-        <th>&plusmn; 2</th>
-        <th>&plusmn; 3</th>
-        <th>all, non-&empty;</th>
+            <th class="rook-label">equal size</th>
+            <th class="rook-label">&plusmn; 1</th>
+            <th class="rook-label">&plusmn; 2</th>
+            <th class="rook-label">&plusmn; 3</th>
+            <th class="rook-label">all, non-&empty;</th>
 
-        <th>equal size</th>
-        <th>&plusmn; 1</th>
-        <th>&plusmn; 2</th>
-        <th>&plusmn; 3</th>
-        <th>all, non-&empty;</th>
-      </tr>
-    </thead>
-<tbody>
-<tr><th>2x2 &rarr; 2</th><td>2</td><td>6</td><td>6</td><td>6</td><td>6</td><td>3</td><td>7</td><td>7</td><td>7</td><td>7</td></tr>
-</tbody>
-<tbody>
-<tr><th>3x3 &rarr; 3</th><td>10</td><td>58</td><td>170</td><td>226</td><td>258</td><td>36</td><td>224</td><td>622</td><td>746</td><td>782</td></tr>
-</tbody>
-<tbody>
-<tr><th class="link"><a href="/metagraph/4x4.html">4x4 &rarr; 2</a></th><td>70</td><td>206</td><td>338</td><td>454</td><td>627</td><td>1,718</td><td>4,690</td><td>6,630</td><td>7,598</td><td>8,171</td></tr>
-<tr><th class="link"><a href="/metagraph/4x4.html">4x4 &rarr; 4</a></th><td>117</td><td>1,953</td><td>8,849</td><td>41,543</td><td>62,740</td><td>2,620</td><td>46,456</td><td>222,398</td><td>710,645</td><td>1,130,598</td></tr>
-<tr><th class="link"><a href="/metagraph/4x4.html">4x4 &rarr; 8</a></th><td>36</td><td>34,524</td><td>153,129</td><td>251,236</td><td>340,198</td><td>280</td><td>568,539</td><td>2,629,300</td><td>4,262,934</td><td>5,362,109</td></tr>
-</tbody>
-<tbody>
-<tr><th class="link"><a href="/metagraph/5x5.html">5x5 &rarr; 5</a></th><td>4,006</td><td>193,152</td><td>1,473,580</td><td>6,201,654</td><td class="unknown">?</td><td>1,397,790</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td></tr>
-</tbody>
-<tbody>
-<tr><th>6x6 &rarr; 2</th><td>80,518</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td></tr>
-<tr><th>6x6 &rarr; 3</th><td>264,500</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td></tr>
-<tr><th>6x6 &rarr; 4</th><td>442,791</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td></tr>
-<tr><th>6x6 &rarr; 6</th><td>451,206</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td></tr>
-<tr><th>6x6 &rarr; 9</th><td>128,939</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td></tr>
-<tr><th>6x6 &rarr; 12</th><td>80,092</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td></tr>
-<tr><th>6x6 &rarr; 18</th><td>6,728</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td>3,037,561</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td></tr>
-</tbody>
-<tbody>
-<tr><th class="link"><a href="/metagraph/7x7.html">7x7 &rarr; 7</a></th><td>158,753,814</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td></tr>
-</tbody>
-<tbody>
-<tr><th>8x8 &rarr; 8</th><td>187,497,290,034</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td></tr>
-</tbody>
-<tbody>
-<tr><th>9x9 &rarr; 9</th><td>706,152,947,468,301</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td></tr>
-</tbody>
-</table>
+            <th class="queen-label">equal size</th>
+            <th class="queen-label">&plusmn; 1</th>
+            <th class="queen-label">&plusmn; 2</th>
+            <th class="queen-label">&plusmn; 3</th>
+            <th class="queen-label">all, non-&empty;</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>2x2 &rarr; 2</th>
+            <td>2</td>
+            <td>6</td>
+            <td>6</td>
+            <td>6</td>
+            <td>6</td>
+            <td>3</td>
+            <td>7</td>
+            <td>7</td>
+            <td>7</td>
+            <td>7</td>
+          </tr>
+        </tbody>
+        <tbody>
+          <tr>
+            <th>3x3 &rarr; 3</th>
+            <td>10</td>
+            <td>58</td>
+            <td>170</td>
+            <td>226</td>
+            <td>258</td>
+            <td>36</td>
+            <td>224</td>
+            <td>622</td>
+            <td>746</td>
+            <td>782</td>
+          </tr>
+        </tbody>
+        <tbody>
+          <tr>
+            <th>4x4 &rarr; 2</th>
+            <td class="clickable"><a href="/metagraph/">70</a></td>
+            <td>206</td>
+            <td>338</td>
+            <td>454</td>
+            <td>627</td>
+            <td>1,718</td>
+            <td>4,690</td>
+            <td>6,630</td>
+            <td>7,598</td>
+            <td>8,171</td>
+          </tr>
+          <tr>
+            <th>4x4 &rarr; 4</th>
+            <td class="clickable"><a href="/metagraph/">117</a></td>
+            <td>1,953</td>
+            <td>8,849</td>
+            <td>41,543</td>
+            <td>62,740</td>
+            <td>2,620</td>
+            <td>46,456</td>
+            <td>222,398</td>
+            <td>710,645</td>
+            <td>1,130,598</td>
+          </tr>
+          <tr>
+            <th>4x4 &rarr; 8</th>
+            <td class="clickable"><a href="/metagraph/">36</a></td>
+            <td>34,524</td>
+            <td>153,129</td>
+            <td>251,236</td>
+            <td>340,198</td>
+            <td>280</td>
+            <td>568,539</td>
+            <td>2,629,300</td>
+            <td>4,262,934</td>
+            <td>5,362,109</td>
+          </tr>
+        </tbody>
+        <tbody>
+          <tr>
+            <th>5x5 &rarr; 5</th>
+            <td class="clickable"><a href="/metagraph/5x5.html">4,006</a></td>
+            <td>193,152</td>
+            <td>1,473,580</td>
+            <td>6,201,654</td>
+            <td class="unknown">?</td>
+            <td>1,397,790</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+          </tr>
+        </tbody>
+        <tbody>
+          <tr>
+            <th>6x6 &rarr; 2</th>
+            <td>80,518</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+          </tr>
+          <tr>
+            <th>6x6 &rarr; 3</th>
+            <td>264,500</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+          </tr>
+          <tr>
+            <th>6x6 &rarr; 4</th>
+            <td>442,791</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+          </tr>
+          <tr>
+            <th>6x6 &rarr; 6</th>
+            <td>451,206</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+          </tr>
+          <tr>
+            <th>6x6 &rarr; 9</th>
+            <td>128,939</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+          </tr>
+          <tr>
+            <th>6x6 &rarr; 12</th>
+            <td>80,092</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+          </tr>
+          <tr>
+            <th>6x6 &rarr; 18</th>
+            <td>6,728</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+            <td>3,037,561</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+          </tr>
+        </tbody>
+        <tbody>
+          <tr>
+            <th>7x7 &rarr; 7</th>
+            <td class="clickable"><a href="/metagraph/7x7.html">158,753,814</a></td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+          </tr>
+        </tbody>
+        <tbody>
+          <tr>
+            <th>8x8 &rarr; 8</th>
+            <td>187,497,290,034</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+          </tr>
+        </tbody>
+        <tbody>
+          <tr>
+            <th>9x9 &rarr; 9</th>
+            <td>706,152,947,468,301</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+            <td class="unknown">?</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </main>
 </body>

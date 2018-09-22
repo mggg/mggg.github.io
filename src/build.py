@@ -35,23 +35,23 @@ def thead():
     <thead>
       <tr>
         <th></th>
-        <th colspan="5" scope="colgroup">Rook</th>
-        <th colspan="5" scope="colgroup">Queen</th>
+        <th colspan="5" scope="colgroup" class="rook-heading">Rook</th>
+        <th colspan="5" scope="colgroup" class="queen-heading">Queen</th>
       </tr>
       <tr>
         <th></th>
 
-        <th>equal size</th>
-        <th>&plusmn; 1</th>
-        <th>&plusmn; 2</th>
-        <th>&plusmn; 3</th>
-        <th>all, non-&empty;</th>
+        <th class="rook-label">equal size</th>
+        <th class="rook-label">&plusmn; 1</th>
+        <th class="rook-label">&plusmn; 2</th>
+        <th class="rook-label">&plusmn; 3</th>
+        <th class="rook-label">all, non-&empty;</th>
 
-        <th>equal size</th>
-        <th>&plusmn; 1</th>
-        <th>&plusmn; 2</th>
-        <th>&plusmn; 3</th>
-        <th>all, non-&empty;</th>
+        <th class="queen-label">equal size</th>
+        <th class="queen-label">&plusmn; 1</th>
+        <th class="queen-label">&plusmn; 2</th>
+        <th class="queen-label">&plusmn; 3</th>
+        <th class="queen-label">all, non-&empty;</th>
       </tr>
     </thead>"""
 
