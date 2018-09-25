@@ -48,7 +48,7 @@ footer {
 header {
   padding: 2rem 0 0;
   /* Alternate */
-  /* box-shadow: 0 -15px 10px -20px rgba(0, 0, 0, 0.3); */
+  box-shadow: 0 -15px 10px -20px rgba(0, 0, 0, 0.3);
   margin: 0;
 
   display: flex;
@@ -219,9 +219,9 @@ figure {
 }
 
 nav {
-  background: #010101;
+  /* background: #010101; */
   /* Alternate: */
-  /* background: #f9f9f9; */
+  background: #f9f9f9;
   margin: 0 auto;
   overflow-x: auto;
 }
