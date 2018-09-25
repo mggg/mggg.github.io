@@ -230,7 +230,7 @@ figure {
 }
 
 nav {
-  background: #012;
+  background: #010101;
   margin: 0 auto 2rem;
   overflow-x: auto;
 }
@@ -238,12 +238,22 @@ nav {
 .nav-links {
   list-style: none;
   margin: 0 auto;
-  padding: 0.5rem 0;
+  padding: 0;
   display: flex;
   justify-content: space-around;
   max-width: 900px;
 }
 
 .nav-links li {
-  margin: 0 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  padding: 0.5rem 1rem;
+  display: block;
+}
+
+.nav-links li:hover {
+  background: #012;
 }
