@@ -31,14 +31,13 @@ h1,
 h2,
 h3 {
   line-height: 1.2;
-  margin: 0;
+  margin: 0 0 1rem;
   padding: 0;
 }
 
 h3 {
   font-weight: normal;
   line-height: 1.8;
-  margin: 1rem 0;
 }
 
 header {
@@ -72,8 +71,8 @@ header > h1 {
 
 .logo {
   margin: 2rem 0;
-  width: 50vw;
-  max-width: 900px;
+  width: 80vw;
+  max-width: 750px;
   min-width: 300px;
   filter: drop-shadow(0px 4px 2px #aab3b6);
 }
@@ -113,7 +112,7 @@ main {
 article {
   max-width: 900px;
   margin: 0 auto;
-  padding: 1rem 2vw;
+  padding: 0 2vw;
 }
 
 .article-type {
@@ -130,14 +129,25 @@ article {
   background-color: #012;
 }
 
+.feature a:hover {
+  color: #5dcaff;
+}
+
 a {
   text-decoration: none;
   color: #0099cd;
+  color: #006b9c;
+}
+
+article a {
+  font-weight: 600;
 }
 
 a:hover {
   color: #5dcaff;
+  color: #0099cd;
   text-decoration: underline;
+  text-decoration: none;
 }
 
 .feature img {
