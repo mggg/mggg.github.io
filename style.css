@@ -2,21 +2,260 @@
   box-sizing: border-box;
 }
 
+html {
+  font-size: 100%;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
 body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 85vh;
-  width: 100vw;
   margin: 0;
   padding: 0;
-  background-color: #eaf3f6;
+  color: #111111;
+  font-size: 1.2rem;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+.headline {
+  font-size: 3rem;
+}
+
+h2 {
+  font-family: "Playfair Display", Cambria, Cochin, Georgia, Times,
+    "Times New Roman", serif;
+  font-weight: 900;
+  line-height: 2;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.2;
+  margin: 0 0 1rem;
+  padding: 0;
+}
+
+h3 {
+  font-weight: normal;
+  line-height: 1.8;
+}
+
+header {
+  padding: 2rem 0 0;
+  /* Alternate */
+  box-shadow: 0 -15px 10px -20px rgba(0, 0, 0, 0.3);
+  margin: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: space-evenly;
+  text-align: center;
+}
+
+header > h1 {
+  margin-bottom: 2rem;
+  font-weight: 100;
+  text-transform: uppercase;
+  font-size: 2rem;
+  line-height: 2;
+  letter-spacing: 0.5rem;
+}
+
+@media only screen and (max-width: 600px) {
+  header > h1 {
+    display: none;
+  }
+}
+
+.logo {
+  margin: 2rem 0;
+  width: 80vw;
+  max-width: 750px;
+  min-width: 300px;
+  filter: drop-shadow(0px 4px 2px #aab3b6);
+}
+
+.feature {
+  width: 100%;
+  background-color: #010101;
+  color: #5dcaff;
+  padding: 2rem;
+  max-height: 100vh;
+  overflow: hidden;
+  /* Alternate: */
+  /* margin: 0 2rem; */
+  /* border-radius: 16px; */
+}
+
+.feature a {
+  color: #5dcaff;
+}
+
+main {
+  max-width: 1200px;
+  margin: 0 auto 3rem;
+}
+
+.two-column {
+  display: grid;
+  grid-template-columns: minmax(300px, 3fr) minmax(300px, 2fr);
+}
+
+@media only screen and (max-width: 900px) {
+  .two-column {
+    grid-template-columns: 1fr;
+  }
+}
+
+article {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 2vw;
+}
+
+.article-type {
+  margin: 0;
+  text-transform: uppercase;
+  font-weight: 400;
+  font-family: "Franklin Gothic", Arial, Helvetica, sans-serif;
+  padding: 0;
+  line-height: 1;
+  font-size: 1rem;
+}
+
+.feature:hover {
+  background-color: #012;
+}
+
+.feature a:hover {
+  color: #5dcaff;
+}
+
+a {
+  text-decoration: none;
+  color: #0099cd;
+  color: #006b9c;
+}
+
+article a {
+  font-weight: 600;
+}
+
+a:hover {
+  color: #5dcaff;
+  color: #0099cd;
+  text-decoration: underline;
+  text-decoration: none;
+}
+
+.feature img {
+  margin: 1rem 0;
   overflow: hidden;
 }
 
-img {
-  min-width: 250px;
-  width: 80%;
-  max-width: 600px;
-  filter: drop-shadow(0px 4px 2px #aab3b6);
+header a:hover {
+  text-decoration: none;
 }
+
+p {
+  margin: 0 0 1rem;
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  padding: 0.8rem 1vw;
+
+  border-top: 1px solid #111;
+  color: #0099cd;
+  background: #010101;
+
+  box-shadow: 0 -10px 10px -10px rgba(0, 0, 0, 0.3);
+}
+
+footer a {
+  color: white;
+}
+
+footer a:visited {
+  color: #eeeeff;
+}
+
+.support {
+  font-style: italic;
+  color: #777;
+}
+
+.copyright {
+  color: #aaa;
+}
+
+footer p {
+  margin: 1rem auto 4rem;
+  text-align: left;
+
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.donate {
+  background: #0099cd;
+  width: 300px;
+  text-align: center;
+  border-radius: 8px;
+  margin: 2rem auto;
+  box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12),
+    0 2px 4px rgba(0, 0, 0, 0.24);
+}
+
+.donate a {
+  color: white;
+}
+
+.donate:hover {
+  background: #006b9c;
+}
+
+.donate h3 {
+  font-size: 2rem;
+  padding: 1rem;
+}
+
+figure {
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  /* background: #010101; */
+  /* Alternate: */
+  background: #f9f9f9;
+  margin: 0 auto;
+  overflow-x: auto;
+}
+
+.nav-links {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
+  max-width: 900px;
+}
+
+.nav-links li {
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  padding: 0.6rem 1rem;
+  display: block;
+}
+
+/* .nav-links li:hover { */
+/* background: #012; */
+/* alternate: no change */
+/* } */
