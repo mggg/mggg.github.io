@@ -138,8 +138,8 @@ figure {
   background-color: #010101;
   color: #5dcaff;
   padding: 2rem;
-  max-height: 100vh;
   overflow: hidden;
+  margin: 0 auto;
   /* margin: 0; */
   /* Alternate: */
   /* margin: 0 2rem; */
@@ -193,9 +193,9 @@ p {
 /* footer */
 
 footer {
-  display: flex;
-  flex-direction: column;
-  padding: 0.8rem 1vw;
+  padding: 1rem 2vw 2rem;
+
+  font-size: 1rem;
 
   border-top: 1px solid #111;
   color: #0099cd;
@@ -204,20 +204,33 @@ footer {
   box-shadow: 0 -10px 10px -10px rgba(0, 0, 0, 0.3);
 }
 
+.footer-items {
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.footer-items > li {
+  margin: 1rem 2rem;
+}
+
 footer a {
-  color: white;
+  color: #0099cd;
 }
 
-footer a:visited {
-  color: #eeeeff;
+footer a:hover {
+  color: #5dcaff;
 }
 
-footer p {
-  margin: 1rem auto 4rem;
-  text-align: left;
-
-  font-size: 1rem;
-  line-height: 1.7;
+address {
+  font-style: normal;
 }
 
 /* context styles */
@@ -270,6 +283,7 @@ nav {
   margin: 0 auto;
   padding: 0;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
   max-width: 900px;
 }
