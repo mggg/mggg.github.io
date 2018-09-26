@@ -96,7 +96,7 @@ nav > h1 {
 
 main {
   max-width: 1200px;
-  margin: 0 auto 3rem;
+  margin: 0 auto;
 }
 
 .two-column {
@@ -112,7 +112,7 @@ main {
 
 article {
   max-width: 900px;
-  margin: 0 auto;
+  margin: 0 auto 2rem;
   padding: 0 2vw;
 }
 
@@ -140,6 +140,7 @@ figure {
   padding: 2rem;
   max-height: 100vh;
   overflow: hidden;
+  /* margin: 0; */
   /* Alternate: */
   /* margin: 0 2rem; */
   /* border-radius: 16px; */
