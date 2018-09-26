@@ -4,7 +4,7 @@
 
 html {
   font-size: 100%;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Helvetica, Arial, sans-serif;
 }
 
 body {
@@ -15,6 +15,8 @@ body {
   line-height: 1.7;
   overflow-x: hidden;
 }
+
+/* headings */
 
 .headline {
   font-size: 3rem;
@@ -40,6 +42,8 @@ h3 {
   line-height: 1.8;
 }
 
+/* header */
+
 header {
   padding: 2rem 0 0;
   /* Alternate */
@@ -56,11 +60,22 @@ header {
 
 header > h1 {
   margin-bottom: 2rem;
+  font-size: 2rem;
+}
+
+header > h1,
+nav > h1 {
+  font-family: "Segoe UI", "Arial Narrow", Arial, sans-serif;
   font-weight: 100;
   text-transform: uppercase;
-  font-size: 2rem;
   line-height: 2;
   letter-spacing: 0.5rem;
+  text-align: center;
+}
+
+nav > h1 {
+  margin: 0.4rem 0;
+  font-size: 1.2rem;
 }
 
 @media only screen and (max-width: 600px) {
@@ -77,21 +92,7 @@ header > h1 {
   filter: drop-shadow(0px 4px 2px #aab3b6);
 }
 
-.feature {
-  width: 100%;
-  background-color: #010101;
-  color: #5dcaff;
-  padding: 2rem;
-  max-height: 100vh;
-  overflow: hidden;
-  /* Alternate: */
-  /* margin: 0 2rem; */
-  /* border-radius: 16px; */
-}
-
-.feature a {
-  color: #5dcaff;
-}
+/* Main */
 
 main {
   max-width: 1200px;
@@ -125,6 +126,34 @@ article {
   font-size: 1rem;
 }
 
+figure {
+  margin: 0;
+  padding: 0;
+}
+
+/* feature */
+
+.feature {
+  width: 100%;
+  background-color: #010101;
+  color: #5dcaff;
+  padding: 2rem;
+  max-height: 100vh;
+  overflow: hidden;
+  /* Alternate: */
+  /* margin: 0 2rem; */
+  /* border-radius: 16px; */
+}
+
+.feature img {
+  margin: 1rem 0;
+  overflow: hidden;
+}
+
+.feature a {
+  color: #5dcaff;
+}
+
 .feature:hover {
   background-color: #012;
 }
@@ -133,35 +162,34 @@ article {
   color: #5dcaff;
 }
 
+/* a */
+
 a {
   text-decoration: none;
-  color: #0099cd;
   color: #006b9c;
+}
+
+a:hover {
+  color: #0099cd;
+  text-decoration: none;
 }
 
 article a {
   font-weight: 600;
 }
 
-a:hover {
-  color: #5dcaff;
-  color: #0099cd;
-  text-decoration: underline;
+header a:hover,
+nav a:hover {
   text-decoration: none;
 }
 
-.feature img {
-  margin: 1rem 0;
-  overflow: hidden;
-}
-
-header a:hover {
-  text-decoration: none;
-}
+/* content */
 
 p {
   margin: 0 0 1rem;
 }
+
+/* footer */
 
 footer {
   display: flex;
@@ -183,6 +211,16 @@ footer a:visited {
   color: #eeeeff;
 }
 
+footer p {
+  margin: 1rem auto 4rem;
+  text-align: left;
+
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+/* context styles */
+
 .support {
   font-style: italic;
   color: #777;
@@ -190,14 +228,6 @@ footer a:visited {
 
 .copyright {
   color: #aaa;
-}
-
-footer p {
-  margin: 1rem auto 4rem;
-  text-align: left;
-
-  font-size: 1rem;
-  line-height: 1.7;
 }
 
 .donate {
@@ -223,10 +253,7 @@ footer p {
   padding: 1rem;
 }
 
-figure {
-  margin: 0;
-  padding: 0;
-}
+/* nav */
 
 nav {
   /* background: #010101; */
@@ -234,6 +261,7 @@ nav {
   background: #f9f9f9;
   margin: 0 auto;
   overflow-x: auto;
+  text-align: center;
 }
 
 .nav-links {
