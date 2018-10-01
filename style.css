@@ -90,6 +90,9 @@ nav > h1 {
   header > h1 {
     display: none;
   }
+  header {
+    padding: 0;
+  }
   .logo {
     filter: none;
   }
