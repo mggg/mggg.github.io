@@ -310,3 +310,19 @@ nav {
 /* background: #012; */
 /* alternate: no change */
 /* } */
+
+.bio-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.bio {
+  margin: 1rem 0;
+}
+
+.bio img {
+  shape-outside: circle();
+  -webkit-shape-outside: circle();
+  max-width: 300px;
+}
