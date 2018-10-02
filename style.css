@@ -246,6 +246,8 @@ address {
 .support {
   font-style: italic;
   color: #777;
+  grid-column: 1 / 3;
+  margin: 0 2rem 2vw;
 }
 
 .copyright {
