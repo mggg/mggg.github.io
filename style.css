@@ -318,11 +318,22 @@ nav {
 }
 
 .bio {
-  margin: 1rem 0;
+  margin: 3rem 0;
 }
 
 .bio img {
-  shape-outside: circle();
   -webkit-shape-outside: circle();
-  max-width: 300px;
+  shape-outside: circle();
+  width: 100px;
+  height: 100px;
+  object-fit: scale-down;
+  border-radius: 50%;
+  float: left;
+  margin: 0 2rem 0 0;
+}
+
+.bio::after {
+  content: "";
+  clear: both;
+  display: block;
 }
