@@ -5,14 +5,15 @@
 html {
   font-size: 100%;
   font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+  /* font-family: "Quattrocento", serif; */
 }
 
 body {
   margin: 0;
   padding: 0;
   color: #111111;
-  font-size: 1.2rem;
-  line-height: 1.7;
+  font-size: 18px;
+  line-height: 2;
   overflow-x: hidden;
 }
 
@@ -65,9 +66,13 @@ header > h1 {
   font-size: 2rem;
 }
 
+header,
+nav {
+  font-family: "Segoe UI", "Arial Narrow", Arial, sans-serif;
+}
+
 header > h1,
 nav > h1 {
-  font-family: "Segoe UI", "Arial Narrow", Arial, sans-serif;
   font-weight: 100;
   text-transform: uppercase;
   line-height: 2;
@@ -109,7 +114,7 @@ main {
 
 .two-column {
   display: grid;
-  grid-template-columns: minmax(300px, 3fr) minmax(300px, 2fr);
+  grid-template-columns: minmax(300px, 5fr) minmax(300px, 2fr);
 }
 
 @media only screen and (max-width: 900px) {
@@ -247,7 +252,7 @@ address {
   font-style: italic;
   color: #777;
   grid-column: 1 / 3;
-  margin: 0 2rem 2vw;
+  margin: 2rem 2vw;
 }
 
 .copyright {
@@ -313,29 +318,26 @@ nav {
 /* alternate: no change */
 /* } */
 
-.bio-list {
-  list-style: none;
+dl,
+dt,
+dd {
   margin: 0;
   padding: 0;
 }
 
-.bio {
-  margin: 3rem 0;
+.bio-list {
+  display: grid;
+  grid-template-columns: 100px auto;
+  grid-gap: 3rem;
+  list-style: none;
+  margin: 2rem 0;
+  padding: 0;
 }
 
-.bio img {
-  -webkit-shape-outside: circle();
-  shape-outside: circle();
+.bio-list img {
   width: 100px;
   height: 100px;
   object-fit: scale-down;
   border-radius: 50%;
-  float: left;
-  margin: 0 2rem 0 0;
-}
-
-.bio::after {
-  content: "";
-  clear: both;
-  display: block;
+  margin: 1rem;
 }
