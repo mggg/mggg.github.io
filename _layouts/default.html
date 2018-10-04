@@ -15,33 +15,22 @@
 <body>
   <nav>
     <ul class="nav-links">
-      <li>
-        <a href="index.html">About MGGG</a>
-      </li>
-      <li>
-        <a href="resources.html">Resources</a>
-      </li>
-      <!-- <li>
-        <a href="/">Our Work</a>
-      </li> -->
-      <li>
-        <a href="who.html">Who We Are</a>
-      </li>
-      <li>
-        <a href="donate.html">Donate</a>
-      </li>
-
+      {% assign navpages = site.pages | sort: "order" %}
+      {% for page in navpages %}
+      <li><a href="{{ page.url | relative_url }}">{{ page.title }}</a></li>
+      {% endfor %}
     </ul>
   </nav>
   <header>
     <a href="/">
       <img class="logo" src="/static/logo.svg" alt="Metric Geometry and Gerrymandering Group">
     </a>
-    <h1><a href="/">
-        Metric Geometry and Gerrymandering Group</a></h1>
+    <h1>
+      <a href="/">Metric Geometry and Gerrymandering Group</a>
+    </h1>
   </header>
 
-  {{page}}
+  {{content}}
 
   <footer>
     <ul class="footer-items">
