@@ -16,7 +16,7 @@
 <body>
   <nav>
     <ul class="nav-links">
-      {% assign navpages = site.pages | sort: "order" %}
+      {% assign navpages = site.html_pages | sort: "order" %}
       {% for page in navpages %}
       <li><a href="{{ page.url | relative_url }}">{{ page.title }}</a></li>
       {% endfor %}
