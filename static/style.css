@@ -344,3 +344,23 @@ dd {
   border-radius: 50%;
   margin: 1rem;
 }
+
+@media only screen and (max-width: 600px) {
+  .bio-list {
+    display: block;
+  }
+
+  .bio-list dt {
+    float: left;
+    shape-outside: circle();
+  }
+
+  .bio-list dd::after {
+    clear: both;
+    content: "";
+  }
+
+  .bio-list dd {
+    margin-bottom: 2rem;
+  }
+}
