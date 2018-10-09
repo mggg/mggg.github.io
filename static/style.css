@@ -5,7 +5,8 @@
 html {
   font-size: 100%;
   font-family: "Segoe UI", Helvetica, Arial, sans-serif;
-  /* font-family: "Quattrocento", serif; */
+  font-family: "Quattrocento", serif;
+  font-family: "Source Sans Pro", sans-serif;
 }
 
 body {
@@ -36,11 +37,13 @@ h3 {
   line-height: 1.2;
   margin: 0 0 1rem;
   padding: 0;
+  /* font-family: "Source Sans Pro", sans-serif; */
 }
 
 h3 {
   font-weight: normal;
   line-height: 1.8;
+  font-size: 1.6rem;
 }
 
 /* header */
@@ -63,17 +66,19 @@ header {
 
 header > h1 {
   margin-bottom: 1rem;
-  font-size: 2rem;
+  font-size: 2.2rem;
 }
 
 header,
 nav {
   font-family: "Segoe UI", "Arial Narrow", Arial, sans-serif;
+  font-family: "Source Sans Pro";
+  text-transform: uppercase;
 }
 
 header > h1,
 nav > h1 {
-  font-weight: 100;
+  font-weight: 300;
   text-transform: uppercase;
   line-height: 2;
   letter-spacing: 0.5rem;
@@ -86,6 +91,7 @@ nav > h1 {
 }
 
 .logo {
+  display: block;
   margin: 2rem 0;
   width: 80vw;
   max-width: 750px;
@@ -110,18 +116,20 @@ nav > h1 {
 main {
   max-width: 1000px;
   margin: 0 auto;
+  padding: 0 1rem;
   min-height: 60vh;
 }
 
 .two-column {
   display: grid;
+  grid-gap: 2rem;
   grid-template-columns: minmax(300px, 5fr) minmax(300px, 2fr);
 }
 
 article {
   max-width: 48rem;
   margin: 0 auto 2rem;
-  padding: 0 1rem;
+  padding: 0;
 }
 
 .article-type {
@@ -244,10 +252,11 @@ address {
 /* context styles */
 
 .support {
-  font-style: italic;
+  font-family: "Source Sans Pro";
+  /* font-style: italic; */
   color: #777;
   grid-column: 1 / 3;
-  margin: 2rem 1rem;
+  margin: 2rem 0rem;
 }
 @media only screen and (max-width: 900px) {
   .two-column {
@@ -305,6 +314,7 @@ nav {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  align-items: center;
   max-width: 900px;
 }
 
