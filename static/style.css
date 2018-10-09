@@ -62,7 +62,7 @@ header {
 }
 
 header > h1 {
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   font-size: 2rem;
 }
 
@@ -108,8 +108,9 @@ nav > h1 {
 /* Main */
 
 main {
-  max-width: 1200px;
+  max-width: 1000px;
   margin: 0 auto;
+  min-height: 60vh;
 }
 
 .two-column {
@@ -118,7 +119,7 @@ main {
 }
 
 article {
-  max-width: 900px;
+  max-width: 48rem;
   margin: 0 auto 2rem;
   padding: 0 1rem;
 }
@@ -294,6 +295,7 @@ nav {
   margin: 0 auto;
   overflow-x: auto;
   text-align: center;
+  font-size: 1rem;
 }
 
 .nav-links {
