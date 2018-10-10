@@ -4,8 +4,8 @@
 
 html {
   font-size: 100%;
-  font-family: "Quattrocento", serif;
-  /* font-family: "Source Sans Pro", sans-serif; */
+  /* font-family: "Quattrocento", serif; */
+  font-family: "Source Sans Pro", sans-serif;
 }
 
 body {
@@ -231,6 +231,10 @@ footer {
   font-size: 1rem;
 
   border-top: 1px solid #111;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 0;
+
   color: #0099cd;
   background: #010101;
 
