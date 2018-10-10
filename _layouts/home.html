@@ -6,23 +6,25 @@
 <body>
   <nav>
     <ul class="nav-links">
-      <li>
-        <a href="/">
-          <img class="nav-logo" src="./static/logo.svg" alt="Metric Geometry and Gerrymandering Group">
-        </a>
-      </li>
       {% assign navpages = site.html_pages | where:"nav","true" | sort: "order" %}
       {% for page in navpages %}
       <li><a href="{{ page.url | relative_url }}">{{ page.title }}</a></li>
       {% endfor %}
     </ul>
   </nav>
+  <header>
+    <a href="/">
+      <img class="logo" src="/static/logo.svg" alt="Metric Geometry and Gerrymandering Group">
+    </a>
+    <h1>
+      <a href="/">Metric Geometry and Gerrymandering Group</a>
+    </h1>
+  </header>
 
-  <main>
-    {{content}}
-  </main>
+  {{content}}
 
   {% include footer.html %}
+
 </body>
 
 </html>

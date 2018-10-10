@@ -4,14 +4,47 @@
 
 html {
   font-size: 100%;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+  font-family: "Quattrocento", serif;
+  font-family: "Source Sans Pro", sans-serif;
 }
 
 body {
-  font-size: 1.2rem;
   margin: 0;
   padding: 0;
   color: #111111;
+  font-size: 1.2rem;
+  line-height: 2;
+  overflow-x: hidden;
+}
+
+/* headings */
+
+h1 {
+  font-size: 3rem;
+}
+
+h1,
+h2 {
+  font-family: "Playfair Display", Cambria, Cochin, Georgia, Times,
+    "Times New Roman", serif;
+  font-weight: 900;
+  line-height: 2;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.2;
+  margin: 0 0 1rem;
+  padding: 0;
+  /* font-family: "Source Sans Pro", sans-serif; */
+}
+
+h3 {
+  font-weight: normal;
+  line-height: 1.8;
+  font-size: 1.6rem;
 }
 
 /* header */

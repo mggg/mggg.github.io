@@ -4,8 +4,7 @@
 
 html {
   font-size: 100%;
-  font-family: "Segoe UI", Helvetica, Arial, sans-serif;
-  font-family: "Quattrocento", serif;
+  /* font-family: "Quattrocento", serif; */
   font-family: "Source Sans Pro", sans-serif;
 }
 
@@ -20,10 +19,11 @@ body {
 
 /* headings */
 
-.headline {
+h1 {
   font-size: 3rem;
 }
 
+h1,
 h2 {
   font-family: "Playfair Display", Cambria, Cochin, Georgia, Times,
     "Times New Roman", serif;
@@ -44,6 +44,7 @@ h3 {
   font-weight: normal;
   line-height: 1.8;
   font-size: 1.6rem;
+  font-family: "Source Sans Pro", sans-serif;
 }
 
 /* header */
@@ -64,15 +65,9 @@ header {
   line-height: 1;
 }
 
-header > h1 {
-  margin-bottom: 1rem;
-  font-size: 2.2rem;
-}
-
 header,
 nav {
-  font-family: "Segoe UI", "Arial Narrow", Arial, sans-serif;
-  font-family: "Source Sans Pro";
+  font-family: "Source Sans Pro", "Arial Narrow", Arial, sans-serif;
   text-transform: uppercase;
 }
 
@@ -83,6 +78,7 @@ nav > h1 {
   line-height: 2;
   letter-spacing: 0.5rem;
   text-align: center;
+  font-family: "Source Sans Pro", "Arial Narrow", Arial, sans-serif;
 }
 
 nav > h1 {
@@ -90,11 +86,24 @@ nav > h1 {
   font-size: 1.2rem;
 }
 
+header > h1 {
+  margin: 1rem 0 3rem;
+  font-size: 2.2rem;
+}
+
+.nav-logo {
+  width: 200px;
+  min-width: 200px;
+  margin: 0.6rem 0;
+  filter: none;
+  display: block;
+}
+
 .logo {
   display: block;
   margin: 2rem 0;
   width: 80vw;
-  max-width: 750px;
+  max-width: 1000px;
   min-width: 300px;
   filter: drop-shadow(0px 4px 2px #aab3b6);
 }
@@ -114,9 +123,10 @@ nav > h1 {
 /* Main */
 
 main {
+  box-shadow: 0 -15px 10px -20px rgba(0, 0, 0, 0.3);
   max-width: 1000px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 2rem 1rem 0;
   min-height: 60vh;
 }
 
@@ -124,6 +134,11 @@ main {
   display: grid;
   grid-gap: 2rem;
   grid-template-columns: minmax(300px, 5fr) minmax(300px, 2fr);
+}
+
+.home {
+  padding: 0 1rem;
+  box-shadow: none;
 }
 
 article {
@@ -211,6 +226,7 @@ p {
 footer {
   padding: 1rem 1rem 2rem;
 
+  font-family: "Source Sans Pro", sans-serif;
   font-size: 1rem;
 
   border-top: 1px solid #111;
@@ -376,3 +392,5 @@ dd {
     margin-bottom: 2rem;
   }
 }
+
+/* Banner layout */
