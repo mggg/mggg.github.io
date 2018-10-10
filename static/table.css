@@ -63,6 +63,7 @@ header {
 
 .logo {
   width: 150px;
+  display: block;
 }
 
 nav {
