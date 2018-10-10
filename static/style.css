@@ -41,8 +41,9 @@ h3 {
 
 h3 {
   font-weight: normal;
-  line-height: 1.8;
+  line-height: 1.6;
   font-size: 1.6rem;
+  margin: 2.4rem 0 1rem;
   font-family: "Source Sans Pro", sans-serif;
 }
 
