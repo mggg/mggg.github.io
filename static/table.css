@@ -21,7 +21,7 @@ body {
 /* headings */
 
 h1 {
-  font-size: 3rem;
+  font-size: 2.4rem;
   font-family: "Playfair Display", Cambria, Cochin, Georgia, Times,
     "Times New Roman", serif;
   font-weight: 900;
@@ -131,7 +131,7 @@ colgroup.queen {
 }
 
 .queen {
-  background: #f9ca90;
+  background: #90f9ca;
 }
 
 .rook-heading,
@@ -143,7 +143,7 @@ colgroup.queen {
 .queen-heading,
 .queen-label {
   color: white;
-  background: #7e5319;
+  background: #197e53;
 }
 
 /*
