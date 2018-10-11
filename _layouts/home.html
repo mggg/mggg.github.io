@@ -4,18 +4,28 @@
 {% include head.html %}
 
 <body>
-  <nav>
-    <ul class="nav-links">
-      {% assign navpages = site.html_pages | where:"nav","true" | sort: "order" %}
-      {% for page in navpages %}
-      <li><a href="{{ page.url | relative_url }}">{{ page.title }}</a></li>
-      {% endfor %}
-    </ul>
-  </nav>
   <section class="map">
-    <a href="/">
-      <img class="logo" src="/static/logo.svg" alt="Metric Geometry and Gerrymandering Group">
-    </a>
+    <div class="map__inset">
+      <a href="/">
+        <img class="map__logo" src="/static/logo.svg" alt="Metric Geometry and Gerrymandering Group">
+      </a>
+      <a href="/">
+        <h1 class="map__title">Metric Geometry and Gerrymandering Group</h1>
+      </a>
+    </div>
+    <nav class="map__nav" id="about-mggg">
+      <ul class="nav-links">
+        {% assign navpages = site.html_pages | where:"nav","true" | sort: "order" %}
+        {% for page in navpages %}
+        <li>
+          <a href="{% if page.customlink %}{{ page.customlink }}{% else %}{{ page.url | relative_url }}{% endif %}">
+            {{ page.title }}
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+    </nav>
+    <div class="map__nav-shadow"></div>
   </section>
   {{content}}
 
