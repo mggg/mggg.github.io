@@ -11,10 +11,7 @@
           <img class="nav-logo" src="./static/logo.svg" alt="Metric Geometry and Gerrymandering Group">
         </a>
       </li>
-      {% assign navpages = site.html_pages | where:"nav","true" | sort: "order" %}
-      {% for page in navpages %}
-      <li><a href="{{ page.url | relative_url }}">{{ page.title }}</a></li>
-      {% endfor %}
+      {% include nav-links.html %}
     </ul>
   </nav>
 

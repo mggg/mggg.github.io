@@ -15,14 +15,7 @@
     </div>
     <nav class="map__nav" id="about-mggg">
       <ul class="nav-links">
-        {% assign navpages = site.html_pages | where:"nav","true" | sort: "order" %}
-        {% for page in navpages %}
-        <li>
-          <a href="{% if page.customlink %}{{ page.customlink }}{% else %}{{ page.url | relative_url }}{% endif %}">
-            {{ page.title }}
-          </a>
-        </li>
-        {% endfor %}
+        {% include nav-links.html %}
       </ul>
     </nav>
     <div class="map__nav-shadow"></div>
