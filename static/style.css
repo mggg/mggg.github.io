@@ -274,7 +274,6 @@ address {
 /* context styles */
 
 .support {
-  font-family: "Source Sans Pro";
   /* font-style: italic; */
   color: #777;
   grid-column: 1 / 3;
