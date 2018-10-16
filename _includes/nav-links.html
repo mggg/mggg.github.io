@@ -2,7 +2,7 @@
 {% for page in navpages %}
 <li>
     <a href="{% if page.customlink %}{{ page.customlink }}{% else %}{{ page.url | relative_url }}{% endif %}">
-        {{ page.title }}
+        {% if page.navtitle %}{{ page.navtitle }}{% else %}{{ page.title }}{% endif %}
     </a>
 </li>
 {% endfor %}
