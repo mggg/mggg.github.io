@@ -4,7 +4,7 @@
 
 html {
   font-size: 100%;
-  font-family: "Quattrocento", serif;
+  font-family: "Quattrocento", Georgia, serif;
 }
 
 body {
@@ -17,16 +17,16 @@ body {
 
 /* headings */
 
-h1 {
-  font-size: 2.4rem;
-}
-
 h1,
 h2 {
-  font-family: "Playfair Display", Cambria, Cochin, Georgia, Times,
-    "Times New Roman", serif;
+  font-family: "Playfair Display", Georgia, serif;
   font-weight: 900;
   line-height: 2;
+}
+
+h3 {
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 900;
 }
 
 h1,
@@ -37,12 +37,14 @@ h3 {
   padding: 0;
 }
 
+h1 {
+  font-size: 2.4rem;
+}
+
 h3 {
-  font-weight: normal;
   line-height: 1.6;
   font-size: 1.6rem;
   margin: 2rem 0 1rem;
-  font-family: "Source Sans Pro", sans-serif;
 }
 
 /* header */
@@ -285,6 +287,11 @@ address {
     0 2px 4px rgba(0, 0, 0, 0.24);
 }
 
+.donate h3 {
+  font-family: "Source Sans Pro", "Arial Narrow", Arial, sans-serif;
+  font-weight: normal;
+}
+
 .donate a {
   color: white;
 }
@@ -379,11 +386,25 @@ dd {
   }
 }
 
+/* latest */
+
+.latest__title {
+  max-width: 48rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.latest {
+  display: flex;
+}
+
 /* map layout */
 
 .map {
   background: url(/static/images/US-map.jpg) no-repeat;
   background-size: cover;
+  background-position: center center;
+
   height: 100vh;
 
   display: flex;
@@ -442,6 +463,6 @@ dd {
     height: 100vh;
   }
   .map {
-    height: none;
+    height: inherit;
   }
 }
