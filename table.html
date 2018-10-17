@@ -25,9 +25,13 @@
     <h1>The Known Sizes of Grid Metagraphs</h1>
     
     <p>
-      The row marked <b>nxn &rarr; n</b> counts the number of ways to partition an $n\times n$ grid into $n$
-      districts.  
-    </p
+      The row marked <b>nxn &rarr; n</b> counts the number of ways to partition an n by  n grid into n
+      districts (or connected pieces).  The columns describe how much size difference is tolerated among 
+      the districts.
+      The two halves of the table distinguish whether, to be considered
+      contiguous, the districts would have to be transitable by a chess rook (making only NSEW moves) or a 
+      chess queen (which can also move diagonally).  Queen contiguity allows many more district shapes.
+    </p>
 
     <div class="table-container">
       <table>
