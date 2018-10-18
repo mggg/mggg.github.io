@@ -1,124 +1,61 @@
-<!DOCTYPE html>
-<html lang="en">
+---
+title: The Known Sizes of Grid Metagraphs
+layout: default
+---
+<article>
+  <h1>The Known Sizes of Grid Metagraphs</h1>
 
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="A nonpartisan research organization studying applications of geometry and computing to U.S. redistricting.">
-  <link rel="shortcut icon" type="image/x-icon" href="static/favicon.ico">
-  <link rel="canonical" href="https://www.mggg.org/table.html">
-  <title>The Known Sizes of Grid Metagraphs - Metric Geometry and Gerrymandering Group</title>
-  <link rel="stylesheet" type="text/css" media="screen" href="static/css/table.css" />
-  <link href="https://fonts.googleapis.com/css?family=Playfair+Display:900|Source+Sans+Pro:300,400|Quattrocento:400,700"
-    rel="stylesheet">
-</head>
+  <p>
+    At MGGG, we think that one of the reasons that redistricting is hard to study is that the
+    space of possibilities
+    (i.e., valid districting plans) is so huge it's unthinkable by humans. And relatedly, the
+    number of ways to
+    achieve any simple objective is overwhelmingly large.
+  </p>
+  <p>
+    We think that to study districting plans in context, you need to understand the space of
+    alternatives.
+    So we are working on the science of sampling from these universes of districting plans.
+    As a simplified warmup problem, we can ask how many ways there would be to district a
+    jurisdiction
+    made up of a small number of units with equal population arranged in a perfect grid. We can
+    then
+    build up the complexity from there. But this problem is already formidable!
+  </p>
+  <p>
+    In this table, the row marked <b>nxn &rarr; n</b> shows the number of ways to partition an n
+    by n grid into n
+    districts (or connected pieces). The columns describe how much size difference is tolerated
+    among
+    the districts.
+    The two halves of the table distinguish whether, to be considered
+    contiguous, the districts would have to be transitable by a chess rook (making only NSEW
+    moves) or a
+    chess queen (which can also move diagonally). Queen contiguity allows many more district
+    shapes.
+  </p>
 
-<body>
-  <header>
-    <a href="/">
-      <img class="logo" src="/static/logo.svg" alt="Metric Geometry and Gerrymandering Group">
-    </a>
-  </header>
+</article>
+{% include metagraph-table.html %}
 
-  <main>
-    <h1>The Known Sizes of Grid Metagraphs</h1>
-    
-    <p>
-      At MGGG, we think that one of the reasons that redistricting is hard to study is that the space of possibilities
-      (i.e., valid districting plans) is so huge it's unthinkable by humans.  And relatedly, the number of ways to 
-      achieve any simple objective is overwhelmingly large.
-    </p>
-    <p>
-      We think that to study districting plans in context, you need to understand the space of alternatives.  
-      So we are working on the science of sampling from these universes of districting plans.
-      As a simplified warmup problem, we can ask how many ways there would be to district a jurisdiction
-      made up of a small number of units with equal population arranged in a perfect grid.  We can then 
-      build up the complexity from there.  But this problem is already formidable!
-    </p>
-    <p>
-      In this table, the row marked <b>nxn &rarr; n</b> shows the number of ways to partition an n by  n grid into n
-      districts (or connected pieces).  The columns describe how much size difference is tolerated among 
-      the districts.
-      The two halves of the table distinguish whether, to be considered
-      contiguous, the districts would have to be transitable by a chess rook (making only NSEW moves) or a 
-      chess queen (which can also move diagonally).  Queen contiguity allows many more district shapes.
-    </p>
+<article>
+  <p>
+    The generation of the numbers in this table was overseen by MGGG's Zach Schutzman and Daryl
+    DeFord. We used a combination of <a href="https://github.com/zschutzman/enumerator">our own
+      python code</a> and an algorithm coded by Bob Harris (<a href="http://www.bumblebeagle.org/polyominoes/tilingcounting/">code</a>,
+    <a href="http://www.bumblebeagle.org/polyominoes/tilingcounting/counting_9x9_tilings.pdf">writeup</a>;
+    <a href="https://oeis.org/A172477">OEIS</a>) in C in 2010. We've checked the math behind both
+    algorithms and are confident in both implementations.
+  </p>
+  <p>
+    As of October 2018, we've got runs going on MIT's <a href="https://tig.csail.mit.edu/shared-computing/open-stack/">OpenStack</a>
+    to extend the coverage of this table. Each missing value is expected to take at least a day,
+    and sometimes weeks or more, of computer time.
+  </p>
+  <p>
+    An earlier version of the table, which appears in November's print version of Scientific
+    American, used partition enumeration code that was included with the R package <tt>redist</tt>&mdash;
+    that code turns out to be buggy. As a result, some of the numbers have since been corrected.
 
-    <div class="table-container">
-      <table>
-
-    <colgroup class="row-labels"></colgroup>
-    <colgroup class="rook" span="5"></colgroup>
-    <colgroup class="queen" span="5">
-    </colgroup>
-    <thead>
-      <tr>
-        <th></th>
-        <th colspan="5" scope="colgroup" class="rook-heading">Rook</th>
-        <th colspan="5" scope="colgroup" class="queen-heading">Queen</th>
-      </tr>
-      <tr>
-        <th></th>
-
-        <th class="rook-label">equal size</th>
-        <th class="rook-label">&plusmn; 1</th>
-        <th class="rook-label">&plusmn; 2</th>
-        <th class="rook-label">&plusmn; 3</th>
-        <th class="rook-label">all, non-&empty;</th>
-
-        <th class="queen-label">equal size</th>
-        <th class="queen-label">&plusmn; 1</th>
-        <th class="queen-label">&plusmn; 2</th>
-        <th class="queen-label">&plusmn; 3</th>
-        <th class="queen-label">all, non-&empty;</th>
-      </tr>
-    </thead>
-<tbody>
-<tr><th>2x2 &rarr; 2</th><td>2</td><td>6</td><td>6</td><td>6</td><td>6</td><td>3</td><td>7</td><td>7</td><td>7</td><td>7</td></tr>
-</tbody>
-<tbody>
-<tr><th>3x3 &rarr; 3</th><td>10</td><td>58</td><td>170</td><td>226</td><td>258</td><td>36</td><td>224</td><td>622</td><td>746</td><td>782</td></tr>
-</tbody>
-<tbody>
-<tr><th>4x4 &rarr; 2</th><td>70</td><td>206</td><td>338</td><td>454</td><td>627</td><td>1,718</td><td>4,690</td><td>6,630</td><td>7,598</td><td>8,171</td></tr>
-<tr><th>4x4 &rarr; 4</th><td>117</td><td>1,953</td><td>8,849</td><td>29,069</td><td>62,741</td><td>2,620</td><td>46,456</td><td>222,398</td><td>710,622</td><td>1,130,612</td></tr>
-<tr><th>4x4 &rarr; 8</th><td>36</td><td>34,444</td><td>153,094</td><td>251,230</td><td>340,198</td><td>280</td><td>567,725</td><td>2,629,081</td><td>4,262,917</td><td>5,362,109</td></tr>
-</tbody>
-<tbody>
-<tr><th>5x5 &rarr; 5</th><td>4,006</td><td>193,128</td><td>147,250</td><td>6,194,822</td><td class="unknown">?</td><td>1,397,790</td><td>70,491,206</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td></tr>
-</tbody>
-<tbody>
-<tr><th>6x6 &rarr; 2</th><td>80,518</td><td>241,218</td><td>400,474</td><td>557,031</td><td>1,123,743</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td></tr>
-<tr><th>6x6 &rarr; 3</th><td>264,500</td><td>1,848,872</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td></tr>
-<tr><th>6x6 &rarr; 4</th><td>442,791</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td></tr>
-<tr><th>6x6 &rarr; 6</th><td>451,206</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td></tr>
-<tr><th>6x6 &rarr; 9</th><td>178,939</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td></tr>
-<tr><th>6x6 &rarr; 12</th><td>80,092</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td></tr>
-<tr><th>6x6 &rarr; 18</th><td>6,728</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td>3,037,561</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td></tr>
-</tbody>
-<tbody>
-<tr><th>7x7 &rarr; 7</th><td>158,753,814</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td></tr>
-</tbody>
-<tbody>
-<tr><th>8x8 &rarr; 8</th><td>187,497,290,034</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td></tr>
-</tbody>
-<tbody>
-<tr><th>9x9 &rarr; 9</th><td>706,152,947,468,301</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td><td class="unknown">?</td></tr>
-</tbody>
-</table>
-    </div>
-    
-    <p>
-      The generation of the numbers in this table was overseen by MGGG's Zach Schutzman and Daryl DeFord.  We used a combination of <a href="https://github.com/zschutzman/enumerator">our own python code</a> and an algorithm coded by Bob Harris (<a href="http://www.bumblebeagle.org/polyominoes/tilingcounting/">code</a>,
-<a href="http://www.bumblebeagle.org/polyominoes/tilingcounting/counting_9x9_tilings.pdf">writeup</a>; <a href="https://oeis.org/A172477">OEIS</a>) in C in 2010.  We've checked the math behind both algorithms and are confident in both implementations.
-    </p><p>
-As of October 2018, we've got runs going on MIT's <a href="https://tig.csail.mit.edu/shared-computing/open-stack/">OpenStack</a> to extend the coverage of this table.  Each missing value is expected to take at least a day, and sometimes weeks or more, of computer time. 
-</p><p>
-An earlier version of the table, which appears in November's print version of Scientific American, used partition enumeration code that was included with the R package <tt>redist</tt>&mdash; that code turns out to be buggy.  As a result, some of the numbers have since been corrected. 
-
-    </p>
-  </main>
-</body>
-
-</html>
+  </p>
+</article>

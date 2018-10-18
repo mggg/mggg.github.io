@@ -18,23 +18,13 @@ body {
 /* headings */
 
 h1,
-h2 {
-  font-family: "Playfair Display", Georgia, serif;
-  font-weight: 900;
-  line-height: 2;
-}
-
-h3 {
-  font-family: "Playfair Display", Georgia, serif;
-  font-weight: 900;
-}
-
-h1,
 h2,
 h3 {
-  line-height: 1.2;
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 900;
   margin: 2rem 0 1rem;
   padding: 0;
+  line-height: 1.2;
 }
 
 h1 {
@@ -45,7 +35,6 @@ h1 {
 h3 {
   line-height: 1.6;
   font-size: 1.6rem;
-  margin: 2rem 0 1rem;
 }
 
 /* header */
@@ -202,6 +191,11 @@ nav a:hover {
 p {
   margin: 0 0 1rem;
 }
+
+tt {
+  font-family: "Fira Code", "Consolas", monospace;
+}
+
 /* footer */
 footer {
   padding: 1rem 1rem 2rem;
