@@ -2,17 +2,28 @@ import csv
 import itertools
 
 
-def render_cell(item):
+def render_cell(item, link=None):
     if item == "":
         item = "?"
     if item == "?":
         return '<td class="unknown">?</td>'
     try:
-        parsed_content = int(item)
-        return "<td>{:,d}</td>".format(parsed_content)
+        parsed_content = "{:,d}".format(int(item))
     except ValueError:
         parsed_content = item
-        return "<td>{}</td>".format(parsed_content)
+
+    if link is not None:
+        parsed_content = '<a href="{link}">{content}</a>'.format(
+            content=parsed_content, link=link
+        )
+    return "<td>{}</td>".format(parsed_content)
+
+
+links = {
+    ("4x4", "4"): "/metagraph/",
+    ("5x5", "5"): "/metagraph/5x5.html",
+    ("7x7", "7"): "/metagraph/7x7.html",
+}
 
 
 def get_row_label(grid, parts):
@@ -20,9 +31,14 @@ def get_row_label(grid, parts):
     return "<th>{}</th>".format(content)
 
 
-def render_row(row):
-    row_label = get_row_label(row[0], row[1])
+def render_row(row, links=links):
+    grid, parts = str(row[0]), str(row[1])
+    row_label = get_row_label(grid, parts)
     row_cells = [render_cell(item) for item in row[2:]]
+
+    if (grid, parts) in links:
+        row_cells[0] = render_cell(row[2], link=links[(grid, parts)])
+
     return "<tr>" + row_label + "".join(row_cells) + "</tr>"
 
 
@@ -81,20 +97,25 @@ def render_template(template_stream, *args, **template_fields):
 
 
 def build_template(
-    template_path="./table_template.html",
-    data_path="./table.csv",
-    output_path="../table.html",
+    data_path="../_data/table.csv", output_path="../_includes/metagraph-table.html"
 ):
     with open(data_path) as f:
         next(f)
         rows = csv.reader(f)
         table_html = table(rows)
 
-    with open(template_path) as f:
-        document = render_template(f, table=table_html)
-
     with open(output_path, "w") as f:
-        f.write(document)
+        f.write(
+            """
+<style>
+{% include table.css %}
+</style>
+
+<div class="table-container">
+"""
+        )
+        f.write(table_html)
+        f.write("\n</div>")
 
 
 def main():
