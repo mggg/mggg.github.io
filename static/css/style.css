@@ -365,7 +365,7 @@ dd {
   margin: 0;
   padding: 0;
 
-  background: url(/static/images/US-map.jpg) no-repeat;
+  background: url(/static/images/usa-resized.png) no-repeat;
   background-size: cover;
   background-position: center center;
   background-attachment: fixed;
@@ -376,6 +376,13 @@ dd {
   justify-content: stretch;
   flex-direction: column;
 }
+
+@media only screen and (max-width: 600px) {
+  .map {
+    background-position-x: right;
+  }
+}
+
 .map__nav {
   margin: 0;
 }
