@@ -366,7 +366,7 @@ dd {
   padding: 0;
 
   background: url(/static/images/usa-resized.png) no-repeat;
-  background-size: cover;
+  background-size: contain;
   background-position: center center;
   background-attachment: fixed;
 
@@ -379,6 +379,7 @@ dd {
 
 @media only screen and (max-width: 600px) {
   .map {
+    background-size: cover;
     background-position-x: right;
   }
 }
