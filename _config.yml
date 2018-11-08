@@ -9,4 +9,6 @@ google_site_verification: jaL3ii25-g2LejBrllWbH-DmyT7b-vJw8URj-tvq8kE
 logo: /static/logo.svg
 
 plugins:
-  - jekyll-seo-tag
+    - jekyll-seo-tag
+
+collections_dir: collections
