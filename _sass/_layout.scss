@@ -1,0 +1,40 @@
+/* Main */
+
+section {
+    margin: 0;
+}
+
+section:nth-child(even) {
+    background: #f9f9f9;
+    box-shadow: 0px -10px 15px -20px rgba(0, 0, 0, 0.3) inset,
+        0px 10px 15px -20px rgba(0, 0, 0, 0.3) inset;
+}
+
+main {
+    margin: 0 auto;
+    padding: 0;
+    min-height: 60vh;
+}
+
+.two-column {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-column-gap: 2rem;
+    grid-template-columns: minmax(300px, 5fr) minmax(300px, 2fr);
+}
+
+.home {
+    padding: 0 1rem;
+}
+
+article {
+    max-width: 48rem;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+figure {
+    margin: 0;
+    padding: 0;
+}

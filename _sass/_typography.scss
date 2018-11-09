@@ -1,0 +1,55 @@
+html {
+    font-size: 100%;
+    font-family: "Quattrocento", Georgia, serif;
+}
+
+/* headings */
+
+h1,
+h2,
+h3 {
+    font-family: "Playfair Display", Georgia, serif;
+    padding: 0;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 1.5rem 0 1rem;
+}
+
+h1 {
+    font-size: 2.4rem;
+    margin: 1rem 0 1rem;
+}
+
+h3 {
+    line-height: 1.6;
+    font-size: 1.6rem;
+    margin: 1.5rem 0 0.75rem;
+}
+
+/* links */
+
+a {
+    text-decoration: none;
+    color: #006b9c;
+}
+a:hover {
+    color: #0099cd;
+    text-decoration: none;
+}
+
+article a {
+    font-weight: 600;
+}
+header a:hover,
+nav a:hover {
+    text-decoration: none;
+}
+
+/* content */
+p {
+    margin: 0 0 1rem;
+}
+
+tt {
+    font-family: "Fira Code", "Consolas", monospace;
+}

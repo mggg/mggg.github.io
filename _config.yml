@@ -5,10 +5,16 @@ title: Metric Geometry and Gerrymandering Group
 author: Metric Geometry and Gerrymandering Group
 
 description: A nonpartisan research organization studying applications of geometry and computing to U.S. redistricting.
-google_site_verification: jaL3ii25-g2LejBrllWbH-DmyT7b-vJw8URj-tvq8kE
 logo: /static/logo.svg
+
+google_site_verification: jaL3ii25-g2LejBrllWbH-DmyT7b-vJw8URj-tvq8kE
 
 plugins:
     - jekyll-seo-tag
 
 collections_dir: collections
+collections:
+    - works
+
+sass:
+    sass_dir: _sass
