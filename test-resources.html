@@ -1,0 +1,45 @@
+---
+layout: default
+title:  Our Work
+---
+{% assign surveys = site.works |
+  where: "type", "survey" |
+  sort: "date" |
+  reverse %}
+{% assign reports = site.works |
+  where: "type", "report" |
+  sort: "date" |
+  reverse %}
+{% assign software = site.works |
+  where: "type", "software" |
+  sort: "date" |
+  reverse %}
+<div class="gallery-container">
+<div class="gallery__header">
+<h1>Our Work</h1>
+</div>
+
+<div class="gallery-grid">
+<h2 class="gallery__title">Surveys and popular articles</h2>
+<ul class="gallery">
+{% for work in surveys %}
+{% include card.html work=work %}
+{% endfor %}
+</ul>
+
+<h2 class="gallery__title">Tools and interactives</h2>
+<ul class="gallery">
+{% for work in software %}
+{% include card.html work=work %}
+{% endfor %}
+</ul>
+
+<h2 class="gallery__title">Data</h2>
+<ul class="gallery">
+{% for work in data %}
+{% include card.html work=work %}
+{% endfor %}
+</ul>
+</div>
+
+</div>

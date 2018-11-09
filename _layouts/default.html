@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+    {% include head.html %}
 
-{% include head.html %}
+    <body>
+        <nav>
+            <ul class="nav-links">
+                <li>
+                    <a href="/">
+                        <img
+                            class="nav-logo"
+                            src="./static/logo.svg"
+                            alt="Metric Geometry and Gerrymandering Group"
+                        />
+                    </a>
+                </li>
+                {% include nav-links.html %}
+            </ul>
+        </nav>
 
-<body>
-  <nav>
-    <ul class="nav-links">
-      <li>
-        <a href="/">
-          <img class="nav-logo" src="./static/logo.svg" alt="Metric Geometry and Gerrymandering Group">
-        </a>
-      </li>
-      {% include nav-links.html %}
-    </ul>
-  </nav>
+        <main>{{ content }}</main>
 
-  <main>
-    {{content}}
-  </main>
-
-  {% include footer.html %}
-</body>
-
+        {% include footer.html %}
+    </body>
 </html>

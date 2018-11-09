@@ -1,0 +1,34 @@
+{% assign work = include.work %}
+<li class="card{% if work.featured %} featured{% endif %}">
+    {% if work.featured and work.image %}
+    <a class="card-image-link" href="{{work.href}}" target="_blank">
+        <img
+            class="card-image"
+            src="{{ work.image | relative_url }}"
+            alt="{{ work.image_caption }}"
+        />
+    </a>
+    {% endif %}
+
+    <div class="card-content">
+        <h3 class="card-title">
+            <a href="{{work.href}}" target="_blank">{{
+                work.title
+            }}</a>
+        </h3>
+        {% if work.authors %}
+        <div class="card-authors">{{ work.authors }}</div>
+        {% endif %} {% if work.description %}
+        <p class="card-teaser">{{ work.description }}</p>
+        {% endif %} {% if work.publication %}
+        <div class="card-publication">
+            {{ work.publication }}{% if work.publication_date
+            %}, {{ work.publication_date | date: "%B %Y" }}. {% endif %}
+        </div>
+        {% else %} {% if work.publication_date %}
+        <div class="card-publication">
+            {{ work.publication_date | date: "%B %Y" }}.
+        </div>
+        {% endif %} {% endif %}
+    </div>
+</li>
