@@ -10,3 +10,18 @@
 @import "bio-list";
 @import "map";
 @import "footer";
+
+.gallery {
+    margin: 1rem;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+    list-style: none;
+    grid-gap: 1rem;
+}
+
+.card {
+    margin: 0;
+    padding: 1rem;
+    background: #f9f9f9;
+}

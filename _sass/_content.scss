@@ -14,29 +14,33 @@
         grid-column: 1 / 2;
     }
 }
+
 .copyright {
     color: #aaa;
 }
+
 .donate {
     background: #0099cd;
     width: 300px;
     text-align: center;
     border-radius: 8px;
     margin: 2rem auto;
-    box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12),
-        0 2px 4px rgba(0, 0, 0, 0.24);
+    box-shadow: $raised;
 }
+
 .donate h3 {
-    font-family: "Source Sans Pro", "Arial Narrow", Arial, sans-serif;
+    font-family: $font_sans_thin;
     font-weight: normal;
 }
 
 .donate a {
     color: white;
 }
+
 .donate:hover {
     background: #006b9c;
 }
+
 .donate h3 {
     font-size: 2rem;
     padding: 1rem;

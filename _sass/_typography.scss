@@ -1,6 +1,13 @@
+$font_serif: "Quattrocento", Georgia, serif;
+$font_header_serif: "Playfair Display", Georgia, serif;
+$font_sans: "Source Sans Pro", sans-serif;
+$font_sans_thin: "Source Sans Pro", "Arial Narrow", Arial, sans-serif;
+
 html {
     font-size: 100%;
-    font-family: "Quattrocento", Georgia, serif;
+    font-family: $font_serif;
+    color: #111111;
+    line-height: 2;
 }
 
 /* headings */
@@ -8,7 +15,7 @@ html {
 h1,
 h2,
 h3 {
-    font-family: "Playfair Display", Georgia, serif;
+    font-family: $font_header_serif;
     padding: 0;
     font-weight: 700;
     line-height: 1.2;
@@ -24,6 +31,12 @@ h3 {
     line-height: 1.6;
     font-size: 1.6rem;
     margin: 1.5rem 0 0.75rem;
+}
+
+h4 {
+    line-height: 1.2;
+    font-size: 1.2rem;
+    margin: 1rem 0 0.5rem;
 }
 
 /* links */
