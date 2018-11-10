@@ -76,6 +76,10 @@ $max_card_width: 36rem;
     padding: 0.8rem;
 }
 
+.card-content ul {
+    list-style: disc;
+}
+
 .card-title {
     margin: 0;
     line-height: 1.4;
