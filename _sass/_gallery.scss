@@ -16,33 +16,67 @@ $max_card_width: 36rem;
 }
 
 .gallery__title:first-child {
-    margin: 0.5rem auto 1rem;
+    margin: 0.5rem auto 0.5rem;
 }
 
 .gallery__title {
-    margin: 3rem auto 0.5rem;
+    margin: 2rem auto 0.5rem;
 }
 
 .gallery-container {
-    // max-width: 48rem;
     margin: 0 auto 2rem;
 }
 
+/*
+For when grid is not supported:
+*/
+
 .gallery-grid {
     padding: 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     max-width: 80rem;
     margin: 0 auto;
 }
 
 .gallery-part {
-    margin: 0 2vw;
-    max-width: $max_card_width;
+    margin: 2rem auto 0;
 }
 
-.gallery-part:first-child {
-    margin: 0 2vw;
+// Something like this accomplishes the two-column layout in IE11, but then
+// things are left-aligned in a smaller viewport. So I'm just going with
+// a single centered column for IE11.
+
+// .gallery-part {
+//     float: left;
+// }
+
+// section {
+//     clear: both;
+// }
+
+// For when grid is supported
+@supports (display: grid) {
+    .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+    .gallery-part {
+        margin: 0 2vw;
+    }
+
+    .gallery-part:first-child {
+        margin: 0 2vw;
+    }
+
+    @media only screen and (max-width: $max_card_width) {
+        .gallery-part {
+            margin: 2rem 2vw 0;
+        }
+    }
+}
+
+.gallery-part {
+    max-width: $max_card_width;
 }
 
 .gallery {
@@ -54,16 +88,6 @@ $max_card_width: 36rem;
     // grid-template-columns: 3fr 2fr;
     // grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
     list-style: none;
-}
-
-.primary-gallery {
-    min-width: 300px;
-    max-width: 40rem;
-}
-
-.secondary-gallery {
-    min-width: 300px;
-    max-width: 20rem;
 }
 
 .card {
@@ -129,11 +153,5 @@ $max_card_width: 36rem;
 @media only screen and (max-width: 400px) {
     .featured {
         margin: 0 0.5rem 1rem;
-    }
-}
-
-@media only screen and (max-width: $max_card_width) {
-    .gallery-part {
-        margin: 2rem 2vw 0;
     }
 }
