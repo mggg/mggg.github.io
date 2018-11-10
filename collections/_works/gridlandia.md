@@ -1,7 +1,7 @@
 ---
 title: Redistricting Gridlandia
 authors: Zachary I. Schutzman and MGGG
-type: software
+type: code
 date: 2018-09-01
 
 description: An interactive overview of the combinatorics of redistricting

@@ -21,7 +21,7 @@ $max_card_width: 36rem;
 .gallery__title {
     text-align: center;
     margin: 0.5rem auto;
-    // font-family: $font_sans;
+    // font-family: $font_sans_thin;
     // font-size: 1.2rem;
     // text-transform: uppercase;
     // font-weight: 400;
@@ -99,7 +99,7 @@ $max_card_width: 36rem;
 }
 
 .card-authors {
-    font-family: $font_sans;
+    font-family: $font_sans_thin;
     text-transform: uppercase;
     font-weight: 300;
 }
@@ -118,6 +118,7 @@ $max_card_width: 36rem;
 .featured {
     background: white;
     box-shadow: $raised;
+    // border-radius: 0.5rem;
 }
 
 .featured .card-title {
