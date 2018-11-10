@@ -30,9 +30,10 @@ $max_card_width: 36rem;
 
 .gallery-grid {
     padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    max-width: 80rem;
+    margin: 0 auto;
 }
 
 .gallery-part {

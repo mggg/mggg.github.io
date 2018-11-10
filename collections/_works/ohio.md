@@ -11,7 +11,7 @@ description: 'We contacted all 88 counties in Ohio and collected information abo
 the locations of voting precincts, then digitized them and produced a publicly available
 shapefile&mdash;the first ever for the state.'
 
-publication: Part of the 2018 Voting Rights Data Institute.
+publication: Created during the 2018 Voting Rights Data Institute.
 
 href: https://github.com/mggg/ohio-precincts
 featured: true
