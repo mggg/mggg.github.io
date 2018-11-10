@@ -29,7 +29,7 @@ $max_card_width: 36rem;
 }
 
 .gallery__title:first-child {
-    margin: 0.5rem auto;
+    margin: 0.5rem auto 1rem;
 }
 
 .gallery__title {
@@ -37,7 +37,7 @@ $max_card_width: 36rem;
 }
 
 .gallery-container {
-    max-width: 48rem;
+    // max-width: 48rem;
     margin: 0 auto 2rem;
 }
 
@@ -45,7 +45,16 @@ $max_card_width: 36rem;
     padding: 0;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
+}
+
+.gallery-part {
+    margin: 0 2vw;
+    max-width: $max_card_width;
+}
+
+.gallery-part:first-child {
+    margin: 0 2vw;
 }
 
 .gallery {
@@ -128,5 +137,11 @@ $max_card_width: 36rem;
 @media only screen and (max-width: 400px) {
     .featured {
         margin: 0 0.5rem 1rem;
+    }
+}
+
+@media only screen and (max-width: $max_card_width) {
+    .gallery-part {
+        margin: 2rem 2vw 0;
     }
 }

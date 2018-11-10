@@ -22,31 +22,31 @@ title:  Our Work
   where: "type", "data" |
   sort: "date" |
   reverse %}
-<div class="gallery-container">
+<section class="gallery-container">
 <div class="gallery__header">
 <h1>Our Work</h1>
 </div>
 
 <div class="gallery-grid">
-<div>
+<div class="gallery-part">
 <h2 class="gallery__title">Surveys and popular articles</h2>
 <ul class="gallery">
 {% for work in surveys %}
 {% include card.html work=work %}
 {% endfor %}
 </ul>
-</div>
 
-<div>
+
 <h2 class="gallery__title">Research</h2>
 <ul class="gallery">
 {% for work in research %}
 {% include card.html work=work %}
 {% endfor %}
 </ul>
+
 </div>
 
-<div>
+<div class="gallery-part">
 <h2 class="gallery__title">Data, tools, and interactives</h2>
 <ul class="gallery">
 {% for work in data %}
@@ -57,6 +57,52 @@ title:  Our Work
 {% endfor %}
 </ul>
 </div>
-</div>
 
 </div>
+
+</section>
+
+<section>
+  <article>
+    <h1>Related work by friends of MGGG</h1>
+    <ul>
+      <li>Redistricting law scholar Justin Levitt maintains an excellent legally-oriented website
+        called
+        <a href="http://redistricting.lls.edu/index.php" target="_blank">All About Redistricting</a>
+        (in the process of a reboot). Through the Brennan Center, he also authored a useful 2010
+        <a href="https://www.brennancenter.org/sites/default/files/legacy/CGR%20Reprint%20Single%20Page.pdf"
+          target="_blank">Citizens Guide to Redistricting</a>.
+      </li>
+
+      <li>MGGG consulted on <a href="https://docs.google.com/viewerng/viewer?url=http://www.campaignlegalcenter.org/sites/default/files/16-1161bsacLander.pdf"
+          target="_blank">Eric Lander’s amicus brief</a> for Gill v Whitford.</li>
+      <li>The CMU/Pitt gerrymandering team has <a href="https://arxiv.org/pdf/1608.02014.pdf"
+          target="_blank">an
+          article</a> providing methods for drawing rigorous statistical conclusions from
+        random walks (published in PNAS). They provide code in a
+        <a href="https://www.math.cmu.edu/~wes/files/markovchain.tgz">public repository</a>.</li>
+
+      <li>The <a href="https://sites.duke.edu/quantifyinggerrymandering/" target="_blank">Duke
+          gerrymandering team</a>
+        led by Jonathan Mattingly has several reports available that highlight their MCMC
+        approach:
+        <ul>
+          <li><a href="https://arxiv.org/pdf/1801.03783.pdf" target="_blank">North Carolina
+              analysis</a>;
+          <li><a href="https://arxiv.org/pdf/1709.01596.pdf" target="_blank">Wisconsin analysis</a>.
+          </li>
+        </ul>
+      <li><a href="http://www.ams.org/publications/journals/notices/201801/rnoti-p37.pdf" target="_blank">Can
+          Math Help the Supreme Court Free Congress from Gerrymanders?</a>, Karen Saxe, <em>Notices
+          of the
+          American Mathematical Society</em>, Jan 2018</li>
+      <li><span style="line-height: 1.5">The ACLU’s pamphlet </span><a style="line-height: 1.5"
+          href="https://www.aclu.org/sites/default/files/field_document/2010_REDISTRICTING_GUIDE_web_0.pdf"
+          target="_blank">Everything You Always Wanted to Know about Redistricting (But Were Afraid
+          to
+          Ask!)</a><span style="line-height: 1.5">, updated 2010— this is a wonderful place to
+          learn about some of the basic terms and notions, but is now a little out of date
+          (considering Shelby v Holder).</span></li>
+    </ul>
+  </article>
+</section>
