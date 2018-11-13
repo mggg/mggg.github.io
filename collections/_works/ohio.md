@@ -1,7 +1,7 @@
 ---
 
 title: Ohio Precincts Shapefile
-authors: Ruth Buck, Katie Jolly, Katya Kelly
+authors: Ruth Buck, Katie Jolly, Katya Kelly and VRDI
 type: data
 date: 2018-09-01
 image: /static/images/ohio.png

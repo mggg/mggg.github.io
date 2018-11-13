@@ -22,14 +22,12 @@ title:  Our Work
   where: "type", "data" |
   sort: "date" |
   reverse %}
-<section class="gallery-container">
+<section class="gallery-container single-column">
 <div class="gallery__header">
 <h1>Our Work</h1>
 </div>
 
-<div class="gallery-grid">
-<div class="gallery-part">
-<h2 class="gallery__title">Surveys and popular articles</h2>
+<h2 class="gallery__title">Surveys and non-specialist articles</h2>
 <ul class="gallery">
 {% for work in surveys %}
 {% include card.html work=work %}
@@ -44,9 +42,6 @@ title:  Our Work
 {% endfor %}
 </ul>
 
-</div>
-
-<div class="gallery-part">
 <h2 class="gallery__title">Data, tools, and interactives</h2>
 <ul class="gallery">
 {% for work in data %}
@@ -56,10 +51,6 @@ title:  Our Work
 {% include card.html work=work %}
 {% endfor %}
 </ul>
-</div>
-
-</div>
-
 </section>
 
 <section>
