@@ -34,20 +34,26 @@ title:  Our Work
 {% endfor %}
 </ul>
 
-
-<h2 class="gallery__title">Research</h2>
-<ul class="gallery">
-{% for work in research %}
-{% include card.html work=work %}
-{% endfor %}
-</ul>
-
 <h2 class="gallery__title">Data, tools, and interactives</h2>
 <ul class="gallery">
 {% for work in data %}
 {% include card.html work=work %}
 {% endfor %}
 {% for work in code %}
+{% include card.html work=work %}
+{% endfor %}
+</ul>
+
+<h2 class="gallery__title">White papers and reports</h2>
+<ul class="gallery">
+{% for work in reports %}
+{% include card.html work=work %}
+{% endfor %}
+</ul>
+
+<h2 class="gallery__title">Research</h2>
+<ul class="gallery">
+{% for work in research %}
 {% include card.html work=work %}
 {% endfor %}
 </ul>
