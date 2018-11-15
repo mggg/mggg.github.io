@@ -1,8 +1,5 @@
-{% assign navpages = site.html_pages | where:"nav","true" | sort: "order" %}
-{% for page in navpages %}
+{% for page in site.data.navigation %}
 <li>
-    <a href="{% if page.customlink %}{{ page.customlink }}{% else %}{{ page.url | relative_url }}{% endif %}">
-        {% if page.navtitle %}{{ page.navtitle }}{% else %}{{ page.title }}{% endif %}
-    </a>
+  <a href="{{ page.href | relative_url }}"> {{ page.name }} </a>
 </li>
 {% endfor %}
