@@ -1,6 +1,7 @@
 ---
 
 title: Ecological Inference Apps
+authors: VRDI
 description: '
 Ecological inference (EI) is the main statistical technique used to establish racially
 polarized voting (RPV). A team at the 2018 Voting Rights Data Institute created R Shiny apps

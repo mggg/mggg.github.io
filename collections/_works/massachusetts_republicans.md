@@ -5,8 +5,8 @@ authors:
   H.&nbsp;Newman, and H.&nbsp;Wheelen
 date: 2018-10-22
 type: research
-# image: /static/images/massachusetts_republicans.png
-# image_alt: Massachusetts is a homogeneous sea of blue
+image: /static/images/massachusetts_republicans.png
+image_alt: Massachusetts is a homogeneous sea of blue
 
 description:
   We argue that the underperformance of Republicans in Massachusetts is not

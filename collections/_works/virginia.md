@@ -2,8 +2,8 @@
 title: Comparison of Districting Plans for the Virginia House of Delegates
 authors: MGGG
 date: 2018-11-25
-# image: /static/images/va2018-clipped.svg
-# image_alt: An abstract representation of a BVAP plot
+image: /static/images/va2018-clipped.svg
+image_alt: An abstract representation of a BVAP plot
 type: report
 
 description:
