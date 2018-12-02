@@ -5,10 +5,10 @@ $font_sans: "Source Sans Pro", sans-serif;
 $font_sans_thin: "Source Sans Pro", "Arial Narrow", Arial, sans-serif;
 
 html {
-    font-size: 100%;
-    font-family: $font_serif;
-    color: #111111;
-    line-height: 2;
+  font-size: 100%;
+  font-family: $font_serif;
+  color: #111111;
+  line-height: 2;
 }
 
 /* headings */
@@ -16,57 +16,57 @@ html {
 h1,
 h2,
 h3 {
-    font-family: $font_header_serif;
-    padding: 0;
-    font-weight: 700;
-    line-height: 1.2;
-    margin: 1.5rem 0 0.75rem;
+  font-family: $font_header_serif;
+  padding: 0;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 1.5rem 0 0.75rem;
 }
 
 h1 {
-    font-size: 2.4rem;
-    margin: 1rem 0 1rem;
+  font-size: 2.8rem;
+  margin: 1rem 0 1rem;
 }
 
 h2 {
-    font-size: 1.5rem;
+  font-size: 1.6rem;
 }
 
 h3 {
-    line-height: 1.6;
-    font-size: 1.2rem;
+  line-height: 1.6;
+  font-size: 1.2rem;
 }
 
 h4 {
-    line-height: 1.2;
-    font-size: 1.2rem;
-    margin: 1rem 0 0.5rem;
+  line-height: 1.2;
+  font-size: 1.2rem;
+  margin: 1rem 0 0.5rem;
 }
 
 /* links */
 
 a {
-    text-decoration: none;
-    color: #006b9c;
+  text-decoration: none;
+  color: #006b9c;
 }
 a:hover {
-    color: #0099cd;
-    text-decoration: none;
+  color: #0099cd;
+  text-decoration: none;
 }
 
 article a {
-    font-weight: 600;
+  font-weight: 600;
 }
 header a:hover,
 nav a:hover {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 /* content */
 p {
-    margin: 0 0 1rem;
+  margin: 0 0 1rem;
 }
 
 tt {
-    font-family: "Fira Code", "Consolas", monospace;
+  font-family: "Fira Code", "Consolas", monospace;
 }
