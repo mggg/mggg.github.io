@@ -22,19 +22,18 @@ title:  Our Work
   where: "type", "data" |
   sort: "date" |
   reverse %}
-<section class="gallery-container single-column">
-<div class="gallery__header">
+<section>
+  <article>
 <h1>Our Work</h1>
-</div>
 
-<h2 class="gallery__title">Surveys and non-specialist articles</h2>
+<h2>Surveys and non-specialist articles</h2>
 <ul class="gallery">
 {% for work in surveys %}
 {% include card.html work=work %}
 {% endfor %}
 </ul>
 
-<h2 class="gallery__title">Data, tools, and interactives</h2>
+<h2>Data, tools, and interactives</h2>
 <ul class="gallery">
 {% for work in data %}
 {% include card.html work=work %}
@@ -44,19 +43,20 @@ title:  Our Work
 {% endfor %}
 </ul>
 
-<h2 class="gallery__title">White papers and reports</h2>
+<h2>White papers and reports</h2>
 <ul class="gallery">
 {% for work in reports %}
 {% include card.html work=work %}
 {% endfor %}
 </ul>
 
-<h2 class="gallery__title">Research</h2>
+<h2>Research</h2>
 <ul class="gallery">
 {% for work in research %}
 {% include card.html work=work %}
 {% endfor %}
 </ul>
+</article>
 </section>
 
 <section>
