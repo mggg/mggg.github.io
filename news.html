@@ -1,0 +1,12 @@
+---
+layout: default
+navtitle: News
+title: News
+nav: true
+---
+
+<article>
+  <h1>News</h1>
+  {% for post in site.categories["news"] %} {% include excerpt.html post=post %}
+  {% endfor %}
+</article>

@@ -1,0 +1,33 @@
+.post-metadata {
+  display: flex;
+  justify-content: flex-start;
+  margin: 0 0 0.8rem;
+}
+
+.post-authors,
+.post-date {
+  font-family: $font_sans_thin;
+  font-weight: 400;
+  color: #666;
+}
+
+.post-authors {
+  text-transform: uppercase;
+}
+
+.post-authors::after {
+  content: "|";
+  margin: 0 1rem;
+}
+
+.post-title {
+  font-size: 2.2rem;
+}
+
+// .post-title a {
+//   color: inherit;
+// }
+
+// .post-title a:hover {
+//   color: #666;
+// }
