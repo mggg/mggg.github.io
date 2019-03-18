@@ -1,0 +1,23 @@
+backend:
+    name: github
+    repo: gerrymandr/gerrymandr.github.io
+    branch: master # Branch to update (optional; defaults to master)
+publish_mode: editorial_workflow
+media_folder: "/uploads"
+site_url: "https://mggg.org"
+collections:
+    - label: "Posts"
+      name: "posts"
+      folder: "_posts"
+      create: true
+      fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Publish Date", name: "date", widget: "datetime" }
+          - { label: "Authors", name: "authors", widget: "string" }
+          - {
+                label: "Categories",
+                name: "categories",
+                widget: "list",
+                default: ["news"],
+            }
+          - { label: "Content", name: "body", widget: "markdown" }
