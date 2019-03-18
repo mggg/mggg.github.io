@@ -6,5 +6,5 @@ type: report
 
 description: An MGGG white paper on recommended remedies for a challenged at-large City Council voting scheme.
 
-href: /pdf/MGGG-SantaClara.pdf
+href: /SantaClara.pdf
 ---
