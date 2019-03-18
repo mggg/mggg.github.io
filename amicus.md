@@ -1,5 +1,5 @@
 ---
-title:
+title: The Mathematicians' Brief in Rucho v. Common Cause
 layout: post
 authors: MGGG
 featured: true
@@ -10,6 +10,8 @@ excerpt_separator: <!--more-->
 MGGG has organized a collaborative effort of mathematical and legal experts to file an amicus brief for the upcoming Supreme Court gerrymandering cases. An amicus brief is a "friend of the court" filing, where outside parties try to help supply the court with useful information.
 
 [Read the mathematicians' brief.](https://mggg.org/SCOTUS-MathBrief.pdf)
+
+<!--more-->
 
 ## Backstory
 
