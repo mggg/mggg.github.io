@@ -8,8 +8,8 @@ customlink: /#about-mggg
 ---
 
 <article class="featured-posts">
-    {% for post in site.categories["news"] %} {% include card.html work=post %}
-    {% endfor %}
+    {% assign post = site.categories["news"].first %} {% include card.html
+    work=post %}
 </article>
 <article>
     <h1>Our Mission</h1>
