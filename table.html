@@ -4,59 +4,65 @@ layout: default
 ---
 
 <article>
-  <h1>The Known Sizes of Grid Metagraphs</h1>
+    <h1>The Known Sizes of Grid Metagraphs</h1>
 
-  <p>
-    At MGGG, we think that one of the reasons that redistricting is hard to study is that the
-    space of possibilities
-    (i.e., valid districting plans) is so huge it's unthinkable by humans. And relatedly, the
-    number of ways to
-    achieve any simple objective is overwhelmingly large.
-  </p>
-  <p>
-    We think that to study districting plans in context, you need to understand the space of
-    alternatives.
-    So we are working on the science of sampling from these universes of districting plans.
-    As a simplified warmup problem, we can ask how many ways there would be to district a
-    jurisdiction
-    made up of a small number of units with equal population arranged in a perfect grid. We can
-    then
-    build up the complexity from there. But this problem is already formidable!
-  </p>
-  <p>
-    In this table, the row marked <b>nxn &rarr; d</b> shows the number of ways to partition an n
-    by n grid into d
-    districts (or connected pieces). The columns describe how much size difference is tolerated
-    among
-    the districts.
-    The two halves of the table distinguish whether, to be considered
-    contiguous, the districts would have to be transitable by a chess rook (making only NSEW
-    moves) or a
-    chess queen (which can also move diagonally). Queen contiguity allows many more district
-    shapes.
-  </p>
-
+    <p>
+        At MGGG, we think that one of the reasons that redistricting is hard to
+        study is that the space of possibilities (i.e., valid districting plans)
+        is so huge it's unthinkable by humans. And relatedly, the number of ways
+        to achieve any simple objective is overwhelmingly large.
+    </p>
+    <p>
+        We think that to study districting plans in context, you need to
+        understand the space of alternatives. So we are working on the science
+        of sampling from these universes of districting plans. As a simplified
+        warmup problem, we can ask how many ways there would be to district a
+        jurisdiction made up of a small number of units with equal population
+        arranged in a perfect grid. We can then build up the complexity from
+        there. But this problem is already formidable!
+    </p>
+    <p>
+        In this table, the row marked <b>nxn &rarr; d</b> shows the number of
+        ways to partition an n by n grid into d districts (or connected pieces).
+        The columns describe how much size difference is tolerated among the
+        districts. The two halves of the table distinguish whether, to be
+        considered contiguous, the districts would have to be transitable by a
+        chess rook (making only NSEW moves) or a chess queen (which can also
+        move diagonally). Queen contiguity allows many more district shapes.
+    </p>
 </article>
 {% include metagraph-table.html %}
 
 <article>
-  <p>
-    The generation of the numbers in this table was overseen by MGGG's Zach Schutzman and Daryl
-    DeFord. We used a combination of <a href="https://github.com/zschutzman/enumerator">our own
-      python code</a> and an algorithm coded by Bob Harris (<a href="http://www.bumblebeagle.org/polyominoes/tilingcounting/">code</a>,
-    <a href="http://www.bumblebeagle.org/polyominoes/tilingcounting/counting_9x9_tilings.pdf">writeup</a>;
-    <a href="https://oeis.org/A172477">OEIS</a>) in C in 2010. We've checked the math behind both
-    algorithms and are confident in both implementations.
-  </p>
-  <p>
-    As of October 2018, we've got runs going on MIT's <a href="https://tig.csail.mit.edu/shared-computing/open-stack/">OpenStack</a>
-    to extend the coverage of this table. Each missing value is expected to take at least a day,
-    and sometimes weeks or more, of computer time.
-  </p>
-  <p>
-    An earlier version of the table, which appears in November's print version of Scientific
-    American, used partition enumeration code that was included with the R package <tt>redist</tt>&mdash;
-    that code turns out to be buggy. As a result, some of the numbers have since been corrected.
-
-  </p>
+    <p>
+        The generation of the numbers in this table was overseen by MGGG's Zach
+        Schutzman and Daryl DeFord. We used a combination of
+        <a href="https://github.com/zschutzman/enumerator"
+            >our own python code</a
+        >
+        and an algorithm coded by Bob Harris (<a
+            href="http://www.bumblebeagle.org/polyominoes/tilingcounting/"
+            >code</a
+        >,
+        <a
+            href="http://www.bumblebeagle.org/polyominoes/tilingcounting/counting_9x9_tilings.pdf"
+            >writeup</a
+        >; <a href="https://oeis.org/A172477">OEIS</a>) in C in 2010. We've
+        checked the math behind both algorithms and are confident in both
+        implementations.
+    </p>
+    <p>
+        As of October 2018, we've got runs going on MIT's
+        <a href="https://tig.csail.mit.edu/shared-computing/open-stack/"
+            >OpenStack</a
+        >
+        to extend the coverage of this table. Each missing value is expected to
+        take at least a day, and sometimes weeks or more, of computer time.
+    </p>
+    <p>
+        An earlier version of the table, which appears in November's print
+        version of Scientific American, used partition enumeration code that was
+        included with the R package <tt>redist</tt>&mdash; that code turns out
+        to be buggy. As a result, some of the numbers have since been corrected.
+    </p>
 </article>

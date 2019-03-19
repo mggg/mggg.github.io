@@ -8,7 +8,7 @@ footer {
     border-right: 0;
     border-bottom: 0;
 
-    color: #0099cd;
+    color: $mggg_blue;
     background: #010101;
     box-shadow: $cast_above;
 }
@@ -30,11 +30,11 @@ footer {
 }
 
 footer a {
-    color: #0099cd;
+    color: $mggg_blue;
 }
 
 footer a:hover {
-    color: #5dcaff;
+    color: $mggg_light_blue;
 }
 
 address {

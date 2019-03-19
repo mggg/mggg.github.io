@@ -1,11 +1,11 @@
 $max_card_width: rem;
 
 .gallery-container {
-  margin: 0 auto 2rem;
+    margin: 0 auto 2rem;
 }
 
 .single-column {
-  max-width: 50rem;
+    max-width: 50rem;
 }
 
 /*
@@ -13,13 +13,13 @@ For when grid is not supported:
 */
 
 .gallery-grid {
-  padding: 0;
-  max-width: 80rem;
-  margin: 0 auto;
+    padding: 0;
+    max-width: 80rem;
+    margin: 0 auto;
 }
 
 .gallery-part {
-  margin: 2rem auto 0;
+    margin: 2rem auto 0;
 }
 
 // Something like this accomplishes the two-column layout in IE11, but then
@@ -36,104 +36,109 @@ For when grid is not supported:
 
 // For when grid is supported
 @supports (display: grid) {
-  .gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  }
-
-  .gallery-part {
-    margin: 0 2vw;
-  }
-
-  .gallery-part:first-child {
-    margin: 0 2vw;
-  }
-
-  @media only screen and (max-width: $max_card_width) {
-    .gallery-part {
-      margin: 2rem 2vw 0;
+    .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     }
-  }
+
+    .gallery-part {
+        margin: 0 2vw;
+    }
+
+    .gallery-part:first-child {
+        margin: 0 2vw;
+    }
+
+    @media only screen and (max-width: $max_card_width) {
+        .gallery-part {
+            margin: 2rem 2vw 0;
+        }
+    }
 }
 
 .gallery-part {
-  max-width: $max_card_width;
+    max-width: $max_card_width;
 }
 
 .gallery {
-  padding: 0;
-  margin: 0 -1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  // grid-template-columns: 3fr 2fr;
-  // grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
-  list-style: none;
+    padding: 0;
+    margin: 0 -1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    // grid-template-columns: 3fr 2fr;
+    // grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
+    list-style: none;
 }
 
 .card {
-  margin: 1vw 0;
-  display: flex;
-  flex-direction: column;
-  background: #f9f9f9;
+    margin: 1vw 0;
+    display: flex;
+    flex-direction: column;
+    background: #f9f9f9;
 }
 
 .card-content {
-  padding: 0.8rem;
+    padding: 1rem;
 }
 
 .card-content ul {
-  list-style: disc;
+    list-style: disc;
 }
 
 .card-title {
-  margin: 0;
-  line-height: 1.4;
+    margin: 0;
+    line-height: 1.5;
 }
 
 .card-image {
-  object-fit: cover;
-  width: 100%;
-  display: block;
-  background: #010101;
+    object-fit: cover;
+    width: 100%;
+    display: block;
+    background: #010101;
 }
 
 .card-image-link {
-  width: 100%;
-  max-height: 200px;
-  overflow: hidden;
+    width: 100%;
+    max-height: 200px;
+    overflow: hidden;
 }
 
 .card-authors {
-  font-family: $font_sans_thin;
-  text-transform: uppercase;
-  font-weight: 400;
-  color: #666;
+    font-family: $font_sans_thin;
+    text-transform: uppercase;
+    font-weight: 400;
+    color: #666;
 }
 
 .card-teaser {
-  line-height: 1.6;
-  margin: 0.5rem 0;
+    line-height: 1.5;
+    margin: 0.5rem 0;
 }
 
 .card-publication {
-  font-size: 0.8rem;
-  color: #666;
-  font-style: italic;
+    font-size: 0.75rem;
+    color: #666;
+    font-style: italic;
+}
+
+.featured-posts {
+    margin: 2rem 0;
+    padding: 0;
 }
 
 .featured {
-  background: white;
-  box-shadow: $raised;
-  // border-radius: 0.5rem;
+    background: white;
+    box-shadow: $raised;
+    // border-radius: 0.5rem;
 }
 
 .featured .card-title {
-  font-size: 1.8rem;
+    font-size: 2rem;
 }
 
 @media only screen and (max-width: 400px) {
-  .featured {
-    margin: 0 0.5rem 1rem;
-  }
+    .featured {
+        margin: 0 0.5rem 1rem;
+    }
 }
