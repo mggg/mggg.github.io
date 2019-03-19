@@ -1,6 +1,10 @@
+---
 title: Metric Geometry and Gerrymandering Group
 timezone: UTC
 collections:
+  people:
+    title: People
+    output: false
   posts:
     title: Posts
     output: true
@@ -10,9 +14,6 @@ collections:
   works:
     title: Works
     output: false
-  people:
-    title: People
-    output: false
 name: Metric Geometry and Gerrymandering Group
 url: https://www.mggg.org/
 author: Metric Geometry and Gerrymandering Group
@@ -20,6 +21,6 @@ description: A nonpartisan research organization studying applications of geomet
 logo: "/assets/logo.svg"
 google_site_verification: jaL3ii25-g2LejBrllWbH-DmyT7b-vJw8URj-tvq8kE
 plugins:
-  - jekyll-seo-tag
+- jekyll-seo-tag
 sass:
   sass_dir: _sass
