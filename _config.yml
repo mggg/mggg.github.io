@@ -1,4 +1,3 @@
----
 title: Metric Geometry and Gerrymandering Group
 timezone: UTC
 collections:
@@ -17,9 +16,7 @@ collections:
 name: Metric Geometry and Gerrymandering Group
 url: https://www.mggg.org/
 author: Metric Geometry and Gerrymandering Group
-description:
-  A nonpartisan research organization studying applications of geometry
-  and computing to U.S. redistricting.
+description: A nonpartisan research organization studying applications of geometry
 logo: "/assets/logo.svg"
 google_site_verification: jaL3ii25-g2LejBrllWbH-DmyT7b-vJw8URj-tvq8kE
 plugins:
