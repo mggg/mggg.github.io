@@ -1,10 +1,10 @@
 # - name: Mission
-  # href: /#about-mggg
+# href: /#about-mggg
 - name: News
-  href: /news.html
+  href: /news
 - name: Team
-  href: /who.html
+  href: /who
 - name: Work
-  href: /work.html
+  href: /work
 - name: Support
-  href: /donate.html
+  href: /donate

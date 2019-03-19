@@ -1,0 +1,6 @@
+<dt>
+  <img src="{{ person.photo }}" alt="A photo of {{ person.name }}" />
+</dt>
+<dd>
+  {{ person.description | markdownify | remove: "<p>" | remove: "</p>" }}
+</dd>

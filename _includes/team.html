@@ -1,0 +1,12 @@
+<h2>Local Team</h2>
+<dl class="bio-list">
+  {% assign local_people = site.people | where: "group", "local" %} {% for
+  person in local_people %} {% include bio.html person=person %} {% endfor %}
+</dl>
+
+<h2>Key Collaborators, Past and Present</h2>
+<dl class="bio-list">
+  {% assign collaborators = site.people | where: "group", "collaborators" %} {%
+  for person in collaborators %} {% include bio.html person=person %} {% endfor
+  %}
+</dl>

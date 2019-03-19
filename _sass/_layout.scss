@@ -1,33 +1,30 @@
 /* Main */
 
 section {
-    margin: 0;
+  margin: 0;
 }
 
-main {
-    margin: 0 auto;
-    padding: 0;
-    max-width: 48rem;
+main,
+.freeform__section {
+  margin: 0 auto;
+  padding: 1rem 0.5rem;
+  max-width: 48rem;
 }
 
-.two-column {
-    max-width: 1000px;
-    margin: 0 auto;
-    display: grid;
-    grid-column-gap: 2rem;
-    grid-template-columns: minmax(300px, 5fr) minmax(300px, 2fr);
+.freeform {
+  padding: 0;
+  max-width: none;
 }
 
 .home {
-    padding: 0 1rem;
+  padding: 0 1rem;
 }
 
 article {
-    margin: 0 auto;
-    padding: 1rem 0;
+  margin: 0 auto 2rem;
 }
 
 figure {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
