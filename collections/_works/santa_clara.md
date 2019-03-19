@@ -1,10 +1,10 @@
 ---
 title: Study of voting systems for Santa Clara, CA
+date: 2018-02-01 00:00:00 Z
 authors: MGGG
-date: 2018-02-01
 type: report
-
-description: An MGGG white paper on recommended remedies for a challenged at-large City Council voting scheme.
-
-href: /SantaClara.pdf
+description: An MGGG white paper on recommended remedies for a challenged at-large
+  City Council voting scheme.
+href: "/SantaClara.pdf"
 ---
+

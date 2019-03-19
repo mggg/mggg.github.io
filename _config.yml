@@ -1,20 +1,25 @@
+---
+title: Metric Geometry and Gerrymandering Group
+timezone: UTC
+collections:
+  posts:
+    title: Posts
+    output: true
+  uploads:
+    title: Uploads
+    output: true
+  works:
+    title: Works
+    output: false
 name: Metric Geometry and Gerrymandering Group
 url: https://www.mggg.org/
-
-title: Metric Geometry and Gerrymandering Group
 author: Metric Geometry and Gerrymandering Group
-
-description: A nonpartisan research organization studying applications of geometry and computing to U.S. redistricting.
-logo: /static/logo.svg
-
+description: A nonpartisan research organization studying applications of geometry
+  and computing to U.S. redistricting.
+logo: "/static/logo.svg"
 google_site_verification: jaL3ii25-g2LejBrllWbH-DmyT7b-vJw8URj-tvq8kE
-
 plugins:
-    - jekyll-seo-tag
-
+- jekyll-seo-tag
 collections_dir: collections
-collections:
-    - works
-
 sass:
-    sass_dir: _sass
+  sass_dir: _sass
