@@ -1,14 +1,14 @@
 ---
-title: Applications are open for the 2019 Voting Rights Data Institute
+title: 2019 Voting Rights Data Institute will run June 17-July 26
 date: 2019-01-01 00:00:00 Z
 categories:
 - collections
 - news
-short_title: VRDI 2019 applications are open!
-layout: post
+short_title: 2019 VRDI will run June 17-July 26
 authors: MGGG
 featured: true
 excerpt_separator: "<!--more-->"
+layout: post
 ---
 
 The Voting Rights Data Institute is a 6-week summer program of the Metric Geometry and Gerrymandering Group (MGGG), a Boston-based team of mathematicians and computer scientists working on U.S. redistricting. The second annual VRDI will run from June 17 to July 26, 2019.
