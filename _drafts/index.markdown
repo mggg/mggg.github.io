@@ -1,5 +1,6 @@
 ---
 title: Our Mission
+date: 2019-04-11 21:19:39.040000000 Z
 layout: home
 navtitle: Mission
 nav: true
