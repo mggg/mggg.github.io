@@ -2,10 +2,6 @@
   box-sizing: border-box;
 }
 
-html {
-  background: #010101;
-}
-
 body {
   background: white;
   margin: 0;
@@ -13,11 +9,12 @@ body {
   overflow-x: hidden;
 }
 
-$raised: 0 0 2px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
+// $raised: 0 0 2px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
 // $raised: 0 4px 8px rgba(12, 12, 12, 0.1);
+$raised: 0 4px 16px rgba(12, 12, 13, 0.1);
 
-$inset_bottom: 0px -10px 15px -18px rgba(0, 0, 0, 0.4) inset;
+$inset-bottom: 0px -10px 15px -18px rgba(0, 0, 0, 0.4) inset;
 
-$inset_top: 0px 10px 15px -18px rgba(0, 0, 0, 0.4) inset;
+$inset-top: 0px 10px 15px -18px rgba(0, 0, 0, 0.4) inset;
 
-$cast_above: 0 -10px 10px -10px rgba(0, 0, 0, 0.4);
+$cast-above: 0 -10px 10px -10px rgba(0, 0, 0, 0.4);

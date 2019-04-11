@@ -1,13 +1,13 @@
-$font_serif: "Lora", Georgia, serif;
-$font_header_serif: "Playfair Display", Georgia, serif;
-// $font_header_serif: $font_serif;
-$font_sans: "Source Sans Pro", sans-serif;
-$font_sans_thin: "Source Sans Pro", "Arial Narrow", Arial, sans-serif;
+$font-serif: "Lora", Georgia, serif;
+$font-header-serif: "Playfair Display", Georgia, serif;
+// $font-header-serif: $font-serif;
+$font-sans: "Source Sans Pro", sans-serif;
+$font-sans-thin: "Source Sans Pro", "Arial Narrow", Arial, sans-serif;
 
 html {
   font-size: 100%;
-  font-family: $font_serif;
-  color: #111111;
+  font-family: $font-serif;
+  color: #333;
   line-height: 2;
 }
 
@@ -16,7 +16,7 @@ html {
 h1,
 h2,
 h3 {
-  font-family: $font_header_serif;
+  font-family: $font-header-serif;
   padding: 0;
   font-weight: 700;
   line-height: 1.5;
@@ -52,12 +52,12 @@ a,
 a:visited {
   font-weight: 600;
   text-decoration: none;
-  color: $mggg_dark_blue;
+  color: $mggg-dark-blue;
 }
 
 a:hover,
 a:active {
-  color: $mggg_very_dark_blue;
+  color: $mggg-very-dark-blue;
 }
 
 header a:hover,

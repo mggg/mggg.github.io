@@ -1,69 +1,69 @@
 /* map layout */
 .map {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 
-    background: url(/assets/usa-resized.png) no-repeat;
-    background-size: contain;
-    background-position: center center;
-    background-attachment: fixed;
+  background: url(/assets/usa-resized.png) no-repeat;
+  background-size: contain;
+  background-position: center center;
+  background-attachment: fixed;
 
-    height: 100vh;
-    display: flex;
-    align-items: stretch;
-    justify-content: stretch;
-    flex-direction: column;
+  height: 100vh;
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+  flex-direction: column;
 }
 
 @media only screen and (max-width: 600px) {
-    .map {
-        background-size: cover;
-        background-position-x: right;
-    }
+  .map {
+    background-size: cover;
+    background-position-x: right;
+  }
 }
 
 .map__nav {
-    padding: 0;
+  padding: 0;
 }
 .map__title {
-    font-weight: 300;
-    text-transform: uppercase;
-    line-height: 2;
-    letter-spacing: 0.5rem;
-    text-align: center;
-    font-family: $font_sans_thin;
-    text-shadow: 1px 1px #aab3b6;
-    margin: 0;
-    font-size: 2.2rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  line-height: 2;
+  letter-spacing: 0.5rem;
+  text-align: center;
+  font-family: $font-sans-thin;
+  text-shadow: 1px 1px #aab3b6;
+  margin: 0;
+  font-size: 2.2rem;
 }
 .map__logo {
-    width: 60vw;
-    height: 12.9vw;
-    max-width: 1000px;
-    min-width: 300px;
-    max-height: 214.6px;
-    min-height: 64.4px;
-    filter: drop-shadow(0px 4px 2px rgba(0, 0, 0, 0.4));
+  width: 60vw;
+  height: 12.9vw;
+  max-width: 1000px;
+  min-width: 300px;
+  max-height: 214.6px;
+  min-height: 64.4px;
+  filter: drop-shadow(0px 4px 2px rgba(0, 0, 0, 0.4));
 }
 .map__inset {
-    padding: 1rem;
-    text-align: center;
-    background: rgba(255, 255, 255, 0.8);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    flex-grow: 1;
-    box-shadow: $inset_bottom;
+  padding: 1rem;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex-grow: 1;
+  box-shadow: $inset_bottom;
 }
 @media only screen and (max-width: 600px) {
-    .map__title {
-        font-size: 1.4rem;
-    }
-    .map__inset {
-        height: 100vh;
-    }
-    .map {
-        height: inherit;
-    }
+  .map__title {
+    font-size: 1.4rem;
+  }
+  .map__inset {
+    height: 100vh;
+  }
+  .map {
+    height: inherit;
+  }
 }

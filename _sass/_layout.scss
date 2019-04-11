@@ -1,30 +1,7 @@
 /* Main */
 
-section {
-  margin: 0;
-}
-
-main,
-.freeform__section {
-  margin: 0 auto;
-  padding: 1rem 0.5rem;
-  max-width: 48rem;
-}
-
-.freeform {
-  padding: 0;
-  max-width: none;
-}
-
-.home {
-  padding: 0 1rem;
-}
-
-article {
-  margin: 0 auto 2rem;
-}
-
-figure {
-  margin: 0;
-  padding: 0;
+.l-center {
+  max-width: 60rem;
+  margin-left: auto;
+  margin-right: auto;
 }

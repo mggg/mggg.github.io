@@ -1,12 +1,23 @@
-<footer>
-  <ul class="footer-items">
-    <li class="copyright">
-      &#169; 2018 Metric Geometry and Gerrymandering Group
+<footer class="site-footer">
+  <ul class="site-footer__items l-center">
+    <li class="site-footer__item">
+      <a href="https://github.com/mggg">@mggg</a>
     </li>
-    <li>
+    <li class="site-footer__item">
+      <a href="https://github.com/mggg-states">@mggg-states</a>
+    </li>
+    <li class="site-footer__item">
+      <a href="https://twitter.com/gerrymandr">@gerrymandr</a>
+    </li>
+    <li class="site-footer__item">
       <address>
-        <a href="mailto:gerrymandr@gmail.com">gerrymandr@gmail.com</a>
+        <a href="mailto:contact@mggg.org">contact@mggg.org</a>
       </address>
+    </li>
+    <hr class="site-footer__hr" />
+    <li class="site-footer__copyright">
+      &#169; {{ site.time | date: "%Y" }} Metric Geometry and Gerrymandering
+      Group
     </li>
   </ul>
 </footer>
