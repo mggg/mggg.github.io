@@ -1,0 +1,4 @@
+<ul class="card-list">
+  {% assign posts = site.posts | where: "featured", true | limit: 3 %} {% for
+  post in posts %} {% include post_card.html work=post %} {% endfor %}
+</ul>

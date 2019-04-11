@@ -1,34 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-    {% include head.html %}
+  {% include head.html %}
 
-    <body>
-        <section class="map">
-            <div class="map__inset">
-                <a href="/">
-                    <img
-                        class="map__logo"
-                        src="/assets/logo.svg"
-                        alt="Metric Geometry and Gerrymandering Group"
-                    />
-                </a>
-                <a href="/">
-                    <h1 class="map__title">
-                        Metric Geometry and Gerrymandering Group
-                    </h1>
-                </a>
-            </div>
-            <header class="top-navigation" id="about-mggg">
-                <nav class="map__nav">
-                    <ul class="nav-links">
-                        {% include nav-links.html %}
-                    </ul>
-                </nav>
-            </header>
-            <div class="map__nav-shadow"></div>
-        </section>
-        <main>{{ content }}</main>
+  <body>
+    <section class="map">
+      <div class="map__inset">
+        <a href="/">
+          <img
+            class="map__logo"
+            src="/assets/logo.svg"
+            alt="Metric Geometry and Gerrymandering Group"
+          />
+        </a>
+        <a href="/">
+          <h1 class="map__title">
+            Metric Geometry and Gerrymandering Group
+          </h1>
+        </a>
+      </div>
+      <header class="site-header" id="about-mggg">
+        <nav class="map__nav l-center">
+          <ul class="site-nav__links">
+            {% include nav-links.html %}
+          </ul>
+        </nav>
+      </header>
+      <div class="map__nav-shadow"></div>
+    </section>
+    <main class="l-center l-content">{{ content }}</main>
 
-        {% include footer.html %}
-    </body>
+    {% include footer.html %}
+  </body>
 </html>

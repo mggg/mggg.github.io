@@ -1,7 +1,7 @@
 {% for page in site.data.navigation %}
 <li>
-    <a href="{{ page.href | relative_url }}" class="nav-link">
-        {{ page.name }}
-    </a>
+  <a href="{{ page.href | relative_url }}" class="site-nav__link">
+    {{ page.name }}
+  </a>
 </li>
 {% endfor %}

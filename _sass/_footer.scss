@@ -5,7 +5,9 @@
   font-size: 1rem;
   color: $mggg-blue;
 
-  background: black;
+  margin-top: 3rem;
+
+  background-color: black;
 }
 
 .site-footer a,
@@ -29,6 +31,13 @@
 
 .site-footer__item {
   line-height: 2;
+}
+
+.site-footer__icon {
+  height: 1.5rem;
+  width: 1.5rem;
+  vertical-align: bottom;
+  margin-right: 0.25rem;
 }
 
 .site-footer__copyright {

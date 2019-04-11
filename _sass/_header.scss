@@ -1,11 +1,5 @@
 /* header */
 
-header,
-nav {
-  font-family: $font-sans-thin;
-  text-transform: uppercase;
-}
-
 .banner__title {
   font-weight: 300;
   text-transform: uppercase;
@@ -17,87 +11,67 @@ nav {
   font-size: 1.2rem;
 }
 
-.nav-logo {
-  width: 200px;
-  height: 43px;
-  margin: 0.6rem 0;
-  filter: none;
-  display: block;
-}
-
-.logo {
-  display: block;
-  margin: 2rem 0;
-  width: 80vw;
-  max-width: 1000px;
-  min-width: 300px;
-  max-height: 214.6px;
-  min-height: 64.4px;
-  height: 17.2vw;
-  filter: drop-shadow(0px 4px 2px #aab3b6);
-}
-
-@media only screen and (max-width: 600px) {
-  header > h1 {
-    display: none;
-  }
-  header {
-    padding: 0;
-  }
-  .logo {
-    filter: none;
-  }
-}
-
 /* nav */
-.top-navigation {
-  box-shadow: $inset_bottom;
-  background: #f9f9f9;
+.site-header {
+  // background: white;
+  background-color: $light-grey;
+  // border-bottom: 1px solid $mggg-very-dark-blue;
   margin: 0;
-  overflow-x: auto;
-  text-align: center;
-  font-size: 1rem;
   padding: 0;
+  overflow-x: auto;
+  font-size: 1rem;
+  // box-shadow: $raised;
+  box-shadow: $inset-bottom;
 }
 
-nav {
-  margin: 0 auto;
+.site-nav {
   padding: 0 1rem;
-  max-width: 50rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.top-navigation__logo {
+.site-nav__logo {
   flex: 2;
   padding: 0.5rem 0;
 }
 
-.nav-links {
+.site-nav__logo__img {
+  height: 1.5rem;
+  filter: none;
+  display: block;
+}
+
+.site-nav__links {
   flex: 4;
   list-style: none;
   margin: 0;
   padding: 0;
+
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
 }
 
-.nav-container {
-  display: flex;
-  max-width: 50rem;
-}
-.nav-links li {
-  margin: 0;
-  padding: 0;
-}
-
-.nav-link {
+.site-nav__link {
+  display: block;
   line-height: 3;
   padding: 0 1rem;
-  font-weight: normal;
+  font-weight: 400;
+  font-family: $font-sans-thin;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+
+  transition: all 100ms ease;
+}
+
+.site-nav__link:hover {
+  background-color: $grey;
+}
+
+.site-nav__link:active {
+  background-color: $grey;
 }
 
 @media only screen and (max-width: 600px) {
@@ -105,17 +79,4 @@ nav {
     flex-direction: column;
     padding: 0rem;
   }
-  .nav-logo {
-    margin: 0.2rem 0;
-  }
-  .top-navigation {
-    padding: 0;
-  }
-  .nav-link {
-    line-height: 1.5;
-  }
 }
-
-/* .nav-links li:hover { */
-/* background: #012; */
-/* alternate: no change */

@@ -8,9 +8,6 @@
 }
 
 @media only screen and (max-width: 900px) {
-  .two-column {
-    grid-template-columns: 1fr;
-  }
   .support {
     grid-column: 1 / 2;
   }

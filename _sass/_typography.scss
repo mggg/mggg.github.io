@@ -7,7 +7,7 @@ $font-sans-thin: "Source Sans Pro", "Arial Narrow", Arial, sans-serif;
 html {
   font-size: 100%;
   font-family: $font-serif;
-  color: #333;
+  color: #444;
   line-height: 2;
 }
 
@@ -19,27 +19,30 @@ h3 {
   font-family: $font-header-serif;
   padding: 0;
   font-weight: 700;
-  line-height: 1.5;
-  margin: 0;
 }
 
 h1 {
   font-size: 3rem;
+  line-height: 1.25;
+  margin: 2rem 0 0.25rem;
 }
 
 h2 {
-  font-size: 1.5rem;
-  line-height: 2;
+  margin: 2rem 0 0;
+  font-size: 2rem;
+  line-height: 1.25;
 }
 
 h3 {
-  line-height: 1.5;
-  font-size: 1.5rem;
+  line-height: 1;
+  font-size: 1.25rem;
+  margin: 0.75rem 0 0;
 }
 
 h4 {
   line-height: 1.5;
   font-size: 1.25rem;
+  margin: 0;
 }
 
 /* links */
@@ -58,11 +61,6 @@ a:visited {
 a:hover,
 a:active {
   color: $mggg-very-dark-blue;
-}
-
-header a:hover,
-nav a:hover {
-  text-decoration: none;
 }
 
 /* content */

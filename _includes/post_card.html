@@ -25,7 +25,10 @@
       >
     </h3>
     {% if work.authors %}
-    <div class="card__authors">{{ work.authors }}</div>
+    <div class="post__metadata">
+      <div class="post__authors">{{ work.authors }}</div>
+      <div class="post__date">{{ work.date | date_to_long_string }}</div>
+    </div>
     {% endif %} {% if work.description %}
     <p class="card__teaser">{{ work.description }}</p>
     {% elsif work.excerpt %}
