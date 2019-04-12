@@ -18,7 +18,6 @@
         href="{% if work.href %}{{ work.href }}{% elsif work.url %}{{
           work.url
         }}{% endif %}"
-        target="_blank"
         >{% if work.short_title %}{{ work.short_title }}{% else %}{{
           work.title
         }}{% endif %}</a
@@ -30,9 +29,9 @@
       <div class="post__date">{{ work.date | date_to_long_string }}</div>
     </div>
     {% endif %} {% if work.description %}
-    <p class="card__teaser">{{ work.description }}</p>
+    {{ work.description | replace: "<p>", '<p class="card__teaser">'}}
     {% elsif work.excerpt %}
-    <p class="card__teaser">{{ work.excerpt }}</p>
+    {{ work.excerpt | replace: "<p>", '<p class="card__teaser">'}}
     {% endif %} {% if work.publication %}
     <div class="card__publication">
       {{ work.publication }}{% if work.publication_date %},

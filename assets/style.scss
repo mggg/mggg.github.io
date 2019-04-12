@@ -1,15 +1,15 @@
 ---
 ---
 
-@import "colors";
+@import "variables";
 @import "base";
 @import "typography";
 @import "header";
 @import "layout";
 @import "content";
-@import "bio-list";
-@import "map";
 @import "footer";
-@import "card";
-@import "post";
-@import "figure";
+@import "components/bio-list";
+@import "components/map";
+@import "components/card";
+@import "components/post";
+@import "components/figure";

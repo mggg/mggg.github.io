@@ -27,18 +27,19 @@
     {% if work.authors %}
     <div class="card__authors">{{ work.authors }}</div>
     {% endif %} {% if work.description %}
-    <p class="card__teaser">{{ work.description }}</p>
+    {{ work.description | replace: "<p>", '<p class="card__teaser">'}}
     {% elsif work.excerpt %}
-    <p class="card__teaser">{{ work.excerpt }}</p>
-    {% endif %} {% if work.publication %}
+    {{ work.excerpt | replace: "<p>", '<p class="card__teaser">'}}
+    {% endif %}
+    {% if work.publication %}
     <div class="card__publication">
       {{ work.publication }}{% if work.publication_date %},
       {{ work.publication_date | date: "%B %Y" }}. {% endif %}
     </div>
-    {% else %} {% if work.publication_date %}
+    {% elsif work.publication_date %}
     <div class="card__publication">
       {{ work.publication_date | date: "%B %Y" }}.
     </div>
-    {% endif %} {% endif %}
+    {% endif %}
   </div>
 </li>

@@ -12,7 +12,8 @@ dd {
   margin: 1rem 0;
   padding: 0;
 }
-.bio-list img {
+
+.bio__img {
   width: 100px;
   height: 100px;
 
@@ -20,21 +21,22 @@ dd {
   border-radius: 50%;
   margin: 1rem;
 }
+
 @media only screen and (max-width: 600px) {
   .bio-list {
     display: block;
   }
-  .bio-list dt {
+  .bio__img-container {
     float: left;
     shape-outside: circle();
   }
 
-  .bio-list dd::after {
+  .bio__img-container {
     clear: both;
     content: "";
   }
 
-  .bio-list dd {
+  .bio__body {
     margin-bottom: 2rem;
   }
 }

@@ -1,6 +1,12 @@
-<dt>
-  <img src="{{ person.photo }}" alt="A photo of {{ person.name }}" />
+<dt class="bio__img-container">
+  <img
+    src="{{ person.photo }}"
+    class="bio__img"
+    alt="A photo of {{ person.name }}"
+  />
 </dt>
-<dd>
-  {{ person.description | markdownify | remove: "<p>" | remove: "</p>" }}
+<dd class="bio__body">
+  {{ person.description | markdownify | remove: "
+  <p>" | remove: "</p>
+  " }}
 </dd>
