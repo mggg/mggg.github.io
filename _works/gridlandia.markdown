@@ -8,6 +8,6 @@ description: An interactive overview of the combinatorics of redistricting and t
 featured: true
 image: "/uploads/gridlandia.svg"
 image_caption: The metagraph of a 4-by-4 grid.
-href: "https://gerrymandr.github.io/metagraph/"
+href: https://gerrymandr.github.io/metagraph/
 ---
 
