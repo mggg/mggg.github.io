@@ -1,6 +1,8 @@
 ---
 title: Our Work
 layout: default
+show_categories: true
+highlight_link: /work
 ---
 
 {% assign surveys = site.works | where: "type", "survey" | sort: "date" |
@@ -9,6 +11,7 @@ reverse %} {% assign reports = site.works | where: "type", "report" | sort:
 "date" | reverse %} {% assign research = site.works | where: "type", "research"
 | sort: "date" | reverse %} {% assign data = site.works | where: "type", "data"
 | sort: "date" | reverse %}
+
 <h1>Our Work</h1>
 
 <ul>

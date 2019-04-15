@@ -9,8 +9,10 @@
         />
       </a>
     </div>
-    <ul class="site-nav__links">
-      {% include nav-links.html %}
+    <ul class="nav-links site-nav__contents">
+      {% if include.show_categories %} {% assign highlight_link = "/work" %} {%
+      endif %} {% include nav-links.html highlight_link=highlight_link %}
     </ul>
   </nav>
+  {% if include.show_categories %} {% include categories.html %} {% endif %}
 </header>

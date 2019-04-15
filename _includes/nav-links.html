@@ -1,7 +1,17 @@
-{% for page in site.data.navigation %}
+{% if include.highlight_link %}
+  {% assign highlight_link = include.highlight_link %}
+{% else %}
+  {% assign highlight_link = page.highlight_link %}
+{% endif %}
+{% for link in site.data.navigation %}
 <li>
-  <a href="{{ page.href | relative_url }}" class="site-nav__link">
-    {{ page.name }}
+  {% assign link_url = link.href | relative_url %}
+  <a
+    href="{{ link_url }}"
+    class="nav-links__link nav-links__link--major
+    {% if link_url == highlight_link %}nav-links__link--current{% endif %}"
+  >
+    {{ link.name }}
   </a>
 </li>
 {% endfor %}

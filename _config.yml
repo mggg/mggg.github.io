@@ -8,21 +8,28 @@ collections:
   posts:
     title: Posts
     output: true
+    permalink: /posts/:slug
   uploads:
     title: Uploads
     output: true
   works:
     title: Works
     output: false
+  category_pages:
+    title: Categories
+    output: true
+    layout: category
+    permalink: /:title
 name: Metric Geometry and Gerrymandering Group
 url: https://www.mggg.org/
 author: Metric Geometry and Gerrymandering Group
-description: A nonpartisan research organization studying applications of geometry
+description:
+  A nonpartisan research organization studying applications of geometry
 logo: "/assets/logo.svg"
 google_site_verification: jaL3ii25-g2LejBrllWbH-DmyT7b-vJw8URj-tvq8kE
 plugins:
-- jekyll-seo-tag
+  - jekyll-seo-tag
 sass:
   sass_dir: _sass
 include:
-- _redirects
+  - _redirects
