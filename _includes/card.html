@@ -1,7 +1,12 @@
 {% assign work = include.work %}
 <li class="card">
   {% if work.featured and work.image %}
-  <a class="card__image-link" href="{{ work.href }}" target="_blank">
+  <a
+    class="card__image-link"
+    href="{% if work.href %}{{ work.href }}{% elsif work.url %}{{
+      work.url
+    }}{% endif %}"
+  >
     <img
       class="card__image"
       src="{{ work.image | relative_url }}"
@@ -18,7 +23,6 @@
         href="{% if work.href %}{{ work.href }}{% elsif work.url %}{{
           work.url
         }}{% endif %}"
-        target="_blank"
         >{% if work.short_title %}{{ work.short_title }}{% else %}{{
           work.title
         }}{% endif %}</a
@@ -26,12 +30,15 @@
     </h3>
     {% if work.authors %}
     <div class="card__authors">{{ work.authors }}</div>
-    {% endif %} {% if work.description %}
-    {{ work.description | replace: "<p>", '<p class="card__teaser">'}}
-    {% elsif work.excerpt %}
-    {{ work.excerpt | replace: "<p>", '<p class="card__teaser">'}}
-    {% endif %}
-    {% if work.publication %}
+    {% endif %} {% if work.description %} {{ work.description | replace: "
+    <p>", '</p>
+    <p class="card__teaser">
+      '}} {% elsif work.excerpt %} {{ work.excerpt | replace: "
+    </p>
+
+    <p>", '</p>
+    <p class="card__teaser">'}} {% endif %} {% if work.publication %}</p>
+
     <div class="card__publication">
       {{ work.publication }}{% if work.publication_date %},
       {{ work.publication_date | date: "%B %Y" }}. {% endif %}

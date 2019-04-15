@@ -15,6 +15,16 @@
         </div>
         {% endif %}
       </div>
+      {% if page.image %}
+      <figure class="post__image">
+        <img
+          class="post__image"
+          src="{{ page.image | relative_url }}"
+          alt="{{ page.image_caption }}"
+        />
+      </figure>
+      {% endif %}
+
       <div class="post__content">{{ content }}</div>
     </main>
 

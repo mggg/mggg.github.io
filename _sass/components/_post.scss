@@ -38,3 +38,9 @@
     line-height: 1.25;
   }
 }
+
+.post__image {
+  max-width: 100%;
+  max-height: 20rem;
+  overflow: hidden;
+}

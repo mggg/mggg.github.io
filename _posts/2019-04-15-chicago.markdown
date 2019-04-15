@@ -1,0 +1,42 @@
+---
+title: Study of Reform Proposals for Chicago City Council
+authors: MGGG
+categories: [reports, news]
+featured: true
+pdf: /Chicago.pdf
+image: /uploads/chicago-maps.png
+image_caption: "Two districting plans for Chicago"
+---
+
+Many observers agree that the Chicago City Council ward system suffers from
+problems of gerrymandering, intense segregation, vestiges of machine politics,
+and inefficiency. In our latest report, we apply mathematical models to analyze
+Chicago's current ward plan and compare several reform proposals to address its
+problems. Our findings strongly support a transition to multimember wards with
+ranked choice voting to secure and sustain fair representation.
+
+[Download the report here.]({{page.pdf}})
+
+## Draw your own districts
+
+To accompany this report, we have added Chicago to
+[Districtr](https://districtr.org), our open-source web app for redistricting so
+that anyone can try their hand at drawing a districting plan and to explore the
+interplay between the structure of a districting system and the demographics of
+individual wards.
+[Get started drawing districts here](https://districtr.org/chicago).
+
+## See the data and code
+
+We have made all of the code and data used for this report available in a
+[GitHub repository](https://github.com/mggg/chicago). This includes:
+
+- Cleaned ranked-choice voting data from Minneapolis, Cambridge, and Oakland
+- Shapefiles of Chicago's precincts, wards, and community areas, joined with
+  demographic and socioeconomic census data.
+- Our full ensembles of districting plans for Chicago, in a Districtr-readable
+  format
+- A new Python package [`rcv`](https://github.com/mggg/rcv) for tabulating
+  ranked-choice ballots.
+- Jupyter notebooks we used to generate ensembles, analyze and visualize data,
+  and run the stochastic election model used in the report.
