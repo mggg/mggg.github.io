@@ -3,7 +3,7 @@ title: The Known Sizes of Grid Metagraphs
 layout: freeform
 ---
 
-<section class="freeform__section" markdown="1">
+<section class="freeform__section l-content l-center" markdown="1">
 
 # The Known Sizes of Grid Metagraphs
 
@@ -13,7 +13,7 @@ We think that to study districting plans in context, you need to understand the 
 
 In this table, the row marked **nxn → d** shows the number of ways to partition an n by n grid into d districts (or connected pieces). The columns describe how much size difference is tolerated among the districts. The two halves of the table distinguish whether, to be considered contiguous, the districts would have to be transitable by a chess rook (making only NSEW moves) or a chess queen (which can also move diagonally). Queen contiguity allows many more district shapes.
 
-</section>{% include metagraph-table.html %}<section class="freeform__section" markdown="1">
+</section>{% include metagraph-table.html %}<section class="freeform__section l-center l-content" markdown="1">
 The generation of the numbers in this table was overseen by MGGG's Zach Schutzman and Daryl DeFord. We used a combination of [our own python code](https://github.com/zschutzman/enumerator) and an algorithm coded by Bob Harris ([code](http://www.bumblebeagle.org/polyominoes/tilingcounting/), [writeup](http://www.bumblebeagle.org/polyominoes/tilingcounting/counting_9x9_tilings.pdf); [OEIS](https://oeis.org/A172477)) in C in 2010. We've checked the math behind both algorithms and are confident in both implementations.
 
 As of October 2018, we've got runs going on MIT's [OpenStack](https://tig.csail.mit.edu/shared-computing/open-stack/) to extend the coverage of this table. Each missing value is expected to take at least a day, and sometimes weeks or more, of computer time.

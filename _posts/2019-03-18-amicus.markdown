@@ -3,8 +3,8 @@ title: The Mathematicians' Brief in Rucho v. Common Cause
 date: 2019-03-18 00:00:00 Z
 permalink: "/amicus"
 categories:
-  - collections
-  - news
+- collections
+- news
 authors: MGGG
 featured: true
 excerpt_separator: "<!--more-->"
