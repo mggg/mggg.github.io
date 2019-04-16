@@ -2,24 +2,23 @@
 title: Metric Geometry and Gerrymandering Group
 timezone: UTC
 collections:
+  category_pages:
+    title: Categories
+    output: true
+    permalink: "/:title"
+    layout: category
   people:
     title: People
     output: false
   posts:
     title: Posts
     output: true
-    permalink: /posts/:slug
   uploads:
     title: Uploads
     output: true
   works:
     title: Works
     output: false
-  category_pages:
-    title: Categories
-    output: true
-    layout: category
-    permalink: /:title
 name: Metric Geometry and Gerrymandering Group
 url: https://www.mggg.org/
 author: Metric Geometry and Gerrymandering Group
