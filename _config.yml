@@ -13,7 +13,7 @@ collections:
   posts:
     title: Posts
     output: true
-    permalink: /posts/:slug
+    permalink: /posts/:title
   uploads:
     title: Uploads
     output: true
