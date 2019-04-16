@@ -1,4 +1,4 @@
 <ul class="card-list">
-  {% assign posts = site.posts | limit: 4 %} {% for post in posts %} {% include
-  post_card.html work=post %} {% endfor %}
+  {% assign posts = site.posts %} {% for post in posts | limit: include.limit %}
+  {% include post_card.html work=post %} {% endfor %}
 </ul>

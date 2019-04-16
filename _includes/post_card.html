@@ -16,9 +16,7 @@
   {% endif %}
 
   <div class="card__content">
-    <h3
-      class="card__title{% if work.featured %} card__title--featured{% endif %}"
-    >
+    <h3 class="card__title card__title--featured">
       <a
         href="{% if work.href %}{{ work.href }}{% elsif work.url %}{{
           work.url

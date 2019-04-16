@@ -2,16 +2,18 @@
 title: 2019 Voting Rights Data Institute will run June 17-July 26
 date: 2019-01-01 00:00:00 Z
 categories:
-- collections
-- news
+  - collections
+  - news
 short_title: 2019 VRDI will run June 17-July 26
 authors: MGGG
-featured: true
 excerpt_separator: "<!--more-->"
 layout: post
 ---
 
-The Voting Rights Data Institute is a 6-week summer program of the Metric Geometry and Gerrymandering Group (MGGG), a Boston-based team of mathematicians and computer scientists working on U.S. redistricting. The second annual VRDI will run from June 17 to July 26, 2019.
+The Voting Rights Data Institute is a 6-week summer program of the Metric
+Geometry and Gerrymandering Group (MGGG), a Boston-based team of mathematicians
+and computer scientists working on U.S. redistricting. The second annual VRDI
+will run from June 17 to July 26, 2019.
 
 [Read more about it at gerrydata.org.](http://gerrydata.org/)
 
@@ -19,26 +21,43 @@ The Voting Rights Data Institute is a 6-week summer program of the Metric Geomet
 
 ## Activities
 
-Participants engage in a wide range of activities to support the research of MGGG. Work takes place in a group setting, with undergrads working independently and in teams, supervised by graduate students and faculty. Admitted students will be offered travel funding, housing in apartment-style dormitories, and funding for living expenses.
+Participants engage in a wide range of activities to support the research of
+MGGG. Work takes place in a group setting, with undergrads working independently
+and in teams, supervised by graduate students and faculty. Admitted students
+will be offered travel funding, housing in apartment-style dormitories, and
+funding for living expenses.
 
 Concrete goals of the work include the following:
 
 - Conduct original research in the mathematics of redistricting
-- Use census data and GIS shapefiles to compile data-rich population graphs for states and cities at the census block and VTD (voting tabulation district) levels
+- Use census data and GIS shapefiles to compile data-rich population graphs for
+  states and cities at the census block and VTD (voting tabulation district)
+  levels
 - Compile and clean political outcome data from as many contests as possible
-- Set up models for districting in selected city councils and house-to-senate legislative district matchings in selected states
-- Set up regressions to model political preference; test tradeoffs in model selection
-- Produce worksheets, notebooks, and repositories for sharing graphs, data, and models openly
-- Research the redistricting laws and practices of all 50 states (plus Puerto Rico and D.C.) to enable algorithm design that best encodes the rules
-- Implement Markov chain Monte Carlo (MCMC) algorithms to create ensembles of redistricting plans for legislative and/or congressional districts in all 50 states, based on 2010 Census data
+- Set up models for districting in selected city councils and house-to-senate
+  legislative district matchings in selected states
+- Set up regressions to model political preference; test tradeoffs in model
+  selection
+- Produce worksheets, notebooks, and repositories for sharing graphs, data, and
+  models openly
+- Research the redistricting laws and practices of all 50 states (plus Puerto
+  Rico and D.C.) to enable algorithm design that best encodes the rules
+- Implement Markov chain Monte Carlo (MCMC) algorithms to create ensembles of
+  redistricting plans for legislative and/or congressional districts in all 50
+  states, based on 2010 Census data
 
-This program will provide opportunities to hear presentations from mathematicians, computer scientists, political scientists, law professionals, and civil rights organizers.
+This program will provide opportunities to hear presentations from
+mathematicians, computer scientists, political scientists, law professionals,
+and civil rights organizers.
 
 All students will gain at least the following experience through the program:
 
 - Basic skills with python, GIS, R (and if desired, C++, etc)
 - Data science applied to current social and political problems
 - Mathematical modeling for study of demographics and politics
-- In-depth introduction to the legal, political, and technical issues in electoral redistricting
+- In-depth introduction to the legal, political, and technical issues in
+  electoral redistricting
 
-There should be ample opportunities to publish pieces of the project and to present at conferences. Students will be encouraged (but not required) to stay involved with MGGG up to and after the 2020 Census.
+There should be ample opportunities to publish pieces of the project and to
+present at conferences. Students will be encouraged (but not required) to stay
+involved with MGGG up to and after the 2020 Census.

@@ -27,8 +27,8 @@ Our goals are these:
 - to offer formal and informal expert **consulting** to stakeholders on all
   sides.
 
-# Our Recent Work
+# Highlights
 
-{% include featured_posts.html %}
+{% include featured_posts.html limit=2 %}
 
 {% include support_statement.html %}
