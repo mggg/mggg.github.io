@@ -1,7 +1,7 @@
 ---
 title: Guillen
 name: Nestor Guillen
-photo: "/uploads/guillen.png"
+photo: "/uploads/guillen.jpg"
 group: collaborators
 github: birdsnfrogs
 description:
