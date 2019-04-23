@@ -2,13 +2,14 @@
 title: Study of Reform Proposals for Chicago City Council
 date: 2019-04-15 00:00:00 Z
 categories:
-- reports
-- news
+  - reports
+  - news
 authors: MGGG
 featured: true
 pdf: "/Chicago.pdf"
 image: "/uploads/chicago-maps.png"
 image_caption: Two districting plans for Chicago
+permalink: /chicago
 ---
 
 Many observers agree that the Chicago City Council ward system suffers from
