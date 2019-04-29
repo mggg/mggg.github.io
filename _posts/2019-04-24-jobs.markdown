@@ -1,8 +1,20 @@
 ---
-title: Jobs
+title: New job opportunities at MGGG
 date: 2019-04-24
 authors: MGGG
+categories:
+ - news
 layout: post
+permalink: /jobs
+excerpt_separator: "<!--more-->"
+featured: true
+description: "We will soon begin hiring for several positions (**Geographer**, **Software
+Developer**, and **Data Scientist**) through the Tisch College of Civic Life at
+Tufts University. Letters of interest are being accepted from April 24 to May
+15, by email to [jobs@mggg.org](mailto:jobs@mggg.org).
+
+
+[Read more about the positions here.](/jobs)"
 ---
 
 The Metric Geometry and Gerrymandering Group (MGGG) is a research organization
@@ -11,15 +23,22 @@ redistricting. Our mission is both technical and civic, and we aim to drive
 cutting-edge research, amplify the voices of the public and the civil rights
 community, and improve accountability in the redistricting process.
 
-We will soon begin hiring for several positions through the Tisch College of
-Civic Life at Tufts University.
+We will soon begin hiring for several positions (**Geographer**, **Software
+Developer**, and **Data Scientist**) through the Tisch College of Civic Life at
+Tufts University. Letters of interest are being accepted from April 24 to May
+15, by email to [jobs@mggg.org](mailto:jobs@mggg.org). Please include a CV with
+links to relevant projects, with your GitHub username if applicable. If you see
+yourself as falling in between these job titles, tell us so. We will use the
+letters of interest to craft the official job postings. We hope for start dates
+in Summer 2019, with opportunities for engagement with the
+[Voting Rights Data Institute](http://gerrydata.org).
 
 ## Geographer
 
 MGGG seeks a full-time **Geographer** to join a multi-disciplinary team studying
 political geography, voting rights, and redistricting.
 
-Main duties will include:
+### Main duties will include:
 
 - Data analysis of elections and districting plans ;
 - Collecting and managing electoral data, shapefiles, and other spatial data
@@ -32,17 +51,21 @@ Main duties will include:
 
 ### Required Qualifications
 
-- Experience with GIS and geospatial concepts; particularly creating and
-  manipulating data and maps using ArcGIS and/or QGIS ;
-- Experience with cartography ;
+- Experience using ArcGIS, QGIS, and/or other desktop GIS for spatial data
+  creation, query, visualization, and analysis ;
+- Experience with spatial data wrangling, including format conversion, attribute
+  and spatial join, and coordinate system transformation ;
+- Experience with cartographic design ;
 - Experience with demography, population studies, and/or political science.
 
-### Desired Qualifications
+### Desired Qualifications - a non-exhaustive list of possible assets for the position
 
-- Undergraduate degree required and graduate degree preferred ;
-- Familiarity with census data and precinct-level election data specifically ;
+- Graduate degree or GIS certificate preferred ;
+- Familiarity with Census data products and precinct-level election data
+  specifically ;
 - Experience working with community groups and civil rights organizations ;
-- Facility with Python ;
+- Facility with Python and familiarity with geospatial programming in Python (or
+  another high-level programming language like R or JavaScript) ;
 - Experience with spatial databases (preferably using PostGIS/PostgreSQL) ;
 - Knowledge of critical geography literature ;
 - Experience as a mentor, teacher, or supervisor ;
@@ -55,13 +78,14 @@ the technical infrastructure needed to produce research and support reform
 efforts in voting rights and redistricting. Willingness to learn new skills
 across problem domains is a must.
 
-Main duties will include:
+### Main duties will include:
 
 - Building and maintaining open-source tools for redistricting research (such as
   [GerryChain](https://github.com/mggg/GerryChain)), including geospatial data
-  processing and auditing (such as [maup](https://github.com/mggg/maup)) ;
-- Contributing to the development of Districtr, our open-source web app for
-  drawing districts and identifying communities ;
+  processing and auditing packages (such as
+  [maup](https://github.com/mggg/maup)) ;
+- Contributing to the development of [Districtr](https://districtr.org), our
+  open-source web app for drawing districts and identifying communities ;
 - Solving data science problems that come up in our consulting and research
   projects, with a focus on creating dependable, systematic approaches that can
   be reused in the future.
@@ -73,7 +97,7 @@ Main duties will include:
 - Experience delivering tested, high-quality code ;
 - Experience with GitHub (or equivalent) and continuous integration practices.
 
-### Desired Qualifications
+### Desired Qualifications - a non-exhaustive list of possible assets for the position
 
 - Demonstrated interest in social and racial justice ;
 - Experience writing unit tests with pytest ;
@@ -85,31 +109,32 @@ Main duties will include:
 ## Data Scientist
 
 MGGG seeks a **Data Scientist** who can expand our reach in research at the
-interface of mathematics, computing, political science, and law.
+interface of mathematics, computing, political science, and law. Examples of our
+recent data-driven projects include:
+
+- [Study of the Chicago City Council election structure](http://mggg.org/chicago)
+  (white paper and districting module)
+- [Study of racial gerrymandering in the Virginia House of Delegates](http://mggg.org/VA-report.pdf)
+- [Article comparing effects ofredistricting criteria in Virginia](http://mggg.org/VA-criteria.pdf)
+- [Amicus brief for SCOTUS partisan gerrymandering cases](http://mggg.org/amicus/)
+- [Article demonstrating "fencing out" of Republicans in Massachusetts](https://arxiv.org/pdf/1810.09051.pdf)
 
 ### Required Qualifications
 
-- Demonstrated track record of creative problem solving with large datasets ;
+- Demonstrated track record of creative problem solving with real data ;
 - Network science concepts, including graph theory and clustering techniques ;
 - Comfort with mathematical data science (such as convex geometry, spectral
   theory, or probability and statistics at the graduate level) ;
-- Experience with technical, popular, and scholarly writing;
+- Experience with technical, popular, and scholarly writing ;
 - Demonstrated interest in social and racial justice.
 
-### Desired Qualifications
+### Desired Qualifications - a non-exhaustive list of possible assets for the position
 
 - Background in Markov chains and MCMC ;
 - Experience with spatial data ;
+- Background in theoretical computer science, especially algorithm analysis ;
 - Experience with machine learning ;
 - Background in law, especially constitutional law or election law ;
 - Knowledge of political science literature;
 - Experience working across disciplines and on tight deadlines ;
 - Fluency with Python.
-
----
-
-Letters of interest are being accepted from April 24 to May 15, by email to
-[jobs@mggg.org](mailto:jobs@mggg.org). Please include a CV with links to
-relevant projects. If you see yourself as falling in between these job titles,
-tell us so. We will use the letters of interest to craft the official job
-postings.

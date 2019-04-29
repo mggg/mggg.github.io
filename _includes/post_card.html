@@ -31,23 +31,28 @@
       <div class="post__authors">{{ work.authors }}</div>
       <div class="post__date">{{ work.date | date_to_long_string }}</div>
     </div>
-    {% endif %} {% if work.description %} {{ work.description | replace: "
-    <p>", '</p>
-    <p class="card__teaser">
-      '}} {% elsif work.excerpt %} {{ work.excerpt | replace: "
-    </p>
-
-    <p>", '</p>
-    <p class="card__teaser">'}} {% endif %} {% if work.publication %}</p>
-
+    {% endif %}
+    {% if work.description %}
+    {{
+      work.description
+      | markdownify
+      | replace: "<p>", '<p class="card__teaser">'
+    }}
+    {% elsif work.excerpt %}
+    {{
+      work.excerpt
+      | replace: "<p>", '<p class="card__teaser">'
+    }}
+    {% endif %}
+    {% if work.publication %}
     <div class="card__publication">
       {{ work.publication }}{% if work.publication_date %},
       {{ work.publication_date | date: "%B %Y" }}. {% endif %}
     </div>
-    {% else %} {% if work.publication_date %}
+    {% elsif work.publication_date %}
     <div class="card__publication">
       {{ work.publication_date | date: "%B %Y" }}.
     </div>
-    {% endif %} {% endif %}
+    {% endif %}
   </div>
 </li>
