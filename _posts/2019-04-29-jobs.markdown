@@ -1,6 +1,6 @@
 ---
 title: New job opportunities at MGGG
-date: 2019-04-24
+date: 2019-04-29
 authors: MGGG
 categories:
  - news
