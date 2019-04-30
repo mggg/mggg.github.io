@@ -25,7 +25,7 @@ community, and improve accountability in the redistricting process.
 
 We will soon begin hiring for several positions (**Geographer**, **Software
 Developer**, and **Data Scientist**) through the Tisch College of Civic Life at
-Tufts University. Letters of interest are being accepted from April 24 to May
+Tufts University. Letters of interest are being accepted until May
 15, by email to [jobs@mggg.org](mailto:jobs@mggg.org). Please include a CV with
 links to relevant projects, with your GitHub username if applicable. If you see
 yourself as falling in between these job titles, tell us so. We will use the
@@ -108,7 +108,7 @@ across problem domains is a must.
 
 ## Data Scientist
 
-MGGG seeks a **Data Scientist** who can expand our reach in research at the
+MGGG seeks a **Data Scientist** who can expand our reach in research and consulting at the
 interface of mathematics, computing, political science, and law. Examples of our
 recent data-driven projects include:
 
