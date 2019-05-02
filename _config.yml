@@ -7,6 +7,9 @@ collections:
     output: true
     permalink: "/:title"
     layout: category
+  jobs:
+    title: Jobs
+    output: false
   people:
     title: People
     output: false

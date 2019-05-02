@@ -1,0 +1,11 @@
+<li class="card">
+  <div class="card__content">
+    <h2
+      class="card__title card__title--featured"
+      id="{{ job.title | slugify }}"
+    >
+      {{ job.title }}
+    </h2>
+    {{ job.content | markdownify }}
+  </div>
+</li>

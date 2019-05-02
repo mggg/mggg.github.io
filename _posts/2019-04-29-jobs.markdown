@@ -1,5 +1,5 @@
 ---
-title: New job opportunities at MGGG
+title: Jobs at MGGG
 date: 2019-04-29
 authors: MGGG
 categories:
@@ -23,9 +23,10 @@ redistricting. Our mission is both technical and civic, and we aim to drive
 cutting-edge research, amplify the voices of the public and the civil rights
 community, and improve accountability in the redistricting process.
 
-We will soon begin hiring for several positions (**Geographer**, **Software
-Developer**, and **Data Scientist**) through the Tisch College of Civic Life at
-Tufts University. Letters of interest are being accepted from April 24 to May
+We will soon begin hiring for several positions (**[Geographer](#geographer)**,
+**[Software Developer](#software-developer)**, and
+**[Data Scientist](#data-scientist)**) through the Tisch College of Civic Life
+at Tufts University. Letters of interest are being accepted from April 24 to May
 15, by email to [jobs@mggg.org](mailto:jobs@mggg.org). Please include a CV with
 links to relevant projects, with your GitHub username if applicable. If you see
 yourself as falling in between these job titles, tell us so. We will use the
@@ -33,108 +34,9 @@ letters of interest to craft the official job postings. We hope for start dates
 in Summer 2019, with opportunities for engagement with the
 [Voting Rights Data Institute](http://gerrydata.org).
 
-## Geographer
-
-MGGG seeks a full-time **Geographer** to join a multi-disciplinary team studying
-political geography, voting rights, and redistricting.
-
-### Main duties will include:
-
-- Data analysis of elections and districting plans ;
-- Collecting and managing electoral data, shapefiles, and other spatial data
-  products (such as [mggg-states](https://github.com/mggg-states) and
-  [maup](https://github.com/mggg/maup)) ;
-- Communicating with election officials to obtain and validate data ;
-- Designing tools and visualizations ;
-- Writing and editing public-facing materials (such as white papers) ;
-- Supervising teams of research assistants.
-
-### Required Qualifications
-
-- Experience using ArcGIS, QGIS, and/or other desktop GIS for spatial data
-  creation, query, visualization, and analysis ;
-- Experience with spatial data wrangling, including format conversion, attribute
-  and spatial join, and coordinate system transformation ;
-- Experience with cartographic design ;
-- Experience with demography, population studies, and/or political science.
-
-### Desired Qualifications - a non-exhaustive list of possible assets for the position
-
-- Graduate degree or GIS certificate preferred ;
-- Familiarity with Census data products and precinct-level election data
-  specifically ;
-- Experience working with community groups and civil rights organizations ;
-- Facility with Python and familiarity with geospatial programming in Python (or
-  another high-level programming language like R or JavaScript) ;
-- Experience with spatial databases (preferably using PostGIS/PostgreSQL) ;
-- Knowledge of critical geography literature ;
-- Experience as a mentor, teacher, or supervisor ;
-- Writing and editing skills, including reports, articles, and/or user manuals.
-
-## Software Developer
-
-MGGG seeks a full-time **Software Developer** to help us build the software and
-the technical infrastructure needed to produce research and support reform
-efforts in voting rights and redistricting. Willingness to learn new skills
-across problem domains is a must.
-
-### Main duties will include:
-
-- Building and maintaining open-source tools for redistricting research (such as
-  [GerryChain](https://github.com/mggg/GerryChain)), including geospatial data
-  processing and auditing packages (such as
-  [maup](https://github.com/mggg/maup)) ;
-- Contributing to the development of [Districtr](https://districtr.org), our
-  open-source web app for drawing districts and identifying communities ;
-- Solving data science problems that come up in our consulting and research
-  projects, with a focus on creating dependable, systematic approaches that can
-  be reused in the future.
-
-### Required Qualifications
-
-- Fluency with Python ;
-- Web development, including modern front-end HTML/CSS/JavaScript development ;
-- Experience delivering tested, high-quality code ;
-- Experience with GitHub (or equivalent) and continuous integration practices.
-
-### Desired Qualifications - a non-exhaustive list of possible assets for the position
-
-- Demonstrated interest in social and racial justice ;
-- Experience writing unit tests with pytest ;
-- Experience handling geospatial data using geopandas/shapely and pandas ;
-- Back-end development in Flask or another Python framework ;
-- Database experience ;
-- UI/UX background.
-
-## Data Scientist
-
-MGGG seeks a **Data Scientist** who can expand our reach in research at the
-interface of mathematics, computing, political science, and law. Examples of our
-recent data-driven projects include:
-
-- [Study of the Chicago City Council election structure](http://mggg.org/chicago)
-  (white paper and districting module)
-- [Study of racial gerrymandering in the Virginia House of Delegates](http://mggg.org/VA-report.pdf)
-- [Article comparing effects ofredistricting criteria in Virginia](http://mggg.org/VA-criteria.pdf)
-- [Amicus brief for SCOTUS partisan gerrymandering cases](http://mggg.org/amicus/)
-- [Article demonstrating "fencing out" of Republicans in Massachusetts](https://arxiv.org/pdf/1810.09051.pdf)
-
-### Required Qualifications
-
-- Demonstrated track record of creative problem solving with real data ;
-- Network science concepts, including graph theory and clustering techniques ;
-- Comfort with mathematical data science (such as convex geometry, spectral
-  theory, or probability and statistics at the graduate level) ;
-- Experience with technical, popular, and scholarly writing ;
-- Demonstrated interest in social and racial justice.
-
-### Desired Qualifications - a non-exhaustive list of possible assets for the position
-
-- Background in Markov chains and MCMC ;
-- Experience with spatial data ;
-- Background in theoretical computer science, especially algorithm analysis ;
-- Experience with machine learning ;
-- Background in law, especially constitutional law or election law ;
-- Knowledge of political science literature;
-- Experience working across disciplines and on tight deadlines ;
-- Fluency with Python.
+<ul class="card-list">
+{% assign jobs = site.jobs | sort: "position" %}
+{% for job in jobs %}
+    {% include job.html job=job %}
+{% endfor %}
+</ul>
