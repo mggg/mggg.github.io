@@ -31,6 +31,6 @@ recent data-driven projects include:
 - Background in theoretical computer science, especially algorithm analysis ;
 - Experience with machine learning ;
 - Background in law, especially constitutional law or election law ;
-- Knowledge of political science literature;
+- Background in humanities and social science fields bearing on redistricting, such as political science, sociology, or urban studies ;
 - Experience working across disciplines and on tight deadlines ;
 - Fluency with Python.
