@@ -36,6 +36,6 @@ political geography, voting rights, and redistricting.
 - Facility with Python and familiarity with geospatial programming in Python (or
   another high-level programming language like R) ;
 - Experience with spatial databases (preferably using PostGIS/PostgreSQL) ;
-- Knowledge of critical geography literature ;
+- Knowledge of critical geography, urban sociology, or critical race theory ;
 - Experience as a mentor, teacher, or supervisor ;
 - Writing and editing skills, including reports, articles, and/or user manuals.
