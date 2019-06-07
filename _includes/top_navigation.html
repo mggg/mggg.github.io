@@ -8,8 +8,22 @@
           alt="Metric Geometry and Gerrymandering Group"
         />
       </a>
+      <script>
+        function openNav() {
+          var links = document.getElementById("nav-links");
+          var openClass = "site-nav__contents--show";
+          if (links.classList.contains(openClass)) {
+            links.classList.remove(openClass);
+          } else {
+            links.classList.add(openClass);
+          }
+        }
+      </script>
+      <button class="site-nav__open-btn" onclick="openNav();">
+        <img src="/assets/baseline-menu-24px.svg" class="icon" alt="Menu" />
+      </button>
     </div>
-    <ul class="nav-links site-nav__contents">
+    <ul id="nav-links" class="nav-links site-nav__contents">
       {% if include.show_categories %} {% assign highlight_link = "/work" %} {%
       endif %} {% include nav-links.html highlight_link=highlight_link %}
     </ul>

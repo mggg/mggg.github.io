@@ -79,7 +79,7 @@
 
 .nav-links__link--current {
   background-color: $grey;
-  font-weight: bold;
+  // font-weight: bold;
 }
 
 @media only screen and (max-width: 600px) {
@@ -94,6 +94,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  box-shadow: $inset-bottom;
 }
 
 .nav-links--centered {
@@ -115,4 +116,62 @@
 .nav-links__link--minor--current:active {
   background: #444444;
   color: #f9f9f9;
+}
+
+.site-nav__open-btn {
+  border-radius: 0.25rem;
+  margin: 0;
+  outline: 0;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.25rem;
+  line-height: 1;
+  color: none;
+  background: none;
+  cursor: pointer;
+
+  display: none;
+
+  &:hover {
+    background-color: $grey;
+  }
+
+  &:active {
+    background-color: $dark-grey;
+  }
+}
+
+.icon {
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+@media only screen and (max-width: 400px) {
+  .site-nav {
+    padding: 0;
+  }
+  .site-nav__open-btn {
+    display: flex;
+  }
+  .site-nav__contents {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+  .site-nav__contents {
+    display: none;
+  }
+  .site-nav__contents--show {
+    display: flex;
+  }
+  .site-nav__logo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    padding: 1rem;
+  }
 }
