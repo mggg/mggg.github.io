@@ -11,7 +11,7 @@ recent data-driven projects include:
 - [Study of the Chicago City Council election structure](http://mggg.org/chicago)
   (white paper and districting module)
 - [Study of racial gerrymandering in the Virginia House of Delegates](http://mggg.org/VA-report.pdf)
-- [Article comparing effects ofredistricting criteria in Virginia](http://mggg.org/VA-criteria.pdf)
+- [Article comparing effects of redistricting criteria in Virginia](http://mggg.org/VA-criteria.pdf)
 - [Amicus brief for SCOTUS partisan gerrymandering cases](http://mggg.org/amicus/)
 - [Article demonstrating "fencing out" of Republicans in Massachusetts](https://arxiv.org/pdf/1810.09051.pdf)
 
@@ -31,6 +31,6 @@ recent data-driven projects include:
 - Background in theoretical computer science, especially algorithm analysis ;
 - Experience with machine learning ;
 - Background in law, especially constitutional law or election law ;
-- Knowledge of political science literature;
+- Background in humanities and social science fields bearing on redistricting, such as political science, sociology, or urban studies ;
 - Experience working across disciplines and on tight deadlines ;
 - Fluency with Python.
