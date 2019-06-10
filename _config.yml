@@ -20,9 +20,6 @@ collections:
   uploads:
     title: Uploads
     output: true
-  works:
-    title: Works
-    output: false
 name: Metric Geometry and Gerrymandering Group
 url: https://www.mggg.org/
 author: Metric Geometry and Gerrymandering Group

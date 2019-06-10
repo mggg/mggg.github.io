@@ -3,7 +3,9 @@
   {% include head.html %}
 
   <body>
-    {% include top_navigation.html show_categories=true %}
+    {% if page.show_categories != nil %} {% assign show_categories =
+    page.show_categories %} {% else %} {% assign show_categories = true %} {%
+    endif %} {% include top_navigation.html show_categories=show_categories %}
 
     <main class="l-center l-content">
       <h1>{{ page.title }}</h1>

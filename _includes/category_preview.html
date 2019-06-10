@@ -1,0 +1,15 @@
+<h2>{{ include.category.title }}</h2>
+
+<ul class="card-list">
+  {% for work in site.categories[include.category.key] limit:3 %} {% include
+  post_card.html work=work %} {% endfor %}
+</ul>
+
+<div class="l-flex-center">
+  <a
+    class="nav-links__link nav-links__link--see-more"
+    href="{{ include.category.url | relative_url }}"
+  >
+    See more {{ include.category.title }}
+  </a>
+</div>

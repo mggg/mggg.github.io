@@ -1,7 +1,7 @@
 ---
 title: Data
-key: Data
-index: 3
+key: data
+index: 4
 output: true
 layout: category
 ---
