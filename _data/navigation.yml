@@ -2,9 +2,13 @@
 # href: /#about-mggg
 - name: News
   href: /news
-- name: Team
-  href: /who
 - name: Work
   href: /work
+- name: Team
+  href: /who
 - name: Support
   href: /donate
+- name: Districtr
+  href: https://districtr.org
+- name: VRDI
+  href: http://gerrydata.org

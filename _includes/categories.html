@@ -1,7 +1,8 @@
 <nav class="categories">
-  <ul class="nav-links nav-links--centered">
-    {% assign categories = site.category_pages | sort: "index" %}
-    {% for link in categories %}
+  <ul class="nav-links nav-links--centered nav-links--wrap">
+    {% assign categories = site.category_pages |
+    where_exp:"item","item.show_categories != false" | sort: "index" %} {% for
+    link in categories %}
     <li>
       <a
         href="{{ link.url | relative_url }}"

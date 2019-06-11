@@ -6,6 +6,12 @@
   margin-right: auto;
 }
 
+.l-flex-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .l-content {
   padding: 0 1rem;
 }
