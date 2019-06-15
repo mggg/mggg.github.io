@@ -29,6 +29,6 @@ Our goals are these:
 
 # Highlights
 
-{% include featured_posts.html limit=2 %}
+{% include featured_posts.html limit=3 %}
 
 {% include support_statement.html %}
