@@ -7,3 +7,5 @@
 /mit-visualization-project/* https://visualizing-gerrymandering.netlify.com/:splat 200
 /posts/chicago /chicago
 /reports/news/2019/04/15/chicago.html /chicago
+/distflow/* https://distflow.netlify.com/:splat 200
+/distflow /distflow/index.html
