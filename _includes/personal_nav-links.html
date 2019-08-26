@@ -1,0 +1,18 @@
+{% if include.highlight_link %}
+  {% assign highlight_link = include.highlight_link %}
+{% else %}
+  {% assign highlight_link = page.highlight_link %}
+{% endif %}
+
+{% for link in page.navi %}
+<li>
+  {% assign link_url = link.href | relative_url %}
+  <a
+    href="{{page.local_url}}{{ link_url }}"
+    class="nav-links__link nav-links__link--major
+    {% if link_url == highlight_link %}nav-links__link--current{% endif %}"
+  >
+    {{ link.name }}
+  </a>
+</li>
+{% endfor %}

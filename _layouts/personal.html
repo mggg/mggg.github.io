@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% include head.html %}
+
+  <body>
+    {% include personal_navigation.html show_categories=page.show_categories %}
+
+    <main class="l-center l-content">{{ content }}</main>
+
+    {% include footer.html %}
+  </body>
+</html>
