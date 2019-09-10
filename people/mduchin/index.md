@@ -16,7 +16,7 @@ navi:
       href: etc
 ---
 
-## Moon Duchin
+<!-- ## Moon Duchin -->
 
 <dl class="bio-list">
     <dt class="bio__img-container">
@@ -27,6 +27,7 @@ navi:
         />
     </dt>
     <dd class="bio__body">
+      <h2>Moon Duchin</h2>
     </dd>
 </dl>
 
