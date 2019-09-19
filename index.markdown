@@ -4,7 +4,7 @@ navtitle: Our Mission
 nav: true
 order: 1
 customlink: "/#about-mggg"
-image: "/_uploads/AR_plots.png"
+image: "/uploads/AR_plots.png"
 ---
 
 <h1>Our Mission</h1>
