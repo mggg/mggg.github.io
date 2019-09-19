@@ -1,13 +1,13 @@
 ---
-title: Our Mission
 layout: home
-navtitle: Mission
+navtitle: Our Mission
 nav: true
 order: 1
 customlink: "/#about-mggg"
+image: "/_uploads/AR_plots.png"
 ---
 
-# Our Mission
+<h1>Our Mission</h1>
 
 The **Metric Geometry and Gerrymandering Group (MGGG)** is a Boston-based
 working group led by Moon Duchin of Tufts University and Justin Solomon of MIT.
