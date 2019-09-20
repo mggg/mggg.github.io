@@ -2,7 +2,8 @@
 title: Gerrymandering v. Geometry
 date: 2018-11-01 00:00:00 Z
 authors: Moon Duchin
-categories: [outreach]
+categories: 
+    - basics
 description:
   The mathematics of gerrymandering is surprisingly rich, and computing power is
   arguably just catching up with the scale and complexity of the redistricting
