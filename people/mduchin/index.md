@@ -39,7 +39,7 @@ navi:
 
 * Geometric group theory. Geometric topology. Dynamics.
 * History, philosophy, and culture of science. (see new STS Program)
-* Gerrymandering and civil rights. (see MGGG project website)
+* Gerrymandering and civil rights. (see [MGGG Redistricting Lab](https://mggg.org))
 
 ### Teaching information
 
