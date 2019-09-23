@@ -15,7 +15,7 @@ description:
   of votes. For several of the elections studied here, there are more ways of
   building a valid districting plan than there are particles in the galaxy, and
   every one of them will produce a 9-0 Democratic delegation.
-pdf: https://arxiv.org/pdf/1810.09051.pdf
-href: https://arxiv.org/abs/1810.09051
+pdf: /uploads/Massachusetts.pdf
+href: /uploads/Massachusetts.pdf
 featured: true
 ---
