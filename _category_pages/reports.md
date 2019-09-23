@@ -1,7 +1,7 @@
 ---
 title: Reports
 key: reports
-index: 2
+index: 3
 output: true
 layout: category
 ---
