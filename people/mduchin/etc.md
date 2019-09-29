@@ -6,7 +6,7 @@ nav: true
 order: 2
 local_url: /people/mduchin
 navi:
-    - name: Main
+    - name: MDuchin
       href: index
     - name: Research
       href: research
