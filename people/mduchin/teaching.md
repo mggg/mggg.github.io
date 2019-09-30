@@ -33,14 +33,14 @@ navi:
 
 
 ### Other
-## Some of my talks
-* Public lecture on gerrymandering at Stanford (youtube)
-* "Rationality and growth" lectures at IAS (videos)
-* "The curve complex and its relatives" ([video](http://www.msri.org/web/msri/online-videos/-/video/showStream/12504/popup)), an expository lecture targeted for advanced graduate students from August 2007.
-## Summer math programs you might want to visit
-* I'm a huge fan of [Canada/USA Mathcamp](http://www.mathcamp.org/) for high school students, where I used to visit and teach every summer before I started running my own summer programs more regularly.  It has spun off the truly excellent 
+* Some of my talks
+	* Public lecture on gerrymandering at Stanford (youtube)
+	* "Rationality and growth" lectures at IAS (videos)
+	* "The curve complex and its relatives" ([video](http://www.msri.org/web/msri/online-videos/-/video/showStream/12504/popup)), an expository lecture targeted for advanced graduate students from August 2007.
+* Summer math programs you might want to visit
+	* I'm a huge fan of [Canada/USA Mathcamp](http://www.mathcamp.org/) for high school students, where I used to visit and teach every summer before I started running my own summer programs more regularly.  It has spun off the truly excellent 
 [Bridge to Enter Advanced Mathematics](http://beamath.org/) program, which is focused on cultivating talent in younger
 kids in New York and L.A.  These programs are really worthy of your support!
-## Super old teaching evals
-* Archived teaching evaluation pages from the University of Chicago ([Topics](https://web.archive.org/web/20060710002701/http://www.math.uchicago.edu/~mduchin/evals/112.htm) / [Calc I](https://web.archive.org/web/20060715195655/http://www.math.uchicago.edu/~mduchin/evals/151.htm) / [Calc II](https://web.archive.org/web/20060703164626/http://www.math.uchicago.edu/~mduchin/evals/152.htm))
+* Super old teaching evals
+	* Archived teaching evaluation pages from the University of Chicago ([Topics](https://web.archive.org/web/20060710002701/http://www.math.uchicago.edu/~mduchin/evals/112.htm) / [Calc I](https://web.archive.org/web/20060715195655/http://www.math.uchicago.edu/~mduchin/evals/151.htm) / [Calc II](https://web.archive.org/web/20060703164626/http://www.math.uchicago.edu/~mduchin/evals/152.htm))
 
