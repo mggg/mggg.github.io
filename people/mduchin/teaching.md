@@ -18,7 +18,7 @@ navi:
 
 ### Current and Recent Courses
 
-<img src="courses/math211/jordan.png" height=200>
+<img src="courses/math211/jordan.png" height=200/>
 <img src="images/cell.jpg" height=200>
 <img src="courses/math158/images/curgus.gif" height=200>
 <img src="images/apple.jpg" height=200>
