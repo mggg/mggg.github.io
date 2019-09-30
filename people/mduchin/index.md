@@ -32,34 +32,35 @@ navi:
 </dl>
 
 
-[Curriculum Vitae](DuchinCV-2019.pdf) <br>
+[Curriculum Vitae](docs/DuchinCV-2019.pdf) <br>
 
 
 ### Research interests
 
 * Geometric group theory. Geometric topology. Dynamics.
-* History, philosophy, and culture of science. (see new STS Program)
+* Science, technology, and society. (see Tufts [STS Program](https://as.tufts.edu/sts/))
 * Gerrymandering and civil rights. (see [MGGG Redistricting Lab](https://mggg.org))
 
 ### Teaching information
 
 
-Teaching in Spring 2018:
-* Math 19, Math of Social Choice
-* STS 10, Reading Lab: Mathematical Models in Social Context
-      
-      
+Teaching in Fall 2019:
+* Math 145, [Abstract Algebra](https://sites.tufts.edu/algebra/)
 
-Teaching in Spring 2017:
-* Math 61, Discrete Math
-* STS 50/Math 50/Math 112, History of Math 
+Teaching in Spring 2019:
+* STS 10, Reading Lab: [Mathematical Models in Social Context](https://sites.tufts.edu/models/)
+            
+Teaching in Spring 2018:
+* Math 19, [Math of Social Choice](https://sites.tufts.edu/socialchoice/)
+
 
 
 ### Recent Events
 
-* Talk at Trinity Upper School: [The isoperimetric problem in geometry and politics](isoperimetric.html)
-* Summer 2017 research cluster: [Polygonal Billiards](https://sites.tufts.edu/billiardscluster/)
-* Minicourse in nilpotent groups ([slides](notes/nilpotent-provo.pdf))
-* Minicourse in hyperbolic groups ([notes](notes/hyp-groups-course.pdf) and [exercises](notes/hyp-groups-exercises.pdf))
+* Summer research program: [Voting Rights Data Institute](https://sites.tufts.edu/vrdi/)
+* Minicourse in nilpotent groups, from Workshop in Geometric Topology ([slides](docs/nilpotent-provo.pdf))
+* Minicourse in hyperbolic groups, from Luminy Winter School ([notes](docs/hyp-groups-course.pdf) and [exercises](docs/hyp-groups-exercises.pdf))
+* Science Studies Colloquium, from UCSD ([slides](docs/ucsd-pennsylvania.pdf))
+* Failure Modes for Proofs, from ASL conference (docs/proofs-fail.pdf))
 * Workshop on advising: [**UMich** May 2017](http://www-personal.umich.edu/~kochsc/workshop.html) (with Sarah Koch); [**Tufts** April 2015](http://mduchin.math.tufts.edu/mwgam/) (with Larry Guth) 
 
