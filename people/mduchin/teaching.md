@@ -18,18 +18,18 @@ navi:
 
 ### Current and Recent Courses
 
-    * Math 145, Abstract Algebra [[web](https://sites.tufts.edu/algebra/)]
-    * STS 10, Reading Lab: Math Models in Social Context [[web](http://sites.tufts.edu/models/)]
-    * Math 250, Geometric Literacy: Topics in Analysis
-    * Math 19, Social Choice [[web](http://sites.tufts.edu/socialchoice/)]
-    * Math 61, Discrete Math [[web](http://sites.tufts.edu/discretemath/)]
-    * Math 211, Graduate Real Analysis
-    * Math 112, History of Math [[web](http://sites.tufts.edu/histmath/)]
-    * Math 250, Teichmüller Theory (geometry of surfaces)
-    * Math 250, Geometric Literacy
-    * Math 158, Complex Variables [[web](http://mduchin.math.tufts.edu/math158/)]
-    * Math 12, Calc II [[web](http://mduchin.math.tufts.edu/math34/)]
-    * Math 11, Calc I [[web](http://mduchin.math.tufts.edu/math11/)]
+* Math 145, Abstract Algebra [[web](https://sites.tufts.edu/algebra/)]
+* STS 10, Reading Lab: Math Models in Social Context [[web](http://sites.tufts.edu/models/)]
+* Math 250, Geometric Literacy: Topics in Analysis
+* Math 19, Social Choice [[web](http://sites.tufts.edu/socialchoice/)]
+* Math 61, Discrete Math [[web](http://sites.tufts.edu/discretemath/)]
+* Math 211, Graduate Real Analysis
+* Math 112, History of Math [[web](http://sites.tufts.edu/histmath/)]
+* Math 250, Teichmüller Theory (geometry of surfaces)
+* Math 250, Geometric Literacy
+* Math 158, Complex Variables [[web](http://mduchin.math.tufts.edu/math158/)]
+* Math 12, Calc II [[web](http://mduchin.math.tufts.edu/math34/)]
+* Math 11, Calc I [[web](http://mduchin.math.tufts.edu/math11/)]
 
 
 ### Other
