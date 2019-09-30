@@ -41,16 +41,10 @@ navi:
 * Science, technology, and society. (see Tufts [STS Program](https://as.tufts.edu/sts/))
 * Gerrymandering and civil rights. (see [MGGG Redistricting Lab](https://mggg.org))
 
-### Teaching information
+### Recent Courses
 
-
-Teaching in Fall 2019:
 * Math 145, [Abstract Algebra](https://sites.tufts.edu/algebra/)
-
-Teaching in Spring 2019:
 * STS 10, Reading Lab: [Mathematical Models in Social Context](https://sites.tufts.edu/models/)
-            
-Teaching in Spring 2018:
 * Math 19, [Math of Social Choice](https://sites.tufts.edu/socialchoice/)
 
 

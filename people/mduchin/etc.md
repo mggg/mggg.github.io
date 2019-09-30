@@ -16,4 +16,9 @@ navi:
       href: etc
 ---
 
-To be added.
+### Some of my people
+
+* [Faye Duchin](https://fayeduchin.com)
+* [Maya Brym](https://mayabrym.com)
+* [Floor van de Velde](https://floorvandevelde.com)
+* [Amanda Gunn](https://amandagunn.com)

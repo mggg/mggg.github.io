@@ -1,0 +1,151 @@
+<html>
+<head>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML">
+</script>
+</head>
+
+
+<body link=#FACC2E vlink=#FACC2E alink=red bgcolor=#FFFFFF>
+<STYLE>
+<!--
+a {text-decoration:none}
+ul {list-style-image:url('http://www.captured.nu/images/bullets_black.png');}
+//-->
+
+
+</STYLE>
+
+
+<link REL="SHORTCUT ICON" 
+HREF="images/identity.jpeg">
+
+
+<title>Grad Real Analysis, Fall 2015</title>
+<font face=Garamond>
+
+<center>
+<table cellpadding=25 bgcolor=#F8F8FF>
+<tr>
+
+<td><h3>Math 211, Fall 2015</h3>
+<center><img src="http://ecx.images-amazon.com/images/I/51ETjSfxV1L._SX340_BO1,204,203,200_.jpg" width=200></center></td>
+
+<td>
+ <table cellpadding=5>
+ <tr>
+ <td bgcolor=grey width=100 align=right><font face=Arial><b>Course</b></font></td>
+
+ <td bgcolor=444488 align=center><font face=Garamond color=white>
+ <b>Graduate Real Analysis</b></font></td>
+ </tr><tr>
+ <td bgcolor=grey align=right><font 
+ face=Arial><b>Meetings</b></font></td>
+  <td align=center><font face=Garamond>E+ (see Announcements), BP 5</font></td>
+ </tr>
+ <tr>
+ <td bgcolor=grey align=right><font face=Arial><b>Professor</b></font></td>
+ <td bgcolor=444488 align=center><font face=Garamond><a 
+ href="http://mduchin.math.tufts.edu/"><b>Moon Duchin</b></a> 
+ <font color=444488>--</font> 
+ <tt>
+ <font color=white size=-1>( moon.duchin @ tufts.edu )</font> </tt>
+ </td></tr>
+ </table>
+</td>
+</tr>
+
+
+
+<tr><td valign=top width=550>
+<h3>Materials, resources, links</h3>
+
+Here are the (rather minimalist) <a href="211-syllabus-fall15.pdf">syllabus</a>
+and the  
+<a href="first-day-slides.pdf"><b>slides</b></a> from the first lecture.
+
+<p>
+
+The whole <a href="http://www.cmat.edu.uy/~mordecki/courses/medida2013/book.pdf">textbook</a> is available free online.  However, 
+I really recommend that you purchase a physical copy.
+<p>
+
+Here's my sheet of <a href=halfway-highlights.pdf><b>course highlights</b></a>
+to help you while you're consolidating the material for the midterm.
+
+<p>
+<hr>
+<p>
+
+<h3>Background/Prerequisites:</h3>
+
+Here is a colleague's <a href="http://www.math.toronto.edu/lguth/background.pdf">list of prerequisites</a> for working with our text.  
+I'll go over some of this, but you should get very quickly up to speed on this material.
+
+
+<li> Point-set topology <a href="http://www.math.cornell.edu/~hatcher/Top/TopNotes.pdf">Notes by Hatcher</a>
+<li> <a href="http://math.uchicago.edu/~womp/2001/topology.pdf">Topology Crash Course</a> written for new Chicago grads
+<li> <a href="https://www.math.lsu.edu/~sengupta/4031f06/IntroRealAnalysNotes.pdf">Lecture notes</a> containing
+basic properties of the reals (least upper bound/monotone convergence, Bolzano-Weierstrass, Heine-Borel, 
+nested interval property, etc) and other greatest hits of undergraduate real analysis (Riemann integration, uniform
+convergence)
+<p>
+
+(Links are offered with no warranty!  Let me know about errors.)
+
+<p>
+
+
+
+
+
+<td width=550 valign=top>
+<h3>Announcements</h3>
+
+Our default meeting time is E+MW (Mon,Wed 10:30-11:45) with some 
+use of Fridays (advertised in advance).
+<p>
+
+<hr>
+
+<p>
+<h3>Homework</h3>
+Due Wednesdays at the beginning of class.
+<p>
+<li> HW1 (Sept 16): Ch 1 Ex 1,2,3,4,14,24.
+<li> HW2 (Sept 23):
+Ch 1 Ex 6,10,11,16.  <i>Extra credit:</i> Prob 1 (p46)
+<li>HW3 (Sept 30): Ch1 Ex 13,18,22,26,27,32,33
+<li>HW4 (Oct 7): Ch2 Ex 1,3,5,6,7
+<li>HW5 (Oct 21): Ch2 Ex 7 (again), Napkin Ring problem.  
+<i>Extra credit:</i> Prob 5 (p96)
+<li>HW6 (Nov 4): Understand one of the major proofs from Ch3.
+<li>HW7 (Nov 11): Ch 3 Ex 3,10,13,18,19,31
+<li>HW8 (Nov 18): Ch 4 Ex 1,2,3,4,5
+<li>HW9 (Nov <font color=red><b>30</b></font>) Ch 4 Ex 7,8,10,11,12
+<li>HW10 (Dec 2): Ch 4 Ex 19,20,22,24
+</td>
+
+
+
+
+</td></tr>
+</table>
+
+
+<p>
+
+
+
+
+
+
+</center>
+
+
+
+</font>
+</body>
+</html>
+
+
+
