@@ -28,15 +28,16 @@ navi:
 <img src="images/calcy-cone.jpg" height="80">
 <img src="images/pdisk.jpg" height="80">
 <img src="images/vote-button.png" height="80">
-<img src="images/round-data.jpg" height="80">
+<img src="images/round-data2.jpg" height="80">
+<img src="images/AR-blocks.jpg" height="80">
 
 ### Current and Recent Courses
 
 * Math 145, Abstract Algebra [[web](https://sites.tufts.edu/algebra/)]
 * STS 10, Reading Lab: Math Models in Social Context [[web](http://sites.tufts.edu/models/)]
 * Math 250, Geometric Literacy
-	* Topics include: hyperbolic geometry, complex of curves, p-adics, nilpotent geometry,
-	Gauss circle theorem, convex geometry, Lie groups
+	* <i>Topics have included: hyperbolic geometry, complex of curves, p-adics, nilpotent geometry,
+	Gauss circle theorem, convex geometry, Lie groups</i>
 * Math 19, Math of Social Choice [[web](http://sites.tufts.edu/socialchoice/)]
 * Math 61, Discrete Math [[web](http://sites.tufts.edu/discretemath/)]
 * Math 211, Graduate Real Analysis [[web](courses/math211)]
