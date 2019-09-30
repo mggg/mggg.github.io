@@ -32,7 +32,7 @@ navi:
 </dl>
 
 
-[Curriculum Vitae](mduchin/docs/DuchinCV-2019.pdf) <br>
+[Curriculum Vitae](docs/DuchinCV-2019.pdf) <br>
 
 
 ### Research interests
@@ -52,9 +52,9 @@ navi:
 ### Recent Events
 
 * Summer research program: [Voting Rights Data Institute](https://sites.tufts.edu/vrdi/)
-* Minicourse in nilpotent groups, from Workshop in Geometric Topology ([slides](mduchin/docs/nilpotent-provo.pdf))
-* Minicourse in hyperbolic groups, from Luminy Winter School ([notes](mduchin/docs/hyp-groups-course.pdf) and [exercises](mduchin/docs/hyp-groups-exercises.pdf))
-* Science Studies Colloquium, from UCSD ([slides](mduchin/docs/ucsd-pennsylvania.pdf))
-* Failure Modes for Proofs, from ASL conference ([slides](mduchin/docs/proof-fail.pdf))
+* Minicourse in nilpotent groups, from Workshop in Geometric Topology ([slides](docs/nilpotent-provo.pdf))
+* Minicourse in hyperbolic groups, from Luminy Winter School ([notes](docs/hyp-groups-course.pdf) and [exercises](docs/hyp-groups-exercises.pdf))
+* Science Studies Colloquium, from UCSD ([slides](docs/ucsd-pennsylvania.pdf))
+* Failure Modes for Proofs, from ASL conference ([slides](docs/proof-fail.pdf))
 * Workshop on advising: [**UMich** May 2017](http://www-personal.umich.edu/~kochsc/workshop.html) (with Sarah Koch); [**Tufts** April 2015](http://mduchin.math.tufts.edu/mwgam/) (with Larry Guth) 
 

@@ -23,13 +23,13 @@ navi:
 * Math 250, Geometric Literacy: Topics in Analysis
 * Math 19, Social Choice [[web](http://sites.tufts.edu/socialchoice/)]
 * Math 61, Discrete Math [[web](http://sites.tufts.edu/discretemath/)]
-* Math 211, Graduate Real Analysis [[web](mduchin/math211)]
+* Math 211, Graduate Real Analysis [[web](courses/math211)]
 * Math 112, History of Math [[web](http://sites.tufts.edu/histmath/)]
 * Math 250, Teichmüller Theory (geometry of surfaces)
 * Math 250, Geometric Literacy
-* Math 158, Complex Variables [[web](mduchin/courses/math158/)]
-* Math 34, Calc II [[web](mduchin/courses/math34/)]
-* Math 32, Calc I [[web](mduchin/courses/math11/)]
+* Math 158, Complex Variables [[web](courses/math158/)]
+* Math 34, Calc II [[web](courses/math34/)]
+* Math 32, Calc I [[web](courses/math11/)]
 
 
 ### Other
