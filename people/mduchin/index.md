@@ -61,6 +61,6 @@ Teaching in Spring 2018:
 * Minicourse in nilpotent groups, from Workshop in Geometric Topology ([slides](mduchin/docs/nilpotent-provo.pdf))
 * Minicourse in hyperbolic groups, from Luminy Winter School ([notes](mduchin/docs/hyp-groups-course.pdf) and [exercises](mduchin/docs/hyp-groups-exercises.pdf))
 * Science Studies Colloquium, from UCSD ([slides](mduchin/docs/ucsd-pennsylvania.pdf))
-* Failure Modes for Proofs, from ASL conference ([slides](mduchin/docs/proofs-fail.pdf))
+* Failure Modes for Proofs, from ASL conference ([slides](mduchin/docs/proof-fail.pdf))
 * Workshop on advising: [**UMich** May 2017](http://www-personal.umich.edu/~kochsc/workshop.html) (with Sarah Koch); [**Tufts** April 2015](http://mduchin.math.tufts.edu/mwgam/) (with Larry Guth) 
 
