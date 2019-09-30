@@ -28,8 +28,8 @@ navi:
 <img src="images/calcy-cone.jpg" height="80">
 <img src="images/pdisk.jpg" height="80">
 <img src="images/vote-button.png" height="80">
-<img src="images/round-data2.jpg" height="80">
-<img src="images/AR-blocks.jpg" height="80">
+<img src="images/round-data2.png" height="80">
+<img src="images/AR-blocks.png" height="80">
 
 ### Current and Recent Courses
 
