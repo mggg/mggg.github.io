@@ -27,19 +27,21 @@ navi:
 <img src="images/ford.gif" height="80">
 <img src="images/calcy-cone.jpg" height="80">
 <img src="images/pdisk.jpg" height="80">
-
+<img src="images/vote-button.png" height="80">
+<img src="images/round-data.jpg" height="80">
 
 
 
 * Math 145, Abstract Algebra [[web](https://sites.tufts.edu/algebra/)]
 * STS 10, Reading Lab: Math Models in Social Context [[web](http://sites.tufts.edu/models/)]
-* Math 250, Geometric Literacy: Topics in Analysis
+* Math 250, Geometric Literacy
+	* Topics include: hyperbolic geometry, complex of curves, p-adics, nilpotent geometry,
+	Gauss circle theorem, convex geometry, Lie groups
 * Math 19, Social Choice [[web](http://sites.tufts.edu/socialchoice/)]
 * Math 61, Discrete Math [[web](http://sites.tufts.edu/discretemath/)]
 * Math 211, Graduate Real Analysis [[web](courses/math211)]
 * Math 112, History of Math [[web](http://sites.tufts.edu/histmath/)]
 * Math 250, Teichmüller Theory (geometry of surfaces)
-* Math 250, Geometric Literacy
 * Math 158, Complex Variables [[web](courses/math158/)]
 * Math 34, Calc II [[web](courses/math34/)]
 * Math 32, Calc I [[web](courses/math11/)]
