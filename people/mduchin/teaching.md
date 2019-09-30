@@ -18,6 +18,17 @@ navi:
 
 ### Current and Recent Courses
 
+<img src="courses/math211/jordan.png" height=200>
+<img src="images/cell.jpg" height=200>
+<img src="courses/math158/images/curgus.gif" height=200>
+<img src="images/apple.jpg" height=200>
+<img src="images/compass.png" height=200>
+<img src="images/watch.png" height=200>
+<img src="images/ford.gif" height=200>
+<img src="images/calcy-cone.jpg" height=200>
+<img src="images/pdisk.jpg" height=200>
+
+
 * Math 145, Abstract Algebra [[web](https://sites.tufts.edu/algebra/)]
 * STS 10, Reading Lab: Math Models in Social Context [[web](http://sites.tufts.edu/models/)]
 * Math 250, Geometric Literacy: Topics in Analysis
