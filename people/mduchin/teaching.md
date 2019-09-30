@@ -20,6 +20,11 @@ navi:
 
 ![test image](courses/math211/jordan.png)
 <img src="courses/math211/jordan.png" height="200"  />
+<img src="courses/math211/jordan.png" height="200"/>
+<img src="courses/math211/jordan.png" height="200">
+<img src="courses/math211/jordan.png" height=200  />
+
+
 
 
 * Math 145, Abstract Algebra [[web](https://sites.tufts.edu/algebra/)]
