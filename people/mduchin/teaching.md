@@ -18,15 +18,8 @@ navi:
 
 ### Current and Recent Courses
 
-<img src="courses/math211/jordan.png" height=200/>
-<img src="images/cell.jpg" height=200>
-<img src="courses/math158/images/curgus.gif" height=200>
-<img src="images/apple.jpg" height=200>
-<img src="images/compass.png" height=200>
-<img src="images/watch.png" height=200>
-<img src="images/ford.gif" height=200>
-<img src="images/calcy-cone.jpg" height=200>
-<img src="images/pdisk.jpg" height=200>
+![test image](courses/math211/jordan.png)
+<img src="courses/math211/jordan.png" height="200"  />
 
 
 * Math 145, Abstract Algebra [[web](https://sites.tufts.edu/algebra/)]
@@ -52,6 +45,6 @@ navi:
 	* I'm a huge fan of [Canada/USA Mathcamp](http://www.mathcamp.org/) for high school students, where I used to visit and teach every summer before I started running my own summer programs more regularly.  It has spun off the truly excellent 
 [Bridge to Enter Advanced Mathematics](http://beamath.org/) program, which is focused on cultivating talent in younger
 kids in New York and L.A.  These programs are really worthy of your support!
-* Super old teaching evals
+* Super old teaching evals, for some reason
 	* Archived teaching evaluation pages from the University of Chicago ([Topics](https://web.archive.org/web/20060710002701/http://www.math.uchicago.edu/~mduchin/evals/112.htm) / [Calc I](https://web.archive.org/web/20060715195655/http://www.math.uchicago.edu/~mduchin/evals/151.htm) / [Calc II](https://web.archive.org/web/20060703164626/http://www.math.uchicago.edu/~mduchin/evals/152.htm))
 
