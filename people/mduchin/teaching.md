@@ -16,6 +16,7 @@ navi:
       href: etc
 ---
 
+## Teaching
 
 <center>
 <img src="courses/math211/jordan.png" height="80">
