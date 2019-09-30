@@ -18,11 +18,15 @@ navi:
 
 ### Current and Recent Courses
 
-![test image](courses/math211/jordan.png)
-<img src="courses/math211/jordan.png" height="200"  />
-<img src="courses/math211/jordan.png" height="200"/>
 <img src="courses/math211/jordan.png" height="200">
-<img src="courses/math211/jordan.png" height=200  />
+<img src="images/cell.jpg" height="200">
+<img src="courses/math158/images/curgus.gif" height="200">
+<img src="images/apple.jpg" height="200">
+<img src="images/compass.png" height="200">
+<img src="images/watch.png" height="200">
+<img src="images/ford.gif" height="200">
+<img src="images/calcy-cone.jpg" height="200">
+<img src="images/pdisk.jpg" height="200">
 
 
 
