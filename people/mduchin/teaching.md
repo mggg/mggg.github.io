@@ -17,19 +17,20 @@ navi:
 ---
 
 
-
+<center>
 <img src="courses/math211/jordan.png" height="80">
 <img src="images/cell.jpg" height="80">
 <img src="courses/math158/images/curgus.gif" height="80">
 <img src="images/apple.jpg" height="80">
+<img src="images/vote-button.png" height="80">
 <img src="images/compass.png" height="80">
 <img src="images/watch.png" height="80">
 <img src="images/ford.gif" height="80">
 <img src="images/calcy-cone.jpg" height="80">
 <img src="images/pdisk.jpg" height="80">
-<img src="images/vote-button.png" height="80">
 <img src="images/round-data2.png" height="80">
 <img src="images/AR-blocks.png" height="80">
+</center>
 
 ### Current and Recent Courses
 
@@ -45,6 +46,9 @@ navi:
 * Math 250, Teichmüller Theory (geometry of surfaces)
 * Math 158, Complex Variables [[web](courses/math158/)]
 * Math 32-34,  Calc I [[web](courses/math11/)], Calc II [[web](courses/math34/)]
+
+Plus longer ago:  Math for Elementary School Teachers, Differential Geometry, Graduate Topics: Fuchsian Groups,
+Linear Algebra with Proofs, etc.
 
 
 ### Other
