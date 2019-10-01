@@ -54,9 +54,15 @@ Linear Algebra with Proofs, etc.
 
 ### Other
 * Some of my talks
-	* Public lecture on gerrymandering at Stanford (youtube)
-	* "Rationality and growth" lectures at IAS (videos)
+	* Public lecture on gerrymandering at Stanford ([youtube](https://www.youtube.com/watch?v=2UdNoQi3JkM))
+	* "Counting and growth" lectures at IAS (videos: Part 1 is missing! [Part 2](https://www.youtube.com/watch?v=4JOHzdv3ke4) 
+	[Part 3](https://www.youtube.com/watch?v=UBR5nd4Atek) 
+	[Part 4](https://www.youtube.com/watch?v=w5eGzilfGCA))
 	* "The curve complex and its relatives" ([video](http://www.msri.org/web/msri/online-videos/-/video/showStream/12504/popup)), an expository lecture targeted for advanced graduate students from August 2007.
+* Work with teachers
+	* Educator Workshops through MGGG
+	* Work with pre-service teachers at UC Davis and U Michigan
+	* Work with in-service teachers at UChicago and Tufts 
 * Summer math programs you might want to visit
 	* I'm a huge fan of [Canada/USA Mathcamp](http://www.mathcamp.org/) for high school students, where I used to visit and teach every summer before I started running my own summer programs more regularly.  It has spun off the truly excellent 
 [Bridge to Enter Advanced Mathematics](http://beamath.org/) program, which is focused on cultivating talent in younger

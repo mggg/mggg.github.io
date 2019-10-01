@@ -16,6 +16,8 @@ navi:
       href: etc
 ---
 
+I'm in the process of updating this page with math and interdisicplinary papers!
+
 ### Math Papers, Preprints, Projects
 
 * Counting in groups: Fine asymptotic geometry,
@@ -65,9 +67,6 @@ University of Chicago dissertation (2005). (math.GT/0508046)
 
 ### Other Research Activity
 
-* I am running a research team called the Metric Geometry and Gerrymandering Group (MGGG). We maintain a website for our planned [Geometry of Redistricting Summer School](http://sites.tufts.edu/gerrymandr), which includes information for signing up for our mailing list.
-* I'll be hosting a 10-person [Research cluster on Rational Billiards](http://sites.tufts.edu/billiardscluster) at Tufts in Summer 2017. There was a similar cluster in Summer 2014 on the topic of Random Groups.
+* I hosted a 10-person [Research cluster on Rational Billiards](http://sites.tufts.edu/billiardscluster) at Tufts in Summer 2017. There was a similar cluster in Summer 2014 on the topic of Random Groups.
 * I ran the [Undergraduate Faculty Program](https://mduchin.math.tufts.edu/UFP/) at [PCMI 2012](http://pcmi.ias.edu/). This was a Research Lab in geometric group theory for 16 college professors.
-Principal investigator for NSF grant DMS-0906086, Metric geometry of groups and surfaces, 2009-2012, DMS-1207106, Finer coarse geometry, 2012-2015, and DMS-1255442, CAREER: Finer coarse geometry, 2013-2018.
-* I was a member of a recent [SQuaRE](http://www.aimath.org/research/squares.html) (small working group) at the American Institute of Mathematics (AIM) on Higher divergence functions together with Aaron Abrams, Noel Brady, Pallavi Dani, and Robert Young.
-For the 2006-07 school year, I led a VIGRE-funded Research Focus Group at UC Davis on the subject of [Geometric Group Theory](http://mduchin.math.tufts.edu/UCD/ggt/). 
+* Principal investigator for NSF grant DMS-0906086, Metric geometry of groups and surfaces, 2009-2012, DMS-1207106, Finer coarse geometry, 2012-2015, and DMS-1255442, CAREER: Finer coarse geometry, 2013-2018.
