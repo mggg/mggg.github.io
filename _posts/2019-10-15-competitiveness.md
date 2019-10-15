@@ -1,5 +1,5 @@
 ---
-title: "A Computational Approach to Measuring Vote Elasticity and Competitiveness"
+title: "Measuring Competitiveness"
 date: 2019-10-15 00:00:00 Z
 categories:
   - research
