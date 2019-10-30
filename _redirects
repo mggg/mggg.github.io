@@ -9,11 +9,11 @@
 /reports/news/2019/04/15/chicago.html /chicago
 /distflow/* https://distflow.netlify.com/:splat 200
 /distflow /distflow/index.html
+/massachusetts /uploads/Massachusetts
 /Lowell-Report /uploads/Lowell-Report.pdf
 /lowell-report /uploads/Lowell-Report.pdf
 /lowellreport /uploads/Lowell-Report.pdf
 /LowellReport /uploads/Lowell-Report.pdf
-
 /Lowell-Detailed-Report /uploads/Lowell-Detailed-Report.pdf
 /lowell-detailed-report /uploads/Lowell-Detailed-Report.pdf
 /lowelldetailedreport /uploads/Lowell-Detailed-Report.pdf
