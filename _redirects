@@ -18,3 +18,6 @@
 /lowell-detailed-report /uploads/Lowell-Detailed-Report.pdf
 /lowelldetailedreport /uploads/Lowell-Detailed-Report.pdf
 /LowellDetailedReport /uploads/Lowell-Detailed-Report.pdf
+
+# Redirects for Papers
+/:name.pdf /uploads/name.pdf
