@@ -7,6 +7,7 @@ categories:
 authors: MGGG
 featured: true
 pdf: "/uploads/competitiveness.pdf"
+permalink: /competitiveness
 ---
 
 What is a competitive election, anyway?  At first it may sound like an obvious
