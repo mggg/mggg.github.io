@@ -39,12 +39,12 @@ navi:
 
 ### Research interests
 
-I am currently working in the area of coarse geometry, the study of large scale properties of spaces. My PhD research involved transferring classical topological notions to the large scale world, often using category theory as a guiding framework. Right now I am interested in coarse homotopy theory and the large scale structure of groups.
+My research is in geometry and topology and their applications to data science. My theoretical work in mathematics is mostly in the field of coarse geometry -- the study of large scale properties of metric spaces -- which has strong mathematical connections to geometric group theory, functional analysis and the topology of manifolds. A major theme in coarse geometry is to discover the shape of discrete spaces. This, along with my multidisciplinary background in mathematics, engineering and data science, led me to become interested in the shape of data, and more broadly in mathematical and computational approaches to data science. I am particularly interested in data science research into redistricting, elections and civil rights.
 
 
 ### Teaching information
 
-Courses taught as a GTA at the University of Tennessee: College Algebra, Basic Calculus, Matrix Algebra.
+Courses taught as a GTA at the University of Tennessee: College Algebra, Basic Calculus, Matrix Algebra. I will be teaching a Point-Set Topology course at Tufts University in Spring 2020.
 
 
 ### Publications
