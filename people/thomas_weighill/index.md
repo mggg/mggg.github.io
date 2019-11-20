@@ -46,7 +46,6 @@ My research is in geometry and topology and their applications to data science. 
 
 Courses taught as a GTA at the University of Tennessee: College Algebra, Basic Calculus, Matrix Algebra. I will be teaching a Point-Set Topology course at Tufts University in Spring 2020.
 
-
 ### Publications
 
 * L Higginbotham and T Weighill, Coarse quotients by group actions and the maximal Roe algebra, Journal of Topology and Analysis (online ready).
