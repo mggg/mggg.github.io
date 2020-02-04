@@ -9,8 +9,12 @@ excerpt_separator: "<!--more-->"
 layout: post
 ---
 
-The MGGG Redistricting Lab is planning a paid two-week Summer Geodata Bootcamp. Students will learn how to prepare data and create maps for electoral redistricting and to think critically about ongoing debates in the redistricting process. Following completion of the bootcamp, students will also have opportunities to continue working on redistricting projects. 
+Monday June 8 – Friday June 19 at Tufts University
 
-Application information will be posted in early February.
+MGGG is offering a two-week intensive training session designed for undergraduate and graduate students who want to develop their data wrangling skills for voting rights projects. Participants will incorporate GIS (geographic information systems), Python, GeoPandas, and more while learning to work with shapefiles and tabular formats for election and demographic data. We will offer travel and stipend funding to participants.
+
+In Week 1, we will offer evening sessions on **Mapmaking** with a mix of public and commercial software. If you would like to attend Week 1 alone, please reach out to <a href="mailto:geodata@mggg.org">geodata@mggg.org</a>.
+
+Applications are open Feb 1 – 22 and we will notify accepted participants by March 2. <br> <a href="https://forms.gle/ywDiWAzwLUVg9TVj8">APPLY HERE</a>.
 
 <!--more-->
