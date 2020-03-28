@@ -9,8 +9,8 @@
 /reports/news/2019/04/15/chicago.html /chicago
 /distflow/* https://mggg-distflow.netlify.com/:splat 200
 /distflow /distflow/index.html
-/covid-flows/* https://mggg.github.io/covid-flows/:splat 200
 /covid-flows /covid-flows/
+/covid-flows/* https://mggg.github.io/covid-flows/:splat 200
 
 /yakima https://districtr.org/yakima
 
