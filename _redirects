@@ -10,7 +10,7 @@
 /distflow/* https://mggg-distflow.netlify.com/:splat 200
 /distflow /distflow/index.html
 /covid-flows/* https://mggg.github.io/covid-flows/:splat 200
-/covid-flows /covid-flows/index.html
+## /covid-flows /covid-flows/index.html
 
 /yakima https://districtr.org/yakima
 
