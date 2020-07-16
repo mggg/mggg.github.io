@@ -11,6 +11,8 @@
 /distflow /distflow/index.html
 /covid-flows /covid-flows/index.html
 /covid-flows/* https://mggg.github.io/covid-flows/:splat 200
+/covid https://mggg.github.io/covid-landing-page/index.html
+/covid/* https://mggg.github.io/covid-landing-page/:splat 200
 
 /yakima https://districtr.org/yakima
 
