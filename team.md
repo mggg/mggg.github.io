@@ -1,9 +1,10 @@
 ---
 title: Our Team
 layout: default
-navtitle: Team
+key: team
 nav: true
 order: 2
+show_about: true
 ---
 
 # Our Team

@@ -1,0 +1,17 @@
+<nav class="categories">
+  <ul class="nav-links nav-links--centered nav-links--wrap">
+    {% assign categories = site.about |
+    where_exp:"item","item.show_categories != false" | sort: "order" %} {% for
+    link in categories %}
+    <li>
+      <a
+        href="{{ link.url | relative_url }}"
+        class="nav-links__link nav-links__link--minor
+        {% if link.key == page.key %}nav-links__link--minor--current{% endif %}"
+      >
+        {{ link.title }}
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+</nav>
