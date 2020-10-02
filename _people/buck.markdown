@@ -3,9 +3,7 @@ title: Buck
 name: Ruth Buck
 photo: "/uploads/buck.png"
 github: RBuck1
-group: local
-description: "**Ruth Buck** is a recent graduate of Macalester College, where she
-  studied geography and data science. She is MGGG's lead Geographer, focusing on GIS (geographic
-  information systems), cartography, and political and demographic data.\n"
----
-
+group: collaborators
+description: "**Ruth Buck** was MGGG's lead Geographer from 2018-20, focusing on GIS (geographic
+  information systems), cartography, and political and demographic data.  She is currently studying for a PhD in geography at Penn State University.\n"
+--- 

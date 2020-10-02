@@ -9,11 +9,18 @@
 /reports/news/2019/04/15/chicago.html /chicago
 /distflow/* https://mggg-distflow.netlify.com/:splat 200
 /distflow /distflow/index.html
+/covid-flows /covid-flows/index.html
+/covid-flows/* https://mggg.github.io/covid-flows/:splat 200
+/covid https://mggg.github.io/covid-landing-page/index.html
+/covid/* https://mggg.github.io/covid-landing-page/:splat 200
+
+/yakima https://districtr.org/yakima
 
 ## Papers
 
 /massachusetts /uploads/Massachusetts.pdf
 /VA-criteria /VA-criteria.pdf
+/VA-report /VA-report.pdf
 
 /Lowell-Report /uploads/Lowell-Report.pdf
 /lowell-report /uploads/Lowell-Report.pdf
@@ -26,3 +33,5 @@
 /Lowell-Report/sp /uploads/Lowell-Report_SP.pdf
 /Lowell-Report/pt /uploads/Lowell-Report_PT.pdf
 /Lowell-Report/kh /uploads/Lowell-Report_KH.pdf
+
+# /uploads/VA-report.pdf /uploads/VA-criteria.pdf

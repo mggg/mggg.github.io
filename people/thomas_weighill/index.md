@@ -27,7 +27,7 @@ navi:
     <dd class="bio__body">
         <!-- <h2>Thomas Weighill</h2> -->
         <p>Postdoctoral fellow at the Metric Geometry and Gerrymandering Group<br>
-           Email: <a href="mailto:thomas.weighill@gmail.com">thomas.weighill@gmail.com</a>
+           Email: Thomas "dot" Weighill "at" tufts "dot" edu
         </p>
     </dd>
 </dl>

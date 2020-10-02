@@ -1,6 +1,6 @@
 ---
 title: Election Geodata
-date: 2019-09-23 00:00:00 Z
+date: 2019-12-9 00:00:00 Z
 authors: Ruth Buck and MGGG
 categories:
   - data
