@@ -7,7 +7,7 @@ order: 4
 
 # Support
 
-The Metric Geometry and Gerrymandering Group (MGGG) Redistricting Lab will use donations to support its multidisciplinary projects on the mathematics and data science of redistricting, voting rights, and census geography.
+The MGGG Redistricting Lab will use donations to support its multidisciplinary projects on the mathematics and data science of redistricting, voting rights, and census geography.
 
 {% include donate_button.html %}
 
