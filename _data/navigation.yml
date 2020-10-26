@@ -7,8 +7,7 @@
 - name: Team
   href: /about-us
 - name: Districtr
-  href: https://districtr.org
-  external: true
+  href: /districtr
 - name: Events
   href: http://gerrydata.org
   external: true
