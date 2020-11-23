@@ -7,13 +7,9 @@ customlink: "/#about-mggg"
 image: "/uploads/AR_plots.png"
 ---
 
-<h1>Our Mission</h1>
+# Our Mission
 
-The **Metric Geometry and Gerrymandering Group (MGGG)** is a Boston-based
-working group led by Moon Duchin of Tufts University and Justin Solomon of MIT.
-Our mission is to study applications of geometry and computing to U.S.
-redistricting. We believe that gerrymandering of all kinds is a fundamental
-threat to our democracy.
+The **MGGG Redistricting Lab** is a research group at Tisch College of Tufts University that grew out of an informal research collective called the Metric Geometry and Gerrymandering Group.  The Lab is led by PI Moon Duchin.  Our staff has expertise and interests spanning mathematics (geometry, topology, discrete math, dynamics), algorithms, software development, geography, [STS](https://as.tufts.edu/sts/), and policy. We research data science interventions for civil rights.
 
 Our goals are these:
 

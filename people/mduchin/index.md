@@ -32,7 +32,7 @@ navi:
 </dl>
 
 
-[Curriculum Vitae](docs/DuchinCV-2019.pdf) <br>
+[Curriculum Vitae](docs/DuchinCV-2020.pdf) <br>
 
 
 ### Research interests

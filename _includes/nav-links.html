@@ -8,6 +8,7 @@
   {% assign link_url = link.href | relative_url %}
   <a
     href="{{ link_url }}"
+    {% if link.external %} target="_blank" {% endif %}
     class="nav-links__link nav-links__link--major
     {% if link_url == highlight_link %}nav-links__link--current{% endif %}"
   >

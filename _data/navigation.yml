@@ -5,10 +5,11 @@
 - name: Work
   href: /work
 - name: Team
-  href: /who
+  href: /about-us
 - name: Districtr
-  href: https://districtr.org
-- name: VRDI
+  href: /districtr
+- name: Events
   href: http://gerrydata.org
+  external: true
 - name: Support
   href: /donate

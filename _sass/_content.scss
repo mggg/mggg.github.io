@@ -40,6 +40,18 @@
   padding: 1rem;
 }
 
+.funders {
+  display:flex; 
+  align-items:center; 
+  justify-content: center; 
+  flex-wrap: wrap; 
+  margin: 1rem;
+}
+
+.funders img {
+  margin: 1rem;
+}
+
 hr {
   margin: 2rem 0;
 
