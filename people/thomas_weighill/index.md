@@ -32,11 +32,11 @@ navi:
     </dd>
 </dl>
 
+As of January 2021, I am an assistant professor at the University of North Carolina at Greensboro. My new website with up-to-date information is [here](https://sites.google.com/view/thomasweighill/).
 
 [Curriculum Vitae](TWeighill_CV.pdf) <br>
 [MathSciNet page](http://www.ams.org/mathscinet/search/publications.html?pg1=INDI&s1=1068911)
 
-In January 2021 I will be joining the University of North Carolina at Greensboro as an Assistant Professor.
 
 ### Research interests
 
@@ -45,7 +45,7 @@ My research is in geometry and topology and their applications to data science. 
 
 ### Teaching information
 
-At Tufts University I taught Point-Set Topology in Spring 2020 and am currently teaching a course on Topological Data Analysis. At the University of Tennessee I was a GTA for College Algebra, Basic Calculus and Matrix Algebra. 
+At Tufts University I taught Point-Set Topology and Topological Data Analysis. At the University of Tennessee I was a GTA for College Algebra, Basic Calculus and Matrix Algebra. 
 
 ### Preprints
 
