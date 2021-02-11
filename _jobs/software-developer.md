@@ -5,7 +5,7 @@
 ---		
 
 The MGGG Redistricting Lab is doing very exciting work across the country supporting governments, 
-commissions, and community groups in collecting public mapping input for their 2021 redistricting.  
+commissions, and community groups in collecting public mapping input for their 2021 redistricting. 
 The Lab seeks a full-time **Software Developer** to help us build the software and the technical 
 infrastructure needed to help make community voices heard in the process. Willingness to work in 
 a large and vibrant team environment and to learn new skills across problem domains is a must.
