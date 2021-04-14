@@ -1,5 +1,5 @@
 ---
-title: "Census TopDown: The Impacts of Differential Privacy on Redistricting"
+title: "Differential Privacy and Redistricting"
 date: 2021-04-14 00:00:00 Z
 categories:
   - research
