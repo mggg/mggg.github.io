@@ -18,4 +18,6 @@ look at reconstructed Texas data, we find reassuring evidence that **TopDown** w
 ability to produce districts with tolerable population balance or to detect signals of racial 
 polarization for Voting Rights Act enforcement.
 
+<!--more-->
+
 Read the preprint [here](/DP.pdf).
