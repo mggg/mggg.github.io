@@ -9,6 +9,20 @@ dd {
   grid-template-columns: 100px auto;
   grid-gap: 2rem 3rem;
   list-style: none;
+  // margin: 1rem 0;
+  padding: 0 1rem;
+  max-width: 50rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.bio-list-collab {
+  display: grid;
+  grid-template-columns: 100px auto 100px auto;
+  grid-gap: 2rem 3rem;
+  list-style: none;
   margin: 1rem 0;
   padding: 0;
 }

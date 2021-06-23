@@ -1,6 +1,6 @@
 ---
 title: Our Team
-layout: default
+layout: bio-list
 key: team
 nav: true
 order: 2

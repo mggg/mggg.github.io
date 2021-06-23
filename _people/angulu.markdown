@@ -1,7 +1,7 @@
 ---
 title: Angulu
 name: Hakeem Angulu
-group: local
+group: collaborators
 photo: "/uploads/angulu.jpg"
 github: hangulu
 website: https://www.hakeemangulu.com/
