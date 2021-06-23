@@ -4,5 +4,5 @@ name: Dara Gold
 group: collaborators
 photo: "/uploads/gold.png"
 description:
-  "**Dara Gold** was a Data Scientist with MGGG from 2019-21. She completed her PhD in Math at Boston University in 2015. Prior to working at MGGG she worked at the RAND Corporation as an Associate Mathematician.\n"
+  "**Dara Gold** worked as a data scientist in the Lab in 2019-20.  She holds a PhD in Math at Boston University, and also worked at the RAND Corporation as an Associate Mathematician.\n"
 ---
