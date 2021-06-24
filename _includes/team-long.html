@@ -5,8 +5,8 @@
 </dl>
 
 <h2>Key Collaborators, Past and Present</h2>
-<div class="bio-list-collab">
+<div class="bio-list">
   {% assign collaborators = site.people | where: "group", "collaborators" %} {%
-  for person in collaborators %} {% include bio-short.html person=person %} {% endfor
+  for person in collaborators %} {% include bio.html person=person %} {% endfor
   %}
 </div>
