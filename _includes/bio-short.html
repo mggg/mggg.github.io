@@ -1,0 +1,11 @@
+<a href="/team-expanded#{{ person.name | downcase | replace: " ", "-" }}">
+  <div class="bio__img-container short" 
+    id="{{ person.name | downcase | replace: " ", "-" }}">
+    <img
+    src="{{ person.photo }}"
+    class="bio__img"
+    alt="A photo of {{ person.name }}"
+    />
+    <div class="bio__short__name">{{ person.name }}</div>
+  </div>
+</a>

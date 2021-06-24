@@ -11,7 +11,7 @@ dd {
   list-style: none;
   // margin: 1rem 0;
   padding: 0 1rem;
-  max-width: 50rem;
+  // max-width: 60rem;
   margin-left: auto;
   margin-right: auto;
   margin-top: 1rem;
@@ -20,11 +20,19 @@ dd {
 
 .bio-list-collab {
   display: grid;
-  grid-template-columns: 100px auto 100px auto;
-  grid-gap: 2rem 3rem;
+  // flex-wrap: wrap;
+  // flex-direction: column;
+  // justify-content: center;
+  grid-template-columns: repeat(auto-fit, 125px);
+  // grid-template-columns: 100px auto;// 100px auto;
+  justify-content: center;
+  grid-gap: 1rem 1rem;
   list-style: none;
-  margin: 1rem 0;
-  padding: 0;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding: 0 1rem;
 }
 
 .bio__img {
@@ -33,7 +41,29 @@ dd {
 
   object-fit: scale-down;
   border-radius: 50%;
-  margin: 1rem;
+  // margin: 1rem;
+}
+
+.bio__img-container {
+  margin: 0.3rem;
+  width: 20%;
+  max-width: 20%;
+}
+.short {
+  display: grid;
+  align-items: center;
+  // justify-content: center;
+  margin: 0.5rem;
+}
+
+.bio__short__name {
+  text-align: center;
+  width: 100%;
+  font-weight: bold;
+  margin-top: 0.25rem;
+  color: black;
+  line-height: 1.25rem;
+  margin-bottom: 1rem;
 }
 
 @media only screen and (max-width: 600px) {
