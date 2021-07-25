@@ -36,3 +36,5 @@
 /Lowell-Report/kh /uploads/Lowell-Report_KH.pdf
 
 # /uploads/VA-report.pdf /uploads/VA-criteria.pdf
+
+/* /publications/:splat.pdf 200
