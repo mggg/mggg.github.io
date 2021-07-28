@@ -18,23 +18,34 @@
 
 ## Papers
 
-/massachusetts /uploads/Massachusetts.pdf
+/massachusetts /publications/Massachusetts.pdf
 /VA-criteria /VA-criteria.pdf
 /VA-report /VA-report.pdf
 /santaclara /SantaClara.pdf
 
-/Lowell-Report /uploads/Lowell-Report.pdf
-/lowell-report /uploads/Lowell-Report.pdf
-/lowellreport /uploads/Lowell-Report.pdf
-/LowellReport /uploads/Lowell-Report.pdf
-/Lowell-Detailed-Report /uploads/Lowell-Detailed-Report.pdf
-/lowell-detailed-report /uploads/Lowell-Detailed-Report.pdf
-/lowelldetailedreport /uploads/Lowell-Detailed-Report.pdf
-/LowellDetailedReport /uploads/Lowell-Detailed-Report.pdf
-/Lowell-Report/sp /uploads/Lowell-Report_SP.pdf
-/Lowell-Report/pt /uploads/Lowell-Report_PT.pdf
-/Lowell-Report/kh /uploads/Lowell-Report_KH.pdf
+/Lowell-Report /publications/Lowell-Report.pdf
+/lowell-report /publications/Lowell-Report.pdf
+/lowellreport /publications/Lowell-Report.pdf
+/LowellReport /publications/Lowell-Report.pdf
+/Lowell-Detailed-Report /publications/Lowell-Detailed-Report.pdf
+/lowell-detailed-report /publications/Lowell-Detailed-Report.pdf
+/lowelldetailedreport /publications/Lowell-Detailed-Report.pdf
+/LowellDetailedReport /publications/Lowell-Detailed-Report.pdf
+/Lowell-Report/sp /publications/Lowell-Report_SP.pdf
+/Lowell-Report/pt /publications/Lowell-Report_PT.pdf
+/Lowell-Report/kh /publications/Lowell-Report_KH.pdf
 
-# /uploads/VA-report.pdf /uploads/VA-criteria.pdf
+## Papers that used to live in root
 
+/SCOTUS-MathBrief.pdf /publications/SCOTUS-MathBrief.pdf 200
+/Chicago.pdf /publications/Chicago.pdf 200
+/Capy.pdf /publications/Capy.pdf 200
+/SantaClara.pdf /publications/SantaClara.pdf 200
+/VA-criteria.pdf /publications/VA-criteria.pdf 200
+/VA-report.pdf /publications/VA-report.pdf 200
+
+/Brochure.pdf /uploads/Brochure.pdf 200
+/CampusKey.pdf /uploads/CampusKey.pdf 200
+
+## Pretty Links for publications (should be last line in redirects file)
 /* /publications/:splat.pdf 200

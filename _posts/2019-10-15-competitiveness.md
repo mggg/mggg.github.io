@@ -6,7 +6,7 @@ categories:
   - news
 authors: MGGG
 featured: true
-pdf: "/uploads/competitiveness.pdf"
+pdf: "/publications/competitiveness.pdf"
 permalink: /competitiveness
 ---
 

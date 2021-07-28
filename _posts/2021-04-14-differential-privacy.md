@@ -20,4 +20,4 @@ polarization for Voting Rights Act enforcement.
 
 <!--more-->
 
-Read the preprint [here](/uploads/DP.pdf).
+Read the preprint [here](/publications/DP.pdf).
