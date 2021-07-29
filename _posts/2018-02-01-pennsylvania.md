@@ -11,5 +11,5 @@ description:
   filing</a>.)
 publication_date: 2018-02-01 00:00:00 Z
 pdf: "/uploads/md-report.pdf"
-href: "/uploads/md-report.pdf"
+href: "/publications/md-report.pdf"
 ---

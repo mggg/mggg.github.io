@@ -16,6 +16,6 @@ description:
   building a valid districting plan than there are particles in the galaxy, and
   every one of them will produce a 9-0 Democratic delegation.
 pdf: /uploads/Massachusetts.pdf
-href: /uploads/Massachusetts.pdf
+href: /publications/Massachusetts.pdf
 featured: true
 ---
