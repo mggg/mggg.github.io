@@ -2,11 +2,12 @@
 title: Pizzimenti
 name: Anthony Pizzimenti
 photo: "/uploads/pizzimenti.jpg"
-website: http://myweb.uiowa.edu/apizzimenti
+website: https://apizzimenti.com
 github: apizzimenti
-group: collaborators
-description: "[Anthony Pizzimenti](http://myweb.uiowa.edu/apizzimenti) is a 
-  math and computer science student at the University of Iowa. Anthony has worked
-  on an array of software projects for MGGG. He also runs [MGGG's Twitter account](https://twitter.com/gerrymandr)."
+group: local
+description: "[Anthony Pizzimenti](https://apizzimenti.com) is a data scientist
+  with MGGG working on web, software, and research projects. Anthony is a recent
+  graduate of the University of Iowa where he studied math and computer science,
+  focusing on algebra, graph theory, and algorithms. However, his most important
+  job is managing the MGGG's [twitter account](https://twitter.com/gerrymandr).
 ---
-
