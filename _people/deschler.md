@@ -1,6 +1,6 @@
 ---
 title: Deschler
-name: Jack 
+name: Jack Deschler
 group: collaborators
 photo: "/uploads/deschler.jpg"
 description:
