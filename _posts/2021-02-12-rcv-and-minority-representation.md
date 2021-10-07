@@ -24,7 +24,14 @@ We intend this as a set of tools that will help researchers, litigators, and the
 ## More case studies
 We have a growing list of individual jurisdictions where we've done detailed ranked-choice modeling.  
 
+### Whole states
+
+* Oregon [report](https://mggg.org/publications/Oregon.pdf)
+* Washington [report](https://mggg.org/publications/Washington.pdf)
+
+### Cities and counties
+
 * Chicago, IL
 * Lowell, MA
-* Oregon: statewide, Beaverton, Salem-Keizer
-* Washington: statewide, Chelan County, Hillsboro, Pierce County, Portland, Tukwila, Wenatchee
+* Oregon: Beaverton, Salem-Keizer
+* Washington: Chelan County, Hillsboro, Pierce County, Portland, Tukwila, Wenatchee
