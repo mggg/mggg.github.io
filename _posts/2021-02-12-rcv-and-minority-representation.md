@@ -33,7 +33,7 @@ We have a growing list of individual jurisdictions where we've done detailed ran
 
 * Chicago, IL city council &mdash; [report](https://mggg.org/publications/Chicago.pdf)
 * Lowell, MA city council &mdash; public report in [English](https://mggg.org/publications/Lowell-Report.pdf) | [Khmer](https://mggg.org/publications/Lowell-Report_KH.pdf) | [Spanish](https://mggg.org/publications/Lowell-Report_SP.pdf) | [Portuguese](https://mggg.org/publications/Lowell-Report_PT.pdf) &mdash; [detailed report](https://mggg.org/publications/Lowell-Detailed-Report.pdf)
-* Oregon school districts &mdash; Beaverton [report](https://mggg.org/publications/Beaverton.pdf), Salem-Keizer [report](https://mggg.org/publications/Salem_Keizer.pdf)
+* Oregon school districts &mdash; Beaverton [report](https://mggg.org/publications/Beaverton.pdf), Hillsboro [report](https://mggg.org/publications/Beaverton.pdf), Salem-Keizer [report](https://mggg.org/publications/Salem_Keizer.pdf)
 * Washington county commissions &mdash; Chelan County [report](https://mggg.org/publications/Chelan_County.pdf), Pierce County  [report](https://mggg.org/publications/Pierce_County.pdf)
-* Washington school districts &mdash Hillsboro, Tukwila, Wenatchee
+* Washington school districts &mdash;  Tukwila [report](https://mggg.org/publications/Tukwila.pdf), Wenatchee [report](https://mggg.org/publications/Wenatchee.pdf)
 * Portland, OR city council &mdash; [report](https://mggg.org/publications/Portland.pdf)
