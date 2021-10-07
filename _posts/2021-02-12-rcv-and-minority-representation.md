@@ -17,4 +17,12 @@ In a new preprint, we outline and demonstrate a data-driven methodology that vot
 
 We have four case studies: judicial elections in Terrebonne Parish, Louisiana; the county commission of Jones County, North Carolina; and the city councils of Cincinnati, Ohio and Pasadena, Texas. We find that STV provides **proportional or slightly better representation** for the relevant minority group in each case, while districts vary widely in their effectiveness depending on local circumstances.
 
-Read the preprint [here](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3778021).
+Read the preprint [here](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3778021).  
+
+We intend this as a set of tools that will help researchers, litigators, and the public assess ranked choice opportunities.  Try the webapp [here](https://mggg.github.io/rcv-webapp).
+
+More work on ranked choice case studies:
+* Chicago, IL
+* Lowell, MA
+* Oregon: statewide, Beaverton, Salem-Keizer
+* Washington: statewide, Chelan County, Hillsboro, Pierce County, Portland, Tukwila, Wenatchee
