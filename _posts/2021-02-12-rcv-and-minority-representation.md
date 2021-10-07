@@ -1,6 +1,6 @@
 ---
 title: "Ranked Choice Voting and Minority Representation"
-date: 2021-02-12 00:00:00 Z
+date: 2021-10-07 00:00:00 Z
 categories:
   - research
 authors: MGGG
@@ -21,7 +21,9 @@ Read the preprint [here](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=377
 
 We intend this as a set of tools that will help researchers, litigators, and the public assess ranked choice opportunities.  Try the webapp [here](https://mggg.github.io/rcv-webapp).
 
-More work on ranked choice case studies:
+## More case studies
+We have a growing list of individual jurisdictions where we've done detailed ranked-choice modeling.  
+
 * Chicago, IL
 * Lowell, MA
 * Oregon: statewide, Beaverton, Salem-Keizer
