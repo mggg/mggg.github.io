@@ -1,8 +1,8 @@
 ---
 title: Atlas
 name: Jamie Atlas
-group: local
+group: collaborators
 photo: "/uploads/atlas.jpg"
 description:
-  "**Jamie Atlas** is a project manager at MGGG where he works on our full range of research and software projects. He is interested in graph and network theory, and their applications to computational social science. His favorite state shape is West Virginia.\n"
+  "**Jamie Atlas** was a project manager at MGGG in 2021 where he worked on our full range of research and software projects. He is interested in graph and network theory, and their applications to computational social science. His favorite state shape is West Virginia.\n"
 ---
