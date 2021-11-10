@@ -4,12 +4,12 @@
  position: 1		
 ---		
 
-The MGGG Redistricting Lab develops and maintains Districtr, an open-source web app for drawing
+The MGGG Redistricting Lab develops and maintains [Districtr](http://districtr.org), an open-source web app for drawing
 districts and identifying communities. Districtr uses MapBox and its web API in its mapping modules.
 Districtr has grown over the last three years from mostly in-house use to a current usage level of
 about 3000 new maps drawn by members of the public every week.
 
-MGGG seeks a full-time *Web Developer* for a medium-term project (3-4 months) to restructure the
+MGGG seeks a full-time **Web Developer** for a medium-term project (3-4 months) to restructure the
 Districtr web application for high performance and durability at scale. This will involve both
 replicating the client interface and developing a new administrative interface for contributors.
 
