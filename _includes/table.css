@@ -50,6 +50,9 @@ colgroup.queen {
     color: white;
     background: #197e53;
 }
+th.queen-label a {
+    color: #90f9ca;
+}
 
 td {
     text-align: right;
