@@ -3,6 +3,7 @@ title: "Ranked Choice Voting and Minority Representation"
 date: 2021-10-07 00:00:00 Z
 categories:
   - research
+  - news
 authors: MGGG
 featured: true
 permalink: /rcv

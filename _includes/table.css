@@ -31,12 +31,20 @@ colgroup.queen {
     border: 1px solid #111;
 }
 
+colgroup.portal {
+    border: 1px solid #111;
+}
+
 .rook {
     background: #90caf9;
 }
 
 .queen {
     background: #90f9ca;
+}
+
+.portal {
+    background: #cacaca;
 }
 
 .rook-heading,
@@ -50,8 +58,17 @@ colgroup.queen {
     color: white;
     background: #197e53;
 }
-th.queen-label a {
-    color: #90f9ca;
+
+.portal-heading,
+.portal-label {
+    color: white;
+    background: #555555;
+    text-align: center;
+}
+
+
+th.portal-label a {
+    color: #90f5f9;
 }
 
 td {
