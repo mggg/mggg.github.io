@@ -5,7 +5,7 @@
 ---		
 
 The MGGG Redistricting Lab develops and maintains [Districtr](http://districtr.org), an open-source web app for drawing
-districts and identifying communities. Districtr uses MapBox and its web API in its mapping modules.
+districts and identifying communities. Districtr uses Mapbox and its web API in its mapping modules.
 Districtr has grown over the last three years from mostly in-house use to a current usage level of
 about 3000 new maps drawn by members of the public every week.
 
@@ -31,5 +31,5 @@ replicating the client interface and developing a new administrative interface f
 ### Desired Qualifications - a non-exhaustive list of possible assets for the position		
 
 - Experience handling geospatial data, especially Census data, using geopandas/shapely and pandas ;
-- Experience with MapBox ;
+- Experience with Mapbox ;
 - Demonstrated interest in social and racial justice.
