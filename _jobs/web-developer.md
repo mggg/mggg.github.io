@@ -22,7 +22,7 @@ replicating the client interface and developing a new administrative interface f
 ### Required Qualifications		
 
 - At least 3 years industry experience (5 years preferred) as a full-stack web developer ;
-- Proficiency in C#/.NET/ASP.NET, JavaScript ;
+- Proficiency in C#/.NET/ASP.NET or enterprise-scale framework equivalent, JavaScript ;
 - Proficiency with AWS API Gateway, S3, and Lambda ;
 - Database experience with Mongo/MongoDB or equivalent ;
 - Experience writing unit tests with xUnit or equivalent ;
