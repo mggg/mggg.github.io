@@ -20,4 +20,10 @@ polarization for Voting Rights Act enforcement.
 
 <!--more-->
 
-Read the preprint [here](/publications/DP.pdf).
+Our first publication on this topic has now appeared in Foundations of Responsible Computing, and can be accessed [here](https://drops.dagstuhl.de/opus/volltexte/2021/13873/pdf/LIPIcs-FORC-2021-5.pdf).
+
+A follow-up study that considered demographic impacts on small, diverse districts in Arizona was commissioned by 
+the Arizona Independent Redistricting Commission.  The presentation can be accessed [here](/publications/AZ-DP.pdf).
+
+A further study, updated to consider the final production parameters used in the 2020 Decennial Census, is in 
+revision at the Harvard Data Science Review.
