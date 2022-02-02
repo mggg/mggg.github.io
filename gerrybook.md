@@ -33,6 +33,6 @@ _Political Geometry_, edited by Moon Duchin and Olivia Walch and published by _B
 * [Chapter 19. Interview: Drawing for the courts](https://mggg.org/publications/political-geometry/19-Editors.pdf) by the Editors
 * [Chapter 20. Explainer: Ranked choice voting](https://mggg.org/publications/political-geometry/20-WeighillDuchin.pdf) by Thomas Weighill and the Editors
 * [Chapter 21. Reform on the ground in Lowell, MA](https://mggg.org/publications/political-geometry/21-EspinozaMadrigalSellstrom.pdf) by Ivan Espinoza-Madrigal and Oren Sellstrom
-* [Chapter 22. Explainer: Racial polarization](https://mggg.org/publications/political-geometry/22-DuchinGordon.pdf) by Arusha Gordon and the Editors
+* [Chapter 22. Explainer: Racial vs. partisan polarization](https://mggg.org/publications/political-geometry/22-Gordon.pdf) by Arusha Gordon
 * [Chapter 23. The state of play in voting rights](https://mggg.org/publications/political-geometry/23-ClarkeGordon.pdf) by Kristen Clarke and Arusha Gordon
 * [Author Biographies](https://mggg.org/publications/political-geometry/Author_Biographies.pdf)
