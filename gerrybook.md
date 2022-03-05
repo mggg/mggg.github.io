@@ -28,7 +28,7 @@ _Political Geometry_, edited by Moon Duchin and Olivia Walch and published by _B
 * [Chapter 14. Three applications of entropy](https://mggg.org/publications/political-geometry/14-GuthNiehWeighill.pdf) by Larry Guth, Ari Nieh, and Thomas Weighill ([code](https://github.com/political-geometry/entropy))
 * [Chapter 15. Explainer: Measuring clustering and segregation](https://mggg.org/publications/political-geometry/15-DuchinMurphy.pdf) by James M. Murphy and the Editors
 * [Chapter 16. Redistricting algorithms](https://mggg.org/publications/political-geometry/16-BeckerSolomon.pdf) by Amariah Becker and Justin Solomon ([code](https://github.com/political-geometry/redistricting-algorithms))
-* [Chapter 17. Random walks](https://mggg.org/publications/political-geometry/17-DefordDuchin.pdf) by Daryl Deford and Moon Duchin
+* [Chapter 17. Random walks](https://mggg.org/publications/political-geometry/17-DefordDuchin.pdf) by Daryl DeFord and Moon Duchin
 * [Chapter 18. Making maps](https://mggg.org/publications/political-geometry/18-GallMacDonaldMcBride.pdf) by Megan Gall, Karin Mac Donald, and Fred McBride
 * [Chapter 19. Interview: Drawing for the courts](https://mggg.org/publications/political-geometry/19-Editors.pdf) by the Editors
 * [Chapter 20. Explainer: Ranked choice voting](https://mggg.org/publications/political-geometry/20-WeighillDuchin.pdf) by Thomas Weighill and the Editors
