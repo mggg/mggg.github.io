@@ -39,14 +39,16 @@ navi:
 
 * Geometric group theory. Geometric topology. Dynamics.
 * Science, technology, and society. (see Tufts [STS Program](https://as.tufts.edu/sts/))
-* Gerrymandering and civil rights. (see [MGGG Redistricting Lab](https://mggg.org))
+* Redestricting, elections, and civil rights. (see [MGGG Redistricting Lab](https://mggg.org))
 
-### Recent Courses
+### Some Courses
 
-* Math 145, [Abstract Algebra](https://sites.tufts.edu/algebra/)
+* Math 4480 at Boston College -- Mathematics of Voting (for math majors)
 * STS 10, Reading Lab: [Mathematical Models in Social Context](https://sites.tufts.edu/models/)
+* STS 10, Reading Lab: [Classification](https://sites.tufts.edu/classification/)
 * Math 19, [Math of Social Choice](https://sites.tufts.edu/socialchoice/)
-
+* Math 87, [Mathematical Modeling and Computation](https://sites.tufts.edu/mathmodels/)
+* Math 145, [Abstract Algebra](https://sites.tufts.edu/algebra/)
 
 
 ### Recent Events
