@@ -5,7 +5,7 @@ layout: default
 
 # _Political Geometry_
 
-_Political Geometry_, edited by Moon Duchin and Olivia Walch and published by _Birkhauser_, is currently in production for release in 2022. 
+_Political Geometry_, edited by Moon Duchin and Olivia Walch, is now available from _Birkhauser_.
 
 ## Chapters as PDFs
 
