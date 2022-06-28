@@ -1,6 +1,6 @@
 ---		
  date: 2022-06-28		
- title: Web Developer		
+ title: Senior Web Developer		
  position: 1		
 ---		
 
