@@ -5,7 +5,7 @@
 ---		
 
 The MGGG Redistricting Lab develops and maintains [Districtr](http://districtr.org), an open-source web app for drawing
-districts and mapping communities. Districtr uses Mapbox and its web API in its mapping modules.
+districts and mapping communities ([github](https://github.com/districtr/)). Districtr uses Mapbox and its web API in its mapping modules.
 Districtr has grown over the last three years from mostly in-house use to a peak usage level of
 over 3000 new maps drawn by members of the public every week. 
 
