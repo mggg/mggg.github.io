@@ -43,7 +43,7 @@ New America;
 and 
 the Alfred P. Sloan Foundation.
 
-Offices that contracted with us for mapping and redistricting support for localities around the country have included Contra Costa County, California; Grand County, Utah; Massachusetts (Massachusetts General Court); Michigan Department of State; Community Foundation of the Ozarks (Missouri Fair Maps Coalition); Ohio Organizing Collaborative; New Mexico (Thornburg Foundation); Texas Civil Rights Project (Oficina Legal del Pueblo Unido, Inc.); and the Wisconsin Department of Administration.  Consultants that contracted with us to offer mapping support for numerous localities include National Demographics Corporation and Redistricting Partners.
+Offices that have contracted with us for mapping and redistricting support for localities around the country have included Contra Costa County, California; Grand County, Utah; Massachusetts (Massachusetts General Court); Michigan Department of State; Community Foundation of the Ozarks (Missouri Fair Maps Coalition); Ohio Organizing Collaborative; New Mexico (Thornburg Foundation); Texas Civil Rights Project (Oficina Legal del Pueblo Unido, Inc.); and the Wisconsin Department of Administration.  Consultants that contracted with us to offer mapping support for numerous localities include National Demographics Corporation and Redistricting Partners.
 
 <div class="funders">
     <img src="/uploads/funding/Alfred_P._Sloan_Foundation_stacked_logo.png" height="100">
@@ -51,10 +51,10 @@ Offices that contracted with us for mapping and redistricting support for locali
     <img src="/uploads/funding/med-logo.png" height="100">
     <img src="/uploads/funding/nsf-logo.png" height="125">
     <img src="/uploads/funding/gsoc-logo.png" height="125">
-    <img src="/uploads/funding/Arnold_Ventures.PNG" height="125">
+    <img src="/uploads/funding/Arnold_Ventures.PNG" height="75">
 </div>
 
-The MGGG Redistricting Lab has been part of the [Jonathan M. Tisch College of Civic Life](https://tischcollege.tufts.edu/) since 2018.  Tisch provides an institutional home for the lab, including salary support, student research placements, and office space in Barnum Hall at Tufts University. Tufts is unique in having a civic research hub as a major division of the university, and we are proud to be one of three major labs—together with IDHE and Circle—that anchor that research effort. 
+The MGGG Redistricting Lab has been part of the [Jonathan M. Tisch College of Civic Life](https://tischcollege.tufts.edu/) since 2018.  Tisch provides an institutional home for the lab, including salary support, student research placements, and office space in Barnum Hall at Tufts University. Tufts is unique in having a civic research hub as a major division of the university, and we are proud to be one of three major labs—together with [IDHE](https://idhe.tufts.edu/) and [CIRCLE](https://circle.tufts.edu/)—that anchor that research effort. 
 
 <div class="funders">
 <img src="/uploads/funding/tisch.png" height="150">
