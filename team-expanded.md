@@ -9,7 +9,7 @@ show_about: true
 
 # Our Team
 
-As an organization, MGGG operates on multiple scales. We have a core group in the Boston area, a larger group of active contributors working with us on various projects.
+As an organization, MGGG operates on multiple scales. We have a core group in the Boston area and a larger group of active contributors working with us on various projects.
 
 <!-- As an organization, MGGG operates on multiple scales. We have a core group in the Boston area, a larger group of active contributors working with us on various projects, and several hundred people who attended our cycle of training sessions around the country in 2017-18, including dozens who are preparing to serve as expert witnesses and consultants.
 
