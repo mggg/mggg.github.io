@@ -9,7 +9,7 @@ image: "/uploads/AR_plots.png"
 
 # Our Mission
 
-The **MGGG Redistricting Lab** is a research group at [Tisch College](https://tischcollege.tufts.edu/) of Tufts University. led by PI Moon Duchin, that grew out of an informal research collective called the Metric Geometry and Gerrymandering Group.   Our staff has expertise and interests spanning mathematics (geometry, topology, discrete math, dynamics), algorithms, software development, geography, [STS](https://as.tufts.edu/sts/), law, and policy. We research data science interventions for civil rights.
+The **MGGG Redistricting Lab** is a research group at [Tisch College](https://tischcollege.tufts.edu/) of Tufts University, led by PI Moon Duchin, that grew out of an informal research collective called the Metric Geometry and Gerrymandering Group.   Our staff has expertise and interests spanning mathematics (geometry, topology, discrete math, dynamics), algorithms, software development, geography, [STS](https://as.tufts.edu/sts/), law, and policy. We research data science interventions for civil rights.
 
 Our goals are these:
 
