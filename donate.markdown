@@ -33,7 +33,7 @@ Our commitments:  Any funded work prepared by the Lab will be made publicly avai
 
 Our biggest single funding source to date has been the National Science Foundation. Below is a list of foundations or organizations that have been sponsors of grants or contracts since the Lab was founded at Tisch College in 2018, current through July 1, 2022.
 
-Arnold Ventures;
+Funders include Arnold Ventures;
 FairVote;
 Ground Control Pertners;
 More Equitable Democracy; 
@@ -48,10 +48,10 @@ Offices that contracted with us for mapping and redistricting support for locali
 <div class="funders">
     <img src="/uploads/funding/Alfred_P._Sloan_Foundation_stacked_logo.png" height="100">
     <img src="/uploads/funding/New-America-logo.png" height="75">
-    <img src="/uploads/funding/ground-control-partners-logo.png" height="100">
     <img src="/uploads/funding/med-logo.png" height="100">
     <img src="/uploads/funding/nsf-logo.png" height="125">
     <img src="/uploads/funding/gsoc-logo.png" height="125">
+    <img src="/uploads/funding/Arnold_Ventures.PNG" height="125">
 </div>
 
 The MGGG Redistricting Lab has been part of the [Jonathan M. Tisch College of Civic Life](https://tischcollege.tufts.edu/) since 2018.  Tisch provides an institutional home for the lab, including salary support, student research placements, and office space in Barnum Hall at Tufts University. Tufts is unique in having a civic research hub as a major division of the university, and we are proud to be one of three major labs—together with IDHE and Circle—that anchor that research effort. 
