@@ -25,9 +25,9 @@ The MGGG Redistricting Lab is a non-partisan research group. We are dedicated to
 
 ## Funding Disclosure
 
-Beyond individual donations, the Lab raises substantial amounts of money for our staff salaries and our outreach and training programs. We proactively choose to be transparent about our principles for funding. 
+Beyond individual donations, the Lab raises money for staff salaries and for our outreach and training programs. We proactively choose to be transparent about our principles for funding. 
 
-We only seek or accept funding from organizations or individuals whose public positions are consistent with our Lab’s mission and programmatic priorities, which are rooted in scientific inquiry and the steadfast pursuit of civil rights in the broadest sense. Our agreements are always based on rigorous data-driven inquiry and maximum transparency. We have settled on a policy against accepting funding from explicitly partisan organizations. Individuals in the Lab may engage in consulting projects (subject to Tufts conflict of interest policies), but the Lab itself is oriented to open-ended research.
+We only seek or accept funding from organizations or individuals whose public positions (to the best of our knowledge) are consistent with our Lab’s mission and programmatic priorities, which are rooted in scientific inquiry and the steadfast pursuit of civil rights in the broadest sense. Our agreements are always based on rigorous data-driven inquiry and maximum transparency. We have settled on a policy against accepting funding from explicitly partisan organizations. Individuals in the Lab may engage in consulting projects (subject to Tufts conflict of interest policies), but the Lab itself is oriented to open-ended research.
 
 Our commitments:  Any funded work prepared by the Lab will be made publicly available.  We use public tools, code, and data whenever possible, and we disclose the sources of data when it has been prepared by a third party. We strive to use our expertise to represent data clearly, providing appropriate context and sources of error. We do not use data practices that we believe to be misleading, even if they are common practice among election data practitioners.
 
@@ -35,7 +35,8 @@ Our biggest single funding source to date has been the National Science Foundati
 
 Funders include Arnold Ventures;
 FairVote;
-Ground Control Pertners;
+Google Summer of Code;
+Ground Control Partners;
 More Equitable Democracy; 
 National Congress of American Indians;
 the National Science Foundation; 
