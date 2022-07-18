@@ -2,6 +2,6 @@
 title: Schoenbach
 name: Gabe Schoenbach
 photo: "/uploads/schoenbach.jpeg"
-group: local
-description: "**Gabe Schoenbach** is a recent graduate of the University of Chicago, where he studied mathematics and computer science. At MGGG, he works on a variety of research and software projects, and is especially interested in the applications of graph and network theory to redistricting.\n"
+group: collaborators
+description: "**Gabe Schoenbach** studied mathematics and computer science at the University of Chicago. At MGGG, he worked on a variety of research and software projects, with a special interest in the applications of graph and network theory to redistricting. He has now returned to Chicago for his computer science PhD.\n"
 ---
