@@ -9,9 +9,7 @@ order: 4
 
 The MGGG Redistricting Lab will use donations to support its multidisciplinary projects on the mathematics and data science of redistricting, voting rights, and census geography.
 
-{% include donate_button.html %}
-
-MGGG is based at Tufts and so our fundraising goes through the university. The link above will take you to the standard Tufts donation page, with “Geometry of Redistricting” pre-selected as the area of giving. Donations are tax-deductible, and the university takes no overhead: **every dollar goes directly to MGGG**. (Tufts-specific questions are optional.)
+We would be honored if individuals choose to support the Lab with donations.  Please contact us at [contact@mggg.org](mailto:contact@mggg.org) to inquire about how to direct funds our way through the University.
 
 
 ## The small print
@@ -33,7 +31,19 @@ We only seek or accept funding from organizations or individuals whose public po
 
 Our commitments:  Any funded work prepared by the Lab will be made publicly available.  We use public tools, code, and data whenever possible, and we disclose the sources of data when it has been prepared by a third party. We strive to use our expertise to represent data clearly, providing appropriate context and sources of error. We do not use data practices that we believe to be misleading, even if they are common practice among election data practitioners.
 
-Our biggest single funding source is the National Science Foundation. Below is a complete list of foundations or organizations that have been sponsors of grants or contracts since the Lab was founded at Tisch College in 2018. 
+Our biggest single funding source to date has been the National Science Foundation. Below is a list of foundations or organizations that have been sponsors of grants or contracts since the Lab was founded at Tisch College in 2018, current through July 1, 2022.
+
+Arnold Ventures;
+FairVote;
+Ground Control Pertners;
+More Equitable Democracy; 
+National Congress of American Indians;
+the National Science Foundation; 
+New America;
+and 
+the Alfred P. Sloan Foundation.
+
+Offices that contracted with us for mapping and redistricting support for localities around the country have included Contra Costa County, California; Grand County, Utah; Massachusetts (Massachusetts General Court); Michigan Department of State; Community Foundation of the Ozarks (Missouri Fair Maps Coalition); Ohio Organizing Collaborative; New Mexico (Thornburg Foundation); Texas Civil Rights Project (Oficina Legal del Pueblo Unido, Inc.); and the Wisconsin Department of Administration.  Consultants that contracted with us to offer mapping support for numerous localities include National Demographics Corporation and Redistricting Partners.
 
 <div class="funders">
     <img src="/uploads/funding/Alfred_P._Sloan_Foundation_stacked_logo.png" height="100">
