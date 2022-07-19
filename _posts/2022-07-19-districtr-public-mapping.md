@@ -1,9 +1,9 @@
 ---
-title: "Districtr and Public Mapping"
-date:  2022-07-19 00:00:00 Z
-categories:
-  - news
+title: Jobs at MGGG
+date: 2022-06-28
 authors: MGGG
+categories:
+    - news
 layout: post
 featured: true
 ---
