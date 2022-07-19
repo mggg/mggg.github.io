@@ -1,6 +1,6 @@
 ---
 title: "Districtr and Public Mapping"
-date: 2022-07-19
+date:  2022-07-19 00:00:00 Z
 categories:
   - news
 authors: MGGG
