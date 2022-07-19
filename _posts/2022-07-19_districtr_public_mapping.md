@@ -1,11 +1,13 @@
 ---
 title: "Districtr and Public Mapping"
-date: 2022-07-19 00:00:00 Z
+date: 2022-07-19
 categories:
   - news
 authors: MGGG
+layout: post
 featured: true
 ---
+
 Too often, redistricting happens behind closed doors.  To promote transparency and civic engagement, our Lab regards it as essential to put the tools
 of map-drawing into the hands of the public.  
 
