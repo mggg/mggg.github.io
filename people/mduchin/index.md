@@ -35,11 +35,11 @@ navi:
 [Curriculum Vitae](docs/Duchin-CV-2022.pdf) <br>
 
 
-### Research interests
+### Research Interests
 
 * Geometric group theory. Geometric topology. Dynamics.
 * Science, technology, and society. (see Tufts [STS Program](https://as.tufts.edu/sts/))
-* Redestricting, elections, and civil rights. (see [MGGG Redistricting Lab](https://mggg.org))
+* Redistricting, elections, and data science for civil rights. (see [MGGG Redistricting Lab](https://mggg.org))
 
 ### Some Courses
 
@@ -51,7 +51,7 @@ navi:
 * Math 145, [Abstract Algebra](https://sites.tufts.edu/algebra/)
 
 
-### Recent Events
+### Some Links and Materials
 
 * Summer research program: [Voting Rights Data Institute](https://sites.tufts.edu/vrdi/)
 * Minicourse in nilpotent groups, from Workshop in Geometric Topology ([slides](docs/nilpotent-provo.pdf))
