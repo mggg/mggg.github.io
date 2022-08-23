@@ -1,5 +1,5 @@
 ---		
- date: 2022-06-28		
+ date: 2022-08-22		
  title: Senior Web Developer		
  position: 1		
 ---		
@@ -36,4 +36,4 @@ replicating the client interface and developing a new administrative interface f
 
 ### Compensation Range
 
-The compensation budget for this project is a total of $50K-$80K, depending on experience and on the negotiated scope of work.    
+The compensation budget for this project is a total of $50K-$80K over the expected 3-4 month period, depending on experience and on the negotiated scope of work.    
