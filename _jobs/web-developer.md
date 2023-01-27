@@ -2,6 +2,7 @@
  date: 2022-08-22		
  title: Senior Web Developer		
  position: 1		
+ hidden: true
 ---		
 
 The MGGG Redistricting Lab develops and maintains [Districtr](http://districtr.org), an open-source web app for drawing
