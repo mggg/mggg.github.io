@@ -5,7 +5,7 @@ layout: default
 
 # _Political Geometry_
 
-_Political Geometry_, edited by Moon Duchin and Olivia Walch, is now available from _Birkhauser_.
+_Political Geometry_, edited by Moon Duchin and Olivia Walch, is now available from _Birkhäuser_.  It's quite affordable to [buy](https://link.springer.com/book/10.1007/978-3-319-69161-9), and it's a pretty nice-looking object!  We've also obtained permission to offer the content here in preprint form.
 
 ## Chapters as PDFs
 
