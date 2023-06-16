@@ -1,7 +1,7 @@
 ---
 title: Knudson
 name: Karin Knudson
-group: local
+group: collaborators
 photo: "/uploads/knudson.jpg"
 description:
   "**Karin Knudson** is an applied mathematician and data scientist who works with the lab on statistical and software development projects. 
