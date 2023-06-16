@@ -1,7 +1,7 @@
 ---
 title: Richardson
 name: Chanel Richardson
-group: local
+group: collaborators
 photo: "/uploads/richardson.png"
 description:
   "**Chanel Richardson** is a 2020 graduate of Tufts University, where she studied computer
