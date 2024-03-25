@@ -9,6 +9,7 @@ description: "[Moon Duchin](https://mduchin.math.tufts.edu) founded MGGG in 2016
   focus mathematical attention on redistricting. Her areas of mathematical expertise
   are in geometry, topology, and dynamical systems. Her affiliations at Tufts University
   include [Mathematics](http://math.tufts.edu), [STS](http://as.tufts.edu/sts/), and
-  the [Tisch College of Civic Life](http://tischcollege.tufts.edu).\n"
+  the [Tisch College of Civic Life](http://tischcollege.tufts.edu). You can reach her 
+  at mduchin@mggg.org.\n"
 ---
 
