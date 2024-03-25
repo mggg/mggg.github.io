@@ -3,7 +3,7 @@ title: Rule
 name: Parker Rule
 group: local
 photo: "/uploads/rule.png"
-website: https://pjrule.me/
-description: "[Parker Rule](https://pjrule.me/) graduated from Tufts University with degrees in mathematics, computer science, and STS (Science, Technology, and Society). He has worked in the lab as a software engineer and research associate. He is interested in operations research, high-performance computing, and computational geometry.\n"
+website: https://github.com/pjrule
+description: "[Parker Rule](https://github.com/pjrule) graduated from Tufts University with degrees in mathematics, computer science, and STS (Science, Technology, and Society). He is interested in operations research, high-performance computing, and computational geometry. He has worked in the lab as a software engineer and researcher, and maintains collaborations on database and high-performance computing projects.\n"
 ---
 
