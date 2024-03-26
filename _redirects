@@ -5,6 +5,7 @@
 /metagraph/* https://mggg-gridlandia.netlify.com/:splat 200
 /metagraph /metagraph/index.html
 /5x5 /metagraph/5x5.html
+/7x7 /metagraph/7x7.html
 /mit-visualization-project/* https://mggg-mit-viz.netlify.com/:splat 200
 /posts/chicago /chicago
 /reports/news/2019/04/15/chicago.html /chicago
