@@ -1,5 +1,5 @@
 ---
-title: "GerryChain and GerryTools"
+title: "Major updates to Gerry-Suite"
 date: 2024-05-28
 authors: MGGG
 categories:
@@ -9,7 +9,7 @@ image: "/uploads/triple-PA.gif"
 featured: true
 ---
 
-# Major Updates to Gerry-Suite
+
 
 Since the beginning of the year, we’ve made several major updates to our main suite of redistricting analysis tools.
 
