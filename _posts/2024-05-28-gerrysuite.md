@@ -33,12 +33,12 @@ The newest version of GerryChain allows the user to select a parameter interpola
 region-awareness to a maximal level of priority on region preservation.
 
 For those curious about the math: this is accomplished by using a shifted Kruskal’s algorithm.  The splitting step in a 
-recombination train is done by drawing a random spanning tree and deleting an edge of that in a balanced fashion.
-One fast algorithm for randomizing spanning trees is MST, or minimum spanning tree, given a set of edge weights.
+recombination chain is done by drawing a random spanning tree and deleting an edge of that tree so that the halves remain balanced.
+One fast algorithm for randomizing spanning trees is MST, which selects the minimum spanning tree, given a set of edge weights.
 Instead of drawing all weights from the same distribution (as in standard Kruskal), we “surcharge” the weights
 on edges between different regions.  This makes us more likely to choose a spanning tree that restricts to one tree 
 within each region; when the tree is split, the region is then split at most once.  To learn more, please see our new
-[documentation](https://gerrychain.readthedocs.io/en/v0.3.2/user/recom/#region-aware-recom)
+[documentation](https://gerrychain.readthedocs.io/en/v0.3.2/user/recom/#region-aware-recom).
 
 
 ### Exploratory Chains
@@ -54,17 +54,17 @@ came with the addition of two optimizer classes:
 
 Each of these optimization classes has three different modes:
 
-1. **Tilted Runs:**  In a tilted run, we always accept a proposed plan with a better score, and we accept a worse-scoring plan with a user-chosen probability $p$.
+1. **Tilted Runs:**  In a tilted run, we always accept a proposed plan with a better score, and we accept a worse-scoring plan with a user-chosen probability _p_.
 2. **Short Bursts:** The short bursts heuristic—originally proposed for redistricting by Zach Schutzman and then 
 studied in the paper
    ["Voting Rights, Markov Chains, and Optimization by Short Bursts"](https://arxiv.org/abs/2011.02288) by MGGG collaborators
-(Cannon, Goldbloom-Helzner, Gupta, Matthews, and Suwal)—starts from some plan and then performs $b$ steps of an unbiased random walk (the user sets the number
-   $b$, known as the _burst length_). A new burst of length $b$ is then run starting from the most extreme
+(Cannon, Goldbloom-Helzner, Gupta, Matthews, and Suwal)—starts from some plan and then performs _b_ steps of an unbiased random walk (the user sets the number
+   _b_, known as the _burst length_). A new burst of length _b_ is then run starting from the most extreme
    configuration found in the previous burst, and we iterate.
 3. **Simulated Annealing:** This is an optimization technique borrowed from statistical physics. The basic
    idea is to start a chain "hot,” meaning that every proposed new plan is accepted. 
    As time passes, the chain "cools,” making it less and less likely for lower scores to be 
-   accepted.  The probability is governed by a value called $\beta$, which varies on a user-chosen temperature schedule, creating a heating and cooling cycle that repeats over the life of the chain.
+   accepted.  The probability is governed by a value called beta, which varies on a user-chosen temperature schedule, creating a heating and cooling cycle that repeats over the life of the chain.
 
 
 
@@ -80,7 +80,7 @@ GerryTools will continue to evolve throughout Summer 2024, but has two exciting 
 When it comes to ensemble analysis work, reproducibility and auditability are vital. 
 Ideally, we can preserve and publish the exact data that was used in any given analytical project.
 However, when the data itself is tens or hundreds of millions of districting plans, each consisting of an assignment of
-potentially millions of geographical units.  This creates massive data files that are costly to store and hard to manipulate.
+potentially millions of geographical units, this creates massive data files that are costly to store and hard to manipulate.
 
 In previous years, MGGG made substantial progress towards solving this issue with the
 [PCompress](https://github.com/mggg/pcompress) package due to Lab alum Max Fan, which successfully reduced
@@ -104,7 +104,7 @@ where we reduce a 27Gb file containing
 
 ### Wrappers for diverse sampling methods
 
-The main Markov chain technique provided in GerryChain is called ReCom, or recombination, first introduced by DeFord, 
+The main Markov chain technique implemented in GerryChain is called ReCom, or recombination, first introduced by DeFord, 
 Duchin, Najt, and Solomon.  Lab alum Parker Rule created a blazingly fast implementation of both regular ReCom and of a 
 reversible variant called RevReCom in the high-performance programming language Rust.  The Rust implementation lets users 
 do bigger and more complicated runs than are possible in Python alone, for instance enabling block-level runs on large 
