@@ -1,6 +1,6 @@
 ---
 title: "Differential Privacy and Redistricting"
-date: 2021-04-14 00:00:00 Z
+date: 2022-06-24 00:00:00 Z
 categories:
   - research
 authors: MGGG
@@ -10,20 +10,26 @@ image: "/uploads/dp_tree.png"
 excerpt_separator: "<!--more-->"
 ---
 
-The 2020 Decennial Census will be released with a new disclosure avoidance system in place, putting 
-differential privacy in the spotlight for a wide range of data users.  We consider several key 
-applications of Census data in redistricting, developing tools and demonstrations for practitioners 
-who are concerned about the impacts of this new noising algorithm called **TopDown**.  Based on a close 
-look at reconstructed Texas data, we find reassuring evidence that **TopDown** will not threaten the 
-ability to produce districts with tolerable population balance or to detect signals of racial 
-polarization for Voting Rights Act enforcement.
+In order to protect the privacy of individual Census respondents, Census data is released only at aggregate levels, typically combining records for hundreds of individuals or more and just reporting the overall counts. Unfortunately, on its own, this does not provide enough protection to prevent privacy attacks; simple mathematics of linear combinations easily allows people to reconstruct a full individual-level table that is perfectly compatible with the aggregate data. 
+
+To handle this privacy threat, the 2020 Decennial Census was released with a new disclosure avoidance system in place &mdash; a differentially private system called **TopDown** &mdash; in order to thwart reconstruction. In short, TopDown adds random noise that cancels out at the aggregate level of cities or districts, but makes individual blocks very noisy.
+
+The Census Bureau released their TopDown code in a public github, but to our knowledge, MGGG was the only group outside of the Bureau to work out how to run it.  This enabled several studies that examined whether the noising of Census data would be destructive of its uses for redistricting and voting rights enforcement.
 
 <!--more-->
 
-Our first publication on this topic has now appeared in Foundations of Responsible Computing, and can be accessed [here](https://drops.dagstuhl.de/opus/volltexte/2021/13873/pdf/LIPIcs-FORC-2021-5.pdf).
+## Private numbers in public policy
+This piece, which appeared in the Harvard Data Science Review, gives the background on how 
+Census data is used, and how it is regarded by courts, before outlining several experiments to measure impacts on redistricting and voting rights.  
 
-A follow-up study that considered demographic impacts on small, diverse districts in Arizona was commissioned by 
-the Arizona Independent Redistricting Commission.  The presentation can be accessed [here](/publications/AZ-DP.pdf).
+[HDSR 2022](https://hdsr.mitpress.mit.edu/pub/954ycugm/release/2)
 
-A further study, updated to consider the final production parameters used in the 2020 Decennial Census, is in 
-revision at the Harvard Data Science Review.
+The HDSR paper expanded on an earlier piece in FORC (Foundations of Responsible Computing) that includes more mathematical explorations of how "off-spine" redistricting might impact accuracy.
+
+[FORC 2021](https://drops.dagstuhl.de/opus/volltexte/2021/13873/pdf/LIPIcs-FORC-2021-5.pdf)
+
+
+## Study for Arizona Independent Redistricting Commission
+In Arizona, the independent redistricting commission brought us in to advise them about whether their work would be negatively impacted by DP in the Census.  We presented work that showed that (a) the reconstruction threat is real, and (b)  both in large counties like Pima and in small counties like Navajo, the impact of TopDown noising on their work would be minimal.  
+
+ [AIRC 2021](/publications/AZ-DP.pdf)
