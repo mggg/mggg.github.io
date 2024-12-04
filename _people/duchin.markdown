@@ -2,14 +2,12 @@
 title: Duchin
 name: Moon Duchin
 photo: "/uploads/duchin.jpg"
-website: https://mduchin.math.tufts.edu
+website: https://mggg.org/people/mduchin
 github: mduchin
 group: local
-description: "[Moon Duchin](https://mduchin.math.tufts.edu) founded MGGG in 2016 to
+description: "**Moon Duchin** (mduchin@mggg.org) founded MGGG at Tufts University in 2016 to
   focus mathematical attention on redistricting. Her areas of mathematical expertise
-  are in geometry, topology, and dynamical systems. Her affiliations at Tufts University
-  include [Mathematics](http://math.tufts.edu), [STS](http://as.tufts.edu/sts/), and
-  the [Tisch College of Civic Life](http://tischcollege.tufts.edu). You can reach her 
-  at mduchin@mggg.org.\n"
+  are in geometry, topology, and dynamical systems. At Cornell University, she is a Professor of Mathematics and Public Policy, with 
+  field membership in Applied Math, ORIE, and Information Science.\n"
 ---
 
