@@ -2,12 +2,12 @@
 title: Jobs at D/D
 date: 2025-01-16
 authors: MGGG
-# categories:
-#     - news
+categories:
+    - news
 layout: post
 permalink: /jobs
 excerpt_separator: "<!--more-->"
-# featured: true
+featured: false
 ---
 
 The Data and Democracy Lab (née MGGG Redistricting Lab) is a research group led by PI Moon Duchin in the Department of Mathematics and Brooks School of Public Policy at Cornell.  Members of the lab engage in interdisciplinary research, drawing on approaches from geometry, topology, graphs and networks, probability/statistics, and algorithm design, in conversation with geography, political science, policy, and law.  The lab is deeply engaged with civil rights and good-government work in representative democracy.
