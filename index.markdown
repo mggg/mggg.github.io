@@ -9,7 +9,7 @@ image: "/uploads/AR_plots.png"
 
 # Our Mission
 
-The **MGGG Redistricting Lab** is a research group at the [Brooks School of Public Policy](https://publicpolicy.cornell.edu/) at Cornell University, led by PI Moon Duchin, that grew out of an informal research collective called the Metric Geometry and Gerrymandering Group.   From 2018-2024, the Lab was based in the [Tisch College of Civic Life](https://tischcollege.tufts.edu/) at Tufts University, where we maintain an affiliation.  Together with our close collaborators, we have expertise and interests spanning mathematics (geometry, topology, discrete math, dynamics), algorithms, software development, geography, science studies, law, and policy. We research data science interventions – better mechanisms, better models, better metrics – for democracy.
+The **Data and Democracy Lab** (formerly MGGG Redistricting Lab) is a research group at the [Brooks School of Public Policy](https://publicpolicy.cornell.edu/) at Cornell University, led by PI Moon Duchin, that grew out of an informal research collective called the Metric Geometry and Gerrymandering Group.   From 2018-2024, the Lab was based in the [Tisch College of Civic Life](https://tischcollege.tufts.edu/) at Tufts University, where we maintain an affiliation.  Together with our close collaborators, we have expertise and interests spanning mathematics (geometry, topology, discrete math, dynamics), algorithms, software development, geography, science studies, law, and policy. We research data science interventions – better mechanisms, better models, better metrics – for democracy.
 
 Our goals are these:
 
