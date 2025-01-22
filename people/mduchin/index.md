@@ -32,14 +32,15 @@ navi:
 </dl>
 
 
-[Curriculum Vitae](docs/Duchin-CV-2024.pdf) <br>
+[Curriculum Vitae](docs/Duchin-CV-2025.pdf) <br>
 
 
 ### Research Interests
 
+* Elections, redistricting, and data science for civil rights. (see [Data and Democracy Lab](https://mggg.org))
 * Geometric group theory. Geometric topology. Dynamics.
-* Science, technology, and society. (see Tufts [STS Program](https://as.tufts.edu/sts/))
-* Redistricting, elections, and data science for civil rights. (see [MGGG Redistricting Lab](https://mggg.org))
+* Science, technology, and society. 
+
 
 ### Some Courses
 
