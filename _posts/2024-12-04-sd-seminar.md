@@ -29,4 +29,4 @@ Wes Pegden, Soledad Villar and Ranthony Clark, Tara Abrishami, James Murphy, Chr
 
 ## To sign up
 
-Email <sd-seminar@mggg.org> to be added to the Slack workspace for the seminar.
+Email <sd-seminar@mggg.org> to be added to the email list for the seminar.
