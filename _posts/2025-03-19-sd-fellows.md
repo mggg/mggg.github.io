@@ -21,8 +21,8 @@ dynamics of turnout and engagement, and the design of law and policy around voti
 The fellows have proposed the following topics for study:
 
 ## Spanning Tree Methods for Sampling Balanced Partitions
-PI: Kristopher Tapp, St. Joseph's University
+### PI: Kristopher Tapp, St. Joseph's University
 
-Abstract: Modern redistricting algorithms obtain balanced partitions of graphs by splitting random spanning trees.  This approach leads to several important mathematical questions whose resolutions could help improve the algorithms and more precisely characterize their output.  For example, I propose to study the probability that a (UST or MST) random spanning of an n-by-n grid can be split.  Additionally, I propose an improvement of the popular SMC algorithm that recursively divides regions in half, rather than repeatedly biting off single districts.  
+Modern redistricting algorithms obtain balanced partitions of graphs by splitting random spanning trees.  This approach leads to several important mathematical questions whose resolutions could help improve the algorithms and more precisely characterize their output.  For example, I propose to study the probability that a (UST or MST) random spanning tree of an n-by-n grid can be split.  Additionally, I propose an improvement of the popular SMC algorithm that recursively divides regions in half, rather than repeatedly biting off single districts.  
 
 
