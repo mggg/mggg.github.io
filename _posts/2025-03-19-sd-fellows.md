@@ -71,7 +71,7 @@ In this project, we will expand Panelot into an open-source, publicly available 
 The project will explore three emerging directions in computational social choice: fairness in urban planning and infrastructure, design of multiwinner voting rules that promote social cohesion, and proportionality in temporal voting.
 
 ## Proportional Representation: Axioms, Measures, and Applications
-## Markus Brill, University of Warwick
+### Markus Brill, University of Warwick
 
 This project focuses on the mathematical study of proportional representation in multiwinner voting and participatory budgeting. It investigates quantitative measures of proportionality to assess election outcomes, examines trade-offs between proportionality and efficiency in participatory budgeting, and addresses the impact of incomplete voter preferences on decision-making processes.
 
