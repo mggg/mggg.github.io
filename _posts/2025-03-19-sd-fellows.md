@@ -11,7 +11,7 @@ excerpt_separator: "<!--more-->"
 
 The Data and Democracy Lab announces an initial cohort in the **Structural Democracy Faculty Fellow Program**, funded by the [Crankstart Foundation](https://crankstart.org/programs).
 
-These 16 researchers from universities in the U.S., the U.K, and Chile are funded to build and strengthen a research community in Structural Democracy, which is meant to include a range of practically applicable areas in the study of systems of election.
+These 16 researchers from universities in the U.S., the U.K., and Chile are funded to build and strengthen a research community in Structural Democracy, which is meant to include a range of practically applicable areas in the study of systems of election.
 Topics in scope include (computational) social choice, mechanism design, computational redistricting, statistical models of elections, data visualization for elections, behavioral psychology of ranking and voting, dynamics of turnout and engagement, and the design of law and policy around voting.
 
 <!--more-->
