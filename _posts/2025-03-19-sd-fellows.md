@@ -81,7 +81,7 @@ This project focuses on the mathematical study of proportional representation in
 Recombination Markov chains are a popular tool. They are particularly important for sampling random (or ‘typical’) maps in the study of redistricting plans. Although such Markov chains are widely applied, so far little is known about them mathematically. For example, not much is known about their mixing times. Even worse, it is not even known in general whether these Markov chains are irreducible, i.e. whether the state-space graph is connected. We will study problems related to reducibility and irreducibility of these kinds of Markov chains.
 
 ## Spanning Tree Methods for Independent Sampling of District Plans
-## Jeanne Clelland, University of Colorado Boulder
+### Jeanne Clelland, University of Colorado Boulder
 
 Spanning tree-based methods have rapidly become the standard for sampling district plans, largely due to their affinity for creating plans with relatively compact districts.  Most of these methods rely on Markov chains, where new plans are created from prior plans by changing only a small number of districts at a time.  In most cases this works very well, but some states (e.g., Ohio) impose restrictive requirements on district plans that make it difficult for such a Markov chain to make meaningful changes to a plan while remaining legally compliant.  The goals of this project are: (1) to develop a spanning tree-based method for independent sampling of plans that could be used to create a diverse ensemble of plans without relying on Markov chains, and (2) to derive theoretical and empirical results about the corresponding sampling distribution.  This is joint work with Kristopher Tapp.
 
