@@ -65,7 +65,7 @@ Detecting when gerrymandering is occurring is a hard problem.  Many people point
 The website Panelot.org is a widely used tool for selecting the members of deliberative minipublics, based on a selection algorithm with mathematical guarantees that we and our coauthors developed in 2021. However, the widespread use of Panelot.org at this point exceeds the limits of the site’s current technical realization, which has additionally limited us in providing recently developed algorithmic tools to minipublic practitioners.
 In this project, we will expand Panelot into an open-source, publicly available “one-stop-shop” for conducting civic lotteries. We will add new functionalities to the website — based both on cutting-edge research and user requests — and will generally make the website more user friendly and extensible for future additions.
 
-## Participatory budgeting for building cohesive communities
+## Participatory Budgeting for Building Cohesive Communities
 ### Edith Elkind, Northwestern University
 
 The project will explore three emerging directions in computational social choice: fairness in urban planning and infrastructure, design of multiwinner voting rules that promote social cohesion, and proportionality in temporal voting.
@@ -75,7 +75,7 @@ The project will explore three emerging directions in computational social choic
 
 This project focuses on the mathematical study of proportional representation in multiwinner voting and participatory budgeting. It investigates quantitative measures of proportionality to assess election outcomes, examines trade-offs between proportionality and efficiency in participatory budgeting, and addresses the impact of incomplete voter preferences on decision-making processes.
 
-## Reducibility and irreducibility of recombination Markov chains
+## Reducibility and Irreducibility of Recombination Markov Chains
 ### Matthew Kahle, The Ohio State University
 
 Recombination Markov chains are a popular tool. They are particularly important for sampling random (or ‘typical’) maps in the study of redistricting plans. Although such Markov chains are widely applied, so far little is known about them mathematically. For example, not much is known about their mixing times. Even worse, it is not even known in general whether these Markov chains are irreducible, i.e. whether the state-space graph is connected. We will study problems related to reducibility and irreducibility of these kinds of Markov chains.
