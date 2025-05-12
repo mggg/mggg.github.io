@@ -10,7 +10,6 @@ image: "/uploads/D1-boost-all.png"
 excerpt_separator: "<!--more-->"
 ---
 The Data and Democracy lab is excited to announce the release of a report on the 2024 STV City Council Election in Portland, Oregon.
-<!-- who was this commissioned by? -->
 In November 2022, voters in Portland, Oregon approved an overhaul to their system of election to use STV or "single transferable vote."
 We analyze the mechanics of the STV election to explain that the voting system played a
 direct role in securing strong representation for communities of color, while several other
