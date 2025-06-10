@@ -18,18 +18,18 @@ While comfort with Python would be helpful, the VoteKit training will be absolut
 ## Schedule
 
 ### Wednesday 12-5pm (plus optional after hours)
-Location TBD
+Location: Malott Hall, 212 Garden Ave, Ithaca, NY 14853
 
 * Official start of training
-* 90 min Catered lunch, meet and greet, icebreaker
+* 90 min MH 301A: Catered lunch, meet and greet, icebreaker
 * 90 min Walk through of Chicago case study
 * 60 min Split sessions: 
     - "Hello, World" intro to Python
     - Math of VoteKit
-* After hours Python installation session, dinner provided.
+* MH 301A: After hours Python installation session, dinner provided.
 
 ### Thursday 9-5pm (plus optional after hours)
-Location TBD
+Location: Malott Hall, 212 Garden Ave, Ithaca, NY 14853
 
 * 60 min Split sessions: 
     - Loading and cleaning cast vote records, running elections.
@@ -39,27 +39,27 @@ Location TBD
     - "Knobs to turn", how to generate ballots that model voter behavior (turnout, polarization)
     - Running elections and writing new election functions
 
-* 90 min Catered lunch
+* 90 min MH 301A: Catered lunch
 * 90 min Place-specific exercise part 1
 * 60 min Data visualizations in Python
-* Group dinner at TBD (food covered, not drinks)
+* Group dinner at Argos (pizza covered, not drinks)
 
 
 ### Friday 9-4pm (plus optional after hours)
-Location TBD
+Location: Malott Hall, 212 Garden Ave, Ithaca, NY 14853
 
-* 90 min Place-specific excercise part 2
+* 90 min Place-specific exercise part 2
 * 60 min Split sessions: 
     - Python questions
     - Model validation and interfacing with districting
-* 90 min Lunch on your own
-* 60 min Place-specific excercise part 3
+* 90 min MH 301A: Lunch on your own
+* 60 min Place-specific exercise part 3
 * 60 min Feature requests, listening session, next steps
 * Official end of training
-* Dinner TBD
+* Optional dinner at Finger Lakes Cider House
 
 ### Saturday morning
-* Waterfall hike TBD
+* Waterfall hike at Treman, 1.5 hour hike down. Transportation and start time TBD.
 
 ## While in Ithaca
 TBD
