@@ -18,9 +18,10 @@ While comfort with Python would be helpful, the VoteKit training will be absolut
 ## Schedule
 
 ### Wednesday 12-5pm (plus optional after hours)
+Location TBD
 
+* Official start of training
 * 90 min Catered lunch, meet and greet, icebreaker
-
 * 90 min Walk through of Chicago case study
 * 60 min Split sessions: 
     - "Hello, World" intro to Python
@@ -28,6 +29,7 @@ While comfort with Python would be helpful, the VoteKit training will be absolut
 * After hours Python installation session, dinner provided.
 
 ### Thursday 9-5pm (plus optional after hours)
+Location TBD
 
 * 60 min Split sessions: 
     - Loading and cleaning cast vote records, running elections.
@@ -38,28 +40,32 @@ While comfort with Python would be helpful, the VoteKit training will be absolut
     - Running elections and writing new election functions
 
 * 90 min Catered lunch
-
 * 90 min Place-specific exercise part 1
 * 60 min Data visualizations in Python
-
 * Group dinner at TBD (food covered, not drinks)
 
 
-### Thursday 9-4pm (plus optional after hours)
+### Friday 9-4pm (plus optional after hours)
+Location TBD
 
 * 90 min Place-specific excercise part 2
 * 60 min Split sessions: 
     - Python questions
     - Model validation and interfacing with districting
-
 * 90 min Lunch on your own
-
 * 60 min Place-specific excercise part 3
 * 60 min Feature requests, listening session, next steps
+* Official end of training
+* Dinner TBD
+
+### Saturday morning
+* Waterfall hike TBD
 
 ## While in Ithaca
+TBD
 
 ## While on campus
+TBD
 
 ## Contact us
 
