@@ -9,7 +9,5 @@
 - name: Districtr
   href: /districtr
 - name: Events
-  href: https://sites.tufts.edu/vrdi/
-  external: true
-- name: Support
-  href: /donate
+  href: /events
+
