@@ -25,7 +25,7 @@ Location: Malott Hall, 212 Garden Ave, Ithaca, NY 14853
 * 12-1:30 - Catered lunch, meet and greet, icebreaker
 * 1:45-3:15 - Walk-through of Chicago case study
 * 3:30-4:30 - Split sessions: 
-    - *Practioners* - "Hello, World" intro to Python
+    - *Practitioners* - "Hello, World" intro to Python
     - *Technical* - The mathematics of VoteKit
 * 4:30-5 - Roundup of Day 1
 * 6-7:30 - After hours Python installation session. Food will be provided!
@@ -39,7 +39,7 @@ Location: Malott Hall, 212 Garden Ave, Ithaca, NY 14853
     - *Technical* - Data sources, acquisition, and prep 
 * 10:30-11:15 - Sharing session: features and characteristics of your local jurisdictions 
 * 11:30 - 12:30 - Split sessions: 
-    - *Practitioners* - "Knobs to turn", how to generate ballots that model voter behavior (turnout, polarization)
+    - *Practitioners* - "Knobs to turn," how to generate ballots that model voter behavior (turnout, polarization)
     - *Technical* - Running elections and writing new election functions
 * 12:30-2 - Catered lunch
 * 2-3:30 - Place-specific exercise, Part 1
