@@ -36,7 +36,7 @@ but nonetheless do not contribute to the outcomes, and find that both are quite 
 rates in particular are at or under roughly two percent in each district.
 
 
-You can download our report [here.](/ppm) The League of Women Voters in Portland conducted a survey of the candidates for city council which you can read about [here.](_uploads/lwv_portland_RCV-Election-Report-PR-6.9.25.pdf)
+You can download our report [here.](/ppm) The League of Women Voters in Portland conducted a survey of the candidates for city council which you can read about [here.](lwv_portland_RCV-Election-Report-PR-6.9.25.pdf)
 
 
 
