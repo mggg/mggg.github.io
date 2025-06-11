@@ -35,7 +35,7 @@ Location: Malott Hall, 212 Garden Ave, Ithaca, NY 14853
 
 * 9am Welcome back
 * 9:15-10:15 - Split sessions: 
-    - *Practitioners* - Loading and cleaning cast vote records, running elections.
+    - *Practitioners* - Understanding input data, running elections
     - *Technical* - Data sources, acquisition, and prep 
 * 10:30-11:15 - Sharing session: features and characteristics of your local jurisdictions 
 * 11:30 - 12:30 - Split sessions: 
