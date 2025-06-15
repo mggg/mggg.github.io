@@ -19,57 +19,59 @@ While comfort with Python will be helpful, this VoteKit training will be absolut
 ## Schedule
 
 ### Wednesday 12-5pm (plus optional after-hours)
-Location: Malott Hall, 212 Garden Ave, Ithaca, NY 14853
+Location: Malott Hall, 212 Garden Ave, Ithaca, NY 14853 (enter on [Sciences Dr.](https://maps.app.goo.gl/L6wM8yosCCaUKRNS8))
 
 * 12 noon (Malott 301A) - Official start of training
 * 12-1:30 - Catered lunch, meet and greet, icebreaker
 * 1:45-3:15 - Walk-through of Chicago case study
 * 3:30-4:30 - Split sessions: 
-    - *Practitioners* - "Hello, World" intro to Python
+    - *Practitioners* - Intro to Python for VoteKit
     - *Technical* - The mathematics of VoteKit
 * 4:30-5 - Roundup of Day 1
 * 6-7:30 - After hours Python installation session. Food will be provided!
 
 ### Thursday 9-5pm (plus optional group dinner)
-Location: Malott Hall, 212 Garden Ave, Ithaca, NY 14853
+Location: Malott Hall
 
 * 9am Welcome back
 * 9:15-10:15 - Split sessions: 
-    - *Practitioners* - Understanding input data, running elections
+    - *Practitioners* - Generating ballots that model voter behavior
     - *Technical* - Data sources, acquisition, and prep 
-* 10:30-11:15 - Sharing session: features and characteristics of your local jurisdictions 
+* 10:30-11:15 - Sharing session: Features and characteristics of your local jurisdictions 
 * 11:30 - 12:30 - Split sessions: 
-    - *Practitioners* - "Knobs to turn," how to generate ballots that model voter behavior (turnout, polarization)
-    - *Technical* - Running elections and writing new election functions
+    - *Practitioners* - Understanding data, running elections
+    - *Technical* - Running elections, single and parallel
 * 12:30-2 - Catered lunch
 * 2-3:30 - Place-specific exercise, Part 1
-* 3:45-4:30 - Data visualizations in Python
+* 3:45-4:30 - Data visualizations with VoteKit
 * 4:30-5 - Roundup of Day 2
-* 5:30pm - Group dinner at Argos Inn (pizza covered, drinks available)
+* 5:30pm - Group dinner at [Bar Argos](https://www.argosinn.com/bar) (pizza covered, drinks available)
 
 
 ### Friday 9-4pm (plus optional dinner and music)
-Location: Malott Hall, 212 Garden Ave, Ithaca, NY 14853
+Location: Malott Hall
 
 * 9-10:30 - Place-specific exercise, Part 2
-* 10:45-11:45 - Split sessions: 
-    - *Practitioners* - Python questions
-    - *Technical* - Model validation and interface with districting
+* 10:45-11:45 - Communicating technical and non-technical information to diverse stakeholders
 * 12-1:30 - Lunch on your own
 * 1:30-2:30 - Place-specific exercise, Part 3
 * 2:45-4 - Roundup of training - Feature requests, listening session, next steps
 * 4pm - Official end of training
-* 6pm - Dinner and outdoor concert at Finger Lakes Cider House (food covered, cover fee charged, drinks avaialable)
+* 6pm - Dinner and outdoor concert at [Finger Lakes Cider House](https://www.fingerlakesciderhouse.com/pages/live-music) (food covered, cover fee charged, drinks available)
 
 ### Saturday morning
-* 10am - Waterfall hike at Robert Treman State Park
+* 10am - Meet at Hotel Ithaca for waterfall hike at [Robert Treman State Park](https://maps.app.goo.gl/3Aw8ggSbpUA1DKT36)
      - 1.5 hour hike down (or 3+ hour round trip if preferred!) Transportation details TBD.
 
 ## While in Ithaca
-Many of you are staying at Ithaca Hotel.  
+Many of you are staying at [Hotel Ithaca](https://maps.app.goo.gl/TGUsPzVKuh5vb5fQ9).  You can ride up to campus on lots of different [bus lines](https://maps.app.goo.gl/pruvqQ59AkpYsKy5A).  You can pay with cash or get the TCAT app (called TFare in the app stores).
+
+Many people might enjoy taking the bus up and walking down, which takes about a half hour [walking along the Gorge](https://maps.app.goo.gl/pruvqQ59AkpYsKy5A).  
+
+For dinner on your own, some good choices include Lev Kitchen, Hawi Ethiopian, and The Rook.  Morning coffee spots downtown include Press Cafe, Hound and Mare, and Gimme Coffee.  
 
 ## While on campus
-Places to know include Temple of Zeus, Martha's Cafe, and Olin/Uris Libraries.  
+For lunch on your own on Friday, places to know include Temple of Zeus (soup, sandwiches, good coffee) and Martha's Cafe (good mediterannean bowls, bad coffee).  If you have extra time on campus, [A.D. White Reading Room](https://www.cornell.edu/tour/ADWhiteReadingRoom) is highly recommended, inside [Uris Library](https://maps.app.goo.gl/CU3qkV2gMbCBtMJJ9).  
 
 ## Contact us
 
