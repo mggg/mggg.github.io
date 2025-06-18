@@ -21,6 +21,7 @@ While comfort with Python will be helpful, this VoteKit training will be absolut
 ### Wednesday 12-5pm (plus optional after-hours)
 Location: Malott Hall, 212 Garden Ave, Ithaca, NY 14853 (enter on [Sciences Dr.](https://maps.app.goo.gl/L6wM8yosCCaUKRNS8))
 
+* 11-12 noon (Malott 301A) - Registration
 * 12 noon (Malott 301A) - Official start of training
 * 12-1:30 - Catered lunch, meet and greet, icebreaker
 * 1:45-3:15 - Walk-through of Chicago case study
