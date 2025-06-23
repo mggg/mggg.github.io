@@ -7,7 +7,7 @@
 <h2>Summer Fellows</h2>
 <div class="bio-list-summer">
   {% assign summer_fellows = site.people | where: "group", "summer_fellows" %} {%
-  for person in summer_fellows %} {% include bio-short.html person=person %} {% endfor
+  for person in summer_fellows %} {% include bio.html person=person %} {% endfor
   %}
 </div>
 
