@@ -4,6 +4,13 @@
   person in local_people %} {% include bio.html person=person %} {% endfor %}
 </dl>
 
+<h2>Summer Fellows</h2>
+<div class="bio-list-summer">
+  {% assign summer_fellows = site.people | where: "group", "summer_fellows" %} {%
+  for person in summer_fellows %} {% include bio-short.html person=person %} {% endfor
+  %}
+</div>
+
 <h2>Key Collaborators, Past and Present</h2>
 <div class="bio-list-collab">
   {% assign collaborators = site.people | where: "group", "collaborators" %} {%
