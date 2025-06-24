@@ -17,7 +17,7 @@ Topics include:
 While comfort with Python will be helpful, this VoteKit training will be absolutely accessible to Python beginners who are willing to give it a try. Attendees are highly welcome to make feature requests for the future. 
 
 ## Training Materials
-Materials used during this workshop can be found in our [GitHub repository](https://github.com/mggg/Training_Materials).
+Materials used during this workshop can be found in our [GitHub repository](https://github.com/mggg/Training_Materials/blob/main/voting_methods_modeling_june_2025.md).
 
 ## Schedule
 
