@@ -6,7 +6,7 @@ layout: default
 
 # Voting Methods Modeling Workshop June 18-20, 2025
 
-The **Data and Democracy Lab** (also known as MGGG Redistricting Lab) will hold an in-person workshop at Cornell University in Ithaca, NY from June 18-20, 2025. This two-and-a-half day workshop (noon Wednesday to 4pm Friday) will focus on the modeling of ranked-choice voting (RCV) and other "alternative" systems of election. 
+The **Data and Democracy Lab** (also known as MGGG Redistricting Lab) held an in-person workshop at Cornell University in Ithaca, NY from June 18-20, 2025. This two-and-a-half day workshop (noon Wednesday to 4pm Friday) focused on the modeling of ranked-choice voting (RCV) and other "alternative" systems of election. 
 
 Topics include:
 - Basics of voter behavior models from the modeling literature, including those developed in our lab;
@@ -14,7 +14,7 @@ Topics include:
 - Place-specific study exercise that walks through how you might help local groups predict how a transition in the voting system might be expected to play out; and
 - Brainstorming as a group about the next round of ideas for statistical modeling.
 
-While comfort with Python will be helpful, this VoteKit training will be absolutely accessible to Python beginners who are willing to give it a try. Attendees are highly welcome to make feature requests for the future. 
+While comfort with Python will be helpful, this VoteKit training is designed to be absolutely accessible to Python beginners who are willing to give it a try. Attendees are highly welcome to make feature requests for the future. 
 
 ## Training Materials
 Materials used during this workshop can be found in our [GitHub repository](https://github.com/mggg/Training_Materials/blob/main/voting_methods_modeling_june_2025.md).
