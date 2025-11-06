@@ -9,7 +9,7 @@ collections:
     layout: category
   about:
     title: About Us
-    output: false
+    output: true
     permalink: "/:title"
     layout: category
   jobs:

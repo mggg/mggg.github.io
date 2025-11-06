@@ -1,7 +1,8 @@
 ---
 title: Research
 key: research
-index: 3
+index: 2
 output: true
 layout: category
+show_categories: true
 ---
