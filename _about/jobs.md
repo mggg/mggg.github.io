@@ -9,6 +9,7 @@ show_categories: false
 permalink: /jobs
 ---
 
+# Jobs 
 The Data and Democracy Lab (née MGGG Redistricting Lab) is a research group led by PI Moon Duchin in the Data Science Institute at the University of Chicago.  
 Members of the lab engage in interdisciplinary research, drawing on approaches from geometry, topology, graphs and networks, probability/statistics, and algorithm design, 
 in conversation with geography, political science, policy, and law.  The lab is deeply engaged with civil rights and good-government work in representative democracy.

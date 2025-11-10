@@ -17,10 +17,10 @@ We research data science interventions – better mechanisms, better models, bet
 
 - Algorithmic approaches to electoral redistricting
 - Voting polarization and the Voting Rights Act
-- Ranked choice and alternative electoral systems (structural democracy)
+- Alternative electoral systems, including but not limited to ranked choice voting (structural democracy)
 - Privacy protection in census data and its impact on representation
 
 ## Contact us:
 
 **General inquiries:** [contact@mggg.org](mailto:contact@mggg.org)  
-**Districtr mapping tool:** [districtr@mggg.org](mailto:districtr@mggg.org)
+**[Districtr](https://beta.districtr.org) mapping tool:** [districtr@mggg.org](mailto:districtr@mggg.org)

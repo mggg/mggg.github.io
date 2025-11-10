@@ -12,11 +12,12 @@ The Data and Democracy Lab pursues cutting-edge research at the intersection of 
 
 ## What we do:
 
-**Research:** We conduct research and develop computational methods to evaluate and inform democratic design, from redistricting algorithms to statistical models of ranked choice voting.
+**Conduct Research:** We conduct research and develop computational methods to evaluate and inform democratic design, from redistricting algorithms to statistical models of voter preference.
 
-**Build Open Tools & Resources:** We develop open-source software that democratizes access to powerful analytical methods to understand election systems and their consequences.
+**Build Open Tools & Resources:** We develop and maintain civic technology that democratizes access to powerful analytical methods to understand election systems and their consequences.
 
-**Partner with Civil Rights Organizations** to re-examine and strengthen the quantitative toolkit for protecting voting rights.
 
-**Work with Community Partners:** We work with community partners to help them understand what system of election meets their local needs.
+**Partner with Civil Rights Organizations:** We partner with groups to re-examine and strengthen the quantitative toolkit for protecting voting rights.
+
+**Work with Community Partners:** We work with community organizations to study how election systems interact with local conditions.
 

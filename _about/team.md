@@ -11,6 +11,6 @@ permalink: /team
 
 # Our Team
 
-As an organization, MGGG operates on multiple scales. We have a core group for ongoing Lab activities and a larger group of contributors and collaborators working with us on various projects.
+As an organization, the Lab operates on multiple scales. We have a core group for ongoing Lab activities and a larger group of contributors and collaborators working with us on various projects.
 
 {% include team.html %}

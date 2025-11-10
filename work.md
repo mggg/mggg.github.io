@@ -8,14 +8,17 @@ show_categories: true
 
 How do we measure fairness in representation? What makes an electoral system work for a community?
 
-The Data and Democracy Lab approaches these as research questions and practical challenges. We develop computational methods to understand how electoral systems function, build tools that make those methods accessible, and work directly with communities, advocates, and courts to strengthen democracy.
+The Data and Democracy Lab approaches these as research questions and practical challenges. We develop computational methods to understand how electoral systems function and build tools that make those insights accessible to a wide audience.  We aim to make the work useful for audiences like communities, policymakers, and courts of law.
+
 
 Here you'll find:
 
-**Basics:** Explanations of core concepts in gerrymandering, polarized voting, computational social choice, and alternative systems of election.
+**Basics:** Explanations of core concepts in redistricting, polarization, and alternative systems of election. 
+
 
 **Research:** Peer-reviewed publications and ongoing projects advancing the computational science of fair representation.
 
-**Reports:** Analyses and white papers our team has prepared for courts, communities, and policymakers addressing specific redistricting plans, voting rights questions, and electoral reforms.
+**Reports:** Analyses and “white papers” (informally published reports) our team has prepared for diverse audiences addressing a wide array of topics.
 
-**Civic Tech:** Open-source tools, datasets, and interactive resources that democratize access to computational methods.
+
+**Civic Tech:** Open-source software, datasets, and interactive resources that aim to make the tools widely accessible.
