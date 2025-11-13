@@ -1,13 +1,7 @@
-# - name: Mission
-# href: /#about-mggg
-- name: News
-  href: /news
-- name: Work
-  href: /work
-- name: Team
+- name: About Us
   href: /about-us
-- name: Districtr
-  href: /districtr
-- name: Events
-  href: /events
+- name: Our Work
+  href: /work
+- name: Latest Updates
+  href: /news
 
