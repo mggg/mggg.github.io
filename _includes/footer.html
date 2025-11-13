@@ -22,3 +22,19 @@
     </li>
   </ul>
 </footer>
+<script>
+  // Add target="_blank" to all external links
+  document.addEventListener('DOMContentLoaded', function() {
+    const links = document.querySelectorAll('a[href]');
+    links.forEach(function(link) {
+      const href = link.getAttribute('href');
+      // Check if link is external (starts with http:// or https://) and not already set
+      if (href && (href.startsWith('http://') || href.startsWith('https://')) && 
+          !href.startsWith(window.location.origin) && 
+          !link.hasAttribute('target')) {
+        link.setAttribute('target', '_blank');
+        link.setAttribute('rel', 'noopener noreferrer');
+      }
+    });
+  });
+</script>

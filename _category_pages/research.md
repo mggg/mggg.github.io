@@ -13,5 +13,6 @@ How do we measure fairness in representation? What makes an electoral system wor
 Our Lab combines theoretical innovation with practical application to supply courts and researchers with a baseline for “neutral” redistricting, develop new frameworks to model voter preferences, and advise communities exploring electoral reform.
 
 Key areas of our research include:
-- **Democracy Design:** Analyzing how different voting methods affect representation and studying alternatives to plurality voting.
-- **Developing Methods and Metrics:** Measuring aspects of representation and evaluating the fairness of maps and electoral structures.
+
+<!-- - **Democracy Design:** Analyzing how different voting methods affect representation and studying alternatives to plurality voting.
+- **Developing Methods and Metrics:** Measuring aspects of representation and evaluating the fairness of maps and electoral structures. -->
