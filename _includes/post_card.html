@@ -1,16 +1,23 @@
 {% assign work = include.work %}
-{% assign link_url = work.href | default: work.url %}
-{% if link_url contains 'http://' or link_url contains 'https://' %}
-  {% assign is_external = true %}
-{% else %}
+{% if page.key == 'civic-tech' %}
+  {% assign link_url = work.url %}
   {% assign is_external = false %}
+  {% assign open_new_tab = false %}
+{% else %}
+  {% assign link_url = work.href | default: work.url %}
+  {% if link_url contains 'http://' or link_url contains 'https://' %}
+    {% assign is_external = true %}
+  {% else %}
+    {% assign is_external = false %}
+  {% endif %}
+  {% assign open_new_tab = is_external %}
 {% endif %}
 <li class="card">
   {% if work.featured and work.image %}
   <a
     class="card__image-link"
     href="{{ link_url }}"
-    {% if is_external %}target="_blank" rel="noopener noreferrer"{% endif %}
+    {% if open_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}
   >
     <img
       class="card__image"
@@ -27,7 +34,7 @@
       {% else %}
         <a
           href="{{ link_url }}"
-          {% if is_external %}target="_blank" rel="noopener noreferrer"{% endif %}
+          {% if open_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}
           >{% if work.short_title %}{{ work.short_title }}{% else %}{{
             work.title
           }}{% endif %}</a

@@ -21,6 +21,9 @@
   font-size: 1rem;
   // box-shadow: $raised;
   box-shadow: $inset-bottom;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 .site-nav {

@@ -1,5 +1,5 @@
 ---
-title: News
+title: Latest Updates
 key: news
 index: 1
 output: true
