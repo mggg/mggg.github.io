@@ -11,6 +11,4 @@ Map makers have a lot of latitude, and how they draw the lines can impact the ou
 When they draw lines to benefit one group over another, we call this gerrymandering.
 <!--more-->
 
-Read more about:
-- The rules and constraints that govern redistricting
-- What is gerrymandering
+Read more about the rules and constraints that govern redistricting, and what is gerrymandering, in [our book](/publications/political-geometry/00-Duchin.pdf) "Political Geometry."
