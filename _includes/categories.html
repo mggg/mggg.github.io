@@ -3,11 +3,19 @@
     {% assign categories = site.category_pages |
     where_exp:"item","item.show_categories != false" | sort: "index" %} {% for
     link in categories %}
+    {% assign is_current = false %}
+    {% if link.key == page.key %}
+      {% assign is_current = true %}
+    {% elsif page.category_nav == link.key %}
+      {% assign is_current = true %}
+    {% elsif page.categories contains link.key %}
+      {% assign is_current = true %}
+    {% endif %}
     <li>
       <a
         href="{{ link.url | relative_url }}"
         class="nav-links__link nav-links__link--minor
-        {% if link.key == page.key %}nav-links__link--minor--current{% endif %}"
+        {% if is_current %}nav-links__link--minor--current{% endif %}"
       >
         {{ link.title }}
       </a>

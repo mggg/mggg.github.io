@@ -2,8 +2,7 @@
 title: Outlier analysis for Pennsylvania
 date: 2018-02-01 00:00:00 Z
 authors: Moon Duchin
-categories:
-  - reports
+categories: []
 description:
   Expert report for LWV v. Commonwealth of Pennsylvania. (Typos corrected from
   <a
