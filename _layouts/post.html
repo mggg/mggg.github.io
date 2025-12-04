@@ -3,7 +3,26 @@
   {% include head.html %}
 
   <body>
-    {% include top_navigation.html %}
+    {% assign work_categories = "basics,reports,research,civic-tech" | split: "," %}
+    {% assign show_categories = false %}
+    {% assign post_category_key = nil %}
+    {% if page.category_nav %}
+      {% assign show_categories = true %}
+      {% assign post_category_key = page.category_nav %}
+    {% else %}
+      {% for category in page.categories %}
+        {% if work_categories contains category %}
+          {% assign show_categories = true %}
+          {% assign post_category_key = category %}
+          {% break %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+    {% if show_categories %}
+      {% include top_navigation.html show_categories=true %}
+    {% else %}
+      {% include top_navigation.html %}
+    {% endif %}
 
     <main class="l-center l-content">
       {% include post_heading.html %}

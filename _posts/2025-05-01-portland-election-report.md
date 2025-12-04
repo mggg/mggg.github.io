@@ -3,6 +3,7 @@ title: "Study of the 2024 STV City Council Election in Portland, Oregon"
 date: 2025-05-01 00:00:00 Z
 categories:
   - news
+category_nav: reports
 authors: MGGG
 featured: true
 permalink: /portland-stv-24
