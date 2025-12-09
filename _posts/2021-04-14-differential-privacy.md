@@ -3,7 +3,7 @@ title: "Differential Privacy and Redistricting"
 date: 2022-06-24 00:00:00 Z
 categories:
   - research
-authors: MGGG
+authors: Data and Democracy Lab
 featured: true
 permalink: /DP
 image: "/uploads/dp_tree.png"
