@@ -27,6 +27,10 @@
   margin: 0 1rem;
 }
 
+.post__authors--no-date::after {
+  display: none;
+}
+
 .post__title {
   font-size: 1.75rem;
   line-height: 1;

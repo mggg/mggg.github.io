@@ -3,8 +3,17 @@
     <a href="{{ post.url }}">{{ post.title }}</a>
   </h2>
   <div class="post__metadata">
-    <div class="post__authors">{{ post.authors }}</div>
+    {% assign hide_date = false %}
+    {% if post.categories contains "basics" %}
+      {% assign hide_date = true %}
+    {% endif %}
+    {% if post.categories contains "research" %}
+      {% assign hide_date = true %}
+    {% endif %}
+    <div class="post__authors{% if hide_date %} post__authors--no-date{% endif %}">{{ post.authors }}</div>
+    {% unless hide_date %}
     <div class="post__date">{{ post.date | date_to_long_string }}</div>
+    {% endunless %}
   </div>
   <div class="post__content">{{ post.excerpt }}</div>
 </article>

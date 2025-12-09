@@ -13,7 +13,13 @@
   {% assign open_new_tab = is_external %}
 {% endif %}
 <li class="card">
+  {% assign show_image = false %}
   {% if work.featured and work.image %}
+    {% assign show_image = true %}
+  {% elsif work.categories contains "basics" and work.image %}
+    {% assign show_image = true %}
+  {% endif %}
+  {% if show_image %}
   <a
     class="card__image-link"
     href="{{ link_url }}"
@@ -43,8 +49,17 @@
     </h3>
     {% if work.authors %}
     <div class="post__metadata">
-      <div class="post__authors">{{ work.authors }}</div>
+      {% assign hide_date = false %}
+      {% if work.categories contains "basics" %}
+        {% assign hide_date = true %}
+      {% endif %}
+      {% if work.categories contains "research" %}
+        {% assign hide_date = true %}
+      {% endif %}
+      <div class="post__authors{% if hide_date %} post__authors--no-date{% endif %}">{{ work.authors }}</div>
+      {% unless hide_date %}
       <div class="post__date">{{ work.date | date_to_long_string }}</div>
+      {% endunless %}
     </div>
     {% endif %}
     {% if work.description %}
