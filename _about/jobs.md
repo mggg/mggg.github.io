@@ -8,7 +8,6 @@ show_about: true
 show_categories: false
 permalink: /jobs
 ---
-In 2025-26, we are hiring for 6.5 positions.  Here are our open job opportunities as of Dec 4, 2025.
 
 # Jobs 
 The Data and Democracy Lab (née MGGG Redistricting Lab) is a research group led by PI Moon Duchin in the Data Science Institute at the University of Chicago. Members of the lab engage in interdisciplinary research, drawing on approaches from geometry, topology, graphs and networks, probability/statistics, and algorithm design, 
@@ -19,7 +18,7 @@ Major activities of the lab include:
 - software development of our open-source packages in Python and various other languages; and
 - collaborating with community partners and civil rights organizations.
 
-Here are our open job opportunities as of November 1, 2025.  We will add links to HR pages as they become available.
+Here are our open job opportunities as of December 4, 2025.  We will add links to HR pages as they become available.
 
 ## Software Developers
 
