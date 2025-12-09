@@ -17,7 +17,7 @@
         {% for post in all_posts %} {% include post_card.html
         work=post %} {% endfor %}
       </ul>
-      {% if total_posts > 5 %}
+      {% if page.key == "news" and total_posts > 5 %}
       <div class="l-flex-center" id="expand-posts-container">
         <button
           class="nav-links__link nav-links__link--see-more"
@@ -31,6 +31,7 @@
       {% endif %}
     </main>
 
+    {% if page.key == "news" %}
     <script>
       function expandPosts() {
         var postsList = document.getElementById('posts-list');
@@ -53,6 +54,7 @@
         display: none;
       }
     </style>
+    {% endif %}
 
     {% include footer.html %}
   </body>
