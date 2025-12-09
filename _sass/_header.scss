@@ -27,7 +27,7 @@
 }
 
 .site-nav {
-  padding: 0 1rem;
+  padding: 0 0rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -36,6 +36,7 @@
 .site-nav__logo {
   flex: 1.5;
   padding: 0.5rem 0;
+  padding-left: 0;
 }
 
 .site-nav__logo__img {
@@ -63,7 +64,7 @@
 
 .nav-links__link {
   display: block;
-  padding: 0 1rem;
+  padding: 0 2rem;
   font-weight: 400;
   font-family: $font-sans-thin;
   text-transform: uppercase;

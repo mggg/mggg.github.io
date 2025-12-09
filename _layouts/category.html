@@ -11,12 +11,48 @@
       <h1>{{ page.title }}</h1>
       {{ content }}
       {% if page.key %}
-      <ul class="card-list">
-        {% for post in site.categories[page.key] %} {% include post_card.html
+      {% assign all_posts = site.categories[page.key] %}
+      {% assign total_posts = all_posts | size %}
+      <ul class="card-list" id="posts-list">
+        {% for post in all_posts %} {% include post_card.html
         work=post %} {% endfor %}
       </ul>
+      {% if total_posts > 5 %}
+      <div class="l-flex-center" id="expand-posts-container">
+        <button
+          class="nav-links__link nav-links__link--see-more"
+          id="expand-posts-btn"
+          onclick="expandPosts()"
+        >
+          See all posts
+        </button>
+      </div>
+      {% endif %}
       {% endif %}
     </main>
+
+    <script>
+      function expandPosts() {
+        var postsList = document.getElementById('posts-list');
+        var expandContainer = document.getElementById('expand-posts-container');
+        if (postsList) {
+          var cards = postsList.querySelectorAll('.card');
+          cards.forEach(function(card, index) {
+            if (index >= 5) {
+              card.style.setProperty('display', 'flex', 'important');
+            }
+          });
+          if (expandContainer) {
+            expandContainer.style.display = 'none';
+          }
+        }
+      }
+    </script>
+    <style>
+      #posts-list .card:nth-child(n+6) {
+        display: none;
+      }
+    </style>
 
     {% include footer.html %}
   </body>
