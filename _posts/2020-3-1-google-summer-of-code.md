@@ -2,9 +2,6 @@
 title: 2020 Google Summer of Code
 date:  2020-03-1 00:00:00 Z
 authors: MGGG
-categories:
-  - news
-authors: MGGG
 excerpt_separator: "<!--more-->"
 layout: post
 ---

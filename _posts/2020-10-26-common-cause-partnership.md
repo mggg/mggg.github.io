@@ -2,9 +2,6 @@
 title: Partnership with Common Cause
 date:  2020-10-26 00:00:00 Z
 authors: MGGG
-categories:
-  - news
-authors: MGGG
 layout: post
 ---
 
