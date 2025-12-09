@@ -8,6 +8,7 @@ show_about: true
 show_categories: false
 permalink: /jobs
 ---
+In 2025-26, we are hiring for 6.5 positions.  Here are our open job opportunities as of Dec 4, 2025.
 
 # Jobs 
 The Data and Democracy Lab (née MGGG Redistricting Lab) is a research group led by PI Moon Duchin in the Data Science Institute at the University of Chicago. Members of the lab engage in interdisciplinary research, drawing on approaches from geometry, topology, graphs and networks, probability/statistics, and algorithm design, 
@@ -31,6 +32,7 @@ This is a new kind of position for a recent PhD -- you will come to UChicago for
 ## Lab Manager / Program Director
 
 The Data and Democracy Lab sits inside the broader DDRI (Data and Democracy Research Initiative).  We seek to have a pair of leaders heading these ambitious and wide-ranging programs, and we are currently searching for one of the two roles.  PhD or JD is preferred, though experience running a complex organization can be an alternative qualification.  
+You can apply [here](https://uchicago.wd5.myworkdayjobs.com/External/job/Illinois-Chicago/Lab-Manager--Data---Democracy-Research-Initiative_JR32182).
 
 
 ## Pre-Doctoral Positions
@@ -39,4 +41,5 @@ These are staff positions for recent college graduates who want more hands-on re
 
 ## Summer Internship 2026
 
-We are likely to have a small cohort of summer interns in 2026, as we have hosted in previous years.  Stay tuned for more!
+Due to our recent move to the University of Chicago, we will not be running an internship program this coming summer.
+UChicago students interested in summer research opportunities should contact the Lab directly. We hope to restart our intern program in summer 2027.
