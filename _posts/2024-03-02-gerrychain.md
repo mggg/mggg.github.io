@@ -4,6 +4,7 @@ date: 2024-03-05 00:00:00 Z
 categories:
   - civic-tech
 excerpt_separator: "<!--more-->"
+image: "uploads/triple-pa.gif"
 ---
 This is the open-source Python library powering our redistricting analyses. GerryChain is tech for ensemble analysis that's been used in major redistricting cases. 
 

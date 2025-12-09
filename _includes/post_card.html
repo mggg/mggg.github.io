@@ -18,6 +18,8 @@
     {% assign show_image = true %}
   {% elsif work.categories contains "basics" and work.image %}
     {% assign show_image = true %}
+  {% elsif work.categories contains "civic-tech" and work.image %}
+    {% assign show_image = true %}
   {% endif %}
   {% if show_image %}
   <a
@@ -25,11 +27,21 @@
     href="{{ link_url }}"
     {% if open_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}
   >
+    {% assign image_focus = work.image_focus %}
+    {% if image_focus %}
+    <img
+      class="card__image"
+      src="{{ work.image | relative_url }}"
+      alt="{{ work.image_caption }}"
+      style="object-position: {{ image_focus }};"
+    />
+    {% else %}
     <img
       class="card__image"
       src="{{ work.image | relative_url }}"
       alt="{{ work.image_caption }}"
     />
+    {% endif %}
   </a>
   {% endif %}
 

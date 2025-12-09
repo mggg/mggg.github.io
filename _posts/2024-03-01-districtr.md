@@ -4,6 +4,7 @@ date: 2024-03-06 00:00:00 Z
 categories:
   - civic-tech
 excerpt_separator: "<!--more-->"
+image: "uploads/districtr-splash.png"
 ---
 
 This mapping tool lets you draw and share redistricting plans as well as draw and describe your "community of interest." 
