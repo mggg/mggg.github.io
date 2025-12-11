@@ -12,6 +12,23 @@
       {{ content }}
       {% if page.key %}
       {% assign all_posts = site.categories[page.key] %}
+      {% if page.key == "reports" %}
+        {% assign excluded_titles = "Disaggregation of Unsorted Votes,Conventions for Constructing Demographic Categories,MGGG States" | split: "," %}
+        {% assign filtered_posts = "" | split: "," %}
+        {% for post in all_posts %}
+          {% assign should_exclude = false %}
+          {% for excluded_title in excluded_titles %}
+            {% if post.title == excluded_title %}
+              {% assign should_exclude = true %}
+              {% break %}
+            {% endif %}
+          {% endfor %}
+          {% unless should_exclude %}
+            {% assign filtered_posts = filtered_posts | push: post %}
+          {% endunless %}
+        {% endfor %}
+        {% assign all_posts = filtered_posts %}
+      {% endif %}
       {% assign total_posts = all_posts | size %}
       <ul class="card-list" id="posts-list">
         {% for post in all_posts %} {% include post_card.html
