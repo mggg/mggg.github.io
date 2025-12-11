@@ -8,6 +8,12 @@
     {% if page.categories contains "research" %}
       {% assign hide_date = true %}
     {% endif %}
+    {% if page.categories contains "civic-tech" %}
+      {% assign hide_date = true %}
+    {% endif %}
+    {% if page.categories contains "reports" %}
+      {% assign hide_date = true %}
+    {% endif %}
   {% else %}
     {% assign hide_date = true %}
   {% endif %}

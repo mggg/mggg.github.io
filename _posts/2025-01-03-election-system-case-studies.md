@@ -1,6 +1,6 @@
 ---
 title: Election System Case Studies
-date: 2025-01-02 00:00:00 Z
+date: 2025-01-03 00:00:00 Z
 categories:
   - reports
 description: Deep dives into the consequences of changing the electoral system in specific jurisdictions, commissioned by cities and advocacy groups exploring electoral alternatives.

@@ -1,6 +1,6 @@
 ---
 title: Redistricting Reports
-date: 2025-01-03 00:00:00 Z
+date: 2025-01-04 00:00:00 Z
 categories:
   - reports
 description: How the Lab has used the power of computational redistricting to analyze enacted, proposed, and challenged legislative maps.

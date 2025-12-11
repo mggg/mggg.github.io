@@ -68,6 +68,12 @@
       {% if work.categories contains "research" %}
         {% assign hide_date = true %}
       {% endif %}
+      {% if work.categories contains "civic-tech" %}
+        {% assign hide_date = true %}
+      {% endif %}
+      {% if work.categories contains "reports" %}
+        {% assign hide_date = true %}
+      {% endif %}
       <div class="post__authors{% if hide_date %} post__authors--no-date{% endif %}">{{ work.authors }}</div>
       {% unless hide_date %}
       <div class="post__date">{{ work.date | date_to_long_string }}</div>
