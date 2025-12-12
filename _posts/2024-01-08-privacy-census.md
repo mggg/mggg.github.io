@@ -5,7 +5,7 @@ categories:
   - basics
 excerpt_separator: "<!--more-->"
 image: "/uploads/dp_tree.png"
-authors: Data and Democracy Lab
+authors: Data & Democracy Lab
 ---
 
 In order to protect the privacy of individual Census respondents, Census data is released only at aggregate levels, typically combining records for hundreds of individuals or more and just reporting the overall counts. Unfortunately, on its own, this does not provide enough protection to prevent privacy attacks.

@@ -5,7 +5,7 @@ categories:
   - basics
 excerpt_separator: "<!--more-->"
 image: "/uploads/dsf.gif"
-authors: Data and Democracy Lab
+authors: Data & Democracy Lab
 ---
 
 How do you quantify if a district "has a weird shape"? Does banning weird shapes actually prevent gerrymandering?<!--more-->

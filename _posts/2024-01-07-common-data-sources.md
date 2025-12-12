@@ -5,7 +5,7 @@ categories:
   - basics
 excerpt_separator: "<!--more-->"
 image: "/uploads/CT-geocode.png"
-authors: Data and Democracy Lab
+authors: Data & Democracy Lab
 ---
 The Lab uses a wide variety of data products to study electoral systems. Some of the most common include Census data and the American Community Survey, as well as electoral results on voting precincts
 

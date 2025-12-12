@@ -5,7 +5,7 @@ categories:
   - basics
 excerpt_separator: "<!--more-->"
 image: "/uploads/va2018-clipped.svg"
-authors: Data and Democracy Lab
+authors: Data & Democracy Lab
 ---
 
 While most people agree that things like proportionality and competitiveness are important democractic ideals, 

@@ -5,7 +5,7 @@ categories:
   - basics
 excerpt_separator: "<!--more-->"
 image: "/uploads/triple-PA.gif"
-authors: Data and Democracy Lab
+authors: Data & Democracy Lab
 ---
 
 Redistricting is the process of drawing new legislative boundaries, usually in order to balance the population across districts. 
