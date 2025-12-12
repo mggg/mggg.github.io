@@ -6,6 +6,7 @@ categories:
 description: Deep dives into the consequences of changing the electoral system in specific jurisdictions, commissioned by cities and advocacy groups exploring electoral alternatives.
 permalink: /election-system-case-studies
 featured: true
+image: "/uploads/FV.png"
 ---
 Deep dives into the consequences of changing the electoral system in specific jurisdictions, commissioned by cities and advocacy groups exploring electoral alternatives.
 

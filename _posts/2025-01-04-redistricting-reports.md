@@ -6,6 +6,7 @@ categories:
 description: How the Lab has used the power of computational redistricting to analyze enacted, proposed, and challenged legislative maps.
 permalink: /redistricting-reports
 featured: true
+image: "/uploads/gridlandia.svg"
 ---
 
 How the Lab has used the power of computational redistricting to analyze enacted, proposed, and challenged legislative maps.

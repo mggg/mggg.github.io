@@ -33,6 +33,10 @@
   width: 100%;
   display: block;
   background: black;
+  
+  &[src$=".svg"] {
+    background: white;
+  }
 }
 
 .card__image-link {
