@@ -11,51 +11,12 @@ Deep dives into the consequences of changing the electoral system in specific ju
 
 ## Reports
 <ul class="card-list">
+  {% assign post_titles = "Top 100 city council structures | Study of the 2024 STV City Council Election in Portland, Oregon | Comparing Electoral Systems for the Massachusetts Legislature | Modeling the Fair Representation Act | Analysis of County Commission Elections in Yakima County, WA | STV Reports in the Pacific Northwest | Election Reform in Lowell, MA | Study of Reform Proposals for Chicago City Council | Study of voting systems for Santa Clara, CA" | split: " | " %}
 
-{% assign post = site.posts | where: "title", "Top 100 city council structures" | first %}
-  {% if post %}
-    {% include post_card.html work=post %}
-  {% endif %}
-
-  {% assign post = site.posts | where: "title", "Study of the 2024 STV City Council Election in Portland, Oregon" | first %}
-  {% if post %}
-    {% include post_card.html work=post %}
-  {% endif %}
-
-   {% assign post = site.posts | where: "title", "Comparing Electoral Systems for the Massachusetts Legislature" | first %}
-  {% if post %}
-    {% include post_card.html work=post %}
-  {% endif %}
-
-{% assign post = site.posts | where: "title", "Modeling the Fair Representation Act" | first %}
-  {% if post %}
-    {% include post_card.html work=post %}
-  {% endif %}
-
-
-  {% assign post = site.posts | where: "title", "Analysis of County Commission Elections in Yakima County, WA" | first %}
-  {% if post %}
-    {% include post_card.html work=post %}
-  {% endif %}
-
-{% assign post = site.posts | where: "title", "STV Reports in the Pacific Northwest" | first %}
-  {% if post %}
-    {% include post_card.html work=post %}
-  {% endif %}
-
-
-{% assign post = site.posts | where: "title", "Election Reform in Lowell, MA" | first %}
-  {% if post %}
-    {% include post_card.html work=post %}
-  {% endif %}
-
-{% assign post = site.posts | where: "title", "Study of Reform Proposals for Chicago City Council" | first %}
-  {% if post %}
-    {% include post_card.html work=post %}
-  {% endif %}
-
-  {% assign post = site.posts | where: "title", "Study of voting systems for Santa Clara, CA" | first %}
-  {% if post %}
-    {% include post_card.html work=post %}
-  {% endif %}
+  {% for post_title in post_titles %}
+    {% assign post = site.posts | where: "title", post_title | first %}
+    {% if post %}
+      {% include post_card.html work=post %}
+    {% endif %}
+  {% endfor %}
 </ul>
