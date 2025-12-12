@@ -6,6 +6,7 @@ categories:
 description: With years of experience in electoral and demographic data, explore how the Lab answers questions about the best ways to use the data we have.
 permalink: /data-practices
 featured: true
+image: "/assets/usa-resized.png"
 ---
 
 With years of experience in electoral and demographic data, explore how the Lab answers questions about the best ways to use the data we have.

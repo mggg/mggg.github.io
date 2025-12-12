@@ -59,7 +59,7 @@
         >
       {% endif %}
     </h3>
-    {% if work.authors %}
+    {% if work.authors or work.date %}
     <div class="post__metadata">
       {% assign hide_date = false %}
       {% if work.categories contains "basics" %}
@@ -74,10 +74,14 @@
       {% if work.categories contains "reports" %}
         {% assign hide_date = true %}
       {% endif %}
-      <div class="post__authors{% if hide_date %} post__authors--no-date{% endif %}">{{ work.authors }}</div>
-      {% unless hide_date %}
-      <div class="post__date">{{ work.date | date_to_long_string }}</div>
-      {% endunless %}
+      {% if work.authors %}
+        <div class="post__authors{% if hide_date %} post__authors--no-date{% endif %}">{{ work.authors }}</div>
+      {% endif %}
+      {% if work.date %}
+        {% unless hide_date %}
+        <div class="post__date">{{ work.date | date_to_long_string }}</div>
+        {% endunless %}
+      {% endif %}
     </div>
     {% endif %}
     {% if work.description %}
