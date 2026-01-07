@@ -1,5 +1,5 @@
 ---
-title: Conversations with Maya: Moon Duchin
+title: Conversations with Maya-Moon Duchin
 date: 2019-08-23 00:00:00 Z
 authors: Maya Ajmera
 categories:
