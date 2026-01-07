@@ -18,7 +18,7 @@ Major activities of the lab include:
 - software development of our open-source packages in Python and various other languages; and
 - collaborating with community partners and civil rights organizations.
 
-Here are our open job opportunities as of December 4, 2025.  We will add links to HR pages as they become available.
+Here are our open job opportunities as of January 7, 2026. 
 
 ## Software Developers
 
@@ -36,7 +36,7 @@ You can apply [here](https://uchicago.wd5.myworkdayjobs.com/External/job/Illinoi
 
 ## Pre-Doctoral Positions
 
-These are staff positions for recent college graduates who want more hands-on research experience before applying to PhD programs.  Though more common in economics, they make a great deal of practical sense in other technical fields.  The pay range is similar to doctoral stipends, and the 1-2 year timespan allows you to be a principal contributor on software projects and a co-author on research papers.  
+These are staff positions for recent college graduates who want more hands-on research experience before applying to PhD programs.  Though more common in economics, they make a great deal of practical sense in other technical fields.  The pay range is similar to doctoral stipends, and the 1-2 year timespan allows you to be a principal contributor on software projects and a co-author on research papers.  You can apply [here](https://uchicago.wd5.myworkdayjobs.com/en-US/External/details/Predoctoral-Scholar_JR32397?q=predoc).
 
 ## Summer Internship 2026
 
