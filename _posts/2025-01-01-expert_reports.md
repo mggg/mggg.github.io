@@ -11,7 +11,7 @@ What role does mathematics and data science play in the court?
 
 ## Reports
 <ul class="card-list">
-  {% assign post_titles = "Report on Congressional Plan C2333 | Comparison of Congressional Districting Plans in Pennsylvania | North Carolina Rebuttal Report | Presentation of Alternative Congressional Districting Plans for Alabama" | split: " | " %}
+  {% assign post_titles = "Report on Texas Congressional Plan C2333 | Comparison of Congressional Districting Plans in Pennsylvania | North Carolina Rebuttal Report | Presentation of Alternative Congressional Districting Plans for Alabama" | split: " | " %}
 
   {% for post_title in post_titles %}
     {% assign post = site.posts | where: "title", post_title | first %}
