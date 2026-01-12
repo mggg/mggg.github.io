@@ -1,9 +1,9 @@
 ---
-title: Export Reports
+title: Expert Reports
 date: 2025-01-01 00:00:00 Z
 categories:
   - reports
-permalink: /export-reports
+permalink: /expert-reports
 featured: true
 ---
 Moon has served as an expert witness in a variety of court cases related to race, redistricting, and the VRA. 
