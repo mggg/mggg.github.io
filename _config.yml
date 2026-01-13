@@ -33,7 +33,7 @@ url: https://www.mggg.org
 author: Data and Democracy Lab
 description:
   A nonpartisan research organization studying applications of data science to democratic systems.
-logo: "/assets/draft_logo.svg"
+logo: "/assets/reynolds_redesign/DDL_UChicago_Color_RGB.svg"
 google_site_verification: jaL3ii25-g2LejBrllWbH-DmyT7b-vJw8URj-tvq8kE
 plugins:
   - jekyll-seo-tag

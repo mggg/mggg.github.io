@@ -4,7 +4,7 @@ navtitle: Our Mission
 nav: true
 order: 1
 customlink: "/#about-mggg"
-image: "/assets/draft_logo.svg"
+image: "/assets/reynolds_redesign/DDL_UChicago_Color_RGB.svg"
 ---
 
 The Data and Democracy Lab anchors the Data and Democracy Research Initiative  at the University of Chicago. Led by Director Moon Duchin, the Lab began in 2016 as an informal research collective called the Metric Geometry and Gerrymandering Group (MGGG), which was based at the Tisch College of Civic Life at Tufts University from 2018-2024 and the Brooks School of Public Policy at Cornell University from 2024-2025 before moving to UChicago in fall 2025.
