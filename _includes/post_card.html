@@ -47,16 +47,28 @@
 
   <div class="card__content">
     <h3 class="card__title card__title--featured">
-      {% if work.no_title_link %}
-        {% if work.short_title %}{{ work.short_title }}{% else %}{{ work.title }}{% endif %}
+      {% if work.categories contains "press" %}
+        {% if work.no_title_link %}
+          {{ work.publication }}{% if work.press_type %}, {{ work.press_type }}{% endif %}
+        {% else %}
+          <a
+            href="{{ link_url }}"
+            {% if open_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}
+            >{{ work.publication }}{% if work.press_type %}, {{ work.press_type }}{% endif %}</a
+          >
+        {% endif %}
       {% else %}
-        <a
-          href="{{ link_url }}"
-          {% if open_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}
-          >{% if work.short_title %}{{ work.short_title }}{% else %}{{
-            work.title
-          }}{% endif %}</a
-        >
+        {% if work.no_title_link %}
+          {% if work.short_title %}{{ work.short_title }}{% else %}{{ work.title }}{% endif %}
+        {% else %}
+          <a
+            href="{{ link_url }}"
+            {% if open_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}
+            >{% if work.short_title %}{{ work.short_title }}{% else %}{{
+              work.title
+            }}{% endif %}</a
+          >
+        {% endif %}
       {% endif %}
     </h3>
     {% if work.authors or work.date %}
@@ -96,15 +108,27 @@
       | replace: "<p>", '<p class="card__teaser">'
     }}
     {% endif %}
-    {% if work.publication %}
-    <div class="card__publication">
-      {{ work.publication }}{% if work.publication_date %},
-      {{ work.publication_date | date: "%B %Y" }}. {% endif %}
-    </div>
-    {% elsif work.publication_date %}
-    <div class="card__publication">
-      {{ work.publication_date | date: "%B %Y" }}.
-    </div>
+    {% if work.categories contains "press" %}
+      {% if work.title %}
+      <div class="card__publication">
+        {{ work.title }}
+      </div>
+      {% elsif work.publication_date %}
+      <div class="card__publication">
+        {{ work.publication_date | date: "%B %Y" }}.
+      </div>
+      {% endif %}
+    {% else %}
+      {% if work.publication %}
+      <div class="card__publication">
+        {{ work.publication }}{% if work.publication_date %},
+        {{ work.publication_date | date: "%B %Y" }}. {% endif %}
+      </div>
+      {% elsif work.publication_date %}
+      <div class="card__publication">
+        {{ work.publication_date | date: "%B %Y" }}.
+      </div>
+      {% endif %}
     {% endif %}
   </div>
 </li>

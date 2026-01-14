@@ -5,6 +5,7 @@ authors: Maya Ajmera
 categories:
   - press
 publication: Society for Science
+press_type: Interview
 publication_date: 2019-08-23 00:00:00 Z
 href: https://www.societyforscience.org/blog/conversations-with-maya-moon-duchin/
 ---
