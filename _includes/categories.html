@@ -17,7 +17,7 @@
         class="nav-links__link nav-links__link--minor
         {% if is_current %}nav-links__link--minor--current{% endif %}"
       >
-        {{ link.title }}
+      {% if link.nav_title %}{{ link.nav_title }}{% else %}{{ link.title }}{% endif %}
       </a>
     </li>
     {% endfor %}

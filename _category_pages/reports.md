@@ -1,6 +1,7 @@
 ---
-title: Reports
+title: Reports, White Papers, & More
 key: reports
+nav_title: Reports
 index: 3
 output: true
 layout: category
