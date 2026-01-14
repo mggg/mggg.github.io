@@ -1,6 +1,6 @@
 ---
 title: Moon Duchin on the 'Mathematical Quagmire' of Gerrymandering
-date: 2025-12-09 00:00:00 Z
+date: 2025-11-03 00:00:00 Z
 authors: Siobhan Roberts
 categories:
   - press
