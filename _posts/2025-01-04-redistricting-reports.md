@@ -13,7 +13,7 @@ How the Lab has used the power of computational redistricting to analyze enacted
 
 ## Reports
 <ul class="card-list">
-  {% assign post_titles = "UK Boundaries | Modeling electoral dynamics for the Portland, Oregon city council | Michigan Independent Citizens Redistricting Commission Post-Mortem | Privacy, Census Data, and Arizona Redistricting | The Mathematicians' Brief in Rucho v. Common Cause | Comparison of Districting Plans for the Virginia House of Delegates" | split: " | " %}
+  {% assign post_titles = "UK Boundaries | Michigan Independent Citizens Redistricting Commission Post-Mortem | Privacy, Census Data, and Arizona Redistricting | The Mathematicians' Brief in Rucho v. Common Cause | Comparison of Districting Plans for the Virginia House of Delegates" | split: " | " %}
 
   {% for post_title in post_titles %}
     {% assign post = site.posts | where: "title", post_title | first %}
