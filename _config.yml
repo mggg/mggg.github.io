@@ -18,6 +18,9 @@ collections:
   people:
     title: People
     output: false
+  basics:
+    title: Basics
+    output: false
   posts:
     title: Posts
     permalink: "/posts/:title"
