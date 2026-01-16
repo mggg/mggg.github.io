@@ -92,9 +92,12 @@
   background-color: $grey;
 }
 
-.nav-links__link--current {
-  background-color: $grey;
-  // font-weight: bold;
+.nav-links__link--current,
+.nav-links__link--current:visited,
+.nav-links__link--current:hover,
+.nav-links__link--current:active {
+  background: #444444;
+  color: #f9f9f9;
 }
 
 @media only screen and (max-width: 600px) {
