@@ -1,7 +1,7 @@
 ---
 title: Redistricting and gerrymandering
 name: Redistricting and gerrymandering
-photo: "/uploads/triple-PA-square.jpg"
+photo: "/uploads/triple-PA.gif"
 description: |
   **Redistricting and gerrymandering**: Redistricting is the process of drawing new legislative boundaries, usually in order to balance the population across districts. Map makers have a lot of latitude, and how they draw the lines can impact the outcome of the elections. When they draw lines to benefit one group over another, we call this gerrymandering.
 
