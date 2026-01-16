@@ -54,6 +54,7 @@
   flex-direction: column;
   flex-grow: 1;
   box-shadow: $inset_bottom;
+  margin-top: -20vh;
 }
 @media only screen and (max-width: 600px) {
   .map__title {
