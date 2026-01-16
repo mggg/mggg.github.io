@@ -15,7 +15,7 @@
 /covid-flows/* https://mggg.github.io/covid-flows/:splat 200
 /covid https://mggg.github.io/covid-landing-page/index.html
 /covid/* https://mggg.github.io/covid-landing-page/:splat 200
-
+/GerryChain https://gerrychain.readthedocs.io/ 200
 /yakima https://districtr.org/yakima
 
 ## Papers
