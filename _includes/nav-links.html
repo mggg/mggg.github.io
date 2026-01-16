@@ -6,11 +6,31 @@
 {% for link in site.data.navigation %}
 <li>
   {% assign link_url = link.href | relative_url %}
+  {% assign current_url = page.url | relative_url %}
+  {% assign is_current = false %}
+  {% if highlight_link %}
+    {% if link_url == highlight_link %}
+      {% assign is_current = true %}
+    {% endif %}
+  {% else %}
+    {% if link_url == current_url %}
+      {% assign is_current = true %}
+    {% elsif link_url != '/' and current_url != '/' %}
+      {% assign link_url_with_slash = link_url | append: '/' %}
+      {% if current_url == link_url or current_url contains link_url_with_slash %}
+        {% assign is_current = true %}
+      {% endif %}
+    {% endif %}
+  {% endif %}
+  {% comment %} Special handling for About Us: highlight if page.show_about is true {% endcomment %}
+  {% if link.name == 'About Us' and page.show_about %}
+    {% assign is_current = true %}
+  {% endif %}
   <a
     href="{{ link_url }}"
     {% if link.external %} target="_blank" {% endif %}
     class="nav-links__link nav-links__link--major
-    {% if link_url == highlight_link %}nav-links__link--current{% endif %}"
+    {% if is_current %}nav-links__link--current{% endif %}"
   >
     {{ link.name }}
   </a>
