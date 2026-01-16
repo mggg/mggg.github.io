@@ -7,9 +7,10 @@ dd {
 
 .bio-list {
   display: grid;
-  grid-template-columns: 100px auto;
+  grid-template-columns: 200px auto;
   grid-gap: 2rem 3rem;
   list-style: none;
+  align-items: stretch;
   // margin: 1rem 0;
   padding: 0 1rem;
   // max-width: 60rem;
@@ -50,6 +51,16 @@ dd {
   padding: 0 1rem;
 }
 
+.basic__img {
+  width: 100%;
+  height: 100%;
+  max-width: 200px;
+  max-height: 200px;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 0.25rem;
+}
+
 .bio__img {
   width: 100px;
   height: 100px;
@@ -63,6 +74,15 @@ dd {
   margin: 0.3rem;
   // width: 25%;
   // max-width: 25%;
+}
+
+.bio-list .bio__img-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  min-height: 100%;
+  margin: 0;
 }
 .short {
   display: grid;

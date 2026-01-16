@@ -3,7 +3,6 @@ title: Districtr
 date:  2025-06-10 00:00:00 Z
 image: "/uploads/districtr-splash.png"
 categories:
-  - interactives
 authors: MGGG
 permalink: /districtr
 excerpt_separator: "<!--more-->"

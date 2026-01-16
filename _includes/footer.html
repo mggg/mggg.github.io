@@ -10,24 +10,6 @@
         @mggg</a
       >
     </li>
-    <li class="site-footer__item">
-      <a href="https://github.com/mggg-states">
-        <img
-          src="/assets/Octicons-octoface.svg"
-          class="site-footer__icon"
-          alt="GitHub"
-        />
-        @mggg-states</a
-      >
-    </li>
-    <li class="site-footer__item">
-      <a href="https://twitter.com/gerrymandr">
-        <img
-          src="/assets/Twitter_Logo_WhiteOnImage.svg"
-          class="site-footer__icon"
-          alt="Twitter"
-        />@gerrymandr</a
-      >
     </li>
     <li class="site-footer__item">
       <address>
@@ -36,7 +18,23 @@
     </li>
     <hr class="site-footer__hr" />
     <li class="site-footer__copyright">
-      &#169; {{ site.time | date: "%Y" }} MGGG Redistricting Lab
+      &#169; {{ site.time | date: "%Y" }} Data and Democracy Lab
     </li>
   </ul>
 </footer>
+<script>
+  // Add target="_blank" to all external links
+  document.addEventListener('DOMContentLoaded', function() {
+    const links = document.querySelectorAll('a[href]');
+    links.forEach(function(link) {
+      const href = link.getAttribute('href');
+      // Check if link is external (starts with http:// or https://) and not already set
+      if (href && (href.startsWith('http://') || href.startsWith('https://')) && 
+          !href.startsWith(window.location.origin) && 
+          !link.hasAttribute('target')) {
+        link.setAttribute('target', '_blank');
+        link.setAttribute('rel', 'noopener noreferrer');
+      }
+    });
+  });
+</script>

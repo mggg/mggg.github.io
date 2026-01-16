@@ -2,9 +2,6 @@
 title: 2020 Summer Geodata Bootcamp
 date:  2020-01-22 00:00:00 Z
 authors: MGGG
-categories:
-  - news
-authors: MGGG
 excerpt_separator: "<!--more-->"
 layout: post
 ---

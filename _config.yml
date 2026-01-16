@@ -1,5 +1,5 @@
 ---
-title: Metric Geometry and Gerrymandering Group
+title: Data and Democracy Lab
 timezone: UTC
 collections:
   category_pages:
@@ -9,7 +9,7 @@ collections:
     layout: category
   about:
     title: About Us
-    output: false
+    output: true
     permalink: "/:title"
     layout: category
   jobs:
@@ -17,6 +17,9 @@ collections:
     output: false
   people:
     title: People
+    output: false
+  basics:
+    title: Basics
     output: false
   posts:
     title: Posts
@@ -28,13 +31,12 @@ collections:
   publications:
     title: Publications
     output: true
-name: Metric Geometry and Gerrymandering Group
+name: Data and Democracy Lab
 url: https://www.mggg.org
-author: Metric Geometry and Gerrymandering Group
+author: Data and Democracy Lab
 description:
-  A nonpartisan research organization studying applications of geometry
-twitter: gerrymandr
-logo: "/assets/logo.svg"
+  A nonpartisan research organization studying applications of data science to democratic systems.
+logo: "/assets/reynolds_redesign/DDL_UChicago_Color_RGB.svg"
 google_site_verification: jaL3ii25-g2LejBrllWbH-DmyT7b-vJw8URj-tvq8kE
 plugins:
   - jekyll-seo-tag

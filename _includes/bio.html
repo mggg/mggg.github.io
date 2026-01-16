@@ -1,5 +1,7 @@
+{% assign person = include.person %}
 <dt class="bio__img-container" 
     id="{{ person.name | downcase | replace: " ", "-" }}">
+    
   <img
     src="{{ person.photo }}"
     class="bio__img"
@@ -7,5 +9,9 @@
   />
 </dt>
 <dd class="bio__body">
-  {{ person.description | markdownify | remove: "<p>" | remove: "</p>" }}
+  {% if person.description %}
+    {{ person.description | markdownify }}
+  {% else %}
+    <p>No description available</p>
+  {% endif %}
 </dd>

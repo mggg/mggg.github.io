@@ -4,4 +4,5 @@ key: code
 index: 6
 output: true
 layout: category
+show_categories: false
 ---

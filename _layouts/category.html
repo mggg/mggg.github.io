@@ -5,18 +5,73 @@
   <body>
     {% if page.show_categories != nil %} {% assign show_categories =
     page.show_categories %} {% else %} {% assign show_categories = true %} {%
-    endif %} {% include top_navigation.html show_categories=show_categories %}
+    endif %} {% include top_navigation.html show_categories=show_categories show_about=page.show_about %}
 
     <main class="l-center l-content">
       <h1>{{ page.title }}</h1>
       {{ content }}
       {% if page.key %}
-      <ul class="card-list">
-        {% for post in site.categories[page.key] %} {% include post_card.html
+      {% assign all_posts = site.categories[page.key] %}
+      {% if page.key == "reports" %}
+        {% assign excluded_titles = "Disaggregation of Unsorted Votes,Conventions for Constructing Demographic Categories,MGGG States" | split: "," %}
+        {% assign filtered_posts = "" | split: "," %}
+        {% for post in all_posts %}
+          {% assign should_exclude = false %}
+          {% for excluded_title in excluded_titles %}
+            {% if post.title == excluded_title %}
+              {% assign should_exclude = true %}
+              {% break %}
+            {% endif %}
+          {% endfor %}
+          {% unless should_exclude %}
+            {% assign filtered_posts = filtered_posts | push: post %}
+          {% endunless %}
+        {% endfor %}
+        {% assign all_posts = filtered_posts %}
+      {% endif %}
+      {% assign total_posts = all_posts | size %}
+      <ul class="card-list" id="posts-list">
+        {% for post in all_posts %} {% include post_card.html
         work=post %} {% endfor %}
       </ul>
+      {% if page.key == "news" and total_posts > 5 %}
+      <div class="l-flex-center" id="expand-posts-container">
+        <button
+          class="nav-links__link nav-links__link--see-more"
+          id="expand-posts-btn"
+          onclick="expandPosts()"
+        >
+          See all posts
+        </button>
+      </div>
+      {% endif %}
       {% endif %}
     </main>
+
+    {% if page.key == "news" %}
+    <script>
+      function expandPosts() {
+        var postsList = document.getElementById('posts-list');
+        var expandContainer = document.getElementById('expand-posts-container');
+        if (postsList) {
+          var cards = postsList.querySelectorAll('.card');
+          cards.forEach(function(card, index) {
+            if (index >= 5) {
+              card.style.setProperty('display', 'flex', 'important');
+            }
+          });
+          if (expandContainer) {
+            expandContainer.style.display = 'none';
+          }
+        }
+      }
+    </script>
+    <style>
+      #posts-list .card:nth-child(n+6) {
+        display: none;
+      }
+    </style>
+    {% endif %}
 
     {% include footer.html %}
   </body>

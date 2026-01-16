@@ -4,26 +4,22 @@ navtitle: Our Mission
 nav: true
 order: 1
 customlink: "/#about-mggg"
-image: "/uploads/AR_plots.png"
+image: "/assets/reynolds_redesign/DDL_UChicago_Color_RGB.svg"
 ---
 
-# Our Mission
+The Data and Democracy Lab anchors the Data and Democracy Research Initiative  at the University of Chicago. Led by Director Moon Duchin, the Lab began in 2016 as an informal research collective called the Metric Geometry and Gerrymandering Group (MGGG), which was based at the Tisch College of Civic Life at Tufts University from 2018-2024 and the Brooks School of Public Policy at Cornell University from 2024-2025 before moving to UChicago in fall 2025.
 
-The **Data and Democracy Lab** (formerly MGGG Redistricting Lab) anchors the [Data and Democracy Research Initiative](https://datascience.uchicago.edu/research/data-democracy/) at the University of Chicago. Led by PI Moon Duchin, the Lab grew out of an informal research collective called the Metric Geometry and Gerrymandering Group.   Together with our close collaborators, we have expertise and interests spanning mathematics (geometry, topology, discrete math, dynamics), algorithms, software development, geography, science studies, law, and policy. We research data science interventions – better mechanisms, better models, better metrics – for democracy.
+We research data science interventions – better mechanisms, better models, better metrics – for democracy. Our team brings expertise spanning mathematics, algorithms, software development, statistics, political science, geography, law, and policy.
 
-Our goals are these:
+## Current research directions:
 
-- to pursue cutting-edge **research** in the basic science and practically
-  relevant applications of geometry, topology, and computing to the design of democratic mechanisms, including but not limited to redistricting and ranked choice voting;
-- to build open-source **tools and resources** that create public access and
-  analytical power for better understanding election systems and their consequences;
-- to partner with **civil rights** organizations to reexamine and to strengthen the
-  quantitative toolkit for protecting voting rights;
-- to offer formal and informal expert **consulting** to stakeholders on all
-  sides.
+- Algorithmic approaches to electoral redistricting
+- Voting polarization and the Voting Rights Act
+- Alternative electoral systems, including but not limited to ranked choice voting (structural democracy)
+- Privacy protection in census data and its impact on representation
 
-# Highlights
+## Contact us:
 
-{% include featured_posts.html limit=3 %}
+**General inquiries:** [contact@mggg.org](mailto:contact@mggg.org)  
+**[Districtr](https://beta.districtr.org) mapping tool:** [districtr@mggg.org](mailto:districtr@mggg.org)
 
-{% include support_statement.html %}
