@@ -1,5 +1,5 @@
 ---
-title: "Pennsylvania congressional (<i>Carter v. Chapman</i>)"
+title: "Pennsylvania congressional <i>(Carter v. Chapman)</i>"
 date: 2022-01-24 00:00:00 Z
 category_nav: reports
 authors: Moon Duchin
