@@ -27,14 +27,15 @@
 }
 
 .site-nav {
-  padding: 0 0rem;
+  padding: 0 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
 }
 
 .site-nav__logo {
-  flex: 1.5;
+  flex: 0 0 auto;
   padding: 0.5rem 0;
   padding-left: 0;
 }
@@ -48,8 +49,9 @@
 }
 
 .site-nav__contents {
-  flex: 4;
-  justify-content: center;
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: flex-end;
   overflow-x: hidden;
 }
 
@@ -59,7 +61,7 @@
   padding: 0;
 
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   flex-wrap: nowrap;
   align-items: center;
 }
