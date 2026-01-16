@@ -11,7 +11,7 @@ What role does mathematics and data science play in the court?
 
 ## Reports
 <ul class="card-list">
-  {% assign post_titles = "Texas congressional LULAC v. Abbott | Pennsylvania congressional Carter v. Chapman | North Carolina congressional and legislative Moore v. Harper | Alabama congressional Allen v. Milligan" |split: " | " %}
+  {% assign post_titles = "Texas congressional (<i>LULAC v. Abbott</i>) | Pennsylvania congressional (<i>Carter v. Chapman</i>) | North Carolina congressional and legislative (<i>Moore v. Harper</i>) | Alabama congressional (<i>Allen v. Milligan</i>)" |split: " | " %}
 
   {% for post_title in post_titles %}
     {% assign post = site.posts | where: "title", post_title | first %}

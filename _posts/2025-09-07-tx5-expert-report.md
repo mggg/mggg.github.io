@@ -1,5 +1,5 @@
 ---
-title: "Texas congressional LULAC v. Abbott"
+title: "Texas congressional (<i>LULAC v. Abbott</i>)"
 date: 2025-09-07 00:00:00 Z
 category_nav: reports
 authors: Moon Duchin

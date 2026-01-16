@@ -1,5 +1,5 @@
 ---
-title: "Alabama congressional Allen v. Milligan"
+title: "Alabama congressional (<i>Allen v. Milligan</i>)"
 date: 2021-12-10 00:00:00 Z
 category_nav: reports
 authors: Moon Duchin
