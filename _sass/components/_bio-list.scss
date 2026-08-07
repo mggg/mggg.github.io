@@ -61,6 +61,15 @@ dd {
   border-radius: 0.25rem;
 }
 
+.bio-list .bio__img {
+  width: 150px;
+  height: 150px;
+
+  object-fit: scale-down;
+  border-radius: 50%;
+  // margin: 1rem;
+}
+
 .bio__img {
   width: 100px;
   height: 100px;
@@ -76,7 +85,8 @@ dd {
   // max-width: 25%;
 }
 
-.bio-list .bio__img-container {
+.bio-list .bio__img-container,
+.bio-list-summer .bio__img-container,{
   display: flex;
   align-items: center;
   justify-content: center;
