@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bronzeville and Gwendolyn Brooks</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>
+  :root { --ink:#1c1b18; --paper:#faf7f0; --red:#D0021B; --home:#FFBF00; --school:#2E8B57; --lit:#BD33A4; --till:#0F52BA; }
+  html, body { margin:0; height:100%; font-family:"EB Garamond", Georgia, serif; color:var(--ink); }
+  #map { position:absolute; inset:0; background:#e9e5dc; }
+  .leaflet-container { font-family:"EB Garamond", Georgia, serif; }
+  .title { position:absolute; top:16px; left:16px; z-index:1000; background:var(--paper); padding:12px 18px 10px; border:1px solid #d8d2c4; box-shadow:0 1px 4px rgba(0,0,0,.12); max-width:340px; }
+  .title h1 { margin:0; font-size:24px; font-weight:600; letter-spacing:.01em; }
+  .title p { margin:4px 0 0; font-size:14px; line-height:1.35; color:#5a5648; }
+  .legend { position:absolute; bottom:28px; left:16px; z-index:1000; background:var(--paper); padding:10px 16px 12px; border:1px solid #d8d2c4; box-shadow:0 1px 4px rgba(0,0,0,.12); font-size:14px; line-height:1.7; }
+  .legend .row { display:flex; align-items:center; gap:9px; }
+  .dot { width:13px; height:13px; border-radius:50%; border:2px solid #fff; box-shadow:0 0 0 1px rgba(0,0,0,.35); flex:none; }
+  .bar { width:22px; height:0; border-top:3px solid var(--red); flex:none; }
+  .bar.dash { border-top-style:dashed; border-top-width:2px; }
+  .sitelabel { font:600 12.5px/1.15 "EB Garamond", Georgia, serif; color:var(--ink); background:rgba(250,247,240,.92); border:none; border-radius:2px; box-shadow:0 0 0 1px rgba(0,0,0,.08); padding:2px 6px; white-space:nowrap; }
+  .sitelabel::before { display:none; }
+  .sitelabel small { display:block; font-weight:400; font-size:11px; color:#6a6555; }
+  .leaflet-popup-content-wrapper { background:var(--paper); border-radius:3px; font-family:"EB Garamond", Georgia, serif; }
+  .leaflet-popup-content { font-size:14px; line-height:1.4; margin:12px 16px; }
+  .leaflet-popup-content strong { font-size:16px; font-weight:600; }
+  .leaflet-control-layers { font:14px/1.6 "EB Garamond", Georgia, serif; background:var(--paper); }
+  .leaflet-control-attribution { font-size:10px; background:rgba(250,247,240,.8); }
+</style>
+</head>
+<body>
+<div id="map"></div>
+<div class="title">
+  <h1>Bronzeville and Gwendolyn Brooks</h1>
+  <p>Study area: Douglas, Grand Boulevard, and Washington Park community areas. Sites from Brooks's life and poems; click a marker for its connection.</p>
+</div>
+<div class="legend">
+  <div class="row"><span class="bar"></span>Bronzeville (three community areas)</div>
+  <div class="row"><span class="bar dash"></span>Community-area divisions</div>
+  <div class="row"><span class="dot" style="background:var(--home)"></span>Residences</div>
+  <div class="row"><span class="dot" style="background:var(--school)"></span>Schools</div>
+  <div class="row"><span class="dot" style="background:var(--lit)"></span>Sites in the poems and literary life</div>
+  <div class="row"><span class="dot" style="background:var(--till)"></span>Emmett Till, September 1955</div>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+const map = L.map('map', { center:[41.808,-87.612], zoom:13, zoomControl:true });
+map.zoomControl.setPosition('topright');
+const positron = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', { maxZoom:19, attribution:'&copy; OpenStreetMap contributors &copy; CARTO' });
+const positronNL = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', { maxZoom:19, attribution:'&copy; OpenStreetMap contributors &copy; CARTO' });
+const osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom:19, attribution:'&copy; OpenStreetMap contributors' });
+const esriGray = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', { maxZoom:16, attribution:'Tiles &copy; Esri' });
+osm.addTo(map);
+
+const parts = {"type": "FeatureCollection", "features": [{"id": "34", "type": "Feature", "properties": {"area_numbe": "35", "community": "DOUGLAS"}, "geometry": {"type": "Polygon", "coordinates": [[[-87.60914087617894, 41.84469250265398], [-87.60915012199398, 41.84423871659811], [-87.60891566390615, 41.84395529375054], [-87.60877127222787, 41.84336451715353], [-87.60801956189378, 41.84230554400334], [-87.60797949042825, 41.841395391080624], [-87.60784934325733, 41.841030609153385], [-87.6075276050287, 41.84056030772689], [-87.60698398203986, 41.8406673852424], [-87.60667816425287, 41.84056137258804], [-87.6067136151486, 41.8405034355691], [-87.60699497654772, 41.8406001098064], [-87.60750090432951, 41.84050284488112], [-87.60721091962495, 41.839651627989795], [-87.60709523007235, 41.83951203695919], [-87.60658411311552, 41.83921297273568], [-87.60615627839611, 41.838635021124844], [-87.60470984485778, 41.83896006065134], [-87.60427773013896, 41.83958213897359], [-87.60427494700933, 41.83982732700224], [-87.60418506322291, 41.839828572849825], [-87.60419546274869, 41.83955437173228], [-87.6046670348703, 41.83887987015849], [-87.6061349887994, 41.838551275839215], [-87.60607167523855, 41.837293058456886], [-87.60584678660146, 41.83644401552207], [-87.60565502444967, 41.83612129017827], [-87.605308267931, 41.835680669196044], [-87.60455786851962, 41.834991969650574], [-87.60454429254064, 41.83481066860084], [-87.60473439460594, 41.83458973976794], [-87.60503332163134, 41.83442211178847], [-87.60486846410286, 41.83379558184427], [-87.604553054253, 41.83334931168295], [-87.60435156855912, 41.833196046173526], [-87.60391567815884, 41.83303544639763], [-87.60335367562936, 41.832967573800744], [-87.60301244159074, 41.83273157881759], [-87.60270433428013, 41.8323321149557], [-87.60276542470949, 41.831771321076374], [-87.60271020373473, 41.83136624686849], [-87.60583494110023, 41.831233947813665], [-87.61063335779062, 41.83118622461551], [-87.61262427240324, 41.82389080436826], [-87.62896819971361, 41.823681491629785], [-87.62909202844186, 41.827330175681396], [-87.62892312909783, 41.827679390892364], [-87.6289956829958, 41.83097494947967], [-87.62956105280259, 41.83097085070067], [-87.62996524440503, 41.8455448376101], [-87.61767140560433, 41.84572320256934], [-87.6165506643851, 41.84563194000045], [-87.61621749508849, 41.845178045565824], [-87.61600840420323, 41.845093122317444], [-87.61499270629601, 41.845109933063014], [-87.61500079131932, 41.84516621622945], [-87.61240099157794, 41.845166392439836], [-87.61158088907992, 41.84526623463236], [-87.60940614540634, 41.845266503985904], [-87.60914087617894, 41.84469250265398]]]}}, {"id": "37", "type": "Feature", "properties": {"area_numbe": "38", "community": "GRAND BOULEVARD"}, "geometry": {"type": "Polygon", "coordinates": [[[-87.60685918572531, 41.823165707256805], [-87.60640720552851, 41.80225116231909], [-87.62879823733725, 41.80189303368919], [-87.62892101166432, 41.8033656235483], [-87.6290109787769, 41.80670458978654], [-87.62896623219521, 41.80785965642033], [-87.62904151910956, 41.81015330377925], [-87.62897175242857, 41.81120633482147], [-87.62935652492946, 41.82367645970583], [-87.60687305833154, 41.82396480017465], [-87.60643720434987, 41.823306083943244], [-87.60685918572531, 41.823165707256805]]]}}, {"id": "39", "type": "Feature", "properties": {"area_numbe": "40", "community": "WASHINGTON PARK"}, "geometry": {"type": "Polygon", "coordinates": [[[-87.60603749217005, 41.785874064994196], [-87.61575954154978, 41.78569891375734], [-87.61562233043774, 41.78023913763519], [-87.61999181288564, 41.780159234083385], [-87.62106315537089, 41.780047520173405], [-87.6253748491045, 41.78005828551585], [-87.62540406584871, 41.78320997673723], [-87.62826259187158, 41.78316030215383], [-87.62868512523391, 41.799370220263945], [-87.62880936760156, 41.79936961016855], [-87.62881699907729, 41.79959365890351], [-87.62879823733725, 41.80189303368919], [-87.60640720552851, 41.80225116231909], [-87.60603749217005, 41.785874064994196]]]}}]};
+const union = {"type": "FeatureCollection", "features": [{"id": "0", "type": "Feature", "properties": {}, "geometry": {"type": "Polygon", "coordinates": [[[-87.61575954154978, 41.78569891375734], [-87.61562233043774, 41.78023913763519], [-87.61999181288564, 41.780159234083385], [-87.62106315537089, 41.780047520173405], [-87.6253748491045, 41.78005828551585], [-87.62540406584871, 41.78320997673723], [-87.62826259187158, 41.78316030215383], [-87.62868512523391, 41.799370220263945], [-87.62880936760156, 41.79936961016855], [-87.62881699907729, 41.79959365890351], [-87.62879823733725, 41.80189303368919], [-87.62892101166432, 41.8033656235483], [-87.6290109787769, 41.80670458978654], [-87.62896623219521, 41.80785965642033], [-87.62904151910956, 41.81015330377925], [-87.62897175242857, 41.81120633482147], [-87.62935652492946, 41.82367645970583], [-87.62605609921498, 41.82371878619911], [-87.62896819971361, 41.823681491629785], [-87.62909202844186, 41.827330175681396], [-87.62892312909783, 41.827679390892364], [-87.6289956829958, 41.83097494947967], [-87.62956105280259, 41.83097085070067], [-87.62996524440503, 41.8455448376101], [-87.61767140560433, 41.84572320256934], [-87.6165506643851, 41.84563194000045], [-87.61621749508849, 41.845178045565824], [-87.61600840420323, 41.845093122317444], [-87.61499270629601, 41.845109933063014], [-87.61500079131932, 41.84516621622945], [-87.61240099157794, 41.845166392439836], [-87.61158088907992, 41.84526623463236], [-87.60940614540634, 41.845266503985904], [-87.60914087617894, 41.84469250265398], [-87.60915012199398, 41.84423871659811], [-87.60891566390615, 41.84395529375054], [-87.60877127222787, 41.84336451715353], [-87.60801956189378, 41.84230554400334], [-87.60797949042825, 41.841395391080624], [-87.60784934325733, 41.841030609153385], [-87.6075276050287, 41.84056030772689], [-87.60698398203986, 41.8406673852424], [-87.60667816425287, 41.84056137258804], [-87.6067136151486, 41.8405034355691], [-87.60699497654772, 41.8406001098064], [-87.60750090432951, 41.84050284488112], [-87.60721091962495, 41.839651627989795], [-87.60709523007235, 41.83951203695919], [-87.60658411311552, 41.83921297273568], [-87.60615627839611, 41.838635021124844], [-87.60470984485778, 41.83896006065134], [-87.60427773013896, 41.83958213897359], [-87.60427494700933, 41.83982732700224], [-87.60418506322291, 41.839828572849825], [-87.60419546274869, 41.83955437173228], [-87.6046670348703, 41.83887987015849], [-87.6061349887994, 41.838551275839215], [-87.60607167523855, 41.837293058456886], [-87.60584678660146, 41.83644401552207], [-87.60565502444967, 41.83612129017827], [-87.605308267931, 41.835680669196044], [-87.60455786851962, 41.834991969650574], [-87.60454429254064, 41.83481066860084], [-87.60473439460594, 41.83458973976794], [-87.60503332163134, 41.83442211178847], [-87.60486846410286, 41.83379558184427], [-87.604553054253, 41.83334931168295], [-87.60435156855912, 41.833196046173526], [-87.60391567815884, 41.83303544639763], [-87.60335367562936, 41.832967573800744], [-87.60301244159074, 41.83273157881759], [-87.60270433428013, 41.8323321149557], [-87.60276542470949, 41.831771321076374], [-87.60271020373473, 41.83136624686849], [-87.60583494110023, 41.831233947813665], [-87.61063335779062, 41.83118622461551], [-87.61262420693991, 41.82389104424921], [-87.60687305833154, 41.82396480017465], [-87.60643720434987, 41.823306083943244], [-87.60685918572531, 41.823165707256805], [-87.60640720552851, 41.80225116231909], [-87.60603749217005, 41.785874064994196], [-87.61575954154978, 41.78569891375734]]]}}]};
+// outside mask: everything but Bronzeville lightly veiled
+const world = [[-90,-180],[-90,180],[90,180],[90,-180]];
+const holes = union.features[0].geometry.type==='Polygon' ? [union.features[0].geometry.coordinates[0].map(c=>[c[1],c[0]])]
+  : union.features[0].geometry.coordinates.map(p=>p[0].map(c=>[c[1],c[0]]));
+L.polygon([world, ...holes], { stroke:false, fillColor:'#f2eee4', fillOpacity:0.45, interactive:false }).addTo(map);
+L.geoJSON(parts, { style:{ color:'#D0021B', weight:1.6, dashArray:'5 5', fill:false } }).addTo(map);
+L.geoJSON(union, { style:{ color:'#ffffff', weight:7, fill:false, opacity:.9 } }).addTo(map);
+L.geoJSON(union, { style:{ color:'#D0021B', weight:3.2, fill:false } }).addTo(map);
+L.geoJSON(parts, { style:{ fill:false, stroke:false }, onEachFeature:(f,l)=>l.bindTooltip(f.properties.community.replace(/\w\S*/g,w=>w[0]+w.slice(1).toLowerCase()), { permanent:true, direction:'center', className:'sitelabel', opacity:.85 }) }).addTo(map);
+
+const colors = { home:'#FFBF00', school:'#2E8B57', lit:'#BD33A4', till:'#0F52BA' };
+const sites = [["home", "Family home", "4332 S. Champlain", 41.8157, -87.611, "Brooks family home from about 1920 through the 1930s. Grand Boulevard."], ["home", "First kitchenette", "43rd & South Parkway (approx.)", 41.8163, -87.6168, "First apartment after her 1939 marriage to Henry Blakely. Exact address not confirmed."], ["home", "Kitchenette", "623 E. 63rd St", 41.7799, -87.6115, "Second-floor kitchenette where most of <em>A Street in Bronzeville</em> (1945) was written. Odd number puts it on the south side of 63rd, just outside Washington Park."], ["home", "Home, 1953\u20132000", "7428 S. Evans Ave", 41.7595, -87.6087, "Her house from 1953 until her death in 2000. Chatham, well south of Bronzeville."], ["school", "Forestville School", "45th & St. Lawrence", 41.813, -87.612, "Forestville Elementary School, attended as a child."], ["school", "Hyde Park High School", "6220 S. Stony Island", 41.782, -87.5866, "Her first high school, mostly white; she left after a year."], ["school", "Wendell Phillips High School", "39th & Prairie", 41.823, -87.62, "Second of her three high schools."], ["school", "Englewood High School", "62nd & Stewart", 41.7815, -87.6362, "Graduated 1934."], ["lit", "Mecca Flats", "3360 S. State", 41.8325, -87.627, "Apartment block where Brooks worked as a teenager; setting of <em>In the Mecca</em> (1968). Demolished 1952 for IIT."], ["lit", "Chicago Defender", "3435 S. Indiana", 41.8318, -87.6221, "The <em>Defender</em>'s headquarters 1920\u20131960. Brooks published some seventy-five poems in its 'Lights and Shadows' column from 1934; later 'The Chicago Defender Sends a Man to Little Rock' (<em>The Bean Eaters</em>, 1960)."], ["lit", "South Side Community Art Center", "3831 S. Michigan", 41.8245, -87.6234, "Site of Inez Cunningham Stark's 1941 poetry workshop, where the Bronzeville poems took shape."], ["lit", "Hall Branch Library", "4801 S. Michigan", 41.8075, -87.6234, "Vivian Harsh's library, a center of Black Chicago literary life in the 1930s and 1940s."], ["lit", "Regal Theater & Savoy Ballroom", "47th & South Parkway", 41.8085, -87.617, "Heart of the 47th Street corridor; Satin-Legs Smith's Sunday territory; the Savoy is named in 'Of De Witt Williams'."], ["lit", "47th & Prairie", "corner named in 'Of De Witt Williams'", 41.809, -87.6197, "'And Northwest Corner, Prairie, / That he loved so well' \u2014 on the funeral route down 47th Street (<em>A Street in Bronzeville</em>, 1945)."], ["lit", "Wall of Respect", "43rd & Langley", 41.816, -87.6092, "The 1967 OBAC mural. Brooks read at its dedication and wrote 'The Wall' (<em>In the Mecca</em>, 1968). Destroyed by fire, 1971."], ["till", "Roberts Temple Church of God in Christ", "4021 S. State", 41.8214, -87.6267, "Emmett Till's funeral, 6 September 1955. Chicago Landmark. Brooks's 'A Bronzeville Mother Loiters in Mississippi\u2026' and 'The Last Quatrain of the Ballad of Emmett Till' (<em>The Bean Eaters</em>, 1960)."], ["till", "A. A. Rayner & Sons Funeral Home", "4141 S. Cottage Grove", 41.819, -87.6066, "Open-casket visitation, September 1955, where the crowds first saw the body. East side of Cottage Grove, just outside the study area."]];
+const groups = { home:L.layerGroup(), school:L.layerGroup(), lit:L.layerGroup(), till:L.layerGroup() };
+const dirs = { '623 E. 63rd St':'right', '7428 S. Evans Ave':'right', '62nd & Stewart':'left', '6220 S. Stony Island':'right', '45th & St. Lawrence':'right', '43rd & Langley':'right', '4141 S. Cottage Grove':'right', '3831 S. Michigan':'left', '4801 S. Michigan':'left', '39th & Prairie':'left', '3435 S. Indiana':'right', '4021 S. State':'left', '3360 S. State':'left', "corner named in 'Of De Witt Williams'":'left', '47th & South Parkway':'right', '43rd & South Parkway (approx.)':'right', '4332 S. Champlain':'right' };
+for (const [cat,name,addr,lat,lng,popup] of sites) {
+  const m = L.circleMarker([lat,lng], { radius:9, color:'#ffffff', weight:2, fillColor:colors[cat], fillOpacity:1 });
+  m.bindTooltip(`${name}<small>${addr}</small>`, { permanent:true, direction:dirs[addr]||'right', offset:[dirs[addr]==='left'?-9:9,0], className:'sitelabel' });
+  m.bindPopup(`<strong>${name}</strong><br>${addr}<br>${popup}`);
+  groups[cat].addLayer(m);
+}
+L.polyline([[41.8090,-87.6270],[41.8090,-87.6068]], { color:'#BD33A4', weight:6, opacity:.25 }).bindPopup('<strong>47th Street corridor</strong><br>Bronzeville\'s commercial and entertainment spine in Brooks\'s youth.').addTo(groups.lit);
+Object.values(groups).forEach(g=>g.addTo(map));
+
+L.control.layers(
+  { 'OpenStreetMap':osm, 'CARTO light':positron, 'CARTO light (no labels)':positronNL, 'Esri gray':esriGray },
+  { 'Residences':groups.home, 'Schools':groups.school, 'Poems and literary life':groups.lit, 'Emmett Till, 1955':groups.till },
+  { collapsed:true, position:'topright' }
+).addTo(map);
+L.control.scale({ imperial:true, metric:false, position:'bottomright' }).addTo(map);
+</script>
+</body>
+</html>
