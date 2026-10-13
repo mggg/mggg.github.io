@@ -1,5 +1,5 @@
 {% assign callout = include.callout %}
-<section class="newsletter-callout">
+<section class="newsletter-callout"{% if include.id != "" %} id="{{ include.id }}"{% endif %}>
   {% if callout.pullquote %}
   <p class="newsletter-callout__pullquote">{{ callout.pullquote }}</p>
   {% endif %}

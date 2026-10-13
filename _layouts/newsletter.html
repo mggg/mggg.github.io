@@ -6,7 +6,8 @@
     {% include top_navigation.html %}
     {% assign issue = site.data.newsletters[page.issue] %}
 
-    <main class="l-center l-content">
+    <main class="l-center-wide l-content newsletter-layout">
+      {% include newsletter/toc.html issue=issue %}
       <article class="newsletter">
         <header class="newsletter__header">
           <div class="newsletter__header-top">
@@ -20,10 +21,11 @@
         </header>
 
         {% for section in issue.sections %}
+          {% assign section_id = section.id | default: section.heading | default: section.toc | slugify %}
           {% if section.type == "callout" %}
-            {% include newsletter/callout.html callout=section subscribe=issue.subscribe %}
+            {% include newsletter/callout.html callout=section id=section_id subscribe=issue.subscribe %}
           {% else %}
-            {% include newsletter/section.html section=section %}
+            {% include newsletter/section.html section=section id=section_id %}
           {% endif %}
         {% endfor %}
 

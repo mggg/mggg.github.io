@@ -3,10 +3,81 @@
 $newsletter-tint: mix($mggg-blue, white, 12%);
 $newsletter-border: $grey;
 $newsletter-gutter: 3rem;
+// Clears the sticky .site-header; also read by the TOC scroll-spy via scroll-margin-top.
+$newsletter-sticky-offset: 7rem;
+
+.newsletter-layout {
+  display: grid;
+  grid-template-columns: 11rem minmax(0, 1fr);
+  gap: 2.5rem;
+  align-items: start;
+}
 
 .newsletter {
   margin: 2rem 0;
   box-shadow: $raised;
+}
+
+.newsletter-section,
+.newsletter-callout {
+  scroll-margin-top: $newsletter-sticky-offset;
+}
+
+html:has(.newsletter-toc) {
+  scroll-behavior: smooth;
+
+  @media (prefers-reduced-motion: reduce) {
+    scroll-behavior: auto;
+  }
+}
+
+/* table of contents */
+
+.newsletter-toc {
+  position: sticky;
+  top: $newsletter-sticky-offset;
+  margin-top: 2rem;
+  font-family: $font-sans;
+}
+
+.newsletter-toc__title {
+  margin: 0 0 0.75rem;
+  font-family: $font-sans;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1rem;
+  line-height: 1.5;
+  text-transform: uppercase;
+  color: #666;
+}
+
+.newsletter-toc__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-left: 1px solid $dark-grey;
+}
+
+.newsletter-toc__link,
+.newsletter-toc__link:visited {
+  display: block;
+  margin-left: -1px;
+  padding: 0.375rem 0 0.375rem 0.75rem;
+  border-left: 4px solid transparent;
+  font-weight: 400;
+  line-height: 1.4;
+  color: #666;
+
+  &:hover {
+    color: $mggg-very-dark-blue;
+  }
+}
+
+.newsletter-toc__link--active,
+.newsletter-toc__link--active:visited {
+  border-left-color: $mggg-blue;
+  font-weight: 700;
+  color: $mggg-very-dark-blue;
 }
 
 /* header */
@@ -366,6 +437,36 @@ $newsletter-gutter: 3rem;
 .newsletter__copyright {
   margin-top: 0.5rem;
   font-size: 0.875rem;
+}
+
+@media only screen and (max-width: 900px) {
+  .newsletter-layout {
+    display: block;
+  }
+
+  .newsletter-toc {
+    position: static;
+  }
+
+  .newsletter-toc__list {
+    display: flex;
+    flex-wrap: wrap;
+    border-left: none;
+    border-bottom: 1px solid $dark-grey;
+  }
+
+  .newsletter-toc__link,
+  .newsletter-toc__link:visited {
+    margin: 0 0 -1px;
+    padding: 0.375rem 0.75rem;
+    border-left: none;
+    border-bottom: 4px solid transparent;
+  }
+
+  .newsletter-toc__link--active,
+  .newsletter-toc__link--active:visited {
+    border-bottom-color: $mggg-blue;
+  }
 }
 
 @media only screen and (max-width: 700px) {

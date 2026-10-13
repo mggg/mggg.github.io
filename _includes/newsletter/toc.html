@@ -1,0 +1,59 @@
+{% assign issue = include.issue %}
+<nav class="newsletter-toc" aria-label="{{ issue.toc_title | default: 'Contents' }}">
+  <h2 class="newsletter-toc__title">{{ issue.toc_title | default: "Contents" }}</h2>
+  <ol class="newsletter-toc__list">
+    {% for section in issue.sections %}
+    {% assign toc_label = section.toc | default: section.heading %}
+    {% if toc_label %}
+    {% assign section_id = section.id | default: section.heading | default: section.toc | slugify %}
+    <li><a class="newsletter-toc__link" href="#{{ section_id }}">{{ toc_label }}</a></li>
+    {% endif %}
+    {% endfor %}
+  </ol>
+</nav>
+<script>
+  // Highlight the TOC link for the section currently at the top of the viewport.
+  document.addEventListener("DOMContentLoaded", function () {
+    var links = document.querySelectorAll(".newsletter-toc__link");
+    var sections = Array.prototype.map.call(links, function (link) {
+      return document.getElementById(link.getAttribute("href").slice(1));
+    });
+    var activeClass = "newsletter-toc__link--active";
+    var ticking = false;
+
+    function update() {
+      ticking = false;
+      var current = 0;
+      var atBottom =
+        window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
+      if (atBottom) {
+        current = sections.length - 1;
+      } else {
+        sections.forEach(function (section, i) {
+          // scroll-margin-top matches the sticky site header (see _newsletter.scss)
+          var offset = parseFloat(getComputedStyle(section).scrollMarginTop) || 0;
+          if (section.getBoundingClientRect().top <= offset + 1) {
+            current = i;
+          }
+        });
+      }
+      links.forEach(function (link, i) {
+        link.classList.toggle(activeClass, i === current);
+        if (i === current) {
+          link.setAttribute("aria-current", "location");
+        } else {
+          link.removeAttribute("aria-current");
+        }
+      });
+    }
+
+    window.addEventListener("scroll", function () {
+      if (!ticking) {
+        ticking = true;
+        window.requestAnimationFrame(update);
+      }
+    });
+    window.addEventListener("resize", update);
+    update();
+  });
+</script>

@@ -10,8 +10,13 @@
 #   jobs     - job postings
 # Every non-callout section also accepts:
 #   heading, tinted (bool), collapsible (bool), open (bool), closing (markdown), link
+# Any section may set:
+#   toc - label in the table of contents (defaults to `heading`; sections with
+#         neither are left out, so a callout only appears if it sets `toc`)
+#   id  - anchor id (defaults to the slugified heading/toc)
 
 title: Fall 2026
+toc_title: In This Issue
 
 header:
   eyebrow: University of Chicago
@@ -25,6 +30,7 @@ subscribe:
 
 sections:
   - type: callout
+    toc: Introduction
     pullquote: Big things are happening!
     show_subscribe: true
     body: |
@@ -157,6 +163,7 @@ sections:
           url: # TODO
 
   - type: callout
+    toc: Stay Connected
     pullquote: Stay connected with DDRI.
     show_subscribe: true
     body: If you're interested in more than just software, sign up for additional communications from us — we'd love to see you at events or share semi-annual lab updates with you.
