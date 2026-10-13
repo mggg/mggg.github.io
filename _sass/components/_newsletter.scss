@@ -208,26 +208,6 @@ html:has(.newsletter-toc) {
   }
 }
 
-.newsletter-section__label {
-  margin: 0 0 1rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid $dark-grey;
-  font-family: $font-sans;
-  font-size: 0.75rem;
-  letter-spacing: 0.1rem;
-  text-transform: uppercase;
-  color: $mggg-very-dark-blue;
-
-  * + & {
-    margin-top: 2rem;
-  }
-}
-
-.newsletter-section__label--remote {
-  color: $mggg-blue;
-  border-bottom-color: rgba($mggg-blue, 0.3);
-}
-
 /* items (software, jobs) */
 
 .newsletter-item {
@@ -336,6 +316,10 @@ $newsletter-version-gap: 1rem;
   position: relative;
   padding-left: 5px;
 
+  &:first-child {
+    margin-top: 0;
+  }
+
   &::before {
     content: "";
     position: absolute;
@@ -370,6 +354,7 @@ $newsletter-version-gap: 1rem;
   margin: 0;
   font-family: $font-header-serif;
   font-weight: 700;
+  line-height: 1.5;
 }
 
 .newsletter-event__title {

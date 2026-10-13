@@ -12,11 +12,8 @@
           {% include newsletter/software-item.html item=item %}
         {% endfor %}
       {% when "events" %}
-        {% for group in section.groups %}
-        <h3 class="newsletter-section__label newsletter-section__label--{{ group.format }}">{{ group.label }}</h3>
-          {% for event in group.events %}
-            {% include newsletter/event.html event=event format=group.format %}
-          {% endfor %}
+        {% for event in section.items %}
+          {% include newsletter/event.html event=event %}
         {% endfor %}
       {% when "jobs" %}
         {% for job in section.items %}
