@@ -11,6 +11,7 @@
       {% assign issue = nil %}
       {% for entry in site.data.newsletters %}
         {% assign candidate = entry[1] %}
+        {% if candidate.date == nil %}{% continue %}{% endif %}
         {% if issue == nil or candidate.date > issue.date %}
           {% assign issue = candidate %}
         {% endif %}

@@ -1,0 +1,131 @@
+# Newsletter issue template. Full field reference: documentation/newsletter.md
+#
+# 1. Copy to _data/newsletters/<season>-<year>.yml (e.g. winter-2027.yml).
+# 2. Delete this header comment.
+# 3. Fill in everything marked TODO (`grep -n TODO <file>` should come back empty),
+#    and delete any optional fields or sections you don't need.
+#
+# Quick rules:
+#   - (markdown) fields accept Markdown: **bold**, *italic*, `code`, [text](url)
+#   - A link with an empty `url:` is hidden, so unfinished links are safe to leave
+#   - Quote any value containing ": " or starting with a special character
+#     ("Example: like this", "#hashtag", "*starred*", "@handle")
+#   - Sections render top to bottom in the order listed
+
+# --- Issue metadata ---------------------------------------------------------
+
+title: TODO Season Year                   # e.g. Winter 2027
+date: TODO-YYYY-MM-DD                     # required; the newest issue is shown at /newsletter
+toc_title: In This Issue                  # optional; heading above the table of contents (default "Contents")
+
+header:
+  eyebrow: University of Chicago
+  issue: Newsletter · TODO Season Year
+  title: Data & Democracy Research Initiative
+  subtitle: Researching data science interventions for democracy   # optional
+
+subscribe:                                # used by any callout with show_subscribe: true
+  label: Subscribe to the Newsletter
+  url: https://docs.google.com/forms/d/e/1FAIpQLSdegkgoyEE7SI-bkFDG009ne-Za8tYHx5MaTc4PCteOvTVyiA/viewform?usp=header
+
+# --- Sections ---------------------------------------------------------------
+#
+# Fields every section type accepts:
+#   toc          label in the table of contents; defaults to `heading`
+#                (callouts have no heading, so they only appear if `toc` is set)
+#   id           anchor id; defaults to the slugified heading/toc
+#
+# Fields every non-callout section accepts:
+#   heading      section title (required)
+#   tinted       true for a light grey background
+#   collapsible  true to wrap the section in a "Click to expand" toggle
+#   open         with collapsible, true to start expanded
+#   closing      (markdown) text shown after the items
+#   link         { label, url } shown after the closing text
+
+sections:
+
+  # Callout: tinted block with a pull quote. Use for the intro and sign-off.
+  - type: callout
+    toc: Introduction
+    pullquote: TODO Headline sentence.
+    show_subscribe: true                  # optional; shows the subscribe button
+    body: |                               # (markdown); blank line between paragraphs
+      TODO First paragraph.
+
+      TODO Second paragraph.
+
+  # Software: each item is an accordion showing only version + name until clicked.
+  - type: software
+    heading: Software Updates
+    items:
+      - name: TODO Project name
+        version: TODO vX.Y                # optional; shown as a badge
+        open: false                       # optional; true to start expanded
+        description: "TODO Intro sentence (keep the quotes if it ends with a colon):"   # (markdown)
+        features:                         # optional; each bullet is (markdown)
+          - TODO Feature one
+          - TODO Feature two
+        note: TODO Text after the bullet list.   # optional (markdown)
+        link:                             # optional
+          label: See release notes
+          url:                            # TODO release URL
+    closing: TODO Thanks / feedback note. # optional (markdown)
+    link:                                 # optional
+      label: See all software updates
+      url:                                # TODO URL
+
+  # Events: one card per talk. `format` colors the card and badge.
+  - type: events
+    heading: Talks & Events
+    tinted: true
+    items:
+      - format: in-person                 # in-person | hybrid | remote
+        badge: In Person                  # badge text, e.g. "In Person + Zoom", "Remote"
+        when:                             # joined with " · "
+          - TODO Weekday, Month D, YYYY
+          - TODO H:MM–H:MM PM
+          - TODO Location
+        speaker: TODO Speaker name
+        affiliation: TODO Title, Institution   # optional
+        title: "TODO Talk title"          # optional
+        description: TODO Short abstract. # optional (markdown)
+        links:                            # optional; any number
+          - label: View event
+            url:                          # TODO event URL
+          - label: Join via Zoom
+            url:                          # TODO Zoom URL
+            secondary: true               # optional; lighter blue link
+
+  # Jobs: one entry per posting.
+  - type: jobs
+    heading: Jobs
+    items:
+      - title: TODO Job title
+        meta:                             # optional; joined with " · "
+          - Full-time
+          - University of Chicago
+          - Open until filled
+        description: TODO Role summary.   # (markdown)
+        link:
+          label: Apply
+          url:                            # TODO application URL
+
+  # Sign-off callout.
+  - type: callout
+    toc: Stay Connected
+    pullquote: Stay connected with DDRI.
+    show_subscribe: true
+    body: TODO Closing paragraph.
+
+# --- Footer (optional) ------------------------------------------------------
+
+footer:
+  lines:                                  # plain text lines
+    - Data & Democracy Research Initiative · University of Chicago
+  links:                                  # joined with " · "
+    - label: data-democracy.org
+      url: https://data-democracy.org
+    - label: Unsubscribe
+      url: https://docs.google.com/forms/d/e/1FAIpQLSdRWUnRYeq4SLFKdyfaziVlHzenuiC_hOx3-6QP0O1YAoZ86w/viewform?usp=header
+  copyright: © TODO-YYYY University of Chicago. All rights reserved.
