@@ -1,0 +1,50 @@
+{% assign location = include.location %}
+{% assign state = site.data.us_map.states | where: "abbr", location.state | first %}
+<li
+  class="card locations-card"
+  id="{{ location.id }}"
+  data-types="{{ location.types | join: ' ' }}"
+  {% if location.scope == "local" %}data-lat="{{ location.lat }}" data-lon="{{ location.lon }}"{% endif %}
+>
+  <div class="locations-card__header">
+    {% if location.image %}
+    <img class="locations-card__image" src="{{ location.image | relative_url }}" alt="" />
+    {% elsif state %}
+      {% comment %} Locator map: the state from the main map, framed with padding. {% endcomment %}
+      {% assign longest = state.bbox[2] %}
+      {% if state.bbox[3] > longest %}{% assign longest = state.bbox[3] %}{% endif %}
+      {% assign pad = longest | times: 0.15 | plus: 2 %}
+      {% assign vx = state.bbox[0] | minus: pad | round: 1 %}
+      {% assign vy = state.bbox[1] | minus: pad | round: 1 %}
+      {% assign vw = pad | times: 2 | plus: state.bbox[2] | round: 1 %}
+      {% assign vh = pad | times: 2 | plus: state.bbox[3] | round: 1 %}
+    <svg
+      class="locations-card__locator"
+      viewBox="{{ vx }} {{ vy }} {{ vw }} {{ vh }}"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <use href="#us-state-{{ state.abbr }}" class="locations-card__state" />
+    </svg>
+    {% endif %}
+  </div>
+
+  <div class="card__content">
+    <h3 class="card__title">{{ location.name }}</h3>
+    <ul class="locations-card__badges">
+      {% for key in location.types %}
+        {% assign type = include.types | where: "key", key | first %}
+      <li class="locations-badge" style="--type-color: {{ type.color }}">{{ type.label }}</li>
+      {% endfor %}
+    </ul>
+    {{ location.description | markdownify | replace: "<p>", '<p class="card__teaser">' }}
+    <ul class="locations-card__studies">
+      {% for study in location.studies %}
+      <li>
+        <a href="{{ study.url | relative_url }}">{{ study.title }}</a>
+        {% if study.year %}<span class="locations-card__year">({{ study.year }})</span>{% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</li>

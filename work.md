@@ -22,3 +22,5 @@ Here you'll find:
 
 
 **[Civic Tech](/civic-tech):** Open-source software, datasets, and interactive resources that aim to make the tools widely accessible.
+
+**[Locations](/locations):** The cities, counties, school districts, and states whose electoral systems we have studied, on a map.

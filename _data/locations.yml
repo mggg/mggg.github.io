@@ -1,0 +1,363 @@
+# Place-based electoral studies, shown on the Locations page (/locations).
+# Rendered by _includes/locations.html.
+#
+# `types` defines the governing-body categories: the badges on each card and
+# the map legend / filter. `color` is used for map pins, shaded states, and
+# legend swatches.
+#
+# Each entry in `locations`:
+#   id           unique anchor id (lowercase, hyphens)
+#   name         card title
+#   state        two-letter postal code (used for the map and card header)
+#   scope        statewide - the state is shaded on the map
+#                local     - a pin is placed at `lat`/`lon`
+#   lat, lon     pin position, decimal degrees (local only)
+#   types        one or more `types` keys; the first sets the map color
+#   image        optional header image; defaults to a locator map of the state
+#   description  (markdown) one or two sentences on the work there
+#   studies      list of { title, year (optional), url }; link to the page that
+#                presents the study, or to the PDF if there's no such page
+#
+# Cards are sorted by name, so entries can be added anywhere.
+
+types:
+  - key: city-council
+    label: City Council
+    color: "#0072b2"
+  - key: school-board
+    label: School Board
+    color: "#e69f00"
+  - key: county
+    label: County Government
+    color: "#009e73"
+  - key: state-legislature
+    label: State Legislature
+    color: "#882255"
+  - key: congressional
+    label: Congressional
+    color: "#d55e00"
+  - key: redistricting
+    label: Redistricting
+    color: "#56b4e9"
+
+locations:
+  - id: alabama
+    name: Alabama
+    state: AL
+    scope: statewide
+    types: [congressional]
+    description: Expert analysis in *Allen v. Milligan*, a Voting Rights Act case arguing that Alabama's congressional plan diluted the votes of Black Alabamians, who make up about 2/7 of the state but had only one opportunity district out of seven.
+    studies:
+      - title: Alabama congressional (Allen v. Milligan)
+        year: 2021
+        url: /posts/alabama-1-expert-report
+
+  - id: alaska
+    name: Alaska
+    state: AK
+    scope: statewide
+    types: [state-legislature]
+    description: A study of Alaska's rule that state Senate districts pair adjacent House districts, enumerating every possible pairing to evaluate the expected partisan behavior of the resulting Senate plans.
+    studies:
+      - title: "Mathematics of Nested Districts: The Case of Alaska"
+        year: 2019
+        url: /alaska
+
+  - id: arizona
+    name: Arizona
+    state: AZ
+    scope: statewide
+    types: [redistricting]
+    description: Experiments showing that differential privacy in Census data would not prevent Arizona from enforcing the Voting Rights Act or upholding traditional redistricting principles.
+    studies:
+      - title: Privacy, Census Data, and Arizona Redistricting
+        url: /publications/AZ-DP.pdf
+
+  - id: beaverton-or
+    name: Beaverton, Oregon
+    state: OR
+    scope: local
+    lat: 45.487
+    lon: -122.804
+    types: [school-board]
+    description: An analysis of districted and ranked choice election systems for the Beaverton School District board.
+    studies:
+      - title: Analysis of Election Systems for the Beaverton, OR School District
+        year: 2021
+        url: /publications/Beaverton.pdf
+
+  - id: chelan-county-wa
+    name: Chelan County, Washington
+    state: WA
+    scope: local
+    lat: 47.86
+    lon: -120.62
+    types: [county]
+    description: An analysis of districted and ranked choice election systems for the Chelan County Board of Commissioners.
+    studies:
+      - title: Analysis of Election Systems for the Chelan County Board of County Commissioners
+        year: 2021
+        url: /publications/Chelan_County.pdf
+
+  - id: chicago-il
+    name: Chicago, Illinois
+    state: IL
+    scope: local
+    lat: 41.878
+    lon: -87.630
+    types: [city-council]
+    description: An analysis of Chicago's City Council ward plan and several reform proposals, finding strong support for multimember wards with ranked choice voting. Accompanied by open data, code, and Chicago in Districtr.
+    studies:
+      - title: Study of Reform Proposals for Chicago City Council
+        year: 2019
+        url: /chicago
+
+  - id: lowell-ma
+    name: Lowell, Massachusetts
+    state: MA
+    scope: local
+    lat: 42.633
+    lon: -71.316
+    types: [city-council]
+    description: Public and technical reports on alternatives to Lowell's at-large City Council elections, prepared after a lawsuit alleging the system kept communities of color from being represented. The public report was also published in Spanish, Portuguese, and Khmer.
+    studies:
+      - title: Election Reform in Lowell, MA
+        year: 2019
+        url: /lowell
+
+  - id: massachusetts
+    name: Massachusetts
+    state: MA
+    scope: statewide
+    types: [state-legislature]
+    description: With New America, a modeling study of how single transferable vote (STV) and other systems would change the way the Massachusetts legislature is elected.
+    studies:
+      - title: Comparing Electoral Systems for the Massachusetts Legislature
+        year: 2025
+        url: /ma_legislature
+
+  - id: michigan
+    name: Michigan
+    state: MI
+    scope: statewide
+    types: [redistricting]
+    description: Clustering of public Communities of Interest testimony for the Michigan Independent Citizens Redistricting Commission, and a post-mortem of the commission's first cycle with Voters Not Politicians.
+    studies:
+      - title: Michigan Communities of Interest report
+        year: 2021
+        url: /publications/Michigan-COI.pdf
+      - title: Michigan Independent Citizens Redistricting Commission Post-Mortem
+        year: 2024
+        url: /publications/MICRC-Report.pdf
+
+  - id: missouri
+    name: Missouri
+    state: MO
+    scope: statewide
+    types: [redistricting]
+    description: Public Communities of Interest maps collected with Districtr and clustered into themes for Missouri's redistricting.
+    studies:
+      - title: Missouri Communities of Interest report
+        year: 2021
+        url: /publications/Missouri-COI.pdf
+
+  - id: north-carolina
+    name: North Carolina
+    state: NC
+    scope: statewide
+    types: [congressional, state-legislature]
+    description: Expert analysis in *Moore v. Harper* introducing the "Close Votes, Close Seats" standard, later cited by the state Supreme Court in throwing out the congressional plan.
+    studies:
+      - title: North Carolina congressional and legislative (Moore v. Harper)
+        year: 2021
+        url: /posts/nc2
+
+  - id: ohio
+    name: Ohio
+    state: OH
+    scope: statewide
+    types: [redistricting]
+    description: Public Communities of Interest maps collected through the OPEN Maps project and clustered into themes for Ohio's redistricting.
+    studies:
+      - title: Ohio Communities of Interest report
+        year: 2021
+        url: /publications/Ohio-COI.pdf
+
+  - id: oregon
+    name: Oregon
+    state: OR
+    scope: statewide
+    types: [state-legislature]
+    description: Ensembles of districting plans combined with ranked choice voting models to compare alternative election systems for the Oregon legislature.
+    studies:
+      - title: Analysis of Election Systems for Oregon State
+        year: 2021
+        url: /publications/Oregon.pdf
+
+  - id: hillsboro-or
+    name: Hillsboro, Oregon
+    state: OR
+    scope: local
+    lat: 45.523
+    lon: -122.990
+    types: [school-board]
+    description: An analysis of districted and ranked choice election systems for the Hillsboro School District board.
+    studies:
+      - title: Analysis of Election Systems for the Hillsboro, OR School District
+        year: 2021
+        url: /publications/Hillsboro.pdf
+
+  - id: pennsylvania
+    name: Pennsylvania
+    state: PA
+    scope: statewide
+    types: [congressional]
+    description: Expert reports in two congressional redistricting cases decided by the state's courts, *LWV v. Commonwealth* and *Carter v. Chapman*.
+    studies:
+      - title: Outlier analysis for Pennsylvania (LWV v. Commonwealth)
+        year: 2018
+        url: /publications/md-report.pdf
+      - title: Pennsylvania congressional (Carter v. Chapman)
+        year: 2022
+        url: /posts/pa-expert-report
+
+  - id: pierce-county-wa
+    name: Pierce County, Washington
+    state: WA
+    scope: local
+    lat: 47.04
+    lon: -122.14
+    types: [county]
+    description: An analysis of districted and ranked choice election systems for the Pierce County Council.
+    studies:
+      - title: Analysis of Election Systems for the Pierce County, WA Council
+        year: 2021
+        url: /publications/Pierce_County.pdf
+
+  - id: portland-or
+    name: Portland, Oregon
+    state: OR
+    scope: local
+    lat: 45.515
+    lon: -122.679
+    types: [city-council]
+    description: Studies before and after Portland adopted single transferable vote (STV) for its City Council, from comparing system options, to modeling likely outcomes, to analyzing the first STV election in 2024.
+    studies:
+      - title: Analysis of Election Systems for the Portland, OR City Council
+        year: 2021
+        url: /publications/Portland.pdf
+      - title: Modeling electoral dynamics for the Portland, Oregon city council
+        year: 2024
+        url: /posts/portland-elec-dynamics
+      - title: Study of the 2024 STV City Council Election in Portland, Oregon
+        year: 2025
+        url: /portland-stv-24
+
+  - id: salem-keizer-or
+    name: Salem-Keizer, Oregon
+    state: OR
+    scope: local
+    lat: 44.943
+    lon: -123.035
+    types: [school-board]
+    description: An analysis of districted and ranked choice election systems for the Salem-Keizer School District board.
+    studies:
+      - title: Analysis of Election Systems for the Salem-Keizer Unified School District
+        year: 2021
+        url: /publications/Salem_Keizer.pdf
+
+  - id: santa-clara-ca
+    name: Santa Clara, California
+    state: CA
+    scope: local
+    lat: 37.354
+    lon: -121.955
+    types: [city-council]
+    description: An analysis of geography, demographics, and voting patterns comparing systems for electing the Santa Clara City Council, finding transferable voting the best remedy for alleged California Voting Rights Act violations.
+    studies:
+      - title: Study of voting systems for Santa Clara, CA
+        year: 2018
+        url: /publications/SantaClara.pdf
+
+  - id: texas
+    name: Texas
+    state: TX
+    scope: statewide
+    types: [congressional]
+    description: Expert analysis in *LULAC v. Abbott*, which challenges Texas's post-Census congressional plan and its more aggressively partisan replacement.
+    studies:
+      - title: Texas congressional (LULAC v. Abbott)
+        year: 2025
+        url: /posts/tx5-expert-report
+
+  - id: tukwila-wa
+    name: Tukwila, Washington
+    state: WA
+    scope: local
+    lat: 47.474
+    lon: -122.261
+    types: [school-board]
+    description: An analysis of districted and ranked choice election systems for the Tukwila School District board.
+    studies:
+      - title: Analysis of Election Systems for the Tukwila, WA School District
+        year: 2021
+        url: /publications/Tukwila.pdf
+
+  - id: virginia
+    name: Virginia
+    state: VA
+    scope: statewide
+    types: [state-legislature]
+    description: A large ensemble of valid districting plans for the Virginia House of Delegates, used as a baseline for evaluating proposed replacements after eleven districts were ruled unconstitutional.
+    studies:
+      - title: Comparison of Districting Plans for the Virginia House of Delegates
+        year: 2018
+        url: /posts/virginia
+
+  - id: washington
+    name: Washington
+    state: WA
+    scope: statewide
+    types: [state-legislature]
+    description: Ensembles of districting plans combined with ranked choice voting models to compare alternative election systems for the Washington legislature.
+    studies:
+      - title: Analysis of Election Systems for Washington State
+        year: 2021
+        url: /publications/Washington.pdf
+
+  - id: wenatchee-wa
+    name: Wenatchee, Washington
+    state: WA
+    scope: local
+    lat: 47.423
+    lon: -120.311
+    types: [school-board]
+    description: An analysis of districted and ranked choice election systems for the Wenatchee School District board.
+    studies:
+      - title: Analysis of Election Systems for the Wenatchee School District
+        year: 2021
+        url: /publications/Wenatchee.pdf
+
+  - id: wisconsin
+    name: Wisconsin
+    state: WI
+    scope: statewide
+    types: [redistricting]
+    description: Public Communities of Interest maps collected with Districtr and clustered into themes for Wisconsin's redistricting.
+    studies:
+      - title: Wisconsin Communities of Interest report
+        year: 2021
+        url: /publications/Wisconsin-COI.pdf
+
+  - id: yakima-county-wa
+    name: Yakima County, Washington
+    state: WA
+    scope: local
+    lat: 46.46
+    lon: -120.74
+    types: [county]
+    description: An analysis of remedies for the exclusion of Hispanic and Native voters' candidates of choice from the Yakima County Commission, finding ranked choice voting likely more effective than majority-minority districts.
+    studies:
+      - title: Analysis of County Commission Elections in Yakima County, WA
+        year: 2020
+        url: /publications/Yakima.pdf

@@ -1,0 +1,68 @@
+{% assign map = site.data.us_map %}
+<figure class="locations-map">
+  <svg
+    class="locations-map__svg"
+    viewBox="0 0 {{ map.width }} {{ map.height }}"
+    role="group"
+    aria-labelledby="locations-map-title"
+  >
+    <title id="locations-map-title">Map of locations studied by the Data and Democracy Lab</title>
+    <g class="locations-map__states">
+      {% for state in map.states %}
+        {% assign statewide = include.locations | where: "state", state.abbr | where: "scope", "statewide" | first %}
+        {% if statewide %}
+          {% assign type = include.types | where: "key", statewide.types[0] | first %}
+      <a href="#{{ statewide.id }}" class="locations-map__state-link">
+        <path
+          id="us-state-{{ state.abbr }}"
+          class="locations-map__state locations-map__state--study"
+          data-locations-mark
+          data-types="{{ statewide.types | join: ' ' }}"
+          style="--type-color: {{ type.color }}"
+          d="{{ state.d }}"
+        ><title>{{ statewide.name }}</title></path>
+      </a>
+        {% else %}
+      <path id="us-state-{{ state.abbr }}" class="locations-map__state" d="{{ state.d }}"><title>{{ state.name }}</title></path>
+        {% endif %}
+      {% endfor %}
+    </g>
+    <g class="locations-map__pins" data-locations-pins></g>
+  </svg>
+
+  <figcaption class="locations-filter">
+    <div class="locations-filter__items" role="group" aria-label="Filter locations by governing body">
+      {% for type in include.types %}
+        {% assign count = 0 %}
+        {% assign has_local = false %}
+        {% assign has_statewide = false %}
+        {% for location in include.locations %}
+          {% if location.types contains type.key %}
+            {% assign count = count | plus: 1 %}
+            {% if location.scope == "local" %}{% assign has_local = true %}{% else %}{% assign has_statewide = true %}{% endif %}
+          {% endif %}
+        {% endfor %}
+      <button
+        type="button"
+        class="locations-filter__item"
+        data-type="{{ type.key }}"
+        data-color="{{ type.color }}"
+        aria-pressed="false"
+        style="--type-color: {{ type.color }}"
+      >
+        {% if has_statewide %}<span class="locations-filter__swatch locations-filter__swatch--area" aria-hidden="true"></span>{% endif %}
+        {% if has_local %}<span class="locations-filter__swatch locations-filter__swatch--pin" aria-hidden="true"></span>{% endif %}
+        {{ type.label }}
+        <span class="locations-filter__count">{{ count }}</span>
+      </button>
+      {% endfor %}
+      <button type="button" class="locations-filter__reset" data-locations-reset hidden>Show all</button>
+    </div>
+    <p class="locations-filter__note">
+      Shaded states mark statewide studies; dots mark local ones. Select one or
+      more categories to filter the map and list.
+    </p>
+  </figcaption>
+
+  <script type="application/json" data-locations-insets>{{ map.insets | jsonify }}</script>
+</figure>

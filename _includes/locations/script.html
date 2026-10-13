@@ -1,0 +1,188 @@
+<script>
+  // Locations page: places map pins and card locator dots, and filters the
+  // map and card list by governing body. See _includes/locations.html.
+  (function () {
+    var root = document.querySelector("[data-locations]");
+    if (!root) return;
+    root.classList.add("locations--js");
+
+    var SVG_NS = "http://www.w3.org/2000/svg";
+    var PIN_RADIUS = 5.5;
+    var insets = JSON.parse(root.querySelector("[data-locations-insets]").textContent);
+    var cards = Array.prototype.slice.call(root.querySelectorAll(".locations-card"));
+    var buttons = Array.prototype.slice.call(root.querySelectorAll(".locations-filter__item"));
+    var resetButton = root.querySelector("[data-locations-reset]");
+    var countText = root.querySelector("[data-locations-count]");
+    var colors = {};
+    buttons.forEach(function (button) {
+      colors[button.dataset.type] = button.dataset.color;
+    });
+
+    // Conic equal-area projection, matching the one used to draw the state
+    // outlines in _data/us_map.json; the settings come from its `insets`.
+    function makeProjection(inset) {
+      var rad = Math.PI / 180;
+      var p0 = inset.parallels[0] * rad;
+      var p1 = inset.parallels[1] * rad;
+      var n = (Math.sin(p0) + Math.sin(p1)) / 2;
+      var c = 1 + Math.sin(p0) * (2 * n - Math.sin(p0));
+      var r0 = Math.sqrt(c) / n;
+      function raw(lambda, phi) {
+        var r = Math.sqrt(c - 2 * n * Math.sin(phi)) / n;
+        return [r * Math.sin(lambda * n), r0 - r * Math.cos(lambda * n)];
+      }
+      function wrap(deg) {
+        return ((((deg + 180) % 360) + 360) % 360) - 180;
+      }
+      var center = raw(wrap(inset.center[0]) * rad, inset.center[1] * rad);
+      return function (lon, lat) {
+        var p = raw(wrap(lon + inset.rotate) * rad, lat * rad);
+        return [
+          inset.translate[0] + inset.scale * (p[0] - center[0]),
+          inset.translate[1] - inset.scale * (p[1] - center[1])
+        ];
+      };
+    }
+
+    function inBox(box, lon, lat) {
+      return box && lon >= box[0] && lat >= box[1] && lon <= box[2] && lat <= box[3];
+    }
+
+    insets.forEach(function (inset) {
+      inset.project = makeProjection(inset);
+    });
+
+    function projectPoint(lon, lat) {
+      for (var i = 0; i < insets.length; i++) {
+        var inset = insets[i];
+        if (!inset.box || inBox(inset.box, lon, lat) || inBox(inset.extra_box, lon, lat)) {
+          return inset.project(lon, lat);
+        }
+      }
+    }
+
+    function svg(name, attrs) {
+      var el = document.createElementNS(SVG_NS, name);
+      for (var key in attrs) el.setAttribute(key, attrs[key]);
+      return el;
+    }
+
+    // Map pins and card locator dots for local studies.
+    var pinLayer = root.querySelector("[data-locations-pins]");
+    var pins = [];
+    cards.forEach(function (card) {
+      if (!card.dataset.lat) return;
+      var xy = projectPoint(parseFloat(card.dataset.lon), parseFloat(card.dataset.lat));
+      var color = colors[card.dataset.types.split(" ")[0]];
+      var name = card.querySelector(".card__title").textContent;
+
+      var pin = svg("a", {
+        href: "#" + card.id,
+        class: "locations-map__pin",
+        "data-locations-mark": "",
+        "data-types": card.dataset.types,
+        style: "--type-color: " + color
+      });
+      var leader = svg("line", { class: "locations-map__leader" });
+      var circle = svg("circle", { class: "locations-map__dot", r: PIN_RADIUS });
+      var title = svg("title", {});
+      title.textContent = name;
+      circle.appendChild(title);
+      pin.appendChild(leader);
+      pin.appendChild(circle);
+      pinLayer.appendChild(pin);
+      pins.push({ x0: xy[0], y0: xy[1], x: xy[0], y: xy[1], leader: leader, circle: circle });
+
+      var locator = card.querySelector(".locations-card__locator");
+      if (locator) {
+        var box = locator.viewBox.baseVal;
+        locator.appendChild(svg("circle", {
+          class: "locations-card__dot",
+          cx: xy[0],
+          cy: xy[1],
+          r: Math.max(box.width, box.height) * 0.035,
+          style: "--type-color: " + color
+        }));
+      }
+    });
+
+    // Nudge overlapping pins apart (e.g. the Portland suburbs), pulling each
+    // gently back toward its true position. Displaced pins get a leader line.
+    var minGap = PIN_RADIUS * 2 + 1.5;
+    for (var step = 0; step < 120; step++) {
+      for (var i = 0; i < pins.length; i++) {
+        for (var j = i + 1; j < pins.length; j++) {
+          var a = pins[i], b = pins[j];
+          var dx = b.x - a.x, dy = b.y - a.y;
+          var dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist >= minGap) continue;
+          if (dist < 0.01) { dx = 1; dy = 0; dist = 1; }
+          var push = (minGap - dist) / 2;
+          a.x -= (dx / dist) * push; a.y -= (dy / dist) * push;
+          b.x += (dx / dist) * push; b.y += (dy / dist) * push;
+        }
+      }
+      pins.forEach(function (p) {
+        p.x += (p.x0 - p.x) * 0.02;
+        p.y += (p.y0 - p.y) * 0.02;
+      });
+    }
+    pins.forEach(function (p) {
+      p.circle.setAttribute("cx", p.x.toFixed(1));
+      p.circle.setAttribute("cy", p.y.toFixed(1));
+      var moved = Math.abs(p.x - p.x0) + Math.abs(p.y - p.y0) > 1;
+      p.leader.setAttribute("x1", p.x0.toFixed(1));
+      p.leader.setAttribute("y1", p.y0.toFixed(1));
+      p.leader.setAttribute("x2", (moved ? p.x : p.x0).toFixed(1));
+      p.leader.setAttribute("y2", (moved ? p.y : p.y0).toFixed(1));
+    });
+
+    // Filtering. No selection shows everything; otherwise show locations with
+    // any selected type, colored by the first selected type they have.
+    var marks = Array.prototype.slice.call(root.querySelectorAll("[data-locations-mark]"));
+    var active = [];
+
+    function matchingType(types) {
+      types = types.split(" ");
+      if (!active.length) return types[0];
+      for (var i = 0; i < types.length; i++) {
+        if (active.indexOf(types[i]) !== -1) return types[i];
+      }
+      return null;
+    }
+
+    function applyFilter() {
+      var shown = 0;
+      cards.forEach(function (card) {
+        var match = matchingType(card.dataset.types);
+        card.hidden = !match;
+        if (match) shown++;
+      });
+      marks.forEach(function (mark) {
+        var match = matchingType(mark.dataset.types);
+        mark.classList.toggle("is-dimmed", !match);
+        if (match) mark.style.setProperty("--type-color", colors[match]);
+      });
+      buttons.forEach(function (button) {
+        button.setAttribute("aria-pressed", active.indexOf(button.dataset.type) !== -1);
+      });
+      resetButton.hidden = !active.length;
+      countText.textContent = active.length
+        ? "Showing " + shown + " of " + cards.length + " locations"
+        : "Showing all " + cards.length + " locations";
+    }
+
+    buttons.forEach(function (button) {
+      button.addEventListener("click", function () {
+        var index = active.indexOf(button.dataset.type);
+        if (index === -1) active.push(button.dataset.type);
+        else active.splice(index, 1);
+        applyFilter();
+      });
+    });
+    resetButton.addEventListener("click", function () {
+      active = [];
+      applyFilter();
+    });
+  })();
+</script>

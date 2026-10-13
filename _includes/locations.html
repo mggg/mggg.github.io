@@ -1,0 +1,23 @@
+{% comment %}
+  Locations page: a US map of the Lab's place-based studies, a legend that
+  filters by governing body, and a card for each location.
+
+  Content: _data/locations.yml
+  Map geometry: _data/us_map.json (pre-projected state outlines; see its `source` note)
+{% endcomment %}
+{% assign locations = site.data.locations.locations | sort: "name" %}
+{% assign types = site.data.locations.types %}
+<div class="locations" data-locations>
+  {% include locations/map.html locations=locations types=types %}
+
+  <p class="locations__count" aria-live="polite" data-locations-count>
+    Showing all {{ locations.size }} locations
+  </p>
+
+  <ul class="locations__list">
+    {% for location in locations %}
+      {% include locations/card.html location=location types=types %}
+    {% endfor %}
+  </ul>
+</div>
+{% include locations/script.html %}
