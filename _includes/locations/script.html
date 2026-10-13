@@ -184,8 +184,9 @@
     });
 
     // Popup on hover/focus of a pin or shaded state: the location's name and
-    // links to its studies, copied from its card. It stays open while the
-    // pointer is over it so the links can be clicked.
+    // links to its studies, copied from its card. It follows above the
+    // pointer, and stays open while the pointer is over it so the links can
+    // be clicked.
     var figure = root.querySelector(".locations-map");
     var mapSvg = root.querySelector(".locations-map__svg");
     var popup = root.querySelector("[data-locations-popup]");
@@ -199,15 +200,18 @@
       return link && mapSvg.contains(link) ? link : null;
     }
 
-    // `point` is the pointer position for mouse hovers; shaded states anchor
-    // there, since a large state's outline can be far from the cursor.
-    function showPopup(link, point) {
+    var popupBelow = false;
+    var lastPoint = null;
+
+    // Fills the popup for `link` unless it's already showing it. Returns
+    // false for filtered-out locations.
+    function openPopup(link) {
       clearTimeout(hideTimer);
       var mark = link.querySelector("[data-locations-mark]") || link;
-      if (mark.classList.contains("is-dimmed")) return;
-      if (popupTarget === link && !popup.hidden) return;
+      if (mark.classList.contains("is-dimmed")) return false;
+      if (popupTarget === link && !popup.hidden) return true;
       var card = document.getElementById(link.getAttribute("href").slice(1));
-      if (!card) return;
+      if (!card) return false;
 
       popupTitle.textContent = card.querySelector(".card__title").textContent;
       popupLinks.innerHTML = "";
@@ -215,24 +219,39 @@
         popupLinks.appendChild(item.cloneNode(true));
       });
       popupTarget = link;
+      lastPoint = null;
       popup.hidden = false;
+      return true;
+    }
 
-      // Centered above the anchor; below it if it would slide under the
-      // sticky site header or off the top of the screen.
-      var shape = link.querySelector("circle, path").getBoundingClientRect();
-      var anchor = point && mark !== link
-        ? { left: point.x, right: point.x, top: point.y, bottom: point.y }
-        : shape;
+    // Centers the popup above `anchor` (a viewport rect), or below it if it
+    // would slide under the sticky site header or off the top of the screen.
+    function placePopup(anchor) {
       var box = figure.getBoundingClientRect();
       var header = document.querySelector(".site-header");
       var ceiling = header ? Math.max(0, header.getBoundingClientRect().bottom) : 0;
-      var gap = 8;
       var left = (anchor.left + anchor.right) / 2 - box.left - popup.offsetWidth / 2;
       left = Math.max(0, Math.min(left, box.width - popup.offsetWidth));
-      var top = anchor.top - popup.offsetHeight - gap;
-      if (top < ceiling) top = anchor.bottom + gap;
+      var top = anchor.top - popup.offsetHeight - 12;
+      popupBelow = top < ceiling;
+      // Below the pointer, leave room for the cursor itself.
+      if (popupBelow) top = anchor.bottom + 20;
       popup.style.left = left + "px";
       popup.style.top = top - box.top + "px";
+    }
+
+    // Keeps the popup above the pointer as it moves, except while the pointer
+    // is heading into the popup, so its links can still be reached.
+    function followPointer(x, y) {
+      if (lastPoint) {
+        var rect = popup.getBoundingClientRect();
+        var under = x >= rect.left && x <= rect.right;
+        var towards = popupBelow ? y > lastPoint.y : y < lastPoint.y;
+        lastPoint = { x: x, y: y };
+        if (under && towards) return;
+      }
+      lastPoint = { x: x, y: y };
+      placePopup({ left: x, right: x, top: y, bottom: y });
     }
 
     function hidePopup() {
@@ -248,14 +267,21 @@
 
     mapSvg.addEventListener("mouseover", function (event) {
       var link = markLink(event.target);
-      if (link) showPopup(link, { x: event.clientX, y: event.clientY });
+      if (link && openPopup(link)) followPointer(event.clientX, event.clientY);
+    });
+    mapSvg.addEventListener("mousemove", function (event) {
+      var link = markLink(event.target);
+      if (link && link === popupTarget && !popup.hidden) followPointer(event.clientX, event.clientY);
     });
     mapSvg.addEventListener("mouseout", function (event) {
       if (markLink(event.target) && !markLink(event.relatedTarget)) hidePopupSoon();
     });
+    // Keyboard focus has no pointer, so anchor to the pin or state itself.
     mapSvg.addEventListener("focusin", function (event) {
       var link = markLink(event.target);
-      if (link) showPopup(link);
+      if (link && openPopup(link)) {
+        placePopup(link.querySelector("circle, path").getBoundingClientRect());
+      }
     });
     mapSvg.addEventListener("focusout", function (event) {
       if (!popup.contains(event.relatedTarget)) hidePopupSoon();
