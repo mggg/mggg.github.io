@@ -17,8 +17,12 @@
 #   toc - label in the table of contents (defaults to `heading`; sections with
 #         neither are left out, so a callout only appears if it sets `toc`)
 #   id  - anchor id (defaults to the slugified heading/toc)
+#
+# Each issue also needs a page in newsletters/ (see newsletters/fall-2026.md).
+# /newsletter shows whichever issue has the latest `date`.
 
 title: Fall 2026
+date: 2026-10-13
 toc_title: In This Issue
 
 header:

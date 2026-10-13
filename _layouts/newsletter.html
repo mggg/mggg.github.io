@@ -4,7 +4,18 @@
 
   <body>
     {% include top_navigation.html %}
-    {% assign issue = site.data.newsletters[page.issue] %}
+    {% comment %} Use the issue named in front matter, or else the most recent by `date`. {% endcomment %}
+    {% if page.issue %}
+      {% assign issue = site.data.newsletters[page.issue] %}
+    {% else %}
+      {% assign issue = nil %}
+      {% for entry in site.data.newsletters %}
+        {% assign candidate = entry[1] %}
+        {% if issue == nil or candidate.date > issue.date %}
+          {% assign issue = candidate %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
 
     <main class="l-center-wide l-content newsletter-layout">
       {% include newsletter/toc.html issue=issue %}
