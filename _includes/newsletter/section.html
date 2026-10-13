@@ -1,0 +1,37 @@
+{% assign section = include.section %}
+<section class="newsletter-section{% if section.tinted %} newsletter-section--tinted{% endif %}">
+  <h2 class="newsletter-section__heading">{{ section.heading }}</h2>
+  {% if section.collapsible %}
+  <details class="newsletter-section__toggle"{% if section.open %} open{% endif %}>
+    <summary>Click to expand</summary>
+  {% endif %}
+    <div class="newsletter-section__content">
+      {% case section.type %}
+      {% when "software" %}
+        {% for item in section.items %}
+          {% include newsletter/software-item.html item=item %}
+        {% endfor %}
+      {% when "events" %}
+        {% for group in section.groups %}
+        <h3 class="newsletter-section__label newsletter-section__label--{{ group.format }}">{{ group.label }}</h3>
+          {% for event in group.events %}
+            {% include newsletter/event.html event=event format=group.format %}
+          {% endfor %}
+        {% endfor %}
+      {% when "jobs" %}
+        {% for job in section.items %}
+          {% include newsletter/job.html job=job %}
+        {% endfor %}
+      {% endcase %}
+
+      {% if section.closing or section.link.url %}
+      <div class="newsletter-section__closing">
+        {{ section.closing | markdownify }}
+        {% include newsletter/link.html link=section.link %}
+      </div>
+      {% endif %}
+    </div>
+  {% if section.collapsible %}
+  </details>
+  {% endif %}
+</section>

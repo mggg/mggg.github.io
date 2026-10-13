@@ -1,0 +1,172 @@
+# Fall 2026 newsletter. Rendered by _layouts/newsletter.html.
+#
+# Fields marked (markdown) accept Markdown/inline HTML. Any `link` with an
+# empty `url` is not rendered, so placeholders can be left blank until ready.
+#
+# `sections` render in order. Supported `type`s:
+#   callout  - tinted block with a pull quote, body text, and optional subscribe button
+#   software - list of software releases
+#   events   - talks/events, grouped by format (in-person | hybrid | remote)
+#   jobs     - job postings
+# Every non-callout section also accepts:
+#   heading, tinted (bool), collapsible (bool), open (bool), closing (markdown), link
+
+title: Fall 2026
+
+header:
+  eyebrow: University of Chicago
+  issue: Newsletter · Fall 2026
+  title: Data & Democracy Research Initiative
+  subtitle: Researching data science interventions for democracy
+
+subscribe:
+  label: Subscribe to the Newsletter
+  url: https://docs.google.com/forms/d/e/1FAIpQLSdegkgoyEE7SI-bkFDG009ne-Za8tYHx5MaTc4PCteOvTVyiA/viewform?usp=header
+
+sections:
+  - type: callout
+    pullquote: Big things are happening!
+    show_subscribe: true
+    body: |
+      MGGG (aka Metric Geometry & Gerrymandering Group) is entering a new chapter as the **Data & Democracy Research Initiative (DDRI)** in our new home at the University of Chicago.
+
+      As part of this transition, we're renaming our Slack workspace and cleaning up old, inactive accounts. We have so many contributors — past and present — to thank for helping build this community, but we also recognize that not everyone needs access to every Slack channel anymore.
+
+      To help everyone stay connected, we're excited to launch a quarterly DDRI newsletter where you can keep up with our research and software projects. Whether you're interested in software releases, upcoming events, or general news from the initiative, we'll have options for you to choose from.
+
+      Most importantly, thank you for your contributions, support, feedback, and enthusiasm for MGGG and now the Data & Democracy Research Initiative. We hope you'll stay engaged and connected with us as we continue working on exciting projects.
+
+  - type: software
+    heading: Software Updates
+    collapsible: true
+    open: true
+    items:
+      - name: Districtr
+        version: v2.0
+        description: "Districtr is getting a huge data update on the frontend and backend! New features include:"
+        features:
+          - A new Content Management System (CMS) board for managing and organizing maps and projects
+          - Updated election data through 2024 (in most locations)
+          - Geometries updated to use 2020 TIGER/Line polygons from the census everywhere
+          - The ability to split precincts and draw census blocks with Super Draw
+          - Advanced evaluation tools available on every map
+          - Mutable maps, map history, and password protection
+        note: The [legacy version of Districtr](https://legacy.districtr.org/) will remain available as a read-only copy, so existing work can still be accessed.
+
+      - name: VoteKit
+        version: v3.5
+        description: "Users (especially attendees of BIRS) gave us a lot of feedback on features they wanted to see. While there is still more to come, the following have been added due to their demand:"
+        features:
+          - Support for integer candidates across the entire codebase, instead of only string candidates
+          - Simplified reproducibility with `random_seed` support across all public APIs that use randomness — no need to manage an RNG
+          - A new fuzzy ranked-ballot search, allowing users to filter preference profiles using weak queries (e.g. "find all ballots where A appears before B")
+          - Support for exact (fractional) ballot weights and ballot transfers has been reimplemented and is available through an opt-in flag
+        link:
+          label: See release documentation
+          url: https://github.com/mggg/VoteKit/releases/tag/v3.5.0
+
+      - name: GerryChain
+        version: v1.0
+        description: "We've doubled the speed by updating things internally, and it now has a more intuitive API for newcomers. The team worked hard to ensure the majority of scripts written with older versions require little or no modification — where the API is expected to change, you'll receive deprecation warnings. New highlights include:"
+        features:
+          - A new graph backend abstraction, no longer tied directly to `networkx.Graph`, increasing chain speed 2–3x
+          - Explicit/local RNG handling to improve reproducibility of runs
+          - A cleaner, more composable ReCom/proposal API
+          - Support for multi-member districts
+          - Support for Python 3.11–3.14 and Pandas 3.0
+        link:
+          label: View migration guide
+          url: https://gerrychain.readthedocs.io/en/v1.0.0/topics/v1p0p0_migration_guide/
+
+      - name: GerryTools
+        version: v2.0
+        description: "Version 2.0 is a complete rewrite of GerryTools 1.0 — users should expect a substantially updated experience:"
+        features:
+          - Dramatically faster scoring of plans and ensembles — Reock scores are now more than 100x faster due to a Rust-backed scoring engine
+          - Improved interoperability with GerryChain
+          - A new composable plotting API for histograms, boxplots, violin plots, seats-votes curves, maps, and more
+          - Improved tools for comparing plans and publication-oriented LaTeX/TikZ output
+          - Better tools for interacting with the Census API, including convenience functions for pulling Census tables with interpretable variable names
+
+      - name: RustReCom
+        version: v0.2
+        features:
+          - Unified CLI for chains, short bursts, and tilted runs
+          - New optimization framework with configurable acceptance rules
+          - Weighted spanning-tree edges, arbitrary node IDs, better validation, and other quality-of-life improvements
+          - Native BENDL output
+    closing: Big shoutout to the team for all of their hard work on these new releases! Please feel free to send your feedback to [code@data-democracy.org](mailto:code@data-democracy.org) as we continue to improve these tools.
+    link:
+      label: See all software updates
+      url: # TODO
+
+  - type: events
+    heading: Talks & Events
+    tinted: true
+    collapsible: true
+    open: true
+    groups:
+      - label: In Person
+        format: in-person
+        events:
+          - badge: In Person
+            when:
+              - Monday, November 9, 2026
+              - 4:30–6:00 PM
+              - Lorraine and Yuji Suzuki Center, Room 105
+            speaker: danah boyd
+            affiliation: Geri Gay Professor of Communication, Cornell University
+            title: "Data Are Made, Not Found: A Story of Politics, Power, and the Civil Servants Who Saved the US Census"
+            description: danah boyd presents her new book — an ethnography of the US Census Bureau, the politics of democratic data, and the struggle to produce democracy's data in 2020.
+            links:
+              - label: View event
+                url: https://datascience.uchicago.edu/events/danah-boyd-cornell-distinguished-speaker-series/
+
+      - label: In Person & Remote
+        format: hybrid
+        events:
+          - badge: In Person + Zoom
+            when:
+              - Monday, October 19, 2026
+              - 4:00–5:00 PM
+              - JCL Building
+            speaker: Yuki Atsusaka
+            affiliation: Assistant Professor, Hobby School of Public Affairs, University of Houston
+            title: Candidate Rankings and the Incumbency Advantage in Preferential Electoral Systems
+            description: Atsusaka studies how the incumbency advantage changes the way ranked-choice voting works by affecting voting behavior. His research spans electoral systems, race and representation, and political methodology, with work appearing in the *American Political Science Review* and *Political Analysis*.
+            links:
+              - label: View event
+                url: # TODO
+              - label: Join via Zoom
+                url: # TODO
+                secondary: true
+
+  - type: jobs
+    heading: Jobs
+    collapsible: true
+    open: true
+    items:
+      - title: Director, Data & Democracy Research Initiative
+        meta:
+          - Full-time
+          - University of Chicago
+          - Open until filled
+        description: The Director serves as an intellectual partner to Professor Moon Duchin and the public face of DDRI's external engagement. The role combines active research participation in structural democracy with primary responsibility for the lab's partnerships, fundraising, and public communications — working at the intersection of math, law, policy, and open-source software to translate academic research into policy recommendations and implementation with governmental, legal, and civic partners.
+        link:
+          label: Apply
+          url: # TODO
+
+  - type: callout
+    pullquote: Stay connected with DDRI.
+    show_subscribe: true
+    body: If you're interested in more than just software, sign up for additional communications from us — we'd love to see you at events or share semi-annual lab updates with you.
+
+footer:
+  lines:
+    - Data & Democracy Research Initiative · University of Chicago
+  links:
+    - label: data-democracy.org
+      url: https://data-democracy.org
+    - label: Unsubscribe
+      url: https://docs.google.com/forms/d/e/1FAIpQLSdRWUnRYeq4SLFKdyfaziVlHzenuiC_hOx3-6QP0O1YAoZ86w/viewform?usp=header
+  copyright: © 2026 University of Chicago. All rights reserved.

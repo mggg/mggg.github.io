@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% include head.html %}
+
+  <body>
+    {% include top_navigation.html %}
+    {% assign issue = site.data.newsletters[page.issue] %}
+
+    <main class="l-center l-content">
+      <article class="newsletter">
+        <header class="newsletter__header">
+          <div class="newsletter__header-top">
+            <span class="newsletter__eyebrow">{{ issue.header.eyebrow }}</span>
+            <span class="newsletter__issue">{{ issue.header.issue }}</span>
+          </div>
+          <h1 class="newsletter__title">{{ issue.header.title }}</h1>
+          {% if issue.header.subtitle %}
+          <p class="newsletter__subtitle">{{ issue.header.subtitle }}</p>
+          {% endif %}
+        </header>
+
+        {% for section in issue.sections %}
+          {% if section.type == "callout" %}
+            {% include newsletter/callout.html callout=section subscribe=issue.subscribe %}
+          {% else %}
+            {% include newsletter/section.html section=section %}
+          {% endif %}
+        {% endfor %}
+
+        {{ content }}
+
+        {% if issue.footer %}
+        <footer class="newsletter__footer">
+          <p>
+            {% for line in issue.footer.lines %}{{ line }}<br />{% endfor %}
+            {% for link in issue.footer.links %}{% if link.url %}{% unless forloop.first %} · {% endunless %}<a href="{{ link.url }}">{{ link.label }}</a>{% endif %}{% endfor %}
+          </p>
+          {% if issue.footer.copyright %}
+          <p class="newsletter__copyright">{{ issue.footer.copyright }}</p>
+          {% endif %}
+        </footer>
+        {% endif %}
+      </article>
+    </main>
+
+    {% include footer.html %}
+  </body>
+</html>
