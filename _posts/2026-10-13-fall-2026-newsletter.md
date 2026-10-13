@@ -6,7 +6,6 @@ categories:
 authors: Data & Democracy Lab
 featured: true
 href: /newsletter/fall-2026
-href: /newsletter/fall-2026
 excerpt_separator: "<!--more-->"
 ---
 
