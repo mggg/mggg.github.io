@@ -5,7 +5,9 @@
 #
 # `sections` render in order. Supported `type`s:
 #   callout  - tinted block with a pull quote, body text, and optional subscribe button
-#   software - list of software releases
+#   software - list of software releases; each item is an accordion showing only
+#              its version and name until expanded (set `open: true` on an item
+#              to start it expanded)
 #   events   - talks/events, grouped by format (in-person | hybrid | remote)
 #   jobs     - job postings
 # Every non-callout section also accepts:
@@ -44,8 +46,6 @@ sections:
 
   - type: software
     heading: Software Updates
-    collapsible: true
-    open: true
     items:
       - name: Districtr
         version: v2.0

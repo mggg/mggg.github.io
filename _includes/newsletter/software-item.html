@@ -1,10 +1,12 @@
 {% assign item = include.item %}
-<div class="newsletter-item newsletter-software">
-  {% if item.version %}
-  <span class="newsletter-software__version">{{ item.version }}</span>
-  {% endif %}
-  <div class="newsletter-software__body">
+<details class="newsletter-item newsletter-software"{% if item.open %} open{% endif %}>
+  <summary class="newsletter-software__summary">
+    {% if item.version %}
+    <span class="newsletter-software__version">{{ item.version }}</span>
+    {% endif %}
     <h3 class="newsletter-item__title">{{ item.name }}</h3>
+  </summary>
+  <div class="newsletter-software__body">
     {{ item.description | markdownify }}
     {% if item.features %}
     <ul class="newsletter-item__list">
@@ -16,4 +18,4 @@
     {{ item.note | markdownify }}
     {% include newsletter/link.html link=item.link %}
   </div>
-</div>
+</details>

@@ -228,12 +228,6 @@ html:has(.newsletter-toc) {
   border-bottom-color: rgba($mggg-blue, 0.3);
 }
 
-.newsletter-section__closing {
-  margin-top: 1.25rem;
-  padding-top: 1.25rem;
-  border-top: 1px solid $newsletter-border;
-}
-
 /* items (software, jobs) */
 
 .newsletter-item {
@@ -279,14 +273,47 @@ html:has(.newsletter-toc) {
   }
 }
 
-.newsletter-software {
+/* software items: accordion, closed by default */
+
+$newsletter-version-width: 3.5rem;
+$newsletter-version-gap: 1rem;
+
+.newsletter-software__summary {
   display: flex;
-  align-items: flex-start;
-  gap: 1rem;
+  align-items: center;
+  gap: $newsletter-version-gap;
+  list-style: none;
+  cursor: pointer;
+  user-select: none;
+
+  &::-webkit-details-marker {
+    display: none;
+  }
+
+  // Chevron on the right, matching the section toggle glyphs.
+  &::after {
+    content: "▶";
+    margin-left: auto;
+    font-size: 0.625rem;
+    color: $mggg-blue;
+  }
+
+  .newsletter-item__title {
+    margin: 0;
+  }
+
+  &:hover .newsletter-item__title {
+    color: $mggg-very-dark-blue;
+  }
+}
+
+.newsletter-software[open] > .newsletter-software__summary::after {
+  content: "▼";
+  color: $mggg-very-dark-blue;
 }
 
 .newsletter-software__version {
-  flex: 0 0 3.5rem;
+  flex: 0 0 $newsletter-version-width;
   padding: 0.25rem 0.5rem;
   border-radius: 0.25rem;
   background: $mggg-blue;
@@ -298,9 +325,9 @@ html:has(.newsletter-toc) {
   text-align: center;
 }
 
+// Indented to line up with the title, past the version badge.
 .newsletter-software__body {
-  flex: 1 1 auto;
-  min-width: 0;
+  padding: 0.5rem 0 0 ($newsletter-version-width + $newsletter-version-gap);
 }
 
 /* events (extends .card) */
@@ -478,8 +505,7 @@ html:has(.newsletter-toc) {
     padding-right: 1.5rem;
   }
 
-  .newsletter-software {
-    flex-direction: column;
-    gap: 0.5rem;
+  .newsletter-software__body {
+    padding-left: 0;
   }
 }
