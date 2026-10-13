@@ -113,23 +113,6 @@ sections:
     collapsible: true
     open: true
     items:
-      - format: hybrid
-        badge: In Person + Zoom
-        when:
-          - Monday, October 19, 2026
-          - 4:00–5:00 PM
-          - JCL Building
-        speaker: Yuki Atsusaka
-        affiliation: Assistant Professor, Hobby School of Public Affairs, University of Houston
-        title: Candidate Rankings and the Incumbency Advantage in Preferential Electoral Systems
-        description: Atsusaka studies how the incumbency advantage changes the way ranked-choice voting works by affecting voting behavior. His research spans electoral systems, race and representation, and political methodology, with work appearing in the *American Political Science Review* and *Political Analysis*.
-        links:
-          - label: View event
-            url: # TODO
-          - label: Join via Zoom
-            url: # TODO
-            secondary: true
-
       - format: in-person
         badge: In Person
         when:
