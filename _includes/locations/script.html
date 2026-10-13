@@ -79,15 +79,13 @@
       var pin = svg("a", {
         href: "#" + card.id,
         class: "locations-map__pin",
+        "aria-label": name,
         "data-locations-mark": "",
         "data-types": card.dataset.types,
         style: "--type-color: " + color
       });
       var leader = svg("line", { class: "locations-map__leader" });
       var circle = svg("circle", { class: "locations-map__dot", r: PIN_RADIUS });
-      var title = svg("title", {});
-      title.textContent = name;
-      circle.appendChild(title);
       pin.appendChild(leader);
       pin.appendChild(circle);
       pinLayer.appendChild(pin);
@@ -183,6 +181,97 @@
     resetButton.addEventListener("click", function () {
       active = [];
       applyFilter();
+    });
+
+    // Popup on hover/focus of a pin or shaded state: the location's name and
+    // links to its studies, copied from its card. It stays open while the
+    // pointer is over it so the links can be clicked.
+    var figure = root.querySelector(".locations-map");
+    var mapSvg = root.querySelector(".locations-map__svg");
+    var popup = root.querySelector("[data-locations-popup]");
+    var popupTitle = popup.querySelector(".locations-popup__title");
+    var popupLinks = popup.querySelector(".locations-popup__links");
+    var popupTarget = null;
+    var hideTimer = null;
+
+    function markLink(el) {
+      var link = el && el.closest ? el.closest("a") : null;
+      return link && mapSvg.contains(link) ? link : null;
+    }
+
+    // `point` is the pointer position for mouse hovers; shaded states anchor
+    // there, since a large state's outline can be far from the cursor.
+    function showPopup(link, point) {
+      clearTimeout(hideTimer);
+      var mark = link.querySelector("[data-locations-mark]") || link;
+      if (mark.classList.contains("is-dimmed")) return;
+      if (popupTarget === link && !popup.hidden) return;
+      var card = document.getElementById(link.getAttribute("href").slice(1));
+      if (!card) return;
+
+      popupTitle.textContent = card.querySelector(".card__title").textContent;
+      popupLinks.innerHTML = "";
+      card.querySelectorAll(".locations-card__studies li").forEach(function (item) {
+        popupLinks.appendChild(item.cloneNode(true));
+      });
+      popupTarget = link;
+      popup.hidden = false;
+
+      // Centered above the anchor; below it if it would slide under the
+      // sticky site header or off the top of the screen.
+      var shape = link.querySelector("circle, path").getBoundingClientRect();
+      var anchor = point && mark !== link
+        ? { left: point.x, right: point.x, top: point.y, bottom: point.y }
+        : shape;
+      var box = figure.getBoundingClientRect();
+      var header = document.querySelector(".site-header");
+      var ceiling = header ? Math.max(0, header.getBoundingClientRect().bottom) : 0;
+      var gap = 8;
+      var left = (anchor.left + anchor.right) / 2 - box.left - popup.offsetWidth / 2;
+      left = Math.max(0, Math.min(left, box.width - popup.offsetWidth));
+      var top = anchor.top - popup.offsetHeight - gap;
+      if (top < ceiling) top = anchor.bottom + gap;
+      popup.style.left = left + "px";
+      popup.style.top = top - box.top + "px";
+    }
+
+    function hidePopup() {
+      clearTimeout(hideTimer);
+      popup.hidden = true;
+      popupTarget = null;
+    }
+
+    function hidePopupSoon() {
+      clearTimeout(hideTimer);
+      hideTimer = setTimeout(hidePopup, 250);
+    }
+
+    mapSvg.addEventListener("mouseover", function (event) {
+      var link = markLink(event.target);
+      if (link) showPopup(link, { x: event.clientX, y: event.clientY });
+    });
+    mapSvg.addEventListener("mouseout", function (event) {
+      if (markLink(event.target) && !markLink(event.relatedTarget)) hidePopupSoon();
+    });
+    mapSvg.addEventListener("focusin", function (event) {
+      var link = markLink(event.target);
+      if (link) showPopup(link);
+    });
+    mapSvg.addEventListener("focusout", function (event) {
+      if (!popup.contains(event.relatedTarget)) hidePopupSoon();
+    });
+    popup.addEventListener("mouseenter", function () {
+      clearTimeout(hideTimer);
+    });
+    popup.addEventListener("mouseleave", hidePopupSoon);
+    popup.addEventListener("focusout", function (event) {
+      if (!popup.contains(event.relatedTarget)) hidePopupSoon();
+    });
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape" && !popup.hidden) hidePopup();
+    });
+    buttons.concat(resetButton).forEach(function (button) {
+      button.addEventListener("click", hidePopup);
     });
   })();
 </script>

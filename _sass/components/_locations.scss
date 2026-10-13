@@ -6,7 +6,49 @@ $locations-sticky-offset: 7rem;
 /* map */
 
 .locations-map {
+  position: relative;
   margin: 1.5rem 0 0;
+}
+
+/* hover popup (positioned by locations/script.html) */
+
+.locations-popup {
+  position: absolute;
+  z-index: 10;
+  width: max-content;
+  max-width: min(20rem, 100%);
+  padding: 0.75rem 1rem;
+  border: 1px solid $mggg-very-dark-blue;
+  background: white;
+  box-shadow: $raised;
+  line-height: 1.4;
+
+  &[hidden] {
+    display: none;
+  }
+}
+
+.locations-popup__title {
+  margin: 0 0 0.375rem;
+  font-family: $font-header-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #444;
+}
+
+.locations-popup__links {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.9rem;
+
+  li + li {
+    margin-top: 0.375rem;
+  }
+
+  a::after {
+    content: " →";
+  }
 }
 
 .locations-map__svg {

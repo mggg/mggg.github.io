@@ -12,7 +12,7 @@
         {% assign statewide = include.locations | where: "state", state.abbr | where: "scope", "statewide" | first %}
         {% if statewide %}
           {% assign type = include.types | where: "key", statewide.types[0] | first %}
-      <a href="#{{ statewide.id }}" class="locations-map__state-link">
+      <a href="#{{ statewide.id }}" class="locations-map__state-link" aria-label="{{ statewide.name }}">
         <path
           id="us-state-{{ state.abbr }}"
           class="locations-map__state locations-map__state--study"
@@ -20,7 +20,7 @@
           data-types="{{ statewide.types | join: ' ' }}"
           style="--type-color: {{ type.color }}"
           d="{{ state.d }}"
-        ><title>{{ statewide.name }}</title></path>
+        />
       </a>
         {% else %}
       <path id="us-state-{{ state.abbr }}" class="locations-map__state" d="{{ state.d }}"><title>{{ state.name }}</title></path>
@@ -29,6 +29,12 @@
     </g>
     <g class="locations-map__pins" data-locations-pins></g>
   </svg>
+
+  {% comment %} Filled in by locations/script.html when a pin or shaded state is hovered or focused. {% endcomment %}
+  <div class="locations-popup" data-locations-popup hidden>
+    <p class="locations-popup__title"></p>
+    <ul class="locations-popup__links"></ul>
+  </div>
 
   <figcaption class="locations-filter">
     <div class="locations-filter__items" role="group" aria-label="Filter locations by governing body">
