@@ -1,21 +1,84 @@
 /* newsletter layout (_layouts/newsletter.html) */
 
-$newsletter-tint: mix($mggg-blue, white, 12%);
-$newsletter-border: $grey;
-$newsletter-gutter: 3rem;
+// Palette from the Districtr map editor: neutrals for text and surfaces, and
+// district colors as accents. Sections and software items pick an accent with
+// `color:` in the issue data (see .newsletter-accent--* below).
+$newsletter-ink: #12304d;
+$newsletter-muted: #566b80;
+$newsletter-link: #17669b;
+$newsletter-tint: #f1f7fb;
+$newsletter-chip: #e3eff7;
+$newsletter-border: #dbe6ee;
+$newsletter-footer: #0b2238;
+
+// name: (color, text color on it)
+$newsletter-accents: (
+  "blue": (#4396c8, $newsletter-ink),
+  "yellow": (#f7cc6e, $newsletter-ink),
+  "green": (#5cca9d, $newsletter-ink),
+  "lime": (#a3cc3f, $newsletter-ink),
+  "magenta": (#bd2795, white),
+  "purple": (#9e4ae6, white),
+  "coral": (#eb8777, $newsletter-ink),
+);
+
+// The 14 district colors, drawn as a stripe under the header and above the footer.
+$newsletter-districts: #4396c8, #f7cc6e, #5cca9d, #a3cc3f, #bd2795, #9e4ae6, #9dd0c9,
+  #bdbad7, #eb8777, #89b0d1, #f2b771, #bddd78, #e4607b, #6a7fdb;
+$newsletter-stripe-height: 10px;
+
+@function newsletter-stripe($colors) {
+  $stops: ();
+  $step: 100% / length($colors);
+  @each $color in $colors {
+    $i: index($colors, $color);
+    $stops: append($stops, $color ($i - 1) * $step, comma);
+    $stops: append($stops, $color $i * $step, comma);
+  }
+  @return linear-gradient(to right, $stops);
+}
+
+@mixin newsletter-stripe($edge) {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  #{$edge}: 0;
+  height: $newsletter-stripe-height;
+  background: newsletter-stripe($newsletter-districts);
+}
+
+$newsletter-gutter: 2rem;
 // Clears the sticky .site-header; also read by the TOC scroll-spy via scroll-margin-top.
 $newsletter-sticky-offset: 7rem;
 
 .newsletter-layout {
   display: grid;
+  // Wider than .l-center-wide's 60rem so the article isn't squeezed by the TOC.
+  max-width: 84rem;
   grid-template-columns: 11rem minmax(0, 1fr);
   gap: 2.5rem;
   align-items: start;
 }
 
 .newsletter {
+  // Default accent; overridden per section/item by .newsletter-accent--*.
+  --newsletter-accent: #{$newsletter-link};
+  --newsletter-on-accent: white;
   margin: 2rem 0;
   box-shadow: $raised;
+  color: $newsletter-ink;
+
+  a:not(.newsletter__button) {
+    color: $newsletter-link;
+  }
+}
+
+@each $name, $pair in $newsletter-accents {
+  .newsletter-accent--#{$name} {
+    --newsletter-accent: #{nth($pair, 1)};
+    --newsletter-on-accent: #{nth($pair, 2)};
+  }
 }
 
 .newsletter-section,
@@ -48,14 +111,14 @@ html:has(.newsletter-toc) {
   letter-spacing: 0.1rem;
   line-height: 1.5;
   text-transform: uppercase;
-  color: #666;
+  color: $newsletter-muted;
 }
 
 .newsletter-toc__list {
   margin: 0;
   padding: 0;
   list-style: none;
-  border-left: 1px solid $dark-grey;
+  border-left: 1px solid $newsletter-border;
 }
 
 .newsletter-toc__link,
@@ -66,28 +129,40 @@ html:has(.newsletter-toc) {
   border-left: 4px solid transparent;
   font-weight: 400;
   line-height: 1.4;
-  color: #666;
+  color: $newsletter-muted;
 
   &:hover {
-    color: $mggg-very-dark-blue;
+    color: $newsletter-ink;
   }
 }
 
 .newsletter-toc__link--active,
 .newsletter-toc__link--active:visited {
-  border-left-color: $mggg-blue;
+  border-left-color: $newsletter-link;
   font-weight: 700;
-  color: $mggg-very-dark-blue;
+  color: $newsletter-ink;
 }
 
 /* header */
 
+.newsletter__banner {
+  display: block;
+  width: 100%;
+  height: 30rem;
+  object-fit: contain;
+  padding: 25px;
+}
+
 .newsletter__header {
   position: relative;
   overflow: hidden;
-  padding: 2.5rem $newsletter-gutter 2.25rem;
-  background: $mggg-very-dark-blue;
+  padding: 2.5rem $newsletter-gutter calc(2.25rem + #{$newsletter-stripe-height});
+  background: $newsletter-ink;
   color: white;
+
+  &::before {
+    @include newsletter-stripe(bottom);
+  }
 
   &::after {
     content: "";
@@ -97,7 +172,7 @@ html:has(.newsletter-toc) {
     width: 22.5rem;
     height: 22.5rem;
     border-radius: 50%;
-    background: rgba($mggg-blue, 0.12);
+    background: rgba(nth(map-get($newsletter-accents, "blue"), 1), 0.14);
     pointer-events: none;
   }
 
@@ -115,7 +190,7 @@ html:has(.newsletter-toc) {
   font-family: $font-sans;
   font-size: 0.75rem;
   letter-spacing: 0.1rem;
-  color: $mggg-light-blue;
+  color: #9dd0c9;
 }
 
 .newsletter__eyebrow {
@@ -148,7 +223,7 @@ html:has(.newsletter-toc) {
   font-size: 1.5rem;
   font-weight: 700;
   line-height: 1.35;
-  color: $mggg-very-dark-blue;
+  color: $newsletter-ink;
 }
 
 /* sections */
@@ -160,15 +235,28 @@ html:has(.newsletter-toc) {
 }
 
 .newsletter-section--tinted {
-  background: $light-grey;
+  background: $newsletter-tint;
 }
 
 .newsletter-section__heading {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
   margin: 0;
-  padding-left: 0.75rem;
-  border-left: 4px solid $mggg-blue;
   font-size: 1.5rem;
   line-height: 1.25;
+
+  // Accent pill, like the district chips in Districtr.
+  &::before {
+    content: "";
+    flex: none;
+    width: 2.125rem;
+    height: 0.875rem;
+    border-radius: 999px;
+    background: var(--newsletter-accent);
+    // Centering uses the line box, which sits high for this serif; drop to cap center.
+    transform: translateY(0.1em);
+  }
 }
 
 .newsletter-section__content {
@@ -177,7 +265,7 @@ html:has(.newsletter-toc) {
 
 .newsletter-section__toggle summary {
   display: inline-flex;
-  align-items: center;
+  align-items: baseline; // see .newsletter-software__summary
   gap: 0.375rem;
   margin-top: 0.75rem;
   list-style: none;
@@ -188,7 +276,7 @@ html:has(.newsletter-toc) {
   font-weight: 600;
   letter-spacing: 0.05rem;
   line-height: 1;
-  color: $mggg-blue;
+  color: $newsletter-link;
 
   &::-webkit-details-marker {
     display: none;
@@ -197,11 +285,12 @@ html:has(.newsletter-toc) {
   &::before {
     content: "▶";
     font-size: 0.625rem;
+    transform: translateY(-0.15em);
   }
 }
 
 .newsletter-section__toggle[open] summary {
-  color: $mggg-very-dark-blue;
+  color: $newsletter-ink;
 
   &::before {
     content: "▼";
@@ -233,14 +322,14 @@ html:has(.newsletter-toc) {
 }
 
 .newsletter-item__title--accent {
-  color: $mggg-very-dark-blue;
+  color: $newsletter-ink;
 }
 
 .newsletter-item__meta {
   font-family: $font-sans-thin;
   font-size: 0.875rem;
   letter-spacing: 0.05rem;
-  color: #666;
+  color: $newsletter-muted;
 }
 
 .newsletter-item__list {
@@ -251,17 +340,24 @@ html:has(.newsletter-toc) {
   li {
     margin-bottom: 0.25rem;
   }
+
+  li::marker {
+    color: var(--newsletter-accent);
+  }
 }
 
 /* software items: accordion, closed by default */
 
 $newsletter-version-width: 3.5rem;
-$newsletter-version-gap: 1rem;
+$newsletter-chevron-width: 0.625rem;
+$newsletter-summary-gap: 0.75rem;
 
 .newsletter-software__summary {
   display: flex;
-  align-items: center;
-  gap: $newsletter-version-gap;
+  // Baseline, not center: the title's line box includes descender space, so
+  // centering left the chevron sitting above the letters.
+  align-items: baseline;
+  gap: $newsletter-summary-gap;
   list-style: none;
   cursor: pointer;
   user-select: none;
@@ -270,12 +366,14 @@ $newsletter-version-gap: 1rem;
     display: none;
   }
 
-  // Chevron on the right, matching the section toggle glyphs.
-  &::after {
+  // Chevron on the left, matching the section toggle glyphs.
+  &::before {
     content: "▶";
-    margin-left: auto;
+    flex: 0 0 $newsletter-chevron-width;
     font-size: 0.625rem;
-    color: $mggg-blue;
+    color: $newsletter-link;
+    // Lift off the baseline to sit centered on the title's cap height.
+    transform: translateY(-0.3em);
   }
 
   .newsletter-item__title {
@@ -283,21 +381,23 @@ $newsletter-version-gap: 1rem;
   }
 
   &:hover .newsletter-item__title {
-    color: $mggg-very-dark-blue;
+    color: $newsletter-link;
   }
 }
 
-.newsletter-software[open] > .newsletter-software__summary::after {
+.newsletter-software[open] > .newsletter-software__summary::before {
   content: "▼";
-  color: $mggg-very-dark-blue;
+  color: $newsletter-ink;
 }
 
 .newsletter-software__version {
   flex: 0 0 $newsletter-version-width;
+  align-self: center;
+  margin-left: auto;
   padding: 0.25rem 0.5rem;
   border-radius: 0.25rem;
-  background: $mggg-blue;
-  color: white;
+  background: var(--newsletter-accent);
+  color: var(--newsletter-on-accent);
   font-family: $font-sans;
   font-size: 0.75rem;
   font-weight: 700;
@@ -305,9 +405,9 @@ $newsletter-version-gap: 1rem;
   text-align: center;
 }
 
-// Indented to line up with the title, past the version badge.
+// Indented to line up with the title, past the chevron.
 .newsletter-software__body {
-  padding: 0.5rem 0 0 ($newsletter-version-width + $newsletter-version-gap);
+  padding: 0.5rem 0 0 ($newsletter-chevron-width + $newsletter-summary-gap);
 }
 
 /* events (extends .card) */
@@ -315,6 +415,7 @@ $newsletter-version-gap: 1rem;
 .newsletter-event {
   position: relative;
   padding-left: 5px;
+  border-color: $newsletter-border;
 
   &:first-child {
     margin-top: 0;
@@ -327,12 +428,12 @@ $newsletter-version-gap: 1rem;
     top: 0;
     bottom: 0;
     width: 5px;
-    background: $mggg-very-dark-blue;
+    background: var(--newsletter-accent);
   }
 }
 
 .newsletter-event--remote::before {
-  background: $mggg-blue;
+  background: $newsletter-link;
 }
 
 .newsletter-event__when {
@@ -343,10 +444,10 @@ $newsletter-version-gap: 1rem;
   letter-spacing: 0.05rem;
   line-height: 1.5;
   text-transform: uppercase;
-  color: $mggg-very-dark-blue;
+  color: $newsletter-ink;
 
   .newsletter-event--remote & {
-    color: $mggg-blue;
+    color: $newsletter-link;
   }
 }
 
@@ -374,13 +475,13 @@ $newsletter-version-gap: 1rem;
   letter-spacing: 0.1rem;
   line-height: 1.75;
   text-transform: uppercase;
-  background: $newsletter-tint;
-  color: $mggg-blue;
+  background: $newsletter-chip;
+  color: $newsletter-link;
 }
 
 .newsletter-badge--in-person {
-  background: $grey;
-  color: $mggg-very-dark-blue;
+  background: $newsletter-chip;
+  color: $newsletter-ink;
 }
 
 /* links & buttons */
@@ -390,16 +491,15 @@ $newsletter-version-gap: 1rem;
   margin-right: 1rem;
   font-family: $font-sans;
   font-weight: 700;
-  color: $mggg-very-dark-blue;
 
   &:hover {
     text-decoration: underline;
   }
 }
 
-.newsletter__link--secondary,
-.newsletter__link--secondary:visited {
-  color: $mggg-blue;
+.newsletter a.newsletter__link--secondary,
+.newsletter a.newsletter__link--secondary:visited {
+  color: $newsletter-muted;
 }
 
 .newsletter__button,
@@ -408,7 +508,7 @@ $newsletter-version-gap: 1rem;
   margin-top: 1rem;
   padding: 0.5rem 1.5rem;
   border-radius: 0.25rem;
-  background: $mggg-blue;
+  background: $newsletter-link;
   box-shadow: $raised;
   color: white;
   font-family: $font-sans;
@@ -417,7 +517,7 @@ $newsletter-version-gap: 1rem;
   line-height: 1.5;
 
   &:hover {
-    background: $mggg-dark-blue;
+    background: $newsletter-ink;
     color: white;
   }
 }
@@ -425,18 +525,24 @@ $newsletter-version-gap: 1rem;
 /* footer */
 
 .newsletter__footer {
-  padding: 1.5rem $newsletter-gutter;
-  background: $mggg-very-dark-blue;
+  position: relative;
+  padding: calc(1.5rem + #{$newsletter-stripe-height}) $newsletter-gutter 1.5rem;
+  background: $newsletter-footer;
   text-align: center;
   font-family: $font-sans;
-  color: rgba(white, 0.8);
+  color: #cfe3f1;
+
+  &::before {
+    @include newsletter-stripe(top);
+  }
 
   p {
     margin: 0;
   }
 
   a,
-  a:visited {
+  a:visited,
+  .newsletter & a:not(.newsletter__button) {
     font-weight: 600;
     color: white;
   }
@@ -449,6 +555,7 @@ $newsletter-version-gap: 1rem;
 .newsletter__copyright {
   margin-top: 0.5rem;
   font-size: 0.875rem;
+  color: #9db8cc;
 }
 
 @media only screen and (max-width: 900px) {
@@ -464,7 +571,7 @@ $newsletter-version-gap: 1rem;
     display: flex;
     flex-wrap: wrap;
     border-left: none;
-    border-bottom: 1px solid $dark-grey;
+    border-bottom: 1px solid $newsletter-border;
   }
 
   .newsletter-toc__link,
@@ -477,7 +584,7 @@ $newsletter-version-gap: 1rem;
 
   .newsletter-toc__link--active,
   .newsletter-toc__link--active:visited {
-    border-bottom-color: $mggg-blue;
+    border-bottom-color: $newsletter-link;
   }
 }
 
@@ -492,5 +599,9 @@ $newsletter-version-gap: 1rem;
 
   .newsletter-software__body {
     padding-left: 0;
+  }
+
+  .newsletter__banner {
+    height: 20rem;
   }
 }

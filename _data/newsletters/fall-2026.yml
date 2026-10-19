@@ -12,11 +12,18 @@
 #              that colors its badge and card
 #   jobs     - job postings
 # Every non-callout section also accepts:
-#   heading, tinted (bool), collapsible (bool), open (bool), closing (markdown), link
+#   heading, tinted (bool), collapsible (bool), open (bool), closing (markdown), link,
+#   color - accent for the heading bar, bullets, and event stripes; one of
+#           blue | yellow | green | lime | magenta | purple | coral
+#           (defined in _sass/components/_newsletter.scss)
+# Software items also accept `color`, which tints their version badge and bullets.
 # Any section may set:
 #   toc - label in the table of contents (defaults to `heading`; sections with
 #         neither are left out, so a callout only appears if it sets `toc`)
 #   id  - anchor id (defaults to the slugified heading/toc)
+#
+# `header.image` is an optional image shown below the header, scaled to fit
+# (up to 25rem tall, 10rem on phones); set `header.image_alt` too.
 #
 # Each issue also needs a page in newsletters/ (see newsletters/fall-2026.md).
 # /newsletter shows whichever issue has the latest `date`.
@@ -30,6 +37,8 @@ header:
   issue: Newsletter · Fall 2026
   title: Data & Democracy Research Initiative
   subtitle: Researching data science interventions for democracy
+  image: /uploads/georgia-graph.png
+  image_alt: A network of Georgia's census block groups, colored into 14 districts
 
 subscribe:
   label: Subscribe to the Newsletter
@@ -51,9 +60,11 @@ sections:
 
   - type: software
     heading: Software Updates
+    color: blue
     items:
       - name: Districtr
         version: v2.0
+        color: blue
         description: "Districtr is getting a huge data update on the frontend and backend! New features include:"
         features:
           - A new Content Management System (CMS) board for managing and organizing maps and projects
@@ -66,6 +77,7 @@ sections:
 
       - name: VoteKit
         version: v3.5
+        color: magenta
         description: "Users (especially attendees of BIRS) gave us a lot of feedback on features they wanted to see. While there is still more to come, the following have been added due to their demand:"
         features:
           - Support for integer candidates across the entire codebase, instead of only string candidates
@@ -78,6 +90,7 @@ sections:
 
       - name: GerryChain
         version: v1.0
+        color: yellow
         description: "We've doubled the speed by updating things internally, and it now has a more intuitive API for newcomers. The team worked hard to ensure the majority of scripts written with older versions require little or no modification — where the API is expected to change, you'll receive deprecation warnings. New highlights include:"
         features:
           - A new graph backend abstraction, no longer tied directly to `networkx.Graph`, increasing chain speed 2–3x
@@ -91,6 +104,7 @@ sections:
 
       - name: GerryTools
         version: v2.0
+        color: green
         description: "Version 2.0 is a complete rewrite of GerryTools 1.0 — users should expect a substantially updated experience:"
         features:
           - Dramatically faster scoring of plans and ensembles — Reock scores are now more than 100x faster due to a Rust-backed scoring engine
@@ -101,6 +115,7 @@ sections:
 
       - name: RustReCom
         version: v0.2
+        color: coral
         features:
           - Unified CLI for chains, short bursts, and tilted runs
           - New optimization framework with configurable acceptance rules
@@ -113,6 +128,7 @@ sections:
 
   - type: events
     heading: Talks & Events
+    color: coral
     tinted: true
     collapsible: true
     open: true
@@ -133,6 +149,7 @@ sections:
 
   - type: jobs
     heading: Jobs
+    color: green
     collapsible: true
     open: true
     items:

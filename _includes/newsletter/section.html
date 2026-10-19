@@ -1,5 +1,5 @@
 {% assign section = include.section %}
-<section class="newsletter-section{% if section.tinted %} newsletter-section--tinted{% endif %}"{% if include.id != "" %} id="{{ include.id }}"{% endif %}>
+<section class="newsletter-section{% if section.tinted %} newsletter-section--tinted{% endif %}{% if section.color %} newsletter-accent--{{ section.color }}{% endif %}"{% if include.id != "" %} id="{{ include.id }}"{% endif %}>
   <h2 class="newsletter-section__heading">{{ section.heading }}</h2>
   {% if section.collapsible %}
   <details class="newsletter-section__toggle"{% if section.open %} open{% endif %}>

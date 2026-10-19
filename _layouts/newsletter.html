@@ -21,6 +21,7 @@
     <main class="l-center-wide l-content newsletter-layout">
       {% include newsletter/toc.html issue=issue %}
       <article class="newsletter">
+  
         <header class="newsletter__header">
           <div class="newsletter__header-top">
             <span class="newsletter__eyebrow">{{ issue.header.eyebrow }}</span>
@@ -31,7 +32,9 @@
           <p class="newsletter__subtitle">{{ issue.header.subtitle }}</p>
           {% endif %}
         </header>
-
+        {% if issue.header.image %}
+          <img class="newsletter__banner" src="{{ issue.header.image | relative_url }}" alt="{{ issue.header.image_alt | escape }}" />
+        {% endif %}
         {% for section in issue.sections %}
           {% assign section_id = section.id | default: section.heading | default: section.toc | slugify %}
           {% if section.type == "callout" %}
