@@ -11,6 +11,8 @@
 #   events   - talks/events; each sets a `format` (in-person | hybrid | remote)
 #              that colors its badge and card
 #   jobs     - job postings
+#   research - 
+#   outreach -  
 # Every non-callout section also accepts:
 #   heading, tinted (bool), collapsible (bool), open (bool), closing (markdown), link
 # Any section may set:
@@ -131,6 +133,26 @@ sections:
           - label: View event
             url: https://datascience.uchicago.edu/events/danah-boyd-cornell-distinguished-speaker-series/
 
+  - type: research 
+    heading: Research 
+    items:
+      - name: Chicago City Council (July 2026)
+        description: "This white paper updates our 2019 study of Chicago’s City Council using 2020 
+        Census data, the current ward map, and modern election modeling. It finds that five-member STV districts 
+        come closest to proportional representation, but Asian-preferred candidates still fall short, even when 
+        districts are redrawn to concentrate Asian voters."
+        link:
+          label: See paper
+          url: https://mggg.github.io/Chicago-City-Council-Reform-2026/
+
+      - name: Portland Fundraising & Support Analysis
+        description: "This white paper examines campaign finance and ballot data from Portland’s 
+        first multi-member ranked-choice council election. Fundraising closely tracked ballot support, 
+        and the number of contributions was the best single predictor, though the link is an association 
+        and doesn’t show cause."
+        link:
+          label: See github
+          url: https://github.com/marcygcl/portland-fundraising-support-analysis
   - type: jobs
     heading: Jobs
     collapsible: true
