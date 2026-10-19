@@ -11,7 +11,7 @@
 #   events   - talks/events; each sets a `format` (in-person | hybrid | remote)
 #              that colors its badge and card
 #   jobs     - job postings
-#   research - 
+#   research - papers and reports; each item has a name, description, and link
 #   outreach -  
 # Every non-callout section also accepts:
 #   heading, tinted (bool), collapsible (bool), open (bool), closing (markdown), link,
@@ -151,6 +151,8 @@ sections:
 
   - type: research 
     heading: Research 
+    collapsible: true
+    open: true
     items:
       - name: Chicago City Council (July 2026)
         description: "This white paper updates our 2019 study of Chicago’s City Council using 2020 

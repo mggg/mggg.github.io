@@ -24,7 +24,7 @@ This guide covers:
 | `_posts/<date>-<issue>-newsletter.md` | The announcement on the Latest Updates page | Every issue (new file) |
 | `_data/navigation.yml` | Top navigation; already links to `/newsletter` | Never |
 | `_layouts/newsletter.html` | Page structure: header, table of contents, sections, footer | Only to change the design |
-| `_includes/newsletter/*.html` | One template per block (callout, software item, event, job, …) | Only to change the design |
+| `_includes/newsletter/*.html` | One template per block (callout, software item, event, job, research item, …) | Only to change the design |
 | `_sass/components/_newsletter.scss` | Newsletter styles | Only to change the design |
 | `documentation/newsletter.yml.example` | Blank template for a new issue | When adding new fields |
 
@@ -108,14 +108,15 @@ also annotated there, and every value you need to write is marked `TODO`.
 | `header.eyebrow` / `header.issue` | yes | Small text above the title (left / right) |
 | `header.title` | yes | Large title |
 | `header.subtitle` | no | Line under the title |
+| `header.image` / `header.image_alt` | no | Image shown below the header, scaled to fit (up to 25rem tall; 10rem on phones). Put the file in `_uploads/` and use a path like `/uploads/georgia-graph.png`. Always set `image_alt` |
 | `subscribe.label` / `subscribe.url` | if any callout uses `show_subscribe` | The subscribe button |
 | `footer` | no | `lines` (plain text), `links` (`label` + `url`), `copyright` |
 
 ### Sections
 
 `sections` is a list. Each entry has a `type`, which is one of `callout`,
-`software`, `events`, or `jobs`. You can repeat types, leave any out, and reorder
-them freely.
+`software`, `events`, `jobs`, or `research`. You can repeat types, leave any out,
+and reorder them freely.
 
 These fields work on **any** section:
 
@@ -124,12 +125,13 @@ These fields work on **any** section:
 | `toc` | Label in the table of contents. Defaults to `heading`. A section with neither isn't listed |
 | `id` | Anchor for links like `/newsletter/winter-2027#jobs`. Defaults to the heading, slugified |
 
-These work on **software, events, and jobs** sections:
+These work on **software, events, jobs, and research** sections:
 
 | Field | Notes |
 |---|---|
 | `heading` | Section title (required) |
-| `tinted` | `true` for a light grey background. Alternating helps break up the page |
+| `tinted` | `true` for a light blue-gray background. Alternating helps break up the page |
+| `color` | Accent for the pill beside the heading, bullet points, and event card stripes: `blue`, `yellow`, `green`, `lime`, `magenta`, `purple`, or `coral`. Default: dark blue. The colors are defined in `$newsletter-accents` in `_sass/components/_newsletter.scss` |
 | `collapsible` | `true` wraps the section in a "Click to expand" toggle |
 | `open` | With `collapsible`, `true` starts it expanded |
 | `closing` | *(markdown)* Text after the items, e.g. thanks or a feedback address |
@@ -155,6 +157,7 @@ they click to expand it.
 |---|---|
 | `name` | Project name (required) |
 | `version` | Badge text, e.g. `v2.0` |
+| `color` | Badge and bullet color, from the same list as the section `color`. Give each project its own |
 | `open` | `true` to start expanded |
 | `description` | *(markdown)* Shown before the bullets |
 | `features` | List of bullets, each *(markdown)* |
@@ -187,6 +190,16 @@ One card per talk or event, in the order listed (chronological is usually best).
 | `meta` | List, joined with " · " (e.g. Full-time · University of Chicago · Open until filled) |
 | `description` | *(markdown)* |
 | `link` | `label` + `url`, e.g. Apply |
+
+#### `research`
+
+One entry per paper, report, or other research output.
+
+| Item field | Notes |
+|---|---|
+| `name` | Title, e.g. `Chicago City Council (July 2026)` |
+| `description` | *(markdown)* A sentence or two on what it found |
+| `link` | `label` + `url`, e.g. See paper |
 
 ## Navigation and links
 

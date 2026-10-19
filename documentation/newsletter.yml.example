@@ -23,6 +23,8 @@ header:
   issue: Newsletter · TODO Season Year
   title: Data & Democracy Research Initiative
   subtitle: Researching data science interventions for democracy   # optional
+  image: /uploads/TODO-image.png         # optional; shown below the header, scaled to fit
+  image_alt: TODO Describe the image    # required if image is set
 
 subscribe:                                # used by any callout with show_subscribe: true
   label: Subscribe to the Newsletter
@@ -37,7 +39,9 @@ subscribe:                                # used by any callout with show_subscr
 #
 # Fields every non-callout section accepts:
 #   heading      section title (required)
-#   tinted       true for a light grey background
+#   tinted       true for a light blue-gray background
+#   color        accent for the heading pill, bullets, and event stripes:
+#                blue | yellow | green | lime | magenta | purple | coral
 #   collapsible  true to wrap the section in a "Click to expand" toggle
 #   open         with collapsible, true to start expanded
 #   closing      (markdown) text shown after the items
@@ -58,9 +62,11 @@ sections:
   # Software: each item is an accordion showing only version + name until clicked.
   - type: software
     heading: Software Updates
+    color: blue                           # optional
     items:
       - name: TODO Project name
         version: TODO vX.Y                # optional; shown as a badge
+        color: blue                       # optional; badge and bullet color, same choices as above
         open: false                       # optional; true to start expanded
         description: "TODO Intro sentence (keep the quotes if it ends with a colon):"   # (markdown)
         features:                         # optional; each bullet is (markdown)
@@ -110,6 +116,16 @@ sections:
         link:
           label: Apply
           url:                            # TODO application URL
+
+  # Research: one entry per paper or report.
+  - type: research
+    heading: Research
+    items:
+      - name: TODO Paper title
+        description: TODO One or two sentences on what it found.   # (markdown)
+        link:
+          label: See paper
+          url:                            # TODO paper URL
 
   # Sign-off callout.
   - type: callout

@@ -19,6 +19,10 @@
         {% for job in section.items %}
           {% include newsletter/job.html job=job %}
         {% endfor %}
+      {% when "research" %}
+        {% for item in section.items %}
+          {% include newsletter/research-item.html item=item %}
+        {% endfor %}
       {% endcase %}
 
       {% if section.closing or section.link.url %}
