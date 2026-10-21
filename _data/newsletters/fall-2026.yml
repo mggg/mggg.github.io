@@ -43,8 +43,8 @@ header:
   image_alt: A network of Georgia's census block groups, colored into 14 districts
 
 subscribe:
-  label: Subscribe to the Newsletter
-  url: https://docs.google.com/forms/d/e/1FAIpQLSdegkgoyEE7SI-bkFDG009ne-Za8tYHx5MaTc4PCteOvTVyiA/viewform?usp=header
+  label: Contact Us
+  url: mailto:contact@mggg.org
 
 sections:
   - type: callout
@@ -54,11 +54,9 @@ sections:
     body: |
       The outfit formerly known as MGGG (aka the Metric Geometry and Gerrymandering Group) is entering a new chapter as the **Data and Democracy Research Initiative (DDRI)** in our new home at the University of Chicago.  DDRI is a big tent that supports projects on democracy, governance, and data.  Our lab (now the Data and Democracy Lab) will anchor the initiative.
 
-      As part of this transition, we're renaming our Slack workspace and cleaning up older user accounts. We have so many contributors — past and present — to thank for helping build this community, but we also recognize that not everyone needs access to every Slack channel anymore.
-
-      To help everyone stay connected, we're excited to launch a twice-per-year DDRI newsletter where you can keep up with our research and software projects. Whether you're interested in new research directions, software releases, upcoming events, or general news from the lab, we'll have options for you to choose from.
-
-      Most importantly, thank you for your contributions, support, feedback, and enthusiasm for MGGG and now the Data and Democracy Research Initiative. We hope you'll stay engaged and connected with us as we continue to evolve.
+      To help everyone stay updated, we're excited to launch a twice-per-year DDRI newsletter where you can keep up with our research and software projects. Whether you're interested in new research directions, software releases, upcoming events, or general news from the lab, we'll compile all of it here for your perusal. 
+      
+      We hope you'll stay engaged and connected with us as we continue to evolve!
 
   - type: research
     heading: Research Highlights
@@ -183,7 +181,7 @@ sections:
     heading: Jobs
     color: green
     collapsible: true
-    open: false
+    open: true
     items:
       - title: Research Director, Data & Democracy Research Initiative
         meta:
@@ -199,7 +197,7 @@ sections:
     toc: Stay Connected
     pullquote: Stay connected with DDRI.
     show_subscribe: true
-    body: If you're interested in more than just software, sign up for additional communications from us — we'd love to see you at events or share semi-annual lab updates with you.
+    body: If you're interested in getting in touch to discuss our research, outreach or events, email us to start a conversation - we'd love to hear from you. Keep an eye out for quarterly newsletter editions to stay up to date on our work! 
 
 footer:
   lines:
@@ -207,6 +205,5 @@ footer:
   links:
     - label: data-democracy.org
       url: https://data-democracy.org
-    - label: Unsubscribe
-      url: https://docs.google.com/forms/d/e/1FAIpQLSdRWUnRYeq4SLFKdyfaziVlHzenuiC_hOx3-6QP0O1YAoZ86w/viewform?usp=header
+
   copyright: © 2026 University of Chicago. All rights reserved.
