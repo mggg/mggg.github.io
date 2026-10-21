@@ -1,9 +1,12 @@
 {% assign section = include.section %}
 <section class="newsletter-section{% if section.tinted %} newsletter-section--tinted{% endif %}{% if section.color %} newsletter-accent--{{ section.color }}{% endif %}"{% if include.id != "" %} id="{{ include.id }}"{% endif %}>
-  <h2 class="newsletter-section__heading">{{ section.heading }}</h2>
+  {% capture heading %}<h2 class="newsletter-section__heading">{{ section.heading }}</h2>{% endcapture %}
   {% if section.collapsible %}
   <details class="newsletter-section__toggle"{% if section.open %} open{% endif %}>
-    <summary>Click to expand</summary>
+    {% comment %} The whole heading row toggles; its pill becomes an arrow. {% endcomment %}
+    <summary class="newsletter-section__summary">{{ heading }}</summary>
+  {% else %}
+  {{ heading }}
   {% endif %}
     <div class="newsletter-section__content">
       {% case section.type %}
@@ -19,7 +22,7 @@
         {% for job in section.items %}
           {% include newsletter/job.html job=job %}
         {% endfor %}
-      {% when "research" %}
+      {% when "research", "outreach" %}
         {% for item in section.items %}
           {% include newsletter/research-item.html item=item %}
         {% endfor %}

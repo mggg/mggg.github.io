@@ -115,8 +115,8 @@ also annotated there, and every value you need to write is marked `TODO`.
 ### Sections
 
 `sections` is a list. Each entry has a `type`, which is one of `callout`,
-`software`, `events`, `jobs`, or `research`. You can repeat types, leave any out,
-and reorder them freely.
+`software`, `events`, `jobs`, `research`, or `outreach`. You can repeat types, leave
+any out, and reorder them freely.
 
 These fields work on **any** section:
 
@@ -125,14 +125,14 @@ These fields work on **any** section:
 | `toc` | Label in the table of contents. Defaults to `heading`. A section with neither isn't listed |
 | `id` | Anchor for links like `/newsletter/winter-2027#jobs`. Defaults to the heading, slugified |
 
-These work on **software, events, jobs, and research** sections:
+These work on **software, events, jobs, research, and outreach** sections:
 
 | Field | Notes |
 |---|---|
 | `heading` | Section title (required) |
 | `tinted` | `true` for a light blue-gray background. Alternating helps break up the page |
 | `color` | Accent for the pill beside the heading, bullet points, and event card stripes: `blue`, `yellow`, `green`, `lime`, `magenta`, `purple`, or `coral`. Default: dark blue. The colors are defined in `$newsletter-accents` in `_sass/components/_newsletter.scss` |
-| `collapsible` | `true` wraps the section in a "Click to expand" toggle |
+| `collapsible` | `true` lets readers open and close the section by clicking its heading. The colored pill beside the heading becomes an arrow |
 | `open` | With `collapsible`, `true` starts it expanded |
 | `closing` | *(markdown)* Text after the items, e.g. thanks or a feedback address |
 | `link` | `label` + `url`, shown after the closing text |
@@ -164,8 +164,8 @@ they click to expand it.
 | `note` | *(markdown)* Shown after the bullets |
 | `link` | `label` + `url` |
 
-Since each item already collapses, you usually don't want `collapsible` on the
-section itself.
+The section itself can also be `collapsible`; readers then open the section by
+its heading, and each project within it separately.
 
 #### `events`
 
@@ -191,9 +191,11 @@ One card per talk or event, in the order listed (chronological is usually best).
 | `description` | *(markdown)* |
 | `link` | `label` + `url`, e.g. Apply |
 
-#### `research`
+#### `research` and `outreach`
 
-One entry per paper, report, or other research output.
+One entry per paper, project, partnership, or other piece of work. Both types take
+the same item fields; use `research` for research output and `outreach` for
+partnerships and community work.
 
 | Item field | Notes |
 |---|---|

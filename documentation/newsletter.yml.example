@@ -42,7 +42,7 @@ subscribe:                                # used by any callout with show_subscr
 #   tinted       true for a light blue-gray background
 #   color        accent for the heading pill, bullets, and event stripes:
 #                blue | yellow | green | lime | magenta | purple | coral
-#   collapsible  true to wrap the section in a "Click to expand" toggle
+#   collapsible  true to open/close the section by clicking its heading
 #   open         with collapsible, true to start expanded
 #   closing      (markdown) text shown after the items
 #   link         { label, url } shown after the closing text
@@ -126,6 +126,16 @@ sections:
         link:
           label: See paper
           url:                            # TODO paper URL
+
+  # Outreach: partnerships and community work. Items work like research items.
+  - type: outreach
+    heading: Outreach
+    items:
+      - name: TODO Project or partner
+        description: TODO One or two sentences.   # (markdown)
+        link:                             # optional
+          label: Learn more
+          url:                            # TODO URL
 
   # Sign-off callout.
   - type: callout

@@ -11,8 +11,8 @@
 #   events   - talks/events; each sets a `format` (in-person | hybrid | remote)
 #              that colors its badge and card
 #   jobs     - job postings
-#   research - papers and reports; each item has a name, description, and link
-#   outreach -  
+#   research - papers and projects; each item has a name, description, and link
+#   outreach - partnerships and community work; items work like research items
 # Every non-callout section also accepts:
 #   heading, tinted (bool), collapsible (bool), open (bool), closing (markdown), link,
 #   color - accent for the heading bar, bullets, and event stripes; one of
@@ -52,40 +52,71 @@ sections:
     pullquote: Big things are happening!
     show_subscribe: true
     body: |
-      MGGG (aka Metric Geometry & Gerrymandering Group) is entering a new chapter as the **Data & Democracy Research Initiative (DDRI)** in our new home at the University of Chicago.
+      The outfit formerly known as MGGG (aka the Metric Geometry and Gerrymandering Group) is entering a new chapter as the **Data and Democracy Research Initiative (DDRI)** in our new home at the University of Chicago.  DDRI is a big tent that supports projects on democracy, governance, and data.  Our lab (now the Data and Democracy Lab) will anchor the initiative.
 
-      As part of this transition, we're renaming our Slack workspace and cleaning up old, inactive accounts. We have so many contributors — past and present — to thank for helping build this community, but we also recognize that not everyone needs access to every Slack channel anymore.
+      As part of this transition, we're renaming our Slack workspace and cleaning up older user accounts. We have so many contributors — past and present — to thank for helping build this community, but we also recognize that not everyone needs access to every Slack channel anymore.
 
-      To help everyone stay connected, we're excited to launch a quarterly DDRI newsletter where you can keep up with our research and software projects. Whether you're interested in software releases, upcoming events, or general news from the initiative, we'll have options for you to choose from.
+      To help everyone stay connected, we're excited to launch a twice-per-year DDRI newsletter where you can keep up with our research and software projects. Whether you're interested in new research directions, software releases, upcoming events, or general news from the lab, we'll have options for you to choose from.
 
-      Most importantly, thank you for your contributions, support, feedback, and enthusiasm for MGGG and now the Data & Democracy Research Initiative. We hope you'll stay engaged and connected with us as we continue working on exciting projects.
+      Most importantly, thank you for your contributions, support, feedback, and enthusiasm for MGGG and now the Data and Democracy Research Initiative. We hope you'll stay engaged and connected with us as we continue to evolve.
+
+  - type: research
+    heading: Research Highlights
+    collapsible: true
+    open: false
+    color: magenta
+    items:
+      - name: New papers
+        description: Some recently published papers by members of the lab and collaborators include [reversible recombination](https://epubs.siam.org/doi/10.1137/24M166944X) in SIAM Review, [Models of random spanning trees](https://onlinelibrary.wiley.com/doi/10.1002/rsa.70063) in Random Structures & Algorithms, [weighted voting](https://data-democracy.org/AdaptiveBanz) in EC'26, and [a new polarization index](https://projecteuclid.org/journals/annals-of-applied-statistics/volume-20/issue-2/Measuring-public-opinion--The-Wasserstein-bipolarization-index-with-application/10.1214/26-AOAS2162.full) in Annals of Applied Statistics.
+      - name: Current collaborative projects
+        description: 'Some of our recent oddball ideas:  an "[autocomplete](https://data-democracy.org/autocomplete)" model of preference formation; a new segregation score that captures diffusion effects in American cities; and a new framework that looks at [*how badly*](https://data-democracy.org/GAA) voting rules fail various guarantees, not just how often.'
+      - name: Student research
+        description: Students in the lab have been pursuing cool projects on representation and spatiality, the geometry of voting rules, the "veto core" in social choice theory, the shape of the space of redistricting plans, and new topological characterizations of Arrow's impossibility.
+
+  - type: outreach
+    heading: Outreach
+    collapsible: true
+    color: yellow
+    open: false
+    items:
+      - name: Election modeling team
+        description: "During the summer, members of our election modeling team completed studies for a number of localities including [Portland](https://github.com/marcygcl/portland-fundraising-support-analysis), [Santa Clara](https://github.com/mggg/Santa-Clara-CA-voting-system/blob/main/documentation/SC-2020.pdf), [San Diego](https://mggg.github.io/San-Diego-Election-Analysis/), and [Chicago](https://mggg.github.io/Chicago-City-Council-Reform-2026/). The former utilized campaign finance and ballot data from Portland's first multi-member ranked-choice city council election to explore how fundraising relates to tracked ballot and common support between candidates. The latter three projects explore the possible impacts of changing election systems in each respective locality, with specific attention paid to Asian communities and their potential to achieve proportional representation in city elections."
+        link:
+          label: Explore more election system case studies
+          url: https://data-democracy.org/election-system-case-studies
+
+      - name: Partners and projects (MDP, Brennan, Unidos, Navajo Nation)
+        description: TBD
 
   - type: software
     heading: Software Updates
     color: blue
+    collapsible: true
+    open: false
     items:
       - name: Districtr
         version: v2.0
         color: blue
-        description: "Districtr is getting a huge data update on the frontend and backend! New features include:"
+        description: "Districtr, our public-facing package for drawing districts and communities, has recently gotten a huge overhaul on the frontend and backend. New features include:"
         features:
-          - A new Content Management System (CMS) board for managing and organizing maps and projects
           - Updated election data through 2024 (in most locations)
-          - Geometries updated to use 2020 TIGER/Line polygons from the census everywhere
-          - The ability to split precincts and draw census blocks with Super Draw
-          - Advanced evaluation tools available on every map
-          - Mutable maps, map history, and password protection
+          - Map coverage for all 50 states, DC, and Puerto Rico
+          - A new "Super Draw" mode that lets you break precincts down to the block level to obtain legally accurate maps
+          - Advanced evaluation tools available on every map -- and more to come!
+          - A new Content Management System (CMS) that makes it easier for city officials and other partners to assemble a gallery of public feedback
         note: The [legacy version of Districtr](https://legacy.districtr.org/) will remain available as a read-only copy, so existing work can still be accessed.
 
       - name: VoteKit
         version: v3.5
         color: magenta
-        description: "Users (especially attendees of BIRS) gave us a lot of feedback on features they wanted to see. While there is still more to come, the following have been added due to their demand:"
+        description: 'We call VoteKit our "Swiss army knife for computational social choice research" -- that means you can use it to study electoral systems, from practical ones like ranked choice to far-fetched ones like OneShotMultiRandomDictator. The recent changes reflect user requests in the last few months, and more is on the way.'
         features:
-          - Support for integer candidates across the entire codebase, instead of only string candidates
-          - Simplified reproducibility with `random_seed` support across all public APIs that use randomness — no need to manage an RNG
-          - A new fuzzy ranked-ballot search, allowing users to filter preference profiles using weak queries (e.g. "find all ballots where A appears before B")
-          - Support for exact (fractional) ballot weights and ballot transfers has been reimplemented and is available through an opt-in flag
+          - More formats supported for candidate names
+          - More support for reproducibility
+          - Better forms of queries to find particular ballots of interest
+          - New voting rules like SimultaneousVeto and SerialVeto
+          - Animations for ranked choice elections (and more on the way!)
+          - A user-friendly front end called [VoteKit Lite](https://votekitlite.netlify.app) gives access to some functionality for the Python-phobic
         link:
           label: See release documentation
           url: https://github.com/mggg/VoteKit/releases/tag/v3.5.0
@@ -93,13 +124,13 @@ sections:
       - name: GerryChain
         version: v1.0
         color: yellow
-        description: "We've doubled the speed by updating things internally, and it now has a more intuitive API for newcomers. The team worked hard to ensure the majority of scripts written with older versions require little or no modification — where the API is expected to change, you'll receive deprecation warnings. New highlights include:"
+        description: "GerryChain was originally launched back in 2018 and has been in continuous development since then, but the releases are only just catching up! This package implements the recombination family of algorithms for making districting plans -- and a whole lot more. New highlights include:"
         features:
-          - A new graph backend abstraction, no longer tied directly to `networkx.Graph`, increasing chain speed 2–3x
-          - Explicit/local RNG handling to improve reproducibility of runs
+          - A new graph backend abstraction, no longer tied directly to `networkx.Graph`, increasing speed 2–3x
           - A cleaner, more composable ReCom/proposal API
           - Support for multi-member districts
           - Support for Python 3.11–3.14 and Pandas 3.0
+          - Attention to backwards compatibility
         link:
           label: View migration guide
           url: https://gerrychain.readthedocs.io/en/v1.0.0/topics/v1p0p0_migration_guide/
@@ -107,22 +138,22 @@ sections:
       - name: GerryTools
         version: v2.0
         color: green
-        description: "Version 2.0 is a complete rewrite of GerryTools 1.0 — users should expect a substantially updated experience:"
+        description: 'GerryTools is a "sidecar" for GerryChain that supports plotting and mapping and other reporting features.'
         features:
-          - Dramatically faster scoring of plans and ensembles — Reock scores are now more than 100x faster due to a Rust-backed scoring engine
+          - Dramatically faster scoring of plans and ensembles (partly thanks to a Rust-backed scoring engine)
           - Improved interoperability with GerryChain
-          - A new composable plotting API for histograms, boxplots, violin plots, seats-votes curves, maps, and more
+          - A new modular plotting API for histograms, boxplots, violin plots, seats-votes curves, maps, and more
           - Improved tools for comparing plans and publication-oriented LaTeX/TikZ output
-          - Better tools for interacting with the Census API, including convenience functions for pulling Census tables with interpretable variable names
+          - Better tools for interacting with the Census API
 
       - name: RustReCom
         version: v0.2
         color: coral
+        description: "RustReCom is our super fast implementation of recombination in Rust, a high performance language with good memory safety guarantees."
         features:
-          - Unified CLI for chains, short bursts, and tilted runs
-          - New optimization framework with configurable acceptance rules
-          - Weighted spanning-tree edges, arbitrary node IDs, better validation, and other quality-of-life improvements
-          - Native BENDL output
+          - Unified command line tool for chains and heuristic optimization
+          - Better customizability, such as for edge weights
+          - Written for compatibility with BENDL, our bespoke highly compressed data format
     closing: Big shoutout to the team for all of their hard work on these new releases! Please feel free to send your feedback to [code@data-democracy.org](mailto:code@data-democracy.org) as we continue to improve these tools.
     link:
       label: See all software updates
@@ -131,9 +162,8 @@ sections:
   - type: events
     heading: Talks & Events
     color: coral
-    tinted: true
     collapsible: true
-    open: true
+    open: false
     items:
       - format: in-person
         badge: In Person
@@ -149,40 +179,18 @@ sections:
           - label: View event
             url: https://datascience.uchicago.edu/events/danah-boyd-cornell-distinguished-speaker-series/
 
-  - type: research 
-    heading: Research 
-    collapsible: true
-    open: true
-    items:
-      - name: Chicago City Council (July 2026)
-        description: "This white paper updates our 2019 study of Chicago’s City Council using 2020 
-        Census data, the current ward map, and modern election modeling. It finds that five-member STV districts 
-        come closest to proportional representation, but Asian-preferred candidates still fall short, even when 
-        districts are redrawn to concentrate Asian voters."
-        link:
-          label: See paper
-          url: https://mggg.github.io/Chicago-City-Council-Reform-2026/
-
-      - name: Portland Fundraising & Support Analysis
-        description: "This white paper examines campaign finance and ballot data from Portland’s 
-        first multi-member ranked-choice council election. Fundraising closely tracked ballot support, 
-        and the number of contributions was the best single predictor, though the link is an association 
-        and doesn’t show cause."
-        link:
-          label: See github
-          url: https://github.com/marcygcl/portland-fundraising-support-analysis
   - type: jobs
     heading: Jobs
     color: green
     collapsible: true
-    open: true
+    open: false
     items:
-      - title: Director, Data & Democracy Research Initiative
+      - title: Research Director, Data & Democracy Research Initiative
         meta:
           - Full-time
           - University of Chicago
           - Open until filled
-        description: The Director serves as an intellectual partner to Professor Moon Duchin and the public face of DDRI's external engagement. The role combines active research participation in structural democracy with primary responsibility for the lab's partnerships, fundraising, and public communications — working at the intersection of math, law, policy, and open-source software to translate academic research into policy recommendations and implementation with governmental, legal, and civic partners.
+        description: The Research Director will run the research initiative at a high level and serve as the public face of DDRI's external engagement. The role carries primary responsibility for the lab's partnerships, fundraising, and public communications — working at the intersection of math, law, policy, and open-source software to translate academic research into policy recommendations and implementation with governmental, legal, and civic partners.
         link:
           label: Apply
           url: # TODO
