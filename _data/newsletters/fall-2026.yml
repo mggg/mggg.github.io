@@ -54,7 +54,7 @@ sections:
     body: |
       The outfit formerly known as MGGG (aka the Metric Geometry and Gerrymandering Group) is entering a new chapter as the **Data and Democracy Research Initiative (DDRI)** in our new home at the University of Chicago.  DDRI is a big tent that supports projects on democracy, governance, and data.  Our lab (now the Data and Democracy Lab) will anchor the initiative.
 
-      To help everyone stay updated, we're excited to launch a twice-per-year DDRI newsletter where you can keep up with our research and software projects. Whether you're interested in new research directions, software releases, upcoming events, or general news from the lab, we'll compile all of it here for your perusal. 
+      To help everyone stay updated, we're excited to launch a twice-per-year DDRI newsletter where you can keep up with our research and software projects. Whether you're interested in new research directions, software releases, upcoming events, or general news from the lab, we'll compile all of it here for your convenience.
       
       We hope you'll stay engaged and connected with us as we continue to evolve!
 
@@ -78,7 +78,7 @@ sections:
     open: false
     items:
       - name: Election modeling team
-        description: "During the summer, members of our election modeling team completed studies for a number of localities including [Portland](https://github.com/marcygcl/portland-fundraising-support-analysis), [Santa Clara](https://github.com/mggg/Santa-Clara-CA-voting-system/blob/main/documentation/SC-2020.pdf), [San Diego](https://mggg.github.io/San-Diego-Election-Analysis/), and [Chicago](https://mggg.github.io/Chicago-City-Council-Reform-2026/). The former utilized campaign finance and ballot data from Portland's first multi-member ranked-choice city council election to explore how fundraising relates to tracked ballot and common support between candidates. The latter three projects explore the possible impacts of changing election systems in each respective locality, with specific attention paid to Asian communities and their potential to achieve proportional representation in city elections."
+        description: "During the summer, members of our election modeling team completed studies for a number of localities including Portland, Santa Clara, San Diego, and Chicago. The former utilized campaign finance and ballot data from Portland's first multi-member ranked-choice city council election to explore how fundraising relates to tracked ballot and common support between candidates. The latter three projects explore the possible impacts of changing election systems in each respective locality, with specific attention paid to Asian communities and their potential to achieve proportional representation in city elections."
         link:
           label: Explore more election system case studies
           url: https://data-democracy.org/election-system-case-studies
@@ -197,7 +197,7 @@ sections:
     toc: Stay Connected
     pullquote: Stay connected with DDRI.
     show_subscribe: true
-    body: If you're interested in getting in touch to discuss our research, outreach or events, email us to start a conversation - we'd love to hear from you. Keep an eye out for quarterly newsletter editions to stay up to date on our work! 
+    body: If you're interested in getting in touch to discuss our research, outreach or events, email us to start a conversation - we'd love to hear from you. Keep an eye out for new semi-annual newsletter editions to stay up to date on our work! 
 
 footer:
   lines:
