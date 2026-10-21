@@ -4,9 +4,34 @@
     class="locations-map__svg"
     viewBox="0 0 {{ map.width }} {{ map.height }}"
     role="group"
-    aria-labelledby="locations-map-title"
+    aria-label="Map of locations studied by the Data and Democracy Lab"
   >
-    <title id="locations-map-title">Map of locations studied by the Data and Democracy Lab</title>
+    {% comment %} No SVG <title>s: browsers show them as hover tooltips over our own popup. {% endcomment %}
+    {% comment %}
+      States with more than one category are filled with diagonal stripes, one
+      band per category. One pattern per combination, id'd by its type keys;
+      locations/script.html builds more the same way when filters narrow them.
+    {% endcomment %}
+    {% assign stripe = 5 %}
+    <defs data-locations-patterns data-stripe="{{ stripe }}">
+      {% assign emitted = "|" %}
+      {% for location in include.locations %}
+        {% if location.scope == "statewide" and location.types.size > 1 %}
+          {% capture pattern_id %}locations-stripes-{{ location.types | join: "-" }}{% endcapture %}
+          {% capture pattern_key %}|{{ pattern_id }}|{% endcapture %}
+          {% unless emitted contains pattern_key %}
+            {% assign size = location.types.size | times: stripe %}
+      <pattern id="{{ pattern_id }}" patternUnits="userSpaceOnUse" width="{{ size }}" height="{{ size }}" patternTransform="rotate(45)">
+            {% for key in location.types %}
+              {% assign stripe_type = include.types | where: "key", key | first %}
+        <rect x="{{ forloop.index0 | times: stripe }}" width="{{ stripe }}" height="{{ size }}" fill="{{ stripe_type.color }}" />
+            {% endfor %}
+      </pattern>
+            {% assign emitted = emitted | append: pattern_key %}
+          {% endunless %}
+        {% endif %}
+      {% endfor %}
+    </defs>
     <g class="locations-map__states">
       {% for state in map.states %}
         {% assign statewide = include.locations | where: "state", state.abbr | where: "scope", "statewide" | first %}
@@ -18,12 +43,12 @@
           class="locations-map__state locations-map__state--study"
           data-locations-mark
           data-types="{{ statewide.types | join: ' ' }}"
-          style="--type-color: {{ type.color }}"
+          style="--type-color: {{ type.color }};{% if statewide.types.size > 1 %} --type-fill: url(#locations-stripes-{{ statewide.types | join: '-' }});{% endif %}"
           d="{{ state.d }}"
         />
       </a>
         {% else %}
-      <path id="us-state-{{ state.abbr }}" class="locations-map__state" d="{{ state.d }}"><title>{{ state.name }}</title></path>
+      <path id="us-state-{{ state.abbr }}" class="locations-map__state" d="{{ state.d }}" />
         {% endif %}
       {% endfor %}
     </g>

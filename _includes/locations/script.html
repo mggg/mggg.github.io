@@ -140,26 +140,56 @@
     var marks = Array.prototype.slice.call(root.querySelectorAll("[data-locations-mark]"));
     var active = [];
 
-    function matchingType(types) {
+    // A location's types that are showing: all of them with no selection,
+    // otherwise the selected ones, in the location's own order.
+    function matchingTypes(types) {
       types = types.split(" ");
-      if (!active.length) return types[0];
-      for (var i = 0; i < types.length; i++) {
-        if (active.indexOf(types[i]) !== -1) return types[i];
+      if (!active.length) return types;
+      return types.filter(function (type) {
+        return active.indexOf(type) !== -1;
+      });
+    }
+
+    // Diagonal stripes for a state with several showing types, matching the
+    // patterns locations/map.html renders. Returns null for a single type.
+    var patternDefs = root.querySelector("[data-locations-patterns]");
+    var STRIPE = parseFloat(patternDefs.dataset.stripe);
+    function stripeFill(types) {
+      if (types.length < 2) return null;
+      var id = "locations-stripes-" + types.join("-");
+      if (!document.getElementById(id)) {
+        var size = types.length * STRIPE;
+        var pattern = svg("pattern", {
+          id: id,
+          patternUnits: "userSpaceOnUse",
+          width: size,
+          height: size,
+          patternTransform: "rotate(45)"
+        });
+        types.forEach(function (type, i) {
+          pattern.appendChild(svg("rect", { x: i * STRIPE, width: STRIPE, height: size, fill: colors[type] }));
+        });
+        patternDefs.appendChild(pattern);
       }
-      return null;
+      return "url(#" + id + ")";
     }
 
     function applyFilter() {
       var shown = 0;
       cards.forEach(function (card) {
-        var match = matchingType(card.dataset.types);
+        var match = matchingTypes(card.dataset.types).length > 0;
         card.hidden = !match;
         if (match) shown++;
       });
       marks.forEach(function (mark) {
-        var match = matchingType(mark.dataset.types);
-        mark.classList.toggle("is-dimmed", !match);
-        if (match) mark.style.setProperty("--type-color", colors[match]);
+        var matches = matchingTypes(mark.dataset.types);
+        mark.classList.toggle("is-dimmed", !matches.length);
+        if (!matches.length) return;
+        mark.style.setProperty("--type-color", colors[matches[0]]);
+        // Pins stay one color; states stripe when several types are showing.
+        var fill = mark.tagName.toLowerCase() === "path" ? stripeFill(matches) : null;
+        if (fill) mark.style.setProperty("--type-fill", fill);
+        else mark.style.removeProperty("--type-fill");
       });
       buttons.forEach(function (button) {
         button.setAttribute("aria-pressed", active.indexOf(button.dataset.type) !== -1);

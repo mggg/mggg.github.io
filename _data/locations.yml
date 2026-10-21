@@ -39,6 +39,9 @@ types:
   - key: redistricting
     label: Redistricting
     color: "#56b4e9"
+  - key: judicial
+    label: Judicial
+    color: "#dc143c"
 
 locations:
   - id: alabama
@@ -106,11 +109,62 @@ locations:
     lat: 41.878
     lon: -87.630
     types: [city-council]
-    description: An analysis of Chicago's City Council ward plan and several reform proposals, finding strong support for multimember wards with ranked choice voting. Accompanied by open data, code, and Chicago in Districtr.
+    description: An analysis of Chicago's City Council ward plan and several reform proposals, finding strong support for multimember wards with ranked choice voting, then a 2026 update with 2020 Census data and the current ward map. In the update, five-seat STV districts come closest to proportional representation, though Asian-preferred candidates remain underrepresented under every system simulated.
     studies:
       - title: Study of Reform Proposals for Chicago City Council
         year: 2019
         url: /chicago
+      - title: Revisiting Reform Proposals for Chicago City Council
+        year: 2026
+        url: https://mggg.github.io/Chicago-City-Council-Reform-2026/
+
+  - id: cincinnati-oh
+    name: Cincinnati, Ohio
+    state: OH
+    scope: local
+    lat: 39.103
+    lon: -84.512
+    types: [city-council]
+    description: Modeling a return to single transferable vote (STV), which Cincinnati used from 1925 to 1957, for its nine-member City Council, now elected at large. STV would typically elect 3 to 5 Black-preferred members, roughly in line with Black residents' 39% share of citizens of voting age.
+    studies:
+      - title: Ranked Choice Voting and Minority Representation
+        year: 2021
+        url: /uploads/STV-POC.pdf
+
+  - id: florida
+    name: Florida
+    state: FL
+    scope: statewide
+    types: [congressional]
+    description: Modeling of the Fair Representation Act, under which Florida's 28 House seats would be elected by ranked choice from one 3-member and five 5-member districts. Voters of color, about 45% of the voting-age population, would most often elect 11 to 14 representatives of choice, compared with 11 today.
+    studies:
+      - title: Modeling the Fair Representation Act
+        year: 2022
+        url: /fra
+
+  - id: illinois
+    name: Illinois
+    state: IL
+    scope: statewide
+    types: [congressional]
+    description: Modeling of the Fair Representation Act, under which Illinois's 17 House seats would be elected by ranked choice from four 3-member districts and one 5-member district. Simulated elections project 8 to 11 seats for candidates preferred by voters of color, more than a simple count of thresholds suggests, because of crossover support from White voters.
+    studies:
+      - title: Modeling the Fair Representation Act
+        year: 2022
+        url: /fra
+
+  - id: jones-county-nc
+    name: Jones County, North Carolina
+    state: NC
+    scope: local
+    lat: 35.03
+    lon: -77.36
+    types: [county]
+    description: Modeling for the Board of Commissioners, which switched from at-large elections to districts under a 2017 consent decree, after no Black candidate had ever been elected. With Black residents about a third of the electorate, single transferable vote (STV) would typically elect 1 or 2 Black-preferred commissioners of five, or 2 or 3 of seven.
+    studies:
+      - title: Ranked Choice Voting and Minority Representation
+        year: 2021
+        url: /uploads/STV-POC.pdf
 
   - id: lowell-ma
     name: Lowell, Massachusetts
@@ -125,13 +179,27 @@ locations:
         year: 2019
         url: /lowell
 
+  - id: maryland
+    name: Maryland
+    state: MD
+    scope: statewide
+    types: [congressional]
+    description: Modeling of the Fair Representation Act, under which Maryland's 8 House seats would be elected by ranked choice from one 3-member and one 5-member district. Projections give 5 or 6 seats to candidates preferred by voters of color, compared with the 3 likely under the single-member plan enacted in 2022.
+    studies:
+      - title: Modeling the Fair Representation Act
+        year: 2022
+        url: /fra
+
   - id: massachusetts
     name: Massachusetts
     state: MA
     scope: statewide
-    types: [state-legislature]
-    description: With New America, a modeling study of how single transferable vote (STV) and other systems would change the way the Massachusetts legislature is elected.
+    types: [state-legislature, congressional]
+    description: With New America, a modeling study of how single transferable vote (STV) and other systems would change the way the Massachusetts legislature is elected. Massachusetts was also a focus state in our modeling of the Fair Representation Act, which projects voters of color would often elect four or five of nine representatives of choice under ranked choice congressional elections, though few viable candidates of color have run recently.
     studies:
+      - title: Modeling the Fair Representation Act
+        year: 2022
+        url: /fra
       - title: Comparing Electoral Systems for the Massachusetts Legislature
         year: 2025
         url: /ma_legislature
@@ -207,6 +275,19 @@ locations:
         year: 2021
         url: /publications/Hillsboro.pdf
 
+  - id: pasadena-tx
+    name: Pasadena, Texas
+    state: TX
+    scope: local
+    lat: 29.691
+    lon: -95.209
+    types: [city-council]
+    description: Modeling for the City Council, which a federal court ordered back to eight single-member districts in a Voting Rights Act case over its 2014 switch to six districts and two at-large seats. Single transferable vote (STV) would typically elect 3 to 5 Latino-preferred members of eight, or 2 to 4 if Latino turnout stays low.
+    studies:
+      - title: Ranked Choice Voting and Minority Representation
+        year: 2021
+        url: /uploads/STV-POC.pdf
+
   - id: pennsylvania
     name: Pennsylvania
     state: PA
@@ -241,7 +322,7 @@ locations:
     lat: 45.515
     lon: -122.679
     types: [city-council]
-    description: Studies before and after Portland adopted single transferable vote (STV) for its City Council, from comparing system options, to modeling likely outcomes, to analyzing the first STV election in 2024.
+    description: Studies before and after Portland adopted single transferable vote (STV) for its City Council, from comparing system options, to modeling likely outcomes, to analyzing the first STV election in 2024 and how campaign fundraising tracked ballot support in it.
     studies:
       - title: Analysis of Election Systems for the Portland, OR City Council
         year: 2021
@@ -252,6 +333,9 @@ locations:
       - title: Study of the 2024 STV City Council Election in Portland, Oregon
         year: 2025
         url: /portland-stv-24
+      - title: Portland Fundraising & Support Analysis
+        year: 2026
+        url: https://github.com/marcygcl/portland-fundraising-support-analysis
 
   - id: salem-keizer-or
     name: Salem-Keizer, Oregon
@@ -273,19 +357,51 @@ locations:
     lat: 37.354
     lon: -121.955
     types: [city-council]
-    description: An analysis of geography, demographics, and voting patterns comparing systems for electing the Santa Clara City Council, finding transferable voting the best remedy for alleged California Voting Rights Act violations.
+    description: An analysis of geography, demographics, and voting patterns comparing systems for electing the Santa Clara City Council, finding transferable voting the best remedy for alleged California Voting Rights Act violations, and a 2026 follow-up simulating alternative systems with a focus on proportional representation for the East Asian community.
     studies:
       - title: Study of voting systems for Santa Clara, CA
         year: 2018
         url: /publications/SantaClara.pdf
+      - title: Santa Clara Alternative Election Analysis
+        year: 2026
+        url: https://github.com/mggg/Santa-Clara-CA-voting-system/blob/main/documentation/SC-2020.pdf
+
+  - id: san-diego-ca
+    name: San Diego, California
+    state: CA
+    scope: local
+    lat: 32.716
+    lon: -117.161
+    types: [city-council]
+    description: Simulations of how alternative election systems would perform for the San Diego City Council, with attention to Asian voters, about a fifth of the voting-age population, who remain underrepresented in city government.
+    studies:
+      - title: San Diego City Council Election Analysis
+        year: 2026
+        url: https://mggg.github.io/San-Diego-Election-Analysis/
+
+  - id: terrebonne-parish-la
+    name: Terrebonne Parish, Louisiana
+    state: LA
+    scope: local
+    lat: 29.596
+    lon: -90.719
+    types: [judicial]
+    description: Modeling for the 32nd District Court, whose five judges are elected to designated seats by majority vote, and where a Voting Rights Act challenge won in 2017 was overturned in 2020. With Black residents about 18% of citizens of voting age, no five-district plan with a majority-Black district could be found, while single transferable vote (STV) would typically elect 1 or 2 Black-preferred judges.
+    studies:
+      - title: Ranked Choice Voting and Minority Representation
+        year: 2021
+        url: /uploads/STV-POC.pdf
 
   - id: texas
     name: Texas
     state: TX
     scope: statewide
     types: [congressional]
-    description: Expert analysis in *LULAC v. Abbott*, which challenges Texas's post-Census congressional plan and its more aggressively partisan replacement.
+    description: Expert analysis in *LULAC v. Abbott*, which challenges Texas's post-Census congressional plan and its more aggressively partisan replacement, and modeling of the Fair Representation Act, which projects voters of color would elect 16 to 21 of Texas's 38 representatives of choice under ranked choice from multi-member districts, compared with 12 today.
     studies:
+      - title: Modeling the Fair Representation Act
+        year: 2022
+        url: /fra
       - title: Texas congressional (LULAC v. Abbott)
         year: 2025
         url: /posts/tx5-expert-report

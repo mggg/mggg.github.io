@@ -7,10 +7,11 @@
   <title>
     {% if page.title %} {{ page.title }} | {% endif %}Data and Democracy Lab
   </title>
+  {% comment %} ?v= changes every build, so browsers never reuse a stale stylesheet. {% endcomment %}
   <link rel="stylesheet" type="text/css" media="screen" href="
   {{
     "/assets/style.css" | relative_url
-  }}
+  }}?v={{ site.time | date: '%s' }}
   " />
   <link
     href="https://fonts.googleapis.com/css?family=Playfair+Display:700|Lora:400,400i,700|Source+Sans+Pro:300,400"

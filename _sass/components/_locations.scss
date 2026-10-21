@@ -65,7 +65,8 @@ $locations-sticky-offset: 7rem;
 }
 
 .locations-map__state--study {
-  fill: var(--type-color);
+  // --type-fill is a stripe pattern for states with more than one category.
+  fill: var(--type-fill, var(--type-color));
   fill-opacity: 0.75;
   transition: fill-opacity 100ms;
 
