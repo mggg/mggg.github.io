@@ -1,0 +1,479 @@
+# Place-based electoral studies, shown on the Locations page (/locations).
+# Rendered by _includes/locations.html.
+#
+# `types` defines the governing-body categories: the badges on each card and
+# the map legend / filter. `color` is used for map pins, shaded states, and
+# legend swatches.
+#
+# Each entry in `locations`:
+#   id           unique anchor id (lowercase, hyphens)
+#   name         card title
+#   state        two-letter postal code (used for the map and card header)
+#   scope        statewide - the state is shaded on the map
+#                local     - a pin is placed at `lat`/`lon`
+#   lat, lon     pin position, decimal degrees (local only)
+#   types        one or more `types` keys; the first sets the map color
+#   image        optional header image; defaults to a locator map of the state
+#   description  (markdown) one or two sentences on the work there
+#   studies      list of { title, year (optional), url }; link to the page that
+#                presents the study, or to the PDF if there's no such page
+#
+# Cards are sorted by name, so entries can be added anywhere.
+
+types:
+  - key: city-council
+    label: City Council
+    color: "#0072b2"
+  - key: school-board
+    label: School Board
+    color: "#e69f00"
+  - key: county
+    label: County Government
+    color: "#009e73"
+  - key: state-legislature
+    label: State Legislature
+    color: "#882255"
+  - key: congressional
+    label: Congressional
+    color: "#d55e00"
+  - key: redistricting
+    label: Redistricting
+    color: "#56b4e9"
+  - key: judicial
+    label: Judicial
+    color: "#dc143c"
+
+locations:
+  - id: alabama
+    name: Alabama
+    state: AL
+    scope: statewide
+    types: [congressional]
+    description: Expert analysis in *Allen v. Milligan*, a Voting Rights Act case arguing that Alabama's congressional plan diluted the votes of Black Alabamians, who make up about 2/7 of the state but had only one opportunity district out of seven. The report shows that a reasonably configured plan with two majority-Black districts can be drawn.
+    studies:
+      - title: Alabama congressional (Allen v. Milligan)
+        year: 2021
+        url: /posts/alabama-1-expert-report
+
+  - id: alaska
+    name: Alaska
+    state: AK
+    scope: statewide
+    types: [state-legislature]
+    description: A study of Alaska's rule that state Senate districts pair adjacent House districts, enumerating every possible pairing to evaluate the expected partisan behavior of the resulting Senate plans.
+    studies:
+      - title: "Mathematics of Nested Districts: The Case of Alaska"
+        year: 2019
+        url: /alaska
+
+  - id: arizona
+    name: Arizona
+    state: AZ
+    scope: statewide
+    types: [redistricting]
+    description: Experiments on Navajo and Pima Counties testing differential privacy in Census data, finding no threat to Voting Rights Act enforcement or to reasonable population balance in redistricting.
+    studies:
+      - title: Privacy, Census Data, and Arizona Redistricting
+        url: /publications/AZ-DP.pdf
+
+  - id: beaverton-or
+    name: Beaverton, Oregon
+    state: OR
+    scope: local
+    lat: 45.487
+    lon: -122.804
+    types: [school-board]
+    description: An analysis of districted and ranked choice election systems for the Beaverton School District board.
+    studies:
+      - title: Analysis of Election Systems for the Beaverton, OR School District
+        year: 2021
+        url: /publications/Beaverton.pdf
+
+  - id: chelan-county-wa
+    name: Chelan County, Washington
+    state: WA
+    scope: local
+    lat: 47.86
+    lon: -120.62
+    types: [county]
+    description: An analysis of districted and ranked choice election systems for the Chelan County Board of Commissioners.
+    studies:
+      - title: Analysis of Election Systems for the Chelan County Board of County Commissioners
+        year: 2021
+        url: /publications/Chelan_County.pdf
+
+  - id: chicago-il
+    name: Chicago, Illinois
+    state: IL
+    scope: local
+    lat: 41.878
+    lon: -87.630
+    types: [city-council]
+    description: An analysis of Chicago's City Council ward plan and several reform proposals, finding strong support for multimember wards with ranked choice voting, then a 2026 update with 2020 Census data and the current ward map. In the update, five-seat STV districts come closest to proportional representation, though Asian-preferred candidates remain underrepresented under every system simulated.
+    studies:
+      - title: Study of Reform Proposals for Chicago City Council
+        year: 2019
+        url: /chicago
+      - title: Revisiting Reform Proposals for Chicago City Council
+        year: 2026
+        url: https://mggg.github.io/Chicago-City-Council-Reform-2026/
+
+  - id: cincinnati-oh
+    name: Cincinnati, Ohio
+    state: OH
+    scope: local
+    lat: 39.103
+    lon: -84.512
+    types: [city-council]
+    description: Modeling a return to single transferable vote (STV), which Cincinnati used from 1925 to 1957, for its nine-member City Council, now elected at large. STV would typically elect 3 to 5 Black-preferred members, roughly in line with Black residents' 39% share of citizens of voting age.
+    studies:
+      - title: Ranked Choice Voting and Minority Representation
+        year: 2021
+        url: /uploads/STV-POC.pdf
+
+  - id: florida
+    name: Florida
+    state: FL
+    scope: statewide
+    types: [congressional]
+    description: Modeling of the Fair Representation Act, under which Florida's 28 House seats would be elected by ranked choice from one 3-member and five 5-member districts. Voters of color, about 45% of the voting-age population, would most often elect 11 to 14 representatives of choice, compared with 11 today.
+    studies:
+      - title: Modeling the Fair Representation Act
+        year: 2022
+        url: /fra
+
+  - id: illinois
+    name: Illinois
+    state: IL
+    scope: statewide
+    types: [congressional]
+    description: Modeling of the Fair Representation Act, under which Illinois's 17 House seats would be elected by ranked choice from four 3-member districts and one 5-member district. Simulated elections project 8 to 11 seats for candidates preferred by voters of color, more than a simple count of thresholds suggests, because of crossover support from White voters.
+    studies:
+      - title: Modeling the Fair Representation Act
+        year: 2022
+        url: /fra
+
+  - id: jones-county-nc
+    name: Jones County, North Carolina
+    state: NC
+    scope: local
+    lat: 35.03
+    lon: -77.36
+    types: [county]
+    description: Modeling for the Board of Commissioners, which switched from at-large elections to districts under a 2017 consent decree, after no Black candidate had ever been elected. With Black residents about a third of the electorate, single transferable vote (STV) would typically elect 1 or 2 Black-preferred commissioners of five, or 2 or 3 of seven.
+    studies:
+      - title: Ranked Choice Voting and Minority Representation
+        year: 2021
+        url: /uploads/STV-POC.pdf
+
+  - id: lowell-ma
+    name: Lowell, Massachusetts
+    state: MA
+    scope: local
+    lat: 42.633
+    lon: -71.316
+    types: [city-council]
+    description: Public and technical reports on alternatives to Lowell's at-large City Council elections, prepared after a lawsuit alleging the system kept communities of color from being represented. The public report was also published in Spanish, Portuguese, and Khmer.
+    studies:
+      - title: Election Reform in Lowell, MA
+        year: 2019
+        url: /lowell
+
+  - id: maryland
+    name: Maryland
+    state: MD
+    scope: statewide
+    types: [congressional]
+    description: Modeling of the Fair Representation Act, under which Maryland's 8 House seats would be elected by ranked choice from one 3-member and one 5-member district. Projections give 5 or 6 seats to candidates preferred by voters of color, compared with the 3 likely under the single-member plan enacted in 2022.
+    studies:
+      - title: Modeling the Fair Representation Act
+        year: 2022
+        url: /fra
+
+  - id: massachusetts
+    name: Massachusetts
+    state: MA
+    scope: statewide
+    types: [state-legislature, congressional]
+    description: With New America, a modeling study of how single transferable vote (STV) and other systems would change the way the Massachusetts legislature is elected, finding STV tends to produce proportional outcomes and behaves very differently from single-winner ranked choice even with identical voter preferences. Massachusetts was also a focus state in our modeling of the Fair Representation Act, which projects voters of color would often elect four or five of nine representatives of choice under ranked choice congressional elections, though few viable candidates of color have run recently.
+    studies:
+      - title: Modeling the Fair Representation Act
+        year: 2022
+        url: /fra
+      - title: Comparing Electoral Systems for the Massachusetts Legislature
+        year: 2025
+        url: /ma_legislature
+
+  - id: michigan
+    name: Michigan
+    state: MI
+    scope: statewide
+    types: [redistricting]
+    description: Clustering of public Communities of Interest testimony for the Michigan Independent Citizens Redistricting Commission, and an evaluation of the commission's first cycle with the Voters Not Politicians Education Fund.
+    studies:
+      - title: Michigan Communities of Interest report
+        year: 2021
+        url: /publications/Michigan-COI.pdf
+      - title: Michigan Independent Citizens Redistricting Commission Post-Mortem
+        year: 2024
+        url: /publications/MICRC-Report.pdf
+
+  - id: missouri
+    name: Missouri
+    state: MO
+    scope: statewide
+    types: [redistricting]
+    description: Public Communities of Interest maps submitted to Missouri's community mapping portal and clustered into themes for the state's redistricting.
+    studies:
+      - title: Missouri Communities of Interest report
+        year: 2021
+        url: /publications/Missouri-COI.pdf
+
+  - id: north-carolina
+    name: North Carolina
+    state: NC
+    scope: statewide
+    types: [congressional, state-legislature]
+    description: Expert analysis in *Moore v. Harper* introducing the "Close Votes, Close Seats" standard, later cited by the state Supreme Court in throwing out the congressional plan. After a change in the court's membership, it reversed that decision in 2023 and reinstated the original map.
+    studies:
+      - title: North Carolina congressional and legislative (Moore v. Harper)
+        year: 2021
+        url: /posts/nc2
+
+  - id: ohio
+    name: Ohio
+    state: OH
+    scope: statewide
+    types: [redistricting]
+    description: Public Communities of Interest maps collected through the OPEN Maps project and clustered into themes for Ohio's redistricting.
+    studies:
+      - title: Ohio Communities of Interest report
+        year: 2021
+        url: /publications/Ohio-COI.pdf
+
+  - id: oregon
+    name: Oregon
+    state: OR
+    scope: statewide
+    types: [state-legislature]
+    description: Ensembles of districting plans combined with ranked choice voting models to compare alternative election systems for the Oregon legislature.
+    studies:
+      - title: Analysis of Election Systems for Oregon State
+        year: 2021
+        url: /publications/Oregon.pdf
+
+  - id: hillsboro-or
+    name: Hillsboro, Oregon
+    state: OR
+    scope: local
+    lat: 45.523
+    lon: -122.990
+    types: [school-board]
+    description: An analysis of districted and ranked choice election systems for the Hillsboro School District board.
+    studies:
+      - title: Analysis of Election Systems for the Hillsboro, OR School District
+        year: 2021
+        url: /publications/Hillsboro.pdf
+
+  - id: pasadena-tx
+    name: Pasadena, Texas
+    state: TX
+    scope: local
+    lat: 29.691
+    lon: -95.209
+    types: [city-council]
+    description: Modeling for the City Council, which a federal court ordered back to eight single-member districts in a Voting Rights Act case over its 2014 switch to six districts and two at-large seats. Single transferable vote (STV) would typically elect 3 to 5 Latino-preferred members of eight, or 2 to 4 if Latino turnout stays low.
+    studies:
+      - title: Ranked Choice Voting and Minority Representation
+        year: 2021
+        url: /uploads/STV-POC.pdf
+
+  - id: pennsylvania
+    name: Pennsylvania
+    state: PA
+    scope: statewide
+    types: [congressional]
+    description: "Expert reports in two congressional redistricting cases decided by the state's courts: in *LWV v. Commonwealth*, an outlier analysis finding the legislative leaders' 2018 plan an extreme partisan outlier, and in *Carter v. Chapman*, an analysis of how to understand a plan's partisan properties."
+    studies:
+      - title: Outlier analysis for Pennsylvania (LWV v. Commonwealth)
+        year: 2018
+        url: /publications/md-report.pdf
+      - title: Pennsylvania congressional (Carter v. Chapman)
+        year: 2022
+        url: /posts/pa-expert-report
+
+  - id: pierce-county-wa
+    name: Pierce County, Washington
+    state: WA
+    scope: local
+    lat: 47.04
+    lon: -122.14
+    types: [county]
+    description: An analysis of districted and ranked choice election systems for the Pierce County Council.
+    studies:
+      - title: Analysis of Election Systems for the Pierce County, WA Council
+        year: 2021
+        url: /publications/Pierce_County.pdf
+
+  - id: portland-or
+    name: Portland, Oregon
+    state: OR
+    scope: local
+    lat: 45.515
+    lon: -122.679
+    types: [city-council]
+    description: Studies before and after Portland adopted single transferable vote (STV) for its City Council, from comparing system options, to modeling likely outcomes, to analyzing the first STV election in 2024 and how campaign fundraising compared with ballot support in it.
+    studies:
+      - title: Analysis of Election Systems for the Portland, OR City Council
+        year: 2021
+        url: /publications/Portland.pdf
+      - title: Modeling electoral dynamics for the Portland, Oregon city council
+        year: 2024
+        url: /posts/portland-elec-dynamics
+      - title: Study of the 2024 STV City Council Election in Portland, Oregon
+        year: 2025
+        url: /portland-stv-24
+      - title: Portland Fundraising & Support Analysis
+        year: 2026
+        url: https://github.com/marcygcl/portland-fundraising-support-analysis
+
+  - id: salem-keizer-or
+    name: Salem-Keizer, Oregon
+    state: OR
+    scope: local
+    lat: 44.943
+    lon: -123.035
+    types: [school-board]
+    description: An analysis of districted and ranked choice election systems for the Salem-Keizer School District board.
+    studies:
+      - title: Analysis of Election Systems for the Salem-Keizer Unified School District
+        year: 2021
+        url: /publications/Salem_Keizer.pdf
+
+  - id: santa-clara-ca
+    name: Santa Clara, California
+    state: CA
+    scope: local
+    lat: 37.354
+    lon: -121.955
+    types: [city-council]
+    description: An analysis of geography, demographics, and voting patterns comparing systems for electing the Santa Clara City Council in a California Voting Rights Act case, finding the standard six-district remedy and the city's proposed 2 × 3 plan inadequate and recommending at-large or custom transferable-vote systems, and a 2026 follow-up simulating alternative systems with a focus on proportional representation for the East Asian community.
+    studies:
+      - title: Study of voting systems for Santa Clara, CA
+        year: 2018
+        url: /publications/SantaClara.pdf
+      - title: Santa Clara Alternative Election Analysis
+        year: 2026
+        url: https://github.com/mggg/Santa-Clara-CA-voting-system/blob/main/documentation/SC-2020.pdf
+
+  - id: san-diego-ca
+    name: San Diego, California
+    state: CA
+    scope: local
+    lat: 32.716
+    lon: -117.161
+    types: [city-council]
+    description: Simulations of how alternative election systems would perform for the San Diego City Council, with attention to Asian voters, about a fifth of the voting-age population, who remain underrepresented in city government.
+    studies:
+      - title: San Diego City Council Election Analysis
+        year: 2026
+        url: https://mggg.github.io/San-Diego-Election-Analysis/
+
+  - id: terrebonne-parish-la
+    name: Terrebonne Parish, Louisiana
+    state: LA
+    scope: local
+    lat: 29.596
+    lon: -90.719
+    types: [judicial]
+    description: Modeling for the 32nd District Court, whose five judges are elected to designated seats by majority vote, and where a Voting Rights Act challenge won in 2017 was overturned in 2020. With Black residents about 18% of citizens of voting age, no five-district plan with a majority-Black district could be found, while single transferable vote (STV) would typically elect 1 or 2 Black-preferred judges.
+    studies:
+      - title: Ranked Choice Voting and Minority Representation
+        year: 2021
+        url: /uploads/STV-POC.pdf
+
+  - id: texas
+    name: Texas
+    state: TX
+    scope: statewide
+    types: [congressional]
+    description: Expert analysis in *LULAC v. Abbott*, which challenges Texas's post-Census congressional plan and its more aggressively partisan replacement, with a report delineating race-versus-party distinctions; and modeling of the Fair Representation Act, which projects voters of color would elect 16 to 21 of Texas's 38 representatives of choice under ranked choice from multi-member districts, compared with 12 today.
+    studies:
+      - title: Modeling the Fair Representation Act
+        year: 2022
+        url: /fra
+      - title: Texas congressional (LULAC v. Abbott)
+        year: 2025
+        url: /posts/tx5-expert-report
+
+  - id: tukwila-wa
+    name: Tukwila, Washington
+    state: WA
+    scope: local
+    lat: 47.474
+    lon: -122.261
+    types: [school-board]
+    description: An analysis of districted and ranked choice election systems for the Tukwila School District board.
+    studies:
+      - title: Analysis of Election Systems for the Tukwila, WA School District
+        year: 2021
+        url: /publications/Tukwila.pdf
+
+  - id: virginia
+    name: Virginia
+    state: VA
+    scope: statewide
+    types: [state-legislature]
+    description: A large ensemble of valid districting plans for the Virginia House of Delegates, used as a baseline for evaluating proposed replacements after eleven districts were ruled unconstitutional.
+    studies:
+      - title: Comparison of Districting Plans for the Virginia House of Delegates
+        year: 2018
+        url: /posts/virginia
+
+  - id: washington
+    name: Washington
+    state: WA
+    scope: statewide
+    types: [state-legislature]
+    description: Ensembles of districting plans combined with ranked choice voting models to compare alternative election systems for the Washington legislature.
+    studies:
+      - title: Analysis of Election Systems for Washington State
+        year: 2021
+        url: /publications/Washington.pdf
+
+  - id: wenatchee-wa
+    name: Wenatchee, Washington
+    state: WA
+    scope: local
+    lat: 47.423
+    lon: -120.311
+    types: [school-board]
+    description: An analysis of districted and ranked choice election systems for the Wenatchee School District board.
+    studies:
+      - title: Analysis of Election Systems for the Wenatchee School District
+        year: 2021
+        url: /publications/Wenatchee.pdf
+
+  - id: wisconsin
+    name: Wisconsin
+    state: WI
+    scope: statewide
+    types: [redistricting]
+    description: Public Communities of Interest maps submitted to Wisconsin's People's Maps Commission and clustered into themes for the state's redistricting.
+    studies:
+      - title: Wisconsin Communities of Interest report
+        year: 2021
+        url: /publications/Wisconsin-COI.pdf
+
+  - id: yakima-county-wa
+    name: Yakima County, Washington
+    state: WA
+    scope: local
+    lat: 46.46
+    lon: -120.74
+    types: [county]
+    description: An analysis of remedies for the exclusion of Hispanic and Native voters' candidates of choice from the Yakima County Commission, finding ranked choice voting likely more effective than majority-minority districts.
+    studies:
+      - title: Analysis of County Commission Elections in Yakima County, WA
+        year: 2020
+        url: /publications/Yakima.pdf
