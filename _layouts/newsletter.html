@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% include head.html %}
+
+  <body>
+    {% include top_navigation.html %}
+    {% comment %} Use the issue named in front matter, or else the most recent by `date`. {% endcomment %}
+    {% if page.issue %}
+      {% assign issue = site.data.newsletters[page.issue] %}
+    {% else %}
+      {% assign issue = nil %}
+      {% for entry in site.data.newsletters %}
+        {% assign candidate = entry[1] %}
+        {% if candidate.date == nil %}{% continue %}{% endif %}
+        {% if issue == nil or candidate.date > issue.date %}
+          {% assign issue = candidate %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+
+    <main class="l-center-wide l-content newsletter-layout">
+      {% include newsletter/toc.html issue=issue %}
+      <article class="newsletter">
+  
+        <header class="newsletter__header">
+          <div class="newsletter__header-top">
+            <span class="newsletter__eyebrow">{{ issue.header.eyebrow }}</span>
+            <span class="newsletter__issue">{{ issue.header.issue }}</span>
+          </div>
+          <h1 class="newsletter__title">{{ issue.header.title }}</h1>
+          {% if issue.header.subtitle %}
+          <p class="newsletter__subtitle">{{ issue.header.subtitle }}</p>
+          {% endif %}
+        </header>
+        {% if issue.header.image %}
+          <img class="newsletter__banner" src="{{ issue.header.image | relative_url }}" alt="{{ issue.header.image_alt | escape }}" />
+        {% endif %}
+        {% for section in issue.sections %}
+          {% assign section_id = section.id | default: section.heading | default: section.toc | slugify %}
+          {% if section.type == "callout" %}
+            {% include newsletter/callout.html callout=section id=section_id subscribe=issue.subscribe %}
+          {% else %}
+            {% include newsletter/section.html section=section id=section_id %}
+          {% endif %}
+        {% endfor %}
+
+        {{ content }}
+
+        {% if issue.footer %}
+        <footer class="newsletter__footer">
+          <p>
+            {% for line in issue.footer.lines %}{{ line }}<br />{% endfor %}
+            {% for link in issue.footer.links %}{% if link.url %}{% unless forloop.first %} · {% endunless %}<a href="{{ link.url }}">{{ link.label }}</a>{% endif %}{% endfor %}
+          </p>
+          {% if issue.footer.copyright %}
+          <p class="newsletter__copyright">{{ issue.footer.copyright }}</p>
+          {% endif %}
+        </footer>
+        {% endif %}
+      </article>
+    </main>
+    {% include newsletter/disclosure.html %}
+
+    {% include footer.html %}
+  </body>
+</html>
