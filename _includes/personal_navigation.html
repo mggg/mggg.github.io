@@ -8,11 +8,19 @@
           alt="Data and Democracy Lab"
         />
       </a>
+      <script>
+        function openNav() {
+          var links = document.getElementById("nav-links");
+          var button = document.querySelector('[aria-controls="nav-links"]');
+          var isOpen = links.classList.toggle("site-nav__contents--show");
+          button.setAttribute("aria-expanded", isOpen);
+        }
+      </script>
       <button
         class="site-nav__open-btn"
         aria-controls="nav-links"
         aria-expanded="false"
-        onclick="this.setAttribute('aria-expanded', document.getElementById('nav-links').classList.toggle('site-nav__contents--show'));"
+        onclick="openNav();"
       >
         <img src="/assets/baseline-menu-24px.svg" class="icon" alt="Menu" />
       </button>
