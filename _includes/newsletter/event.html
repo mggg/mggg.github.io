@@ -1,0 +1,20 @@
+{% assign event = include.event %}
+<div class="card newsletter-event newsletter-event--{{ event.format }}">
+  <div class="card__content">
+    {% if event.badge %}
+    <span class="newsletter-badge newsletter-badge--{{ event.format }}">{{ event.badge }}</span>
+    {% endif %}
+    <div class="newsletter-event__when">{{ event.when | join: " · " }}</div>
+    <h3 class="newsletter-event__speaker">{{ event.speaker }}</h3>
+    {% if event.affiliation %}
+    <div class="card__authors">{{ event.affiliation }}</div>
+    {% endif %}
+    {% if event.title %}
+    <p class="newsletter-event__title">{{ event.title }}</p>
+    {% endif %}
+    {{ event.description | markdownify | replace: "<p>", '<p class="card__teaser">' }}
+    {% for link in event.links %}
+      {% include newsletter/link.html link=link %}
+    {% endfor %}
+  </div>
+</div>

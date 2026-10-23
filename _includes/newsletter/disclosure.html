@@ -1,0 +1,56 @@
+<script>
+  // Slide newsletter dropdowns (section toggles and software items) open and shut.
+  // <details> can't transition its content natively, so we animate the element
+  // right after <summary>; `is-closing` lets the arrows turn back as it collapses.
+  document.addEventListener("DOMContentLoaded", function () {
+    var options = { duration: 250, easing: "ease" };
+    var collapsed = { height: "0px", paddingTop: "0px", paddingBottom: "0px", opacity: 0 };
+
+    document.querySelectorAll(".newsletter details").forEach(function (details) {
+      var summary = details.querySelector(":scope > summary");
+      var content = summary && summary.nextElementSibling;
+      if (!content || !content.animate) return;
+      var animation = null;
+
+      // The content's current box (mid-animation, or its natural size when idle),
+      // so keyframes match its padding and a reversal picks up where it left off.
+      function current() {
+        var style = getComputedStyle(content);
+        return {
+          height: style.height,
+          paddingTop: style.paddingTop,
+          paddingBottom: style.paddingBottom,
+          opacity: style.opacity,
+        };
+      }
+
+      function toggle(open) {
+        var from = animation || !open ? current() : collapsed;
+        if (animation) animation.cancel();
+        details.classList.toggle("is-closing", !open);
+        details.open = true;
+        var to = open ? current() : collapsed;
+
+        content.style.overflow = "hidden";
+        // Closing holds its last (collapsed) frame until <details> is shut, so the
+        // content can't flash back to full height in between.
+        var running = content.animate([from, to], Object.assign({ fill: open ? "none" : "forwards" }, options));
+        animation = running;
+        running.onfinish = function () {
+          animation = null;
+          content.style.overflow = "";
+          if (!open) {
+            details.open = false;
+            details.classList.remove("is-closing");
+            running.cancel();
+          }
+        };
+      }
+
+      summary.addEventListener("click", function (event) {
+        event.preventDefault();
+        toggle(!details.open || details.classList.contains("is-closing"));
+      });
+    });
+  });
+</script>
