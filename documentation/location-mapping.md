@@ -150,16 +150,18 @@ Categories live under `types:` at the top of `_data/locations.yml`:
 types:
   - key: city-council
     label: City Council
-    color: "#0072b2"
+    color: "#4396c8"
 ```
 
 To add one, add an entry with a new `key` (lowercase, hyphens), a `label` for
 the legend and badges, and a `color`. The legend button, its count, and its
 swatches are generated automatically.
 
-Pick a color that stays distinct from the others and from the gray of unstudied
-states. Most of the existing colors come from the Okabe–Ito palette, which stays
-distinguishable for readers with color blindness; choosing from it is safest.
+The colors come from the Districtr palette that the newsletter also uses
+(`$newsletter-accents` in `_sass/components/_newsletter.scss`). Six of its seven
+colors are taken; coral (`#eb8777`) is free for the next category. Beyond that,
+pick a color that stays distinct from the others and from the gray of unstudied
+states, and consider adding it to `$newsletter-accents` so the two stay in step.
 
 ## Previewing
 

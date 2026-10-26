@@ -3,7 +3,8 @@
 #
 # `types` defines the governing-body categories: the badges on each card and
 # the map legend / filter. `color` is used for map pins, shaded states, and
-# legend swatches.
+# legend swatches. The colors are the Districtr palette shared with the
+# newsletter (`$newsletter-accents` in _sass/components/_newsletter.scss).
 #
 # Each entry in `locations`:
 #   id           unique anchor id (lowercase, hyphens)
@@ -23,25 +24,22 @@
 types:
   - key: city-council
     label: City Council
-    color: "#0072b2"
+    color: "#9e4ae6"
   - key: school-board
     label: School Board
-    color: "#e69f00"
+    color: "#eb8777"
   - key: county
     label: County Government
-    color: "#009e73"
+    color: "#5cca9d"
   - key: state-legislature
     label: State Legislature
-    color: "#882255"
+    color: "#89b0d1"
   - key: congressional
     label: Congressional
-    color: "#d55e00"
+    color: "#e4607b"
   - key: redistricting
     label: Redistricting
-    color: "#56b4e9"
-  - key: judicial
-    label: Judicial
-    color: "#dc143c"
+    color: "#f7cc6e"
 
 locations:
   - id: alabama
@@ -49,7 +47,7 @@ locations:
     state: AL
     scope: statewide
     types: [congressional]
-    description: Expert analysis in *Allen v. Milligan*, a Voting Rights Act case arguing that Alabama's congressional plan diluted the votes of Black Alabamians, who make up about 2/7 of the state but had only one opportunity district out of seven.
+    description: Expert analysis in *Allen v. Milligan*, a Voting Rights Act case arguing that Alabama's congressional plan diluted the votes of Black Alabamians, who make up about 2/7 of the state but had only one opportunity district out of seven. The report shows that a reasonably configured plan with two majority-Black districts can be drawn.
     studies:
       - title: Alabama congressional (Allen v. Milligan)
         year: 2021
@@ -71,7 +69,7 @@ locations:
     state: AZ
     scope: statewide
     types: [redistricting]
-    description: Experiments showing that differential privacy in Census data would not prevent Arizona from enforcing the Voting Rights Act or upholding traditional redistricting principles.
+    description: Experiments on Navajo and Pima Counties testing differential privacy in Census data, finding no threat to Voting Rights Act enforcement or to reasonable population balance in redistricting.
     studies:
       - title: Privacy, Census Data, and Arizona Redistricting
         url: /publications/AZ-DP.pdf
@@ -195,7 +193,7 @@ locations:
     state: MA
     scope: statewide
     types: [state-legislature, congressional]
-    description: With New America, a modeling study of how single transferable vote (STV) and other systems would change the way the Massachusetts legislature is elected. Massachusetts was also a focus state in our modeling of the Fair Representation Act, which projects voters of color would often elect four or five of nine representatives of choice under ranked choice congressional elections, though few viable candidates of color have run recently.
+    description: With New America, a modeling study of how single transferable vote (STV) and other systems would change the way the Massachusetts legislature is elected, finding STV tends to produce proportional outcomes and behaves very differently from single-winner ranked choice even with identical voter preferences. Massachusetts was also a focus state in our modeling of the Fair Representation Act, which projects voters of color would often elect four or five of nine representatives of choice under ranked choice congressional elections, though few viable candidates of color have run recently.
     studies:
       - title: Modeling the Fair Representation Act
         year: 2022
@@ -209,7 +207,7 @@ locations:
     state: MI
     scope: statewide
     types: [redistricting]
-    description: Clustering of public Communities of Interest testimony for the Michigan Independent Citizens Redistricting Commission, and a post-mortem of the commission's first cycle with Voters Not Politicians.
+    description: Clustering of public Communities of Interest testimony for the Michigan Independent Citizens Redistricting Commission, and an evaluation of the commission's first cycle with the Voters Not Politicians Education Fund.
     studies:
       - title: Michigan Communities of Interest report
         year: 2021
@@ -223,7 +221,7 @@ locations:
     state: MO
     scope: statewide
     types: [redistricting]
-    description: Public Communities of Interest maps collected with Districtr and clustered into themes for Missouri's redistricting.
+    description: Public Communities of Interest maps submitted to Missouri's community mapping portal and clustered into themes for the state's redistricting.
     studies:
       - title: Missouri Communities of Interest report
         year: 2021
@@ -234,7 +232,7 @@ locations:
     state: NC
     scope: statewide
     types: [congressional, state-legislature]
-    description: Expert analysis in *Moore v. Harper* introducing the "Close Votes, Close Seats" standard, later cited by the state Supreme Court in throwing out the congressional plan.
+    description: Expert analysis in *Moore v. Harper* introducing the "Close Votes, Close Seats" standard, later cited by the state Supreme Court in throwing out the congressional plan. After a change in the court's membership, it reversed that decision in 2023 and reinstated the original map.
     studies:
       - title: North Carolina congressional and legislative (Moore v. Harper)
         year: 2021
@@ -293,7 +291,7 @@ locations:
     state: PA
     scope: statewide
     types: [congressional]
-    description: Expert reports in two congressional redistricting cases decided by the state's courts, *LWV v. Commonwealth* and *Carter v. Chapman*.
+    description: "Expert reports in two congressional redistricting cases decided by the state's courts: in *LWV v. Commonwealth*, an outlier analysis finding the legislative leaders' 2018 plan an extreme partisan outlier, and in *Carter v. Chapman*, an analysis of how to understand a plan's partisan properties."
     studies:
       - title: Outlier analysis for Pennsylvania (LWV v. Commonwealth)
         year: 2018
@@ -322,7 +320,7 @@ locations:
     lat: 45.515
     lon: -122.679
     types: [city-council]
-    description: Studies before and after Portland adopted single transferable vote (STV) for its City Council, from comparing system options, to modeling likely outcomes, to analyzing the first STV election in 2024 and how campaign fundraising tracked ballot support in it.
+    description: Studies before and after Portland adopted single transferable vote (STV) for its City Council, from comparing system options, to modeling likely outcomes, to analyzing the first STV election in 2024 and how campaign fundraising compared with ballot support in it.
     studies:
       - title: Analysis of Election Systems for the Portland, OR City Council
         year: 2021
@@ -357,7 +355,7 @@ locations:
     lat: 37.354
     lon: -121.955
     types: [city-council]
-    description: An analysis of geography, demographics, and voting patterns comparing systems for electing the Santa Clara City Council, finding transferable voting the best remedy for alleged California Voting Rights Act violations, and a 2026 follow-up simulating alternative systems with a focus on proportional representation for the East Asian community.
+    description: An analysis of geography, demographics, and voting patterns comparing systems for electing the Santa Clara City Council in a California Voting Rights Act case, finding the standard six-district remedy and the city's proposed 2 × 3 plan inadequate and recommending at-large or custom transferable-vote systems, and a 2026 follow-up simulating alternative systems with a focus on proportional representation for the East Asian community.
     studies:
       - title: Study of voting systems for Santa Clara, CA
         year: 2018
@@ -385,7 +383,7 @@ locations:
     scope: local
     lat: 29.596
     lon: -90.719
-    types: [judicial]
+    types: [city-council]
     description: Modeling for the 32nd District Court, whose five judges are elected to designated seats by majority vote, and where a Voting Rights Act challenge won in 2017 was overturned in 2020. With Black residents about 18% of citizens of voting age, no five-district plan with a majority-Black district could be found, while single transferable vote (STV) would typically elect 1 or 2 Black-preferred judges.
     studies:
       - title: Ranked Choice Voting and Minority Representation
@@ -397,7 +395,7 @@ locations:
     state: TX
     scope: statewide
     types: [congressional]
-    description: Expert analysis in *LULAC v. Abbott*, which challenges Texas's post-Census congressional plan and its more aggressively partisan replacement, and modeling of the Fair Representation Act, which projects voters of color would elect 16 to 21 of Texas's 38 representatives of choice under ranked choice from multi-member districts, compared with 12 today.
+    description: Expert analysis in *LULAC v. Abbott*, which challenges Texas's post-Census congressional plan and its more aggressively partisan replacement, with a report delineating race-versus-party distinctions; and modeling of the Fair Representation Act, which projects voters of color would elect 16 to 21 of Texas's 38 representatives of choice under ranked choice from multi-member districts, compared with 12 today.
     studies:
       - title: Modeling the Fair Representation Act
         year: 2022
@@ -459,7 +457,7 @@ locations:
     state: WI
     scope: statewide
     types: [redistricting]
-    description: Public Communities of Interest maps collected with Districtr and clustered into themes for Wisconsin's redistricting.
+    description: Public Communities of Interest maps submitted to Wisconsin's People's Maps Commission and clustered into themes for the state's redistricting.
     studies:
       - title: Wisconsin Communities of Interest report
         year: 2021
