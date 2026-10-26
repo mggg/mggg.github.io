@@ -66,19 +66,18 @@ $locations-sticky-offset: 7rem;
 
 .locations-map__state--study {
   // --type-fill is a stripe pattern for states with more than one category.
+  // Full strength, so states match the palette (and the pins) exactly.
   fill: var(--type-fill, var(--type-color));
-  fill-opacity: 0.75;
-  transition: fill-opacity 100ms;
+  transition: filter 100ms;
 
   &.is-dimmed {
     fill: $dark-grey;
-    fill-opacity: 1;
   }
 }
 
 .locations-map__state-link:hover .locations-map__state--study,
 .locations-map__state-link:focus .locations-map__state--study {
-  fill-opacity: 1;
+  filter: brightness(0.85);
 }
 
 .locations-map__pin {
@@ -169,7 +168,6 @@ $locations-sticky-offset: 7rem;
 
 .locations-filter__swatch--area {
   border-radius: 2px;
-  opacity: 0.75;
 }
 
 .locations-filter__swatch--pin {
