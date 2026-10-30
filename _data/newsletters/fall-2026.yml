@@ -52,9 +52,9 @@ sections:
     pullquote: Big things are happening!
     show_subscribe: true
     body: |
-      The outfit formerly known as MGGG (aka the Metric Geometry and Gerrymandering Group) is entering a new chapter as the **Data and Democracy Research Initiative (DDRI)** in our new home at the University of Chicago.  DDRI is a big tent that supports projects on democracy, governance, and data.  Our lab (now the Data and Democracy Lab) will anchor the initiative.
+      The outfit formerly known as MGGG (aka the Metric Geometry and Gerrymandering Group) is entering a new chapter as the **Data and Democracy Research Initiative (DDRI)** in our new home at the University of Chicago.  (Check out our growing [team](https://data-democracy.org/team).) DDRI is a big tent that supports projects on democracy, governance, and data.  Our lab (now the Data and Democracy Lab) will anchor the initiative.
 
-      To help everyone stay updated, we're excited to launch a twice-per-year DDRI newsletter where you can keep up with our research and software projects. Whether you're interested in new research directions, software releases, upcoming events, or general news from the lab, we'll compile all of it here.
+      We are excited to launch a twice-per-year DDRI newsletter where you can keep up with our research and software projects. We'll compile a friendly overview of new research directions, software releases, upcoming events, and general news from the lab.
       
       We hope you'll stay engaged and connected with us as we continue to evolve!
 
@@ -65,9 +65,9 @@ sections:
     color: magenta
     items:
       - name: New papers
-        description: Some recently published papers by members of the lab and collaborators include [reversible recombination](https://epubs.siam.org/doi/10.1137/24M166944X) in SIAM Review, [Models of random spanning trees](https://onlinelibrary.wiley.com/doi/10.1002/rsa.70063) in Random Structures & Algorithms, [weighted voting](https://data-democracy.org/AdaptiveBanz) in EC'26, and [a new polarization index](https://projecteuclid.org/journals/annals-of-applied-statistics/volume-20/issue-2/Measuring-public-opinion--The-Wasserstein-bipolarization-index-with-application/10.1214/26-AOAS2162.full) in Annals of Applied Statistics.
+        description: Some recently published papers by members of the lab and collaborators are on topics including [reversible recombination](https://epubs.siam.org/doi/10.1137/24M166944X) in SIAM Review, [random spanning trees](https://onlinelibrary.wiley.com/doi/10.1002/rsa.70063) in Random Structures & Algorithms, [weighted voting](https://data-democracy.org/AdaptiveBanz) in EC'26, and [a new polarization index](https://projecteuclid.org/journals/annals-of-applied-statistics/volume-20/issue-2/Measuring-public-opinion--The-Wasserstein-bipolarization-index-with-application/10.1214/26-AOAS2162.full) in Annals of Applied Statistics.
       - name: Current collaborative projects
-        description: 'Some of our recent oddball ideas:  an "[autocomplete](https://data-democracy.org/autocomplete)" model of preference formation; a new segregation score that captures diffusion effects in American cities; and a new framework that looks at [*how badly*](https://data-democracy.org/GAA) voting rules fail various guarantees, not just how often.'
+        description: 'Some of our recent oddball ideas:  an "[autocomplete](https://arxiv.org/pdf/2610.33035)" model of preference formation; a new segregation score that captures diffusion effects in American cities; and a new framework that looks at *how badly* voting rules fail various guarantees, not just how often.'
       - name: Student research
         description: Students in the lab have been pursuing cool projects on representation and spatiality, the geometry of voting rules, the "veto core" in social choice theory, the shape of the space of redistricting plans, and new topological characterizations of Arrow's impossibility.
 
@@ -77,7 +77,7 @@ sections:
     open: false
     items:
       - name: Election modeling team
-        description: "Our community partners often ask for help figuring out potential impacts of changing the electoral system in a particular city, county, or state.  During the summer, three lab interns completed studies for a number of localities including revisiting several places we've studied before (Portland, OR, Santa Clara, CA, and Chicago, IL) plus a new look at San Diego, CA. We used probabilistic models to generate possible voter preference profiles and then compare representational outcomes under plurality, IRV, STV, Top-Two, Top-Four, and more."
+        description: "Our community partners often ask for help figuring out potential impacts of changing the electoral system in a particular city, county, or state.  During the summer, three lab interns from the [MS-CAPP](http://capp.uchicago.edu/) program completed studies for a number of localities including revisiting several places we've studied before (Portland, OR, Santa Clara, CA, and Chicago, IL) plus a new look at San Diego, CA. We used probabilistic models to generate possible voter preference profiles and then compare representational outcomes under plurality, IRV, STV, Top-Two, Top-Four, and more."
         link:
           label: Explore more of our past election system case studies
           url: https://data-democracy.org/election-system-case-studies
@@ -187,7 +187,7 @@ sections:
           - Full-time
           - University of Chicago
           - Open until filled
-        description: The Research Director will run the research initiative at a high level and serve as the public face of DDRI's external engagement. The role carries primary responsibility for the lab's partnerships, fundraising, and public communications — working at the intersection of math, law, policy, and open-source software to translate academic research into policy recommendations and implementation with governmental, legal, and civic partners.
+        description: Help us complete our leadership team!  The DDRI Research Director will run the research initiative at a high level and serve as the public face of our external engagement. The role carries primary responsibility for the lab's partnerships, fundraising, and public communications — working at the intersection of math, law, policy, and open-source software to translate academic research into policy recommendations and implementation with governmental, legal, and civic partners.
         link:
           label: Apply
           url: https://uchicago.wd5.myworkdayjobs.com/en-US/External/job/Director--Data---Democracy-Research-Initiative_JR35468
