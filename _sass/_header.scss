@@ -52,7 +52,6 @@
   flex: 0 0 auto;
   display: flex;
   justify-content: flex-end;
-  overflow-x: hidden;
 }
 
 .nav-links {
@@ -73,6 +72,7 @@
   font-family: $font-sans-thin;
   text-transform: uppercase;
   letter-spacing: 0.1rem;
+  white-space: nowrap;
 
   transition: all 100ms ease;
 }
@@ -98,13 +98,6 @@
 .nav-links__link--current:active {
   background: #444444;
   color: #f9f9f9;
-}
-
-@media only screen and (max-width: 600px) {
-  nav {
-    flex-direction: column;
-    padding: 0rem;
-  }
 }
 
 .categories {
@@ -170,30 +163,53 @@
   width: 1.5rem;
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: $nav-breakpoint) {
   .site-nav {
+    flex-direction: column;
     padding: 0;
+  }
+  .site-nav__logo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0.5rem 1rem;
+  }
+  .site-nav__logo__img {
+    height: 2.5rem;
+    margin: 0;
   }
   .site-nav__open-btn {
     display: flex;
   }
+
+  // Top-level links: hidden until the menu button opens them as a vertical list
   .site-nav__contents {
+    display: none;
     flex-direction: column;
     align-items: stretch;
     width: 100%;
   }
-  .site-nav__contents {
-    display: none;
-  }
   .site-nav__contents--show {
     display: flex;
   }
-  .site-nav__logo {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 100%;
-    align-items: center;
-    padding: 1rem;
+  .site-nav__contents .nav-links__link {
+    padding: 0.75rem 1rem;
+    line-height: normal;
+    border-top: 1px solid $dark-grey;
+  }
+
+  // Submenus: one compact row that scrolls sideways if it doesn't fit
+  .categories .nav-links {
+    min-width: 0;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-x: auto;
+  }
+  .nav-links__link--minor {
+    padding: 0 0.75rem;
+    font-size: 0.875rem;
+    letter-spacing: 0.05rem;
+    line-height: 2.5;
   }
 }
