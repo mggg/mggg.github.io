@@ -1,0 +1,21 @@
+{% assign item = include.item %}
+<details class="newsletter-item newsletter-software{% if item.color %} newsletter-accent--{{ item.color }}{% endif %}"{% if item.open %} open{% endif %}>
+  <summary class="newsletter-software__summary">
+    <h3 class="newsletter-item__title">{{ item.name }}</h3>
+    {% if item.version %}
+    <span class="newsletter-software__version">{{ item.version }}</span>
+    {% endif %}
+  </summary>
+  <div class="newsletter-software__body">
+    {{ item.description | markdownify }}
+    {% if item.features %}
+    <ul class="newsletter-item__list">
+      {% for feature in item.features %}
+      <li>{{ feature | markdownify | remove: "<p>" | remove: "</p>" | strip }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+    {{ item.note | markdownify }}
+    {% include newsletter/link.html link=item.link %}
+  </div>
+</details>

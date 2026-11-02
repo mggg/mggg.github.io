@@ -1,0 +1,10 @@
+{% assign callout = include.callout %}
+<section class="newsletter-callout"{% if include.id != "" %} id="{{ include.id }}"{% endif %}>
+  {% if callout.pullquote %}
+  <p class="newsletter-callout__pullquote">{{ callout.pullquote }}</p>
+  {% endif %}
+  {{ callout.body | markdownify }}
+  {% if callout.show_subscribe and include.subscribe.url %}
+  <a class="newsletter__button" href="{{ include.subscribe.url }}">{{ include.subscribe.label }}</a>
+  {% endif %}
+</section>

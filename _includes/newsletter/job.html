@@ -1,0 +1,9 @@
+{% assign job = include.job %}
+<div class="newsletter-item">
+  <h3 class="newsletter-item__title newsletter-item__title--accent">{{ job.title }}</h3>
+  {% if job.meta %}
+  <div class="newsletter-item__meta">{{ job.meta | join: " · " }}</div>
+  {% endif %}
+  {{ job.description | markdownify }}
+  {% include newsletter/link.html link=job.link %}
+</div>
