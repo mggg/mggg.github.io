@@ -1,30 +1,6 @@
 <header class="site-header">
   <nav class="site-nav">
-    <div class="site-nav__logo">
-      <a href="/">
-        <img
-          class="site-nav__logo__img"
-          src="/assets/reynolds_redesign/DDL_UChicago_Color_RGB.svg"
-          alt="Data and Democracy Lab"
-        />
-      </a>
-      <script>
-        function openNav() {
-          var links = document.getElementById("nav-links");
-          var button = document.querySelector('[aria-controls="nav-links"]');
-          var isOpen = links.classList.toggle("site-nav__contents--show");
-          button.setAttribute("aria-expanded", isOpen);
-        }
-      </script>
-      <button
-        class="site-nav__open-btn"
-        aria-controls="nav-links"
-        aria-expanded="false"
-        onclick="openNav();"
-      >
-        <img src="/assets/baseline-menu-24px.svg" class="icon" alt="Menu" />
-      </button>
-    </div>
+    {% include nav-logo.html %}
     <ul id="nav-links" class="nav-links site-nav__contents">
       {% if include.show_categories %} {% assign highlight_link = "/work" %} {%
       endif %} {% include personal_nav-links.html highlight_link=highlight_link %}
