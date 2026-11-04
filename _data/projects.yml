@@ -1,12 +1,12 @@
-# Place-based electoral studies, shown on the Locations page (/locations).
-# Rendered by _includes/locations.html.
+# Place-based electoral studies, shown on the Projects page (/projects).
+# Rendered by _includes/projects.html.
 #
 # `types` defines the governing-body categories: the badges on each card and
 # the map legend / filter. `color` is used for map pins, shaded states, and
 # legend swatches. The colors are the Districtr palette shared with the
 # newsletter (`$newsletter-accents` in _sass/components/_newsletter.scss).
 #
-# Each entry in `locations`:
+# Each entry in `projects`:
 #   id           unique anchor id (lowercase, hyphens)
 #   name         card title
 #   state        two-letter postal code (used for the map and card header)
@@ -41,7 +41,7 @@ types:
     label: Redistricting
     color: "#f7cc6e"
 
-locations:
+projects:
   - id: alabama
     name: Alabama
     state: AL

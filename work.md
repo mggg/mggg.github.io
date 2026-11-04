@@ -18,9 +18,7 @@ Here you'll find:
 
 **[Research](/research):** Peer-reviewed publications and ongoing projects advancing the computational science of fair representation.
 
-**[Reports](/reports):** Analyses and "white papers" (informally published reports) our team has prepared for diverse audiences addressing a wide array of topics.
+**[Projects](/projects):** Electoral analyses, expert reports, and "white papers" (informally published reports) our team has prepared for diverse audiences addressing a wide array of topics.
 
 
 **[Civic Tech](/civic-tech):** Open-source software, datasets, and interactive resources that aim to make the tools widely accessible.
-
-**[Locations](/locations):** The cities, counties, school districts, and states whose electoral systems we have studied, on a map.

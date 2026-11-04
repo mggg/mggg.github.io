@@ -1,17 +1,17 @@
-# Location mapping
+# Project Map
 
-The Locations page (`/locations`) shows the places the lab has studied: a US map
-with a pin or shaded state for each one, a legend that filters by governing body,
-and a card per location. Everything on it comes from one data file,
-`_data/locations.yml`; adding a location never requires touching HTML, CSS, or
+The Projects page (`/projects`, "Project Map" in the sub-navigation) shows the
+places the lab has studied: a US map with a pin or state square for each one, a legend that filters by governing body,
+and a card per project. Everything on it comes from one data file,
+`_data/projects.yml`; adding a project never requires touching HTML, CSS, or
 JavaScript.
 
 This guide covers:
 
 1. [How it fits together](#how-it-fits-together)
-2. [Adding a location](#adding-a-location)
+2. [Adding a project](#adding-a-project)
 3. [Finding coordinates](#finding-coordinates)
-4. [Adding a study to an existing location](#adding-a-study-to-an-existing-location)
+4. [Adding a study to an existing project](#adding-a-study-to-an-existing-project)
 5. [Adding a category](#adding-a-category)
 6. [Previewing](#previewing)
 7. [Limitations](#limitations)
@@ -21,37 +21,38 @@ This guide covers:
 
 | File | What it is | Edit it when… |
 |---|---|---|
-| `_data/locations.yml` | Every location and study, plus the category list | Adding or changing a location, study, or category |
+| `_data/projects.yml` | Every project and study, plus the category list | Adding or changing a project, study, or category |
 | `_data/us_map.json` | Pre-projected state outlines and the projection settings (`insets`) | Never by hand; regenerate it if the map itself must change |
-| `_category_pages/locations.html` | The page: title and intro text | Changing the intro |
-| `_includes/locations.html` | Assembles the map, count line, and card list | Only to change the design |
-| `_includes/locations/map.html` | Map, legend/filter, and hover popup markup | Only to change the design |
-| `_includes/locations/card.html` | One card | Only to change the design |
-| `_includes/locations/script.html` | Places pins, filters, runs the popup | Only to change behavior |
-| `_sass/components/_locations.scss` | Styles | Only to change the design |
+| `_category_pages/projects.md` | The page: title, sub-nav label, and intro text | Changing the intro |
+| `_includes/projects.html` | Assembles the map, count line, and card list | Only to change the design |
+| `_includes/projects/map.html` | Map, legend/filter, and hover popup markup | Only to change the design |
+| `_includes/projects/card.html` | One card | Only to change the design |
+| `_includes/projects/script.html` | Places pins, filters, runs the popup | Only to change behavior |
+| `_sass/components/_projects.scss` | Styles | Only to change the design |
 
-When the site builds, Jekyll turns each entry into a card and either shades its
-state (statewide studies) or records its coordinates (local studies). In the
-browser, the script projects those coordinates onto the map to place the pins,
-nudging overlapping pins apart and drawing a short leader line back to the true
-spot.
+When the site builds, Jekyll turns each entry into a card and either draws a
+square at its state's center (statewide studies) or records its coordinates
+(local studies). In the browser, the script projects those coordinates onto the
+map to place the pins, nudging overlapping pins apart (and off any squares) and
+drawing a short leader line back to the true spot.
 
-## Adding a location
+## Adding a project
 
-Add an entry under `locations:` in `_data/locations.yml`. Cards are sorted by
+Add an entry under `projects:` in `_data/projects.yml`. Cards are sorted by
 `name`, so the entry can go anywhere in the list, though keeping the file
 alphabetical makes it easier to scan.
 
 First decide the **scope**:
 
 - **`statewide`**: the work covers a whole state (a congressional or legislative
-  plan, statewide redistricting). The state is shaded on the map in its
-  category's color, or striped in all of their colors if it has several.
+  plan, statewide redistricting). A square sits at the state's center in its
+  category's color, or striped in all of their colors if it has several. The
+  center comes from `center` in `_data/us_map.json`; nothing to set here.
 - **`local`**: the work covers a city, county, school district, or similar. A pin
   is placed at the entry's coordinates.
 
-A local location in a state that also has a statewide entry is fine: the state is
-shaded and the pin sits on top of it.
+A local project in a state that also has a statewide entry is fine: the pin is
+nudged off the square if they would overlap.
 
 ### Statewide example
 
@@ -89,15 +90,15 @@ shaded and the pin sits on top of it.
 
 | Field | Required | Notes |
 |---|---|---|
-| `id` | yes | Unique, lowercase, hyphens. Becomes the card's anchor (`/locations#san-diego-ca`); map pins and states link to it. For local entries, end with the state code (`beaverton-or`) |
+| `id` | yes | Unique, lowercase, hyphens. Becomes the card's anchor (`/projects#san-diego-ca`); map pins and squares link to it. For local entries, end with the state code (`beaverton-or`) |
 | `name` | yes | Card title, popup title, and sort key. Cities: `City, State`; counties: `Name County, State`; states: the state name |
-| `state` | yes | Two-letter postal code. Sets the card's locator map, and for statewide entries, which state is shaded |
+| `state` | yes | Two-letter postal code. Sets the card's locator map, and for statewide entries, which state gets the square |
 | `scope` | yes | `statewide` or `local` |
 | `lat`, `lon` | local only | Decimal degrees. See [Finding coordinates](#finding-coordinates) |
-| `types` | yes | One or more category keys from `types:` at the top of the file, e.g. `[city-council]` or `[congressional, state-legislature]`. The **first** sets a pin's color; a statewide entry with several is striped in all of their colors, in the order listed |
+| `types` | yes | One or more category keys from `types:` at the top of the file, e.g. `[city-council]` or `[congressional, state-legislature]`. The **first** sets a pin's color; a statewide entry's square with several is striped in all of their colors, in the order listed |
 | `description` | yes | *(markdown)* One or two sentences on the work there |
 | `studies` | yes | List of studies; see below |
-| `image` | no | Path to a header image (e.g. `/uploads/…`). Without it, the card shows a locator map of the state with a dot for local entries |
+| `image` | no | Path to a header image (e.g. `/uploads/…`). Without it, the card shows a locator map of the state with a dot for local entries or a square for statewide ones |
 
 Each study has:
 
@@ -136,15 +137,15 @@ Pins that land close together (the Portland suburbs, for example) are spread
 apart automatically, with leader lines back to their true positions, so there's
 no need to adjust coordinates to avoid overlap.
 
-## Adding a study to an existing location
+## Adding a study to an existing project
 
-Add an item to that location's `studies` list, and update its `description` if
+Add an item to that project's `studies` list, and update its `description` if
 the new work changes the summary. Don't create a second entry for the same
 place: it would make a second card and a second pin.
 
 ## Adding a category
 
-Categories live under `types:` at the top of `_data/locations.yml`:
+Categories live under `types:` at the top of `_data/projects.yml`:
 
 ```yaml
 types:
@@ -169,28 +170,28 @@ states, and consider adding it to `$newsletter-accents` so the two stay in step.
 bundle exec jekyll serve
 ```
 
-Open `http://localhost:4000/locations` and check:
+Open `http://localhost:4000/projects` and check:
 
-- The count line ("Showing all N locations") went up by one.
-- The pin is in the right place, or the right state is shaded, in the right color.
-- Hovering the pin or state shows a popup with the location's name and its study
+- The count line ("Showing all N projects") went up by one.
+- The pin is in the right place, or the square is in the right state, in the right color.
+- Hovering the pin or square shows a popup with the project's name and its study
   links, and clicking it jumps to the card.
 - The card's locator map shows the right state, with a dot in the right spot for
-  local entries.
-- Each legend filter that includes the location shows and hides it.
+  local entries or a square for statewide ones.
+- Each legend filter that includes the project shows and hides it.
 - Every study link opens the right page.
 
 If the page looks unstyled after switching branches, hard-reload (⌘⇧R). The
 stylesheet URL now changes on every build, so this should be rare.
 
-If the build fails, the usual cause is a YAML error in `_data/locations.yml`:
+If the build fails, the usual cause is a YAML error in `_data/projects.yml`:
 the message gives a line number, and it's most often an unquoted value containing
 `": "`.
 
 ## Limitations
 
-- **One statewide entry per state.** The map shades and links a state for its
-  first statewide entry only. Put all statewide work for a state in one entry
+- **One statewide entry per state.** The map draws and links a state's square for
+  its first statewide entry only. Put all statewide work for a state in one entry
   with several `studies` and `types`.
 - **US states, DC, and Puerto Rico only.** Other places have no outline in
   `_data/us_map.json`, so there's no locator map, and pins outside the map's
@@ -202,9 +203,9 @@ the message gives a line number, and it's most often an unquoted value containin
 
 ## Checklist
 
-- [ ] Entry added under `locations:` with a unique `id`
+- [ ] Entry added under `projects:` with a unique `id`
 - [ ] `scope` set; local entries have `lat` and a **negative** `lon`
 - [ ] `types` uses existing keys, with the main one first
 - [ ] Description written; values containing `": "` are quoted
 - [ ] Every study has a `title` and a working `url`
-- [ ] Previewed `/locations`: pin or state, popup, card, filters, and links
+- [ ] Previewed `/projects`: pin or state, popup, card, filters, and links

@@ -1,18 +1,18 @@
 <script>
-  // Locations page: places map pins and card locator dots, and filters the
-  // map and card list by governing body. See _includes/locations.html.
+  // Projects page: places map pins and card locator dots, and filters the
+  // map and card list by governing body. See _includes/projects.html.
   (function () {
-    var root = document.querySelector("[data-locations]");
+    var root = document.querySelector("[data-projects]");
     if (!root) return;
-    root.classList.add("locations--js");
+    root.classList.add("projects--js");
 
     var SVG_NS = "http://www.w3.org/2000/svg";
     var PIN_RADIUS = 5.5;
-    var insets = JSON.parse(root.querySelector("[data-locations-insets]").textContent);
-    var cards = Array.prototype.slice.call(root.querySelectorAll(".locations-card"));
-    var buttons = Array.prototype.slice.call(root.querySelectorAll(".locations-filter__item"));
-    var resetButton = root.querySelector("[data-locations-reset]");
-    var countText = root.querySelector("[data-locations-count]");
+    var insets = JSON.parse(root.querySelector("[data-projects-insets]").textContent);
+    var cards = Array.prototype.slice.call(root.querySelectorAll(".projects-card"));
+    var buttons = Array.prototype.slice.call(root.querySelectorAll(".projects-filter__item"));
+    var resetButton = root.querySelector("[data-projects-reset]");
+    var countText = root.querySelector("[data-projects-count]");
     var colors = {};
     buttons.forEach(function (button) {
       colors[button.dataset.type] = button.dataset.color;
@@ -68,7 +68,7 @@
     }
 
     // Map pins and card locator dots for local studies.
-    var pinLayer = root.querySelector("[data-locations-pins]");
+    var pinLayer = root.querySelector("[data-projects-pins]");
     var pins = [];
     cards.forEach(function (card) {
       if (!card.dataset.lat) return;
@@ -78,24 +78,24 @@
 
       var pin = svg("a", {
         href: "#" + card.id,
-        class: "locations-map__pin",
+        class: "projects-map__pin",
         "aria-label": name,
-        "data-locations-mark": "",
+        "data-projects-mark": "",
         "data-types": card.dataset.types,
         style: "--type-color: " + color
       });
-      var leader = svg("line", { class: "locations-map__leader" });
-      var circle = svg("circle", { class: "locations-map__dot", r: PIN_RADIUS });
+      var leader = svg("line", { class: "projects-map__leader" });
+      var circle = svg("circle", { class: "projects-map__dot", r: PIN_RADIUS });
       pin.appendChild(leader);
       pin.appendChild(circle);
       pinLayer.appendChild(pin);
       pins.push({ x0: xy[0], y0: xy[1], x: xy[0], y: xy[1], leader: leader, circle: circle });
 
-      var locator = card.querySelector(".locations-card__locator");
+      var locator = card.querySelector(".projects-card__locator");
       if (locator) {
         var box = locator.viewBox.baseVal;
         locator.appendChild(svg("circle", {
-          class: "locations-card__dot",
+          class: "projects-card__dot",
           cx: xy[0],
           cy: xy[1],
           r: Math.max(box.width, box.height) * 0.035,
@@ -104,9 +104,23 @@
       }
     });
 
+    // Statewide squares (rendered by projects/map.html) stay put at their
+    // state's center; pins move out of their way, treating each as a circle
+    // around its corners.
+    var squareLayer = root.querySelector("[data-projects-squares]");
+    var squareRadius = (parseFloat(squareLayer.dataset.size) / 2) * Math.SQRT2;
+    var squares = Array.prototype.slice.call(squareLayer.querySelectorAll("rect")).map(function (rect) {
+      var size = parseFloat(rect.getAttribute("width"));
+      return {
+        x: parseFloat(rect.getAttribute("x")) + size / 2,
+        y: parseFloat(rect.getAttribute("y")) + size / 2
+      };
+    });
+
     // Nudge overlapping pins apart (e.g. the Portland suburbs), pulling each
     // gently back toward its true position. Displaced pins get a leader line.
     var minGap = PIN_RADIUS * 2 + 1.5;
+    var squareGap = PIN_RADIUS + squareRadius + 1.5;
     for (var step = 0; step < 120; step++) {
       for (var i = 0; i < pins.length; i++) {
         for (var j = i + 1; j < pins.length; j++) {
@@ -119,6 +133,16 @@
           a.x -= (dx / dist) * push; a.y -= (dy / dist) * push;
           b.x += (dx / dist) * push; b.y += (dy / dist) * push;
         }
+        // A square doesn't move, so the pin takes the whole push.
+        squares.forEach(function (s) {
+          var p = pins[i];
+          var sx = p.x - s.x, sy = p.y - s.y;
+          var sd = Math.sqrt(sx * sx + sy * sy);
+          if (sd >= squareGap) return;
+          if (sd < 0.01) { sx = 1; sy = 0; sd = 1; }
+          p.x += (sx / sd) * (squareGap - sd);
+          p.y += (sy / sd) * (squareGap - sd);
+        });
       }
       pins.forEach(function (p) {
         p.x += (p.x0 - p.x) * 0.02;
@@ -135,13 +159,13 @@
       p.leader.setAttribute("y2", (moved ? p.y : p.y0).toFixed(1));
     });
 
-    // Filtering. No selection shows everything; otherwise show locations with
+    // Filtering. No selection shows everything; otherwise show projects with
     // any selected type, colored by the first selected type they have.
-    var marks = Array.prototype.slice.call(root.querySelectorAll("[data-locations-mark]"));
+    var marks = Array.prototype.slice.call(root.querySelectorAll("[data-projects-mark]"));
     var active = [];
 
-    // A location's types that are showing: all of them with no selection,
-    // otherwise the selected ones, in the location's own order.
+    // A project's types that are showing: all of them with no selection,
+    // otherwise the selected ones, in the project's own order.
     function matchingTypes(types) {
       types = types.split(" ");
       if (!active.length) return types;
@@ -150,13 +174,13 @@
       });
     }
 
-    // Diagonal stripes for a state with several showing types, matching the
-    // patterns locations/map.html renders. Returns null for a single type.
-    var patternDefs = root.querySelector("[data-locations-patterns]");
+    // Diagonal stripes for a square with several showing types, matching the
+    // patterns projects/map.html renders. Returns null for a single type.
+    var patternDefs = root.querySelector("[data-projects-patterns]");
     var STRIPE = parseFloat(patternDefs.dataset.stripe);
     function stripeFill(types) {
       if (types.length < 2) return null;
-      var id = "locations-stripes-" + types.join("-");
+      var id = "projects-stripes-" + types.join("-");
       if (!document.getElementById(id)) {
         var size = types.length * STRIPE;
         var pattern = svg("pattern", {
@@ -186,8 +210,8 @@
         mark.classList.toggle("is-dimmed", !matches.length);
         if (!matches.length) return;
         mark.style.setProperty("--type-color", colors[matches[0]]);
-        // Pins stay one color; states stripe when several types are showing.
-        var fill = mark.tagName.toLowerCase() === "path" ? stripeFill(matches) : null;
+        // Pins stay one color; squares stripe when several types are showing.
+        var fill = mark.tagName.toLowerCase() === "rect" ? stripeFill(matches) : null;
         if (fill) mark.style.setProperty("--type-fill", fill);
         else mark.style.removeProperty("--type-fill");
       });
@@ -196,8 +220,8 @@
       });
       resetButton.hidden = !active.length;
       countText.textContent = active.length
-        ? "Showing " + shown + " of " + cards.length + " locations"
-        : "Showing all " + cards.length + " locations";
+        ? "Showing " + shown + " of " + cards.length + " projects"
+        : "Showing all " + cards.length + " projects";
     }
 
     buttons.forEach(function (button) {
@@ -213,15 +237,15 @@
       applyFilter();
     });
 
-    // Popup on hover/focus of a pin or shaded state: the location's name and
+    // Popup on hover/focus of a pin or square: the project's name and
     // links to its studies, copied from its card. It follows above the
     // pointer, and stays open while the pointer is over it so the links can
     // be clicked.
-    var figure = root.querySelector(".locations-map");
-    var mapSvg = root.querySelector(".locations-map__svg");
-    var popup = root.querySelector("[data-locations-popup]");
-    var popupTitle = popup.querySelector(".locations-popup__title");
-    var popupLinks = popup.querySelector(".locations-popup__links");
+    var figure = root.querySelector(".projects-map");
+    var mapSvg = root.querySelector(".projects-map__svg");
+    var popup = root.querySelector("[data-projects-popup]");
+    var popupTitle = popup.querySelector(".projects-popup__title");
+    var popupLinks = popup.querySelector(".projects-popup__links");
     var popupTarget = null;
     var hideTimer = null;
 
@@ -234,10 +258,10 @@
     var lastPoint = null;
 
     // Fills the popup for `link` unless it's already showing it. Returns
-    // false for filtered-out locations.
+    // false for filtered-out projects.
     function openPopup(link) {
       clearTimeout(hideTimer);
-      var mark = link.querySelector("[data-locations-mark]") || link;
+      var mark = link.querySelector("[data-projects-mark]") || link;
       if (mark.classList.contains("is-dimmed")) return false;
       if (popupTarget === link && !popup.hidden) return true;
       var card = document.getElementById(link.getAttribute("href").slice(1));
@@ -245,7 +269,7 @@
 
       popupTitle.textContent = card.querySelector(".card__title").textContent;
       popupLinks.innerHTML = "";
-      card.querySelectorAll(".locations-card__studies li").forEach(function (item) {
+      card.querySelectorAll(".projects-card__studies li").forEach(function (item) {
         popupLinks.appendChild(item.cloneNode(true));
       });
       popupTarget = link;
@@ -306,11 +330,11 @@
     mapSvg.addEventListener("mouseout", function (event) {
       if (markLink(event.target) && !markLink(event.relatedTarget)) hidePopupSoon();
     });
-    // Keyboard focus has no pointer, so anchor to the pin or state itself.
+    // Keyboard focus has no pointer, so anchor to the pin or square itself.
     mapSvg.addEventListener("focusin", function (event) {
       var link = markLink(event.target);
       if (link && openPopup(link)) {
-        placePopup(link.querySelector("circle, path").getBoundingClientRect());
+        placePopup(link.querySelector("circle, rect").getBoundingClientRect());
       }
     });
     mapSvg.addEventListener("focusout", function (event) {
