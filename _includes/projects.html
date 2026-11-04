@@ -1,0 +1,23 @@
+{% comment %}
+  Projects page: a US map of the Lab's place-based studies, a legend that
+  filters by governing body, and a card for each project.
+
+  Content: _data/projects.yml
+  Map geometry: _data/us_map.json (pre-projected state outlines; see its `source` note)
+{% endcomment %}
+{% assign projects = site.data.projects.projects | sort: "name" %}
+{% assign types = site.data.projects.types %}
+<div class="projects" data-projects>
+  {% include projects/map.html projects=projects types=types %}
+
+  <p class="projects__count" aria-live="polite" data-projects-count>
+    Showing all {{ projects.size }} projects
+  </p>
+
+  <ul class="projects__list">
+    {% for project in projects %}
+      {% include projects/card.html project=project types=types %}
+    {% endfor %}
+  </ul>
+</div>
+{% include projects/script.html %}

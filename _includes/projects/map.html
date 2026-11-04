@@ -1,0 +1,111 @@
+{% assign map = site.data.us_map %}
+<figure class="projects-map">
+  <svg
+    class="projects-map__svg"
+    viewBox="0 0 {{ map.width }} {{ map.height }}"
+    role="group"
+    aria-label="Map of projects by the Data and Democracy Lab"
+  >
+    {% comment %} No SVG <title>s: browsers show them as hover tooltips over our own popup. {% endcomment %}
+    {% comment %}
+      Squares for statewide projects with more than one category are filled
+      with diagonal stripes, one band per category. One pattern per
+      combination, id'd by its type keys; projects/script.html builds more the
+      same way when filters narrow them.
+    {% endcomment %}
+    {% assign stripe = 2.5 %}
+    <defs data-projects-patterns data-stripe="{{ stripe }}">
+      {% assign emitted = "|" %}
+      {% for project in include.projects %}
+        {% if project.scope == "statewide" and project.types.size > 1 %}
+          {% capture pattern_id %}projects-stripes-{{ project.types | join: "-" }}{% endcapture %}
+          {% capture pattern_key %}|{{ pattern_id }}|{% endcapture %}
+          {% unless emitted contains pattern_key %}
+            {% assign size = project.types.size | times: stripe %}
+      <pattern id="{{ pattern_id }}" patternUnits="userSpaceOnUse" width="{{ size }}" height="{{ size }}" patternTransform="rotate(45)">
+            {% for key in project.types %}
+              {% assign stripe_type = include.types | where: "key", key | first %}
+        <rect x="{{ forloop.index0 | times: stripe }}" width="{{ stripe }}" height="{{ size }}" fill="{{ stripe_type.color }}" />
+            {% endfor %}
+      </pattern>
+            {% assign emitted = emitted | append: pattern_key %}
+          {% endunless %}
+        {% endif %}
+      {% endfor %}
+    </defs>
+    <g class="projects-map__states">
+      {% for state in map.states %}
+      <path id="us-state-{{ state.abbr }}" class="projects-map__state" d="{{ state.d }}" />
+      {% endfor %}
+    </g>
+    {% comment %}
+      Statewide projects: a square at the state's center (us_map.json), the
+      same size as a local pin. projects/script.html keeps pins clear of them.
+    {% endcomment %}
+    {% assign square = 10 %}
+    {% assign half = square | divided_by: 2.0 %}
+    <g class="projects-map__squares" data-projects-squares data-size="{{ square }}">
+      {% for state in map.states %}
+        {% assign statewide = include.projects | where: "state", state.abbr | where: "scope", "statewide" | first %}
+        {% if statewide %}
+          {% assign type = include.types | where: "key", statewide.types[0] | first %}
+      <a href="#{{ statewide.id }}" class="projects-map__square-link" aria-label="{{ statewide.name }}">
+        <rect
+          class="projects-map__square"
+          data-projects-mark
+          data-types="{{ statewide.types | join: ' ' }}"
+          x="{{ state.center[0] | minus: half | round: 1 }}"
+          y="{{ state.center[1] | minus: half | round: 1 }}"
+          width="{{ square }}"
+          height="{{ square }}"
+          style="--type-color: {{ type.color }};{% if statewide.types.size > 1 %} --type-fill: url(#projects-stripes-{{ statewide.types | join: '-' }});{% endif %}"
+        />
+      </a>
+        {% endif %}
+      {% endfor %}
+    </g>
+    <g class="projects-map__pins" data-projects-pins></g>
+  </svg>
+
+  {% comment %} Filled in by projects/script.html when a pin or square is hovered or focused. {% endcomment %}
+  <div class="projects-popup" data-projects-popup hidden>
+    <p class="projects-popup__title"></p>
+    <ul class="projects-popup__links"></ul>
+  </div>
+
+  <figcaption class="projects-filter">
+    <div class="projects-filter__items" role="group" aria-label="Filter projects by governing body">
+      {% for type in include.types %}
+        {% assign count = 0 %}
+        {% assign has_local = false %}
+        {% assign has_statewide = false %}
+        {% for project in include.projects %}
+          {% if project.types contains type.key %}
+            {% assign count = count | plus: 1 %}
+            {% if project.scope == "local" %}{% assign has_local = true %}{% else %}{% assign has_statewide = true %}{% endif %}
+          {% endif %}
+        {% endfor %}
+      <button
+        type="button"
+        class="projects-filter__item"
+        data-type="{{ type.key }}"
+        data-color="{{ type.color }}"
+        aria-pressed="false"
+        style="--type-color: {{ type.color }}"
+      >
+        {% if has_statewide %}<span class="projects-filter__swatch projects-filter__swatch--area" aria-hidden="true"></span>{% endif %}
+        {% if has_local %}<span class="projects-filter__swatch projects-filter__swatch--pin" aria-hidden="true"></span>{% endif %}
+        {{ type.label }}
+        <span class="projects-filter__count">{{ count }}</span>
+      </button>
+      {% endfor %}
+      <button type="button" class="projects-filter__reset" data-projects-reset hidden>Show all</button>
+    </div>
+    <p class="projects-filter__note">
+      Squares mark statewide studies; dots mark local ones. Select one or
+      more categories to filter the map and list.
+    </p>
+  </figcaption>
+
+  <script type="application/json" data-projects-insets>{{ map.insets | jsonify }}</script>
+</figure>

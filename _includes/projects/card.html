@@ -1,0 +1,65 @@
+{% assign project = include.project %}
+{% assign state = site.data.us_map.states | where: "abbr", project.state | first %}
+<li
+  class="card projects-card"
+  id="{{ project.id }}"
+  data-types="{{ project.types | join: ' ' }}"
+  {% if project.scope == "local" %}data-lat="{{ project.lat }}" data-lon="{{ project.lon }}"{% endif %}
+>
+  <div class="projects-card__header">
+    {% if project.image %}
+    <img class="projects-card__image" src="{{ project.image | relative_url }}" alt="" />
+    {% elsif state %}
+      {% comment %} Locator map: the state from the main map, framed with padding. {% endcomment %}
+      {% assign longest = state.bbox[2] %}
+      {% if state.bbox[3] > longest %}{% assign longest = state.bbox[3] %}{% endif %}
+      {% assign pad = longest | times: 0.15 | plus: 2 %}
+      {% assign vx = state.bbox[0] | minus: pad | round: 1 %}
+      {% assign vy = state.bbox[1] | minus: pad | round: 1 %}
+      {% assign vw = pad | times: 2 | plus: state.bbox[2] | round: 1 %}
+      {% assign vh = pad | times: 2 | plus: state.bbox[3] | round: 1 %}
+    <svg
+      class="projects-card__locator"
+      viewBox="{{ vx }} {{ vy }} {{ vw }} {{ vh }}"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <use href="#us-state-{{ state.abbr }}" class="projects-card__state" />
+      {% if project.scope == "statewide" %}
+        {% comment %} Matches the map's square; local cards get a dot from projects/script.html instead. {% endcomment %}
+        {% assign type = include.types | where: "key", project.types[0] | first %}
+        {% assign longest_view = vw %}{% if vh > longest_view %}{% assign longest_view = vh %}{% endif %}
+        {% assign side = longest_view | times: 0.07 | round: 1 %}
+        {% assign half = side | divided_by: 2.0 %}
+      <rect
+        class="projects-card__square"
+        x="{{ state.center[0] | minus: half | round: 1 }}"
+        y="{{ state.center[1] | minus: half | round: 1 }}"
+        width="{{ side }}"
+        height="{{ side }}"
+        style="--type-color: {{ type.color }};{% if project.types.size > 1 %} --type-fill: url(#projects-stripes-{{ project.types | join: '-' }});{% endif %}"
+      />
+      {% endif %}
+    </svg>
+    {% endif %}
+  </div>
+
+  <div class="card__content">
+    <h3 class="card__title">{{ project.name }}</h3>
+    <ul class="projects-card__badges">
+      {% for key in project.types %}
+        {% assign type = include.types | where: "key", key | first %}
+      <li class="projects-badge" style="--type-color: {{ type.color }}">{{ type.label }}</li>
+      {% endfor %}
+    </ul>
+    {{ project.description | markdownify | replace: "<p>", '<p class="card__teaser">' }}
+    <ul class="projects-card__studies">
+      {% for study in project.studies %}
+      <li>
+        <a href="{{ study.url | relative_url }}">{{ study.title }}</a>
+        {% if study.year %}<span class="projects-card__year">({{ study.year }})</span>{% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</li>
