@@ -5,9 +5,187 @@ $projects-sticky-offset: 7rem;
 
 /* map */
 
+// A grid: the map with the national/international sidecar beside it, and the
+// legend/filter across both underneath. The popup is absolutely positioned
+// against the whole figure, so it's unaffected.
 .projects-map {
   position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 16rem;
+  column-gap: 2rem;
+  align-items: center;
   margin: 1.5rem 0 0;
+}
+
+.projects-map__svg {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+/* sidecar (_includes/projects/sidecar.html) */
+
+// Never taller than the map: `contain: size` keeps the sidecar's content from
+// sizing the grid row, so the row is the map's height and the sidecar
+// stretches to fill it, scrolling if an open section needs more room.
+.projects-sidecar {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: stretch;
+  contain: size;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-left: 1.5rem;
+  border-left: 1px solid $grey;
+  font-family: $font-sans;
+}
+
+// Auto margins center the sections vertically when they fit, and (unlike
+// justify-content: center) leave the top reachable when they scroll.
+.projects-sidecar__inner {
+  margin: auto 0;
+}
+
+.projects-sidecar__group {
+  border-bottom: 1px solid $grey;
+
+  &:first-child {
+    border-top: 1px solid $grey;
+  }
+}
+
+/* accordion header: the whole row toggles; the chevron turns when open */
+
+.projects-sidecar__summary {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 0;
+  cursor: pointer;
+  list-style: none;
+
+  &::-webkit-details-marker {
+    display: none;
+  }
+
+  &::after {
+    content: "";
+    width: 0.5rem;
+    height: 0.5rem;
+    margin: 0 0.25rem 0 auto;
+    border-right: 2px solid #666;
+    border-bottom: 2px solid #666;
+    transform: translateY(-25%) rotate(45deg);
+    transition: transform 200ms ease;
+  }
+
+  &:hover .projects-sidecar__heading {
+    color: $mggg-dark-blue;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $mggg-blue;
+    outline-offset: 2px;
+  }
+}
+
+// .is-closing is set while a section slides shut (see projects/script.html).
+.projects-sidecar__group[open]:not(.is-closing) > .projects-sidecar__summary::after {
+  transform: translateY(25%) rotate(225deg);
+}
+
+.projects-sidecar__heading.projects-sidecar__heading {
+  margin: 0;
+  font-family: $font-sans-thin;
+  font-size: 0.875rem;
+  font-weight: 400;
+  letter-spacing: 0.05rem;
+  line-height: 1.4;
+  text-transform: uppercase;
+  color: #666;
+  transition: color 100ms;
+}
+
+.projects-sidecar__count {
+  font-size: 0.8125rem;
+  color: #888;
+
+  &::before {
+    content: "(";
+  }
+
+  &::after {
+    content: ")";
+  }
+}
+
+// Doubled classes beat the site's default list and heading styles.
+.projects-sidecar__items.projects-sidecar__items,
+.projects-sidecar__studies.projects-sidecar__studies {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+// The panel that slides; its padding animates with it.
+.projects-sidecar__items.projects-sidecar__items {
+  padding: 0.25rem 0 1rem;
+}
+
+// Styled like the map's hover popup (.projects-popup).
+.projects-sidecar__item + .projects-sidecar__item {
+  margin-top: 1rem;
+}
+
+.projects-sidecar__name.projects-sidecar__name {
+  margin: 0;
+  font-family: $font-header-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #444;
+}
+
+.projects-sidecar__studies.projects-sidecar__studies {
+  margin-top: 0.375rem;
+  font-size: 0.9rem;
+  line-height: 1.4;
+
+  li + li {
+    margin-top: 0.375rem;
+  }
+
+  a::after {
+    content: " →";
+  }
+}
+
+// Not enough room beside the map: one column of sidecar, map, then filter.
+@media only screen and (max-width: 900px) {
+  .projects-map {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  // Above the map there's no height to match, so it grows with its content.
+  .projects-sidecar {
+    grid-column: 1;
+    grid-row: 1;
+    contain: none;
+    overflow: visible;
+    margin-bottom: 1.5rem;
+    padding: 0;
+    border-left: 0;
+  }
+
+  // Child selectors so these win over the base rules later in the file.
+  .projects-map > .projects-map__svg {
+    grid-row: 2;
+  }
+
+  .projects-map > .projects-filter {
+    grid-row: 3;
+  }
 }
 
 /* hover popup (positioned by projects/script.html) */
@@ -64,31 +242,47 @@ $projects-sticky-offset: 7rem;
   stroke-linejoin: round;
 }
 
-// Statewide squares and local pins share the same treatment.
-.projects-map__square-link,
+// An outlined state's shape (map.html). vector-effect isn't inherited, so it
+// goes on the shape itself: the border keeps its width in the scaled-down card
+// locators.
+.projects-map__shape {
+  vector-effect: non-scaling-stroke;
+}
+
+.projects-map__state--study {
+  // A border in the category's color; --type-fill is a split pattern for
+  // states with more than one category. Clipped to the state's own shape
+  // (map.html), so only the inner half of the stroke shows: 5 draws a 2.5
+  // border inside the edge.
+  stroke: var(--type-fill, var(--type-color));
+  stroke-width: 7;
+  transition: filter 100ms, stroke-width 100ms;
+
+  &.is-dimmed {
+    stroke: white;
+    stroke-width: 1.5;
+  }
+}
+
+.projects-map__state-link:hover .projects-map__state--study,
+.projects-map__state-link:focus .projects-map__state--study {
+  stroke-width: 7;
+  filter: brightness(0.9);
+}
+
 .projects-map__pin {
-  &:hover .projects-map__square,
+  &.is-dimmed {
+    display: none;
+  }
+
   &:hover .projects-map__dot,
-  &:focus .projects-map__square,
   &:focus .projects-map__dot {
     stroke: $mggg-very-dark-blue;
   }
 }
 
-.projects-map__pin.is-dimmed,
-.projects-map__square.is-dimmed {
-  display: none;
-}
-
 .projects-map__dot {
   fill: var(--type-color);
-  stroke: white;
-  stroke-width: 1.5;
-}
-
-// --type-fill is a stripe pattern for projects with more than one category.
-.projects-map__square {
-  fill: var(--type-fill, var(--type-color));
   stroke: white;
   stroke-width: 1.5;
 }
@@ -100,16 +294,94 @@ $projects-sticky-offset: 7rem;
 
 /* legend / filter */
 
+// Spans the map and sidecar columns (see .projects-map).
 .projects-filter {
+  grid-column: 1 / -1;
+  grid-row: 2;
   margin-top: 1rem;
   font-family: $font-sans;
 }
 
+// First level (kind of work), then the selected group's types.
+.projects-filter__groups,
 .projects-filter__items {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 0.5rem;
+}
+
+// The second row sits in a tinted panel, so it reads as part of the group
+// above it.
+.projects-filter__items {
+  margin-top: 0.75rem;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  background: $light-grey;
+
+  &[hidden] {
+    display: none;
+  }
+}
+
+.projects-filter__group {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.375rem 1rem;
+  border: 1px solid $dark-grey;
+  border-radius: 1.25rem;
+  background: white;
+  font-family: $font-sans;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #444;
+  cursor: pointer;
+  transition: background 100ms, border-color 100ms;
+
+  &:hover {
+    background: $light-grey;
+  }
+
+  &[aria-pressed="true"] {
+    border-color: $mggg-dark-blue;
+    background: $grey;
+    font-weight: 600;
+    box-shadow: inset 0 0 0 1px $mggg-dark-blue;
+  }
+
+  // Groups with a second row get a chevron that turns when it's open.
+  &[aria-expanded]::after {
+    content: "";
+    width: 0.4rem;
+    height: 0.4rem;
+    border-right: 2px solid #666;
+    border-bottom: 2px solid #666;
+    transform: translateY(-25%) rotate(45deg);
+    transition: transform 200ms ease;
+  }
+
+  &[aria-expanded="true"]::after {
+    transform: translateY(25%) rotate(225deg);
+  }
+}
+
+// The group's colors, as a key.
+.projects-filter__dots {
+  display: inline-flex;
+}
+
+.projects-filter__dot {
+  width: 0.75rem;
+  height: 0.75rem;
+  border: 2px solid white;
+  border-radius: 50%;
+  background: var(--type-color);
+  box-shadow: 0 0 0 1px $dark-grey;
+
+  & + & {
+    margin-left: -0.25rem;
+  }
 }
 
 .projects-filter__item,
@@ -150,6 +422,7 @@ $projects-sticky-offset: 7rem;
 }
 
 // Without JavaScript the legend is still a key, just not a filter.
+.projects:not(.projects--js) .projects-filter__group,
 .projects:not(.projects--js) .projects-filter__item {
   cursor: default;
   pointer-events: none;
@@ -162,14 +435,17 @@ $projects-sticky-offset: 7rem;
   background: var(--type-color);
 }
 
-.projects-filter__swatch--area,
-.projects-filter__swatch--pin {
-  border: 2px solid white;
-  box-shadow: 0 0 0 1px $dark-grey;
+// An outlined patch for outlined states; a ringed dot for pins.
+.projects-filter__swatch--area {
+  border-radius: 2px;
+  background: $dark-grey;
+  box-shadow: inset 0 0 0 2px var(--type-color);
 }
 
 .projects-filter__swatch--pin {
+  border: 2px solid white;
   border-radius: 50%;
+  box-shadow: 0 0 0 1px $dark-grey;
 }
 
 .projects-filter__count {
@@ -204,7 +480,8 @@ $projects-sticky-offset: 7rem;
 
 .projects__list {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  // As many ~24rem columns as fit, so wide windows don't stretch two cards.
+  grid-template-columns: repeat(auto-fill, minmax(24rem, 1fr));
   gap: 1.5rem;
   margin: 1rem 0 0;
   padding: 0;
@@ -239,6 +516,20 @@ $projects-sticky-offset: 7rem;
   object-fit: cover;
 }
 
+// Header for national/international cards: the group's label.
+.projects-card__scope {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  margin: 0;
+  font-family: $font-sans-thin;
+  font-size: 1.25rem;
+  letter-spacing: 0.15rem;
+  text-transform: uppercase;
+  color: $mggg-dark-blue;
+}
+
 .projects-card__locator {
   display: block;
   width: 100%;
@@ -246,17 +537,11 @@ $projects-sticky-offset: 7rem;
   padding: 0.75rem;
 }
 
-// The <use> clone of the main map's state inherits this fill.
+// The <use> clone inherits this fill for states without a statewide study;
+// statewide states keep their outline from the main map.
 .projects-card__state {
   fill: $dark-grey;
   stroke: none;
-}
-
-.projects-card__square {
-  fill: var(--type-fill, var(--type-color));
-  stroke: white;
-  stroke-width: 1.5;
-  vector-effect: non-scaling-stroke;
 }
 
 .projects-card__dot {
@@ -298,6 +583,10 @@ $projects-sticky-offset: 7rem;
     border-radius: 50%;
     background: var(--type-color);
   }
+}
+
+.projects-badge--scope {
+  --type-color: #{$mggg-dark-blue};
 }
 
 .projects-card__studies.projects-card__studies {

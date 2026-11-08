@@ -5,7 +5,8 @@
   <body>
     {% include top_navigation.html show_categories=page.show_categories show_about=page.show_about %}
 
-    <main class="l-center-wide l-content">{{ content }}</main>
+    {% comment %} `full_width: true` in front matter spans the window (with side margins) instead of the centered column. {% endcomment %}
+    <main class="{% if page.full_width %}l-full{% else %}l-center-wide{% endif %} l-content">{{ content }}</main>
 
     {% include footer.html %}
   </body>

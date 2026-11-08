@@ -1,5 +1,17 @@
 {% assign project = include.project %}
-{% assign state = site.data.us_map.states | where: "abbr", project.state | first %}
+{% comment %} Assigned variables outlive an include, so clear the last card's. {% endcomment %}
+{% assign state = nil %}
+{% assign scope_label = nil %}
+{% if project.state %}
+  {% comment %} Only look up a real code: `where` with a blank value matches the first state. {% endcomment %}
+  {% assign state = site.data.us_map.states | where: "abbr", project.state | first %}
+{% else %}
+  {% comment %} National/international work (`beyond_map`) has no state; find its group ("National", …) instead. {% endcomment %}
+  {% for group in site.data.projects.beyond_map %}
+    {% assign in_group = group.items | where: "id", project.id | first %}
+    {% if in_group %}{% assign scope_label = group.label %}{% endif %}
+  {% endfor %}
+{% endif %}
 <li
   class="card projects-card"
   id="{{ project.id }}"
@@ -7,7 +19,9 @@
   {% if project.scope == "local" %}data-lat="{{ project.lat }}" data-lon="{{ project.lon }}"{% endif %}
 >
   <div class="projects-card__header">
-    {% if project.image %}
+    {% if scope_label %}
+    <p class="projects-card__scope">{{ scope_label }}</p>
+    {% elsif project.image %}
     <img class="projects-card__image" src="{{ project.image | relative_url }}" alt="" />
     {% elsif state %}
       {% comment %} Locator map: the state from the main map, framed with padding. {% endcomment %}
@@ -25,21 +39,6 @@
       focusable="false"
     >
       <use href="#us-state-{{ state.abbr }}" class="projects-card__state" />
-      {% if project.scope == "statewide" %}
-        {% comment %} Matches the map's square; local cards get a dot from projects/script.html instead. {% endcomment %}
-        {% assign type = include.types | where: "key", project.types[0] | first %}
-        {% assign longest_view = vw %}{% if vh > longest_view %}{% assign longest_view = vh %}{% endif %}
-        {% assign side = longest_view | times: 0.07 | round: 1 %}
-        {% assign half = side | divided_by: 2.0 %}
-      <rect
-        class="projects-card__square"
-        x="{{ state.center[0] | minus: half | round: 1 }}"
-        y="{{ state.center[1] | minus: half | round: 1 }}"
-        width="{{ side }}"
-        height="{{ side }}"
-        style="--type-color: {{ type.color }};{% if project.types.size > 1 %} --type-fill: url(#projects-stripes-{{ project.types | join: '-' }});{% endif %}"
-      />
-      {% endif %}
     </svg>
     {% endif %}
   </div>
@@ -47,6 +46,7 @@
   <div class="card__content">
     <h3 class="card__title">{{ project.name }}</h3>
     <ul class="projects-card__badges">
+      {% if scope_label %}<li class="projects-badge projects-badge--scope">{{ scope_label }}</li>{% endif %}
       {% for key in project.types %}
         {% assign type = include.types | where: "key", key | first %}
       <li class="projects-badge" style="--type-color: {{ type.color }}">{{ type.label }}</li>
