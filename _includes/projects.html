@@ -1,21 +1,28 @@
 {% comment %}
   Projects page: a US map of the Lab's place-based studies, a legend that
-  filters by governing body, and a card for each project.
+  filters by governing body, national/international work beside the map, and
+  a card for each project (both kinds).
 
   Content: _data/projects.yml
   Map geometry: _data/us_map.json (pre-projected state outlines; see its `source` note)
 {% endcomment %}
 {% assign projects = site.data.projects.projects | sort: "name" %}
 {% assign types = site.data.projects.types %}
+{% comment %} Cards also cover national/international work (beside the map, not on it). {% endcomment %}
+{% assign cards = site.data.projects.projects %}
+{% for group in site.data.projects.beyond_map %}
+  {% assign cards = cards | concat: group.items %}
+{% endfor %}
+{% assign cards = cards | sort: "name" %}
 <div class="projects" data-projects>
-  {% include projects/map.html projects=projects types=types %}
+  {% include projects/map.html projects=projects cards=cards types=types groups=site.data.projects.filter_groups %}
 
   <p class="projects__count" aria-live="polite" data-projects-count>
-    Showing all {{ projects.size }} projects
+    Showing all {{ cards.size }} projects
   </p>
 
   <ul class="projects__list">
-    {% for project in projects %}
+    {% for project in cards %}
       {% include projects/card.html project=project types=types %}
     {% endfor %}
   </ul>

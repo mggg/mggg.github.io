@@ -5,6 +5,7 @@ key: projects
 index: 3
 output: true
 layout: bio-list
+full_width: true
 show_categories: true
 ---
 

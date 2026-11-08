@@ -1,0 +1,36 @@
+{% comment %}
+  National and international work, listed beside the map: anything that isn't
+  tied to one place. Content: `beyond_map` in _data/projects.yml.
+
+  Each group is an accordion section, closed to start; projects/script.html
+  slides them open and shut and keeps only one open at a time. Beside the map
+  the sidecar is never taller than the map, and scrolls if an open section is.
+{% endcomment %}
+<aside class="projects-sidecar" aria-label="National and international work" data-projects-sidecar>
+  <div class="projects-sidecar__inner">
+    {% for group in include.groups %}
+    <details class="projects-sidecar__group">
+      <summary class="projects-sidecar__summary">
+        <h2 class="projects-sidecar__heading">{{ group.label }}</h2>
+        <span class="projects-sidecar__count">{{ group.items.size }}</span>
+      </summary>
+      <ul class="projects-sidecar__items">
+        {% for item in group.items %}
+        {% comment %} Like the map's hover popup: a title and study links. The description and the anchor (id) are on the item's card below. {% endcomment %}
+        <li class="projects-sidecar__item">
+          <h3 class="projects-sidecar__name">{{ item.name }}</h3>
+          <ul class="projects-sidecar__studies">
+            {% for study in item.studies %}
+            <li>
+              <a href="{{ study.url | relative_url }}">{{ study.title }}</a>
+              {% if study.year %}<span class="projects-card__year">({{ study.year }})</span>{% endif %}
+            </li>
+            {% endfor %}
+          </ul>
+        </li>
+        {% endfor %}
+      </ul>
+    </details>
+    {% endfor %}
+  </div>
+</aside>

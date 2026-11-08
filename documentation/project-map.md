@@ -1,7 +1,7 @@
 # Project Map
 
 The Projects page (`/projects`, "Project Map" in the sub-navigation) shows the
-places the lab has studied: a US map with a pin or state square for each one, a legend that filters by governing body,
+places the lab has studied: a US map with a pin or outlined state for each one, a two-level legend that filters by kind of work and governing body,
 and a card per project. Everything on it comes from one data file,
 `_data/projects.yml`; adding a project never requires touching HTML, CSS, or
 JavaScript.
@@ -12,10 +12,12 @@ This guide covers:
 2. [Adding a project](#adding-a-project)
 3. [Finding coordinates](#finding-coordinates)
 4. [Adding a study to an existing project](#adding-a-study-to-an-existing-project)
-5. [Adding a category](#adding-a-category)
-6. [Previewing](#previewing)
-7. [Limitations](#limitations)
-8. [Checklist](#checklist)
+5. [Adding national or international work](#adding-national-or-international-work)
+6. [Adding a category](#adding-a-category)
+7. [Legend groups](#legend-groups)
+8. [Previewing](#previewing)
+9. [Limitations](#limitations)
+10. [Checklist](#checklist)
 
 ## How it fits together
 
@@ -27,14 +29,15 @@ This guide covers:
 | `_includes/projects.html` | Assembles the map, count line, and card list | Only to change the design |
 | `_includes/projects/map.html` | Map, legend/filter, and hover popup markup | Only to change the design |
 | `_includes/projects/card.html` | One card | Only to change the design |
-| `_includes/projects/script.html` | Places pins, filters, runs the popup | Only to change behavior |
+| `_includes/projects/sidecar.html` | The National/International list beside the map | Only to change the design |
+| `_includes/projects/script.html` | Places pins, filters, runs the popup and the sidecar dropdowns | Only to change behavior |
 | `_sass/components/_projects.scss` | Styles | Only to change the design |
 
-When the site builds, Jekyll turns each entry into a card and either draws a
-square at its state's center (statewide studies) or records its coordinates
-(local studies). In the browser, the script projects those coordinates onto the
-map to place the pins, nudging overlapping pins apart (and off any squares) and
-drawing a short leader line back to the true spot.
+When the site builds, Jekyll turns each entry into a card and either outlines
+its state (statewide studies) or records its coordinates (local studies). In the
+browser, the script projects those coordinates onto the map to place the pins,
+nudging overlapping pins apart and drawing a short leader line back to the true
+spot.
 
 ## Adding a project
 
@@ -45,14 +48,14 @@ alphabetical makes it easier to scan.
 First decide the **scope**:
 
 - **`statewide`**: the work covers a whole state (a congressional or legislative
-  plan, statewide redistricting). A square sits at the state's center in its
-  category's color, or striped in all of their colors if it has several. The
-  center comes from `center` in `_data/us_map.json`; nothing to set here.
+  plan, statewide redistricting). The state gets a border in its category's
+  color, or a border split diagonally into all of their colors if it has
+  several (50/50, corner to corner, for two).
 - **`local`**: the work covers a city, county, school district, or similar. A pin
   is placed at the entry's coordinates.
 
-A local project in a state that also has a statewide entry is fine: the pin is
-nudged off the square if they would overlap.
+A local project in a state that also has a statewide entry is fine: the state is
+outlined and the pin sits on top of it.
 
 ### Statewide example
 
@@ -90,15 +93,15 @@ nudged off the square if they would overlap.
 
 | Field | Required | Notes |
 |---|---|---|
-| `id` | yes | Unique, lowercase, hyphens. Becomes the card's anchor (`/projects#san-diego-ca`); map pins and squares link to it. For local entries, end with the state code (`beaverton-or`) |
+| `id` | yes | Unique, lowercase, hyphens. Becomes the card's anchor (`/projects#san-diego-ca`); map pins and outlined states link to it. For local entries, end with the state code (`beaverton-or`) |
 | `name` | yes | Card title, popup title, and sort key. Cities: `City, State`; counties: `Name County, State`; states: the state name |
-| `state` | yes | Two-letter postal code. Sets the card's locator map, and for statewide entries, which state gets the square |
+| `state` | yes | Two-letter postal code. Sets the card's locator map, and for statewide entries, which state is outlined |
 | `scope` | yes | `statewide` or `local` |
 | `lat`, `lon` | local only | Decimal degrees. See [Finding coordinates](#finding-coordinates) |
-| `types` | yes | One or more category keys from `types:` at the top of the file, e.g. `[city-council]` or `[congressional, state-legislature]`. The **first** sets a pin's color; a statewide entry's square with several is striped in all of their colors, in the order listed |
+| `types` | yes | One or more category keys from `types:` at the top of the file, e.g. `[city-council]` or `[congressional, expert-report]`. They also decide which legend group the project falls under (see [Legend groups](#legend-groups)). The **first** sets a pin's color; a statewide entry with several gets a border split diagonally into their colors, the first at top left, in the order listed |
 | `description` | yes | *(markdown)* One or two sentences on the work there |
 | `studies` | yes | List of studies; see below |
-| `image` | no | Path to a header image (e.g. `/uploads/…`). Without it, the card shows a locator map of the state with a dot for local entries or a square for statewide ones |
+| `image` | no | Path to a header image (e.g. `/uploads/…`). Without it, the card shows a locator map of the state with a dot for local entries |
 
 Each study has:
 
@@ -143,6 +146,46 @@ Add an item to that project's `studies` list, and update its `description` if
 the new work changes the summary. Don't create a second entry for the same
 place: it would make a second card and a second pin.
 
+## Adding national or international work
+
+Work that isn't tied to one place (UK Boundaries, the Fair Representation Act,
+the data practices notes) is listed beside the map rather than on it, and gets
+a card in the list below like any project. It lives
+under `beyond_map:` at the bottom of `_data/projects.yml`, in groups:
+
+```yaml
+beyond_map:
+  - label: International
+    items:
+      - id: uk-boundaries
+        name: UK Boundaries
+        description: One or two sentences on the work.
+        studies:
+          - title: UK Boundaries
+            year: 2025
+            url: /posts/uk-boundaries
+```
+
+Add an item to a group's `items`, or add a new group with its own `label`.
+
+- **Beside the map**, each group is a dropdown section, closed to start, and
+  only one can be open at a time. It lists each item's `name` and study links
+  (like the map's hover popup), in the order listed. The list is never taller
+  than the map and scrolls if an open section needs more room.
+- **In the card list**, each item gets a card sorted in by `name`, with its
+  `description`, its studies, and its group's label as both the header and a
+  badge. Like projects, they can take `types`, which place them in the
+  legend's groups (the Fair Representation Act has `[congressional]`, so it
+  shows under Election Modeling); items without any fall under Other. Types
+  here don't put anything on the map.
+
+Items take `id`, `name`, `description`, `studies`, and optionally `types`, but
+no `state`, `scope`, coordinates, or `image`. The `id` is the
+card's anchor (`/projects#uk-boundaries`), so it must not match any project's.
+
+A study can appear in both places. The Fair Representation Act is listed here
+as national work and also under its five focus states on the map.
+
 ## Adding a category
 
 Categories live under `types:` at the top of `_data/projects.yml`:
@@ -155,14 +198,42 @@ types:
 ```
 
 To add one, add an entry with a new `key` (lowercase, hyphens), a `label` for
-the legend and badges, and a `color`. The legend button, its count, and its
-swatches are generated automatically.
+the legend and badges, and a `color`. Then add the key to a group's `types` in
+`filter_groups` (see below); a key no group lists falls under Other. The legend
+button, its count, and its swatches are generated automatically.
 
 The colors come from the Districtr palette that the newsletter also uses
-(`$newsletter-accents` in `_sass/components/_newsletter.scss`). Six of its seven
-colors are taken; coral (`#eb8777`) is free for the next category. Beyond that,
+(`$newsletter-accents` in `_sass/components/_newsletter.scss`). Lime (`#a3cc3f`)
+and magenta (`#bd2795`) are the accents still free. Beyond that,
 pick a color that stays distinct from the others and from the gray of unstudied
 states, and consider adding it to `$newsletter-accents` so the two stay in step.
+
+## Legend groups
+
+The legend has two levels. The first row is `filter_groups` in
+`_data/projects.yml`, one selectable at a time:
+
+```yaml
+filter_groups:
+  - key: election-modeling
+    label: Election Modeling
+    types: [city-council, school-board, county, state-legislature, congressional]
+  - key: expert-reports
+    label: Expert Reports
+    types: [expert-report]
+  - key: other
+    label: Other
+```
+
+- A project (or national/international item) is in a group if it has any of
+  the group's `types`, so it can be in more than one: Texas has both FRA
+  modeling and an expert report, `[congressional, expert-report]`.
+- A group with no `types` (Other) is the catch-all: every type no other group
+  lists (Redistricting, today), plus anything with no types.
+- A group with more than one type opens a second row of those types when it's
+  selected, to narrow it further (any of the selected types). Groups with one
+  type don't need one.
+- Counts on the buttons are cards, including national/international ones.
 
 ## Previewing
 
@@ -173,12 +244,12 @@ bundle exec jekyll serve
 Open `http://localhost:4000/projects` and check:
 
 - The count line ("Showing all N projects") went up by one.
-- The pin is in the right place, or the square is in the right state, in the right color.
-- Hovering the pin or square shows a popup with the project's name and its study
+- The pin is in the right place, or the right state is outlined, in the right color.
+- Hovering the pin or state shows a popup with the project's name and its study
   links, and clicking it jumps to the card.
 - The card's locator map shows the right state, with a dot in the right spot for
-  local entries or a square for statewide ones.
-- Each legend filter that includes the project shows and hides it.
+  local entries.
+- Each legend group and type that includes the project shows and hides it.
 - Every study link opens the right page.
 
 If the page looks unstyled after switching branches, hard-reload (⌘⇧R). The
@@ -190,12 +261,14 @@ the message gives a line number, and it's most often an unquoted value containin
 
 ## Limitations
 
-- **One statewide entry per state.** The map draws and links a state's square for
-  its first statewide entry only. Put all statewide work for a state in one entry
+- **One statewide entry per state.** The map outlines and links a state for its
+  first statewide entry only. Put all statewide work for a state in one entry
   with several `studies` and `types`.
-- **US states, DC, and Puerto Rico only.** Other places have no outline in
+- **US states, DC, and Puerto Rico only on the map.** Other places have no outline in
   `_data/us_map.json`, so there's no locator map, and pins outside the map's
   areas (the lower 48, Alaska, Hawaii, Puerto Rico) won't be placed correctly.
+  List work elsewhere beside the map instead (see
+  [Adding national or international work](#adding-national-or-international-work)).
 - **The map data and the script must agree.** The `insets` in
   `_data/us_map.json` are the projection settings the script uses to place pins.
   If the map is ever regenerated with different settings, update `insets` with

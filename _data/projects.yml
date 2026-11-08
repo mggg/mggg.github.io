@@ -1,16 +1,17 @@
 # Place-based electoral studies, shown on the Projects page (/projects).
 # Rendered by _includes/projects.html.
 #
-# `types` defines the governing-body categories: the badges on each card and
-# the map legend / filter. `color` is used for map pins, shaded states, and
-# legend swatches. The colors are the Districtr palette shared with the
-# newsletter (`$newsletter-accents` in _sass/components/_newsletter.scss).
+# `types` defines the categories: the badges on each card and the second level
+# of the map legend / filter (see `filter_groups`). `color` is used for map
+# pins, statewide borders, and legend swatches. The colors are the Districtr
+# palette shared with the newsletter (`$newsletter-accents` in
+# _sass/components/_newsletter.scss).
 #
 # Each entry in `projects`:
 #   id           unique anchor id (lowercase, hyphens)
 #   name         card title
 #   state        two-letter postal code (used for the map and card header)
-#   scope        statewide - the state is shaded on the map
+#   scope        statewide - the state is outlined on the map
 #                local     - a pin is placed at `lat`/`lon`
 #   lat, lon     pin position, decimal degrees (local only)
 #   types        one or more `types` keys; the first sets the map color
@@ -40,13 +41,30 @@ types:
   - key: redistricting
     label: Redistricting
     color: "#f7cc6e"
+  - key: expert-report
+    label: Expert Report
+    color: "#4396c8"
+
+# The legend's first level. A project is in a group if it has any of the
+# group's `types`; a group with no `types` ("Other") takes every project that
+# isn't in another group, including ones with no types at all. Selecting a
+# group with more than one type opens a second row to narrow it by type.
+filter_groups:
+  - key: election-modeling
+    label: Election Modeling
+    types: [city-council, school-board, county, state-legislature, congressional]
+  - key: expert-reports
+    label: Expert Reports
+    types: [expert-report]
+  - key: other
+    label: Other
 
 projects:
   - id: alabama
     name: Alabama
     state: AL
     scope: statewide
-    types: [congressional]
+    types: [expert-report]
     description: Expert analysis in *Allen v. Milligan*, a Voting Rights Act case arguing that Alabama's congressional plan diluted the votes of Black Alabamians, who make up about 2/7 of the state but had only one opportunity district out of seven. The report shows that a reasonably configured plan with two majority-Black districts can be drawn.
     studies:
       - title: Alabama congressional (Allen v. Milligan)
@@ -231,7 +249,7 @@ projects:
     name: North Carolina
     state: NC
     scope: statewide
-    types: [congressional, state-legislature]
+    types: [expert-report]
     description: Expert analysis in *Moore v. Harper* introducing the "Close Votes, Close Seats" standard, later cited by the state Supreme Court in throwing out the congressional plan. After a change in the court's membership, it reversed that decision in 2023 and reinstated the original map.
     studies:
       - title: North Carolina congressional and legislative (Moore v. Harper)
@@ -290,7 +308,7 @@ projects:
     name: Pennsylvania
     state: PA
     scope: statewide
-    types: [congressional]
+    types: [expert-report]
     description: "Expert reports in two congressional redistricting cases decided by the state's courts: in *LWV v. Commonwealth*, an outlier analysis finding the legislative leaders' 2018 plan an extreme partisan outlier, and in *Carter v. Chapman*, an analysis of how to understand a plan's partisan properties."
     studies:
       - title: Outlier analysis for Pennsylvania (LWV v. Commonwealth)
@@ -394,7 +412,7 @@ projects:
     name: Texas
     state: TX
     scope: statewide
-    types: [congressional]
+    types: [congressional, expert-report]
     description: Expert analysis in *LULAC v. Abbott*, which challenges Texas's post-Census congressional plan and its more aggressively partisan replacement, with a report delineating race-versus-party distinctions; and modeling of the Fair Representation Act, which projects voters of color would elect 16 to 21 of Texas's 38 representatives of choice under ranked choice from multi-member districts, compared with 12 today.
     studies:
       - title: Modeling the Fair Representation Act
@@ -475,3 +493,50 @@ projects:
       - title: Analysis of County Commission Elections in Yakima County, WA
         year: 2020
         url: /publications/Yakima.pdf
+
+# Work that isn't tied to one place. Each group (`label` and `items`) is a
+# dropdown beside the map listing its items' names and study links
+# (_includes/projects/sidecar.html), in the order listed. Each item also gets a
+# card in the list below the map, sorted in with the projects, labeled with its
+# group, whose label is also the card's header. Items take `id` (the card's
+# anchor), `name`, `description` (markdown, shown on the card), and `studies` in
+# the same form as above.
+beyond_map:
+  - label: International
+    items:
+      - id: uk-boundaries
+        name: UK Boundaries
+        description: For the UK Boundary Commission, a look at the tradeoffs of prioritizing the preservation of particular municipal boundaries when drawing constituencies. The report focuses on England, but the methods may be applied to other parts of the UK.
+        studies:
+          - title: UK Boundaries
+            year: 2025
+            url: /posts/uk-boundaries
+
+  - label: National
+    items:
+      - id: fair-representation-act
+        name: Fair Representation Act
+        types: [congressional]
+        description: Modeling, with FairVote, of model legislation to elect the U.S. House by ranked choice from 3- and 5-member districts. Voters of color would likely elect candidates of choice at least in line with their population share, and the districts are much harder to gerrymander. The five focus states are also on the map.
+        studies:
+          - title: Modeling the Fair Representation Act
+            year: 2022
+            url: /fra
+      - id: data-practices
+        name: Data & Data Practices
+        description: How the Lab answers questions about the best ways to use the electoral and demographic data we have.
+        studies:
+          - title: Disaggregation of Unsorted Votes
+            year: 2021
+            url: /posts/disagg-unsorted-votes
+          - title: Conventions for Constructing Demographic Categories
+            year: 2025
+            url: /posts/vap-cvap
+      - id: city-council-structures
+        name: Top 100 City Council Structures
+        types: [city-council]
+        description: For the 100 most populous U.S. cities, what system of city governance each uses, and what system of election accompanies it.
+        studies:
+          - title: Top 100 city council structures
+            year: 2025
+            url: /posts/city-council-structures

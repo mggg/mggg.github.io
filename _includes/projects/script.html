@@ -1,6 +1,7 @@
 <script>
   // Projects page: places map pins and card locator dots, and filters the
-  // map and card list by governing body. See _includes/projects.html.
+  // map and card list with the two-level legend (kind of work, then governing
+  // body). See _includes/projects.html.
   (function () {
     var root = document.querySelector("[data-projects]");
     if (!root) return;
@@ -10,12 +11,14 @@
     var PIN_RADIUS = 5.5;
     var insets = JSON.parse(root.querySelector("[data-projects-insets]").textContent);
     var cards = Array.prototype.slice.call(root.querySelectorAll(".projects-card"));
+    var groupButtons = Array.prototype.slice.call(root.querySelectorAll(".projects-filter__group"));
     var buttons = Array.prototype.slice.call(root.querySelectorAll(".projects-filter__item"));
+    var subrows = Array.prototype.slice.call(root.querySelectorAll("[data-subfilter]"));
     var resetButton = root.querySelector("[data-projects-reset]");
     var countText = root.querySelector("[data-projects-count]");
     var colors = {};
-    buttons.forEach(function (button) {
-      colors[button.dataset.type] = button.dataset.color;
+    JSON.parse(root.querySelector("[data-projects-types]").textContent).forEach(function (type) {
+      colors[type.key] = type.color;
     });
 
     // Conic equal-area projection, matching the one used to draw the state
@@ -104,23 +107,9 @@
       }
     });
 
-    // Statewide squares (rendered by projects/map.html) stay put at their
-    // state's center; pins move out of their way, treating each as a circle
-    // around its corners.
-    var squareLayer = root.querySelector("[data-projects-squares]");
-    var squareRadius = (parseFloat(squareLayer.dataset.size) / 2) * Math.SQRT2;
-    var squares = Array.prototype.slice.call(squareLayer.querySelectorAll("rect")).map(function (rect) {
-      var size = parseFloat(rect.getAttribute("width"));
-      return {
-        x: parseFloat(rect.getAttribute("x")) + size / 2,
-        y: parseFloat(rect.getAttribute("y")) + size / 2
-      };
-    });
-
     // Nudge overlapping pins apart (e.g. the Portland suburbs), pulling each
     // gently back toward its true position. Displaced pins get a leader line.
     var minGap = PIN_RADIUS * 2 + 1.5;
-    var squareGap = PIN_RADIUS + squareRadius + 1.5;
     for (var step = 0; step < 120; step++) {
       for (var i = 0; i < pins.length; i++) {
         for (var j = i + 1; j < pins.length; j++) {
@@ -133,16 +122,6 @@
           a.x -= (dx / dist) * push; a.y -= (dy / dist) * push;
           b.x += (dx / dist) * push; b.y += (dy / dist) * push;
         }
-        // A square doesn't move, so the pin takes the whole push.
-        squares.forEach(function (s) {
-          var p = pins[i];
-          var sx = p.x - s.x, sy = p.y - s.y;
-          var sd = Math.sqrt(sx * sx + sy * sy);
-          if (sd >= squareGap) return;
-          if (sd < 0.01) { sx = 1; sy = 0; sd = 1; }
-          p.x += (sx / sd) * (squareGap - sd);
-          p.y += (sy / sd) * (squareGap - sd);
-        });
       }
       pins.forEach(function (p) {
         p.x += (p.x0 - p.x) * 0.02;
@@ -159,40 +138,69 @@
       p.leader.setAttribute("y2", (moved ? p.y : p.y0).toFixed(1));
     });
 
-    // Filtering. No selection shows everything; otherwise show projects with
-    // any selected type, colored by the first selected type they have.
+    // Filtering. Nothing selected shows everything. Selecting a group (first
+    // row) shows the projects in it; a group's second row narrows it to the
+    // selected types. Marks take the color of the first type that's showing.
     var marks = Array.prototype.slice.call(root.querySelectorAll("[data-projects-mark]"));
-    var active = [];
+    var activeGroup = null; // a .projects-filter__group button
+    var active = []; // selected types in its second row
 
-    // A project's types that are showing: all of them with no selection,
-    // otherwise the selected ones, in the project's own order.
-    function matchingTypes(types) {
-      types = types.split(" ");
-      if (!active.length) return types;
-      return types.filter(function (type) {
-        return active.indexOf(type) !== -1;
-      });
+    function splitTypes(types) {
+      return types ? types.split(" ").filter(Boolean) : [];
     }
 
-    // Diagonal stripes for a square with several showing types, matching the
-    // patterns projects/map.html renders. Returns null for a single type.
+    // Types some group lists; the catch-all group ("Other") gets the rest.
+    var claimed = {};
+    groupButtons.forEach(function (button) {
+      if (button.hasAttribute("data-catch-all")) return;
+      splitTypes(button.dataset.types).forEach(function (type) {
+        claimed[type] = true;
+      });
+    });
+
+    function inActiveGroup(types) {
+      if (activeGroup.hasAttribute("data-catch-all")) {
+        return types.every(function (type) { return !claimed[type]; });
+      }
+      var groupTypes = splitTypes(activeGroup.dataset.types);
+      return types.some(function (type) { return groupTypes.indexOf(type) !== -1; });
+    }
+
+    // Whether a project shows, and which of its types color it, in the
+    // project's own order.
+    function match(typeList) {
+      var types = splitTypes(typeList);
+      if (!activeGroup) return { show: true, types: types };
+      var pool = active.length ? active : splitTypes(activeGroup.dataset.types);
+      var showing = types.filter(function (type) { return pool.indexOf(type) !== -1; });
+      var show = active.length ? showing.length > 0 : inActiveGroup(types);
+      return { show: show, types: showing.length ? showing : types };
+    }
+
+    // Diagonal bands for a state with several showing types (a 50/50 split,
+    // corner to corner, for two), matching the patterns projects/map.html
+    // renders. Returns null for a single type.
     var patternDefs = root.querySelector("[data-projects-patterns]");
-    var STRIPE = parseFloat(patternDefs.dataset.stripe);
-    function stripeFill(types) {
+    function splitFill(types) {
       if (types.length < 2) return null;
-      var id = "projects-stripes-" + types.join("-");
+      var id = "projects-split-" + types.join("-");
       if (!document.getElementById(id)) {
-        var size = types.length * STRIPE;
         var pattern = svg("pattern", {
           id: id,
-          patternUnits: "userSpaceOnUse",
-          width: size,
-          height: size,
-          patternTransform: "rotate(45)"
+          patternUnits: "objectBoundingBox",
+          patternContentUnits: "objectBoundingBox",
+          width: 1,
+          height: 1
         });
-        types.forEach(function (type, i) {
-          pattern.appendChild(svg("rect", { x: i * STRIPE, width: STRIPE, height: size, fill: colors[type] }));
-        });
+        pattern.appendChild(svg("rect", { width: 1, height: 1, fill: colors[types[types.length - 1]] }));
+        // Largest band first; band i covers x + y <= its share of 2.
+        for (var i = types.length - 2; i >= 0; i--) {
+          var t = (2 * (i + 1)) / types.length;
+          var points = t <= 1
+            ? "0,0 " + t + ",0 0," + t
+            : "0,0 1,0 1," + (t - 1) + " " + (t - 1) + ",1 0,1";
+          pattern.appendChild(svg("polygon", { points: points, fill: colors[types[i]] }));
+        }
         patternDefs.appendChild(pattern);
       }
       return "url(#" + id + ")";
@@ -201,29 +209,46 @@
     function applyFilter() {
       var shown = 0;
       cards.forEach(function (card) {
-        var match = matchingTypes(card.dataset.types).length > 0;
-        card.hidden = !match;
-        if (match) shown++;
+        var show = match(card.dataset.types).show;
+        card.hidden = !show;
+        if (show) shown++;
       });
       marks.forEach(function (mark) {
-        var matches = matchingTypes(mark.dataset.types);
-        mark.classList.toggle("is-dimmed", !matches.length);
-        if (!matches.length) return;
-        mark.style.setProperty("--type-color", colors[matches[0]]);
-        // Pins stay one color; squares stripe when several types are showing.
-        var fill = mark.tagName.toLowerCase() === "rect" ? stripeFill(matches) : null;
+        var result = match(mark.dataset.types);
+        mark.classList.toggle("is-dimmed", !result.show);
+        if (!result.show) return;
+        mark.style.setProperty("--type-color", colors[result.types[0]]);
+        // Pins stay one color; states split when several types are showing.
+        var fill = mark.classList.contains("projects-map__state--study") ? splitFill(result.types) : null;
         if (fill) mark.style.setProperty("--type-fill", fill);
         else mark.style.removeProperty("--type-fill");
+      });
+      groupButtons.forEach(function (button) {
+        var selected = button === activeGroup;
+        button.setAttribute("aria-pressed", selected);
+        if (button.hasAttribute("aria-expanded")) button.setAttribute("aria-expanded", selected);
+      });
+      subrows.forEach(function (row) {
+        row.hidden = !activeGroup || row.dataset.subfilter !== activeGroup.dataset.group;
       });
       buttons.forEach(function (button) {
         button.setAttribute("aria-pressed", active.indexOf(button.dataset.type) !== -1);
       });
-      resetButton.hidden = !active.length;
-      countText.textContent = active.length
+      resetButton.hidden = !activeGroup;
+      countText.textContent = activeGroup
         ? "Showing " + shown + " of " + cards.length + " projects"
         : "Showing all " + cards.length + " projects";
     }
 
+    // One group at a time; selecting the open group again clears it. Changing
+    // groups clears the second-row selection.
+    groupButtons.forEach(function (button) {
+      button.addEventListener("click", function () {
+        activeGroup = activeGroup === button ? null : button;
+        active = [];
+        applyFilter();
+      });
+    });
     buttons.forEach(function (button) {
       button.addEventListener("click", function () {
         var index = active.indexOf(button.dataset.type);
@@ -233,11 +258,12 @@
       });
     });
     resetButton.addEventListener("click", function () {
+      activeGroup = null;
       active = [];
       applyFilter();
     });
 
-    // Popup on hover/focus of a pin or square: the project's name and
+    // Popup on hover/focus of a pin or outlined state: the project's name and
     // links to its studies, copied from its card. It follows above the
     // pointer, and stays open while the pointer is over it so the links can
     // be clicked.
@@ -330,11 +356,11 @@
     mapSvg.addEventListener("mouseout", function (event) {
       if (markLink(event.target) && !markLink(event.relatedTarget)) hidePopupSoon();
     });
-    // Keyboard focus has no pointer, so anchor to the pin or square itself.
+    // Keyboard focus has no pointer, so anchor to the pin or state itself.
     mapSvg.addEventListener("focusin", function (event) {
       var link = markLink(event.target);
       if (link && openPopup(link)) {
-        placePopup(link.querySelector("circle, rect").getBoundingClientRect());
+        placePopup(link.querySelector("circle, use").getBoundingClientRect());
       }
     });
     mapSvg.addEventListener("focusout", function (event) {
@@ -350,8 +376,81 @@
     document.addEventListener("keydown", function (event) {
       if (event.key === "Escape" && !popup.hidden) hidePopup();
     });
-    buttons.concat(resetButton).forEach(function (button) {
+    buttons.concat(groupButtons, resetButton).forEach(function (button) {
       button.addEventListener("click", hidePopup);
+    });
+
+    // Sidecar accordion (projects/sidecar.html): sections slide open and shut
+    // (the same approach as newsletter/disclosure.html), and opening one
+    // closes any other. <details> can't transition its content natively, so
+    // the list after <summary> is animated; `is-closing` turns the chevron
+    // back while it collapses.
+    var sections = Array.prototype.slice.call(root.querySelectorAll("[data-projects-sidecar] details"));
+    var slide = { duration: 250, easing: "ease" };
+    var collapsed = { height: "0px", paddingTop: "0px", paddingBottom: "0px", opacity: 0 };
+    var reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    var accordion = sections.map(function (details) {
+      var summary = details.querySelector(":scope > summary");
+      var content = summary.nextElementSibling;
+      var animation = null;
+
+      function current() {
+        var style = getComputedStyle(content);
+        return {
+          height: style.height,
+          paddingTop: style.paddingTop,
+          paddingBottom: style.paddingBottom,
+          opacity: style.opacity
+        };
+      }
+
+      function isOpen() {
+        return details.open && !details.classList.contains("is-closing");
+      }
+
+      function setOpen(open) {
+        if (open === isOpen() && !animation) return;
+        if (open) {
+          accordion.forEach(function (other) {
+            if (other.details !== details && other.isOpen()) other.setOpen(false);
+          });
+        }
+        if (!content.animate || reducedMotion.matches) {
+          if (animation) animation.cancel();
+          animation = null;
+          details.classList.remove("is-closing");
+          details.open = open;
+          return;
+        }
+        var from = animation || !open ? current() : collapsed;
+        if (animation) animation.cancel();
+        details.classList.toggle("is-closing", !open);
+        details.open = true;
+        var to = open ? current() : collapsed;
+
+        content.style.overflow = "hidden";
+        // Closing holds its collapsed frame until <details> is shut, so the
+        // content can't flash back to full height in between.
+        var running = content.animate([from, to], Object.assign({ fill: open ? "none" : "forwards" }, slide));
+        animation = running;
+        running.onfinish = function () {
+          animation = null;
+          content.style.overflow = "";
+          if (!open) {
+            details.open = false;
+            details.classList.remove("is-closing");
+            running.cancel();
+          }
+        };
+      }
+
+      summary.addEventListener("click", function (event) {
+        event.preventDefault();
+        setOpen(!isOpen());
+      });
+
+      return { details: details, isOpen: isOpen, setOpen: setOpen };
     });
   })();
 </script>
