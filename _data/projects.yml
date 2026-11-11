@@ -28,13 +28,13 @@ types:
     color: "#9e4ae6"
   - key: school-board
     label: School Board
-    color: "#eb8777"
+    color: "#89b0d1"
   - key: county
     label: County Government
     color: "#5cca9d"
   - key: state-legislature
     label: State Legislature
-    color: "#89b0d1"
+    color: "#eb8777"
   - key: congressional
     label: Congressional
     color: "#e4607b"
@@ -338,7 +338,7 @@ projects:
     lat: 45.515
     lon: -122.679
     types: [city-council]
-    description: Studies before and after Portland adopted single transferable vote (STV) for its City Council, from comparing system options, to modeling likely outcomes, to analyzing the first STV election in 2024 and how campaign fundraising compared with ballot support in it.
+    description: Studies before and after Portland adopted single transferable vote (STV) for its City Council, from comparing system options, to modeling likely outcomes, to analyzing the first STV election in 2024.
     studies:
       - title: Analysis of Election Systems for the Portland, OR City Council
         year: 2021
@@ -349,9 +349,6 @@ projects:
       - title: Study of the 2024 STV City Council Election in Portland, Oregon
         year: 2025
         url: /portland-stv-24
-      - title: Portland Fundraising & Support Analysis
-        year: 2026
-        url: https://github.com/marcygcl/portland-fundraising-support-analysis
 
   - id: salem-keizer-or
     name: Salem-Keizer, Oregon

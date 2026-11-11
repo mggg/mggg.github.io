@@ -206,13 +206,27 @@
       return "url(#" + id + ")";
     }
 
+    // The count is of studies, not cards: a study linked from several cards
+    // (the Fair Representation Act) counts once. Matches projects.html.
+    function studiesIn(list) {
+      var seen = {};
+      list.forEach(function (card) {
+        card.querySelectorAll(".projects-card__studies a").forEach(function (link) {
+          seen[link.getAttribute("href")] = true;
+        });
+      });
+      return Object.keys(seen).length;
+    }
+    var studyTotal = studiesIn(cards);
+
     function applyFilter() {
-      var shown = 0;
+      var shownCards = [];
       cards.forEach(function (card) {
         var show = match(card.dataset.types).show;
         card.hidden = !show;
-        if (show) shown++;
+        if (show) shownCards.push(card);
       });
+      var shown = studiesIn(shownCards);
       marks.forEach(function (mark) {
         var result = match(mark.dataset.types);
         mark.classList.toggle("is-dimmed", !result.show);
@@ -236,8 +250,8 @@
       });
       resetButton.hidden = !activeGroup;
       countText.textContent = activeGroup
-        ? "Showing " + shown + " of " + cards.length + " projects"
-        : "Showing all " + cards.length + " projects";
+        ? "Showing " + shown + " of " + studyTotal + " projects"
+        : "Showing all " + studyTotal + " projects";
     }
 
     // One group at a time; selecting the open group again clears it. Changing
@@ -452,5 +466,120 @@
 
       return { details: details, isOpen: isOpen, setOpen: setOpen };
     });
+
+    // Descriptions are cut to a few lines (CSS) so cards share a standard
+    // height; a Read more button appears only on ones that are cut, and opens
+    // that card past the standard height. Rechecked whenever a description
+    // changes size: window resizes, layout switches, a card being filtered
+    // back in, web fonts loading.
+    cards.forEach(function (card) {
+      var description = card.querySelector("[data-projects-description]");
+      var more = card.querySelector("[data-projects-more]");
+      if (!description || !more) return;
+
+      // The clamp is on the paragraph (one per description).
+      var text = description.querySelector("p") || description;
+
+      function update() {
+        if (card.classList.contains("is-expanded")) return;
+        more.hidden = text.scrollHeight <= text.clientHeight + 1;
+      }
+
+      more.addEventListener("click", function () {
+        var expanded = card.classList.toggle("is-expanded");
+        more.setAttribute("aria-expanded", expanded);
+        more.textContent = expanded ? "Show less" : "Read more";
+        if (!expanded) update();
+        syncRows();
+      });
+
+      if (window.ResizeObserver) new ResizeObserver(update).observe(text);
+      if (document.fonts) document.fonts.ready.then(update);
+      update();
+    });
+
+    // In the grid, cards in a row stretch to the tallest, so an opened card
+    // would stretch its neighbors too. Those keep their own height instead.
+    var listEl = root.querySelector("[data-projects-list]");
+    function syncRows() {
+      var tops = cards
+        .filter(function (card) {
+          return listEl.dataset.view === "grid" && card.classList.contains("is-expanded") && !card.hidden;
+        })
+        .map(function (card) { return card.offsetTop; });
+      cards.forEach(function (card) {
+        card.classList.toggle("is-beside-expanded",
+          !card.classList.contains("is-expanded") && tops.indexOf(card.offsetTop) !== -1);
+      });
+    }
+    // Rows reflow on resize, filtering, and layout switches.
+    if (window.ResizeObserver) new ResizeObserver(syncRows).observe(listEl);
+
+    // Card layouts: grid (the default), icons (compact, no description), and
+    // list (one card per row). The choice is remembered in this browser.
+    // Narrow screens always get the grid, and the switcher is hidden (CSS);
+    // a remembered choice comes back on a wider screen.
+    var list = root.querySelector("[data-projects-list]");
+    var viewButtons = Array.prototype.slice.call(root.querySelectorAll("[data-projects-view]"));
+    var VIEW_KEY = "mggg-projects-view";
+    var narrow = window.matchMedia("(max-width: 900px)");
+    var chosenView = "grid";
+
+    function setView(view, remember) {
+      var known = viewButtons.some(function (button) { return button.dataset.projectsView === view; });
+      if (!known) view = "grid";
+      chosenView = view;
+      list.dataset.view = narrow.matches ? "grid" : view;
+      viewButtons.forEach(function (button) {
+        button.setAttribute("aria-pressed", button.dataset.projectsView === view);
+      });
+      if (!remember) return;
+      try { localStorage.setItem(VIEW_KEY, view); } catch (e) {}
+    }
+
+    viewButtons.forEach(function (button) {
+      button.addEventListener("click", function () {
+        setView(button.dataset.projectsView, true);
+      });
+    });
+
+    var savedView = null;
+    try { savedView = localStorage.getItem(VIEW_KEY); } catch (e) {}
+    setView(savedView || "grid", false);
+
+    function onWidthChange() { setView(chosenView, false); }
+    if (narrow.addEventListener) narrow.addEventListener("change", onWidthChange);
+    else if (narrow.addListener) narrow.addListener(onWidthChange);
+
+    // Highlight the card a pin, state, or /projects#id link points to, until
+    // the next click anywhere outside it. Clearing also drops the #id from
+    // the URL, so following the same link again highlights it again.
+    var targeted = null;
+
+    function highlightFromHash() {
+      if (targeted) targeted.classList.remove("is-targeted");
+      var id = decodeURIComponent(location.hash.slice(1));
+      targeted = id ? document.getElementById(id) : null;
+      if (targeted && targeted.classList.contains("projects-card")) targeted.classList.add("is-targeted");
+      else targeted = null;
+    }
+
+    // A click on the map but off every state and pin lets go of the last
+    // one clicked, so it doesn't stay highlighted.
+    mapSvg.addEventListener("click", function (event) {
+      if (event.target.closest("a")) return;
+      var focused = document.activeElement;
+      if (focused && mapSvg.contains(focused) && focused.blur) focused.blur();
+    });
+
+    document.addEventListener("click", function (event) {
+      if (!targeted || targeted.contains(event.target)) return;
+      targeted.classList.remove("is-targeted");
+      targeted = null;
+      if (history.replaceState) history.replaceState(null, "", location.pathname + location.search);
+    });
+
+    window.addEventListener("hashchange", highlightFromHash);
+    highlightFromHash();
   })();
 </script>

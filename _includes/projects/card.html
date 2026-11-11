@@ -52,7 +52,11 @@
       <li class="projects-badge" style="--type-color: {{ type.color }}">{{ type.label }}</li>
       {% endfor %}
     </ul>
-    {{ project.description | markdownify | replace: "<p>", '<p class="card__teaser">' }}
+    {% comment %} Cut to a few lines by projects/script.html, with a button to read the rest. {% endcomment %}
+    <div class="projects-card__description" id="{{ project.id }}-description" data-projects-description>
+      {{ project.description | markdownify | replace: "<p>", '<p class="card__teaser">' }}
+    </div>
+    <button type="button" class="projects-card__more" aria-controls="{{ project.id }}-description" aria-expanded="false" data-projects-more hidden>Read more</button>
     <ul class="projects-card__studies">
       {% for study in project.studies %}
       <li>

@@ -3,6 +3,16 @@
 // Clears the sticky .site-header when jumping to a card from the map.
 $projects-sticky-offset: 7rem;
 
+// Glide down to a card when a pin or state is clicked (as the newsletter's
+// table of contents does), unless the visitor prefers reduced motion.
+html:has(.projects) {
+  scroll-behavior: smooth;
+
+  @media (prefers-reduced-motion: reduce) {
+    scroll-behavior: auto;
+  }
+}
+
 /* map */
 
 // A grid: the map with the national/international sidecar beside it, and the
@@ -252,8 +262,9 @@ $projects-sticky-offset: 7rem;
 .projects-map__state--study {
   // A border in the category's color; --type-fill is a split pattern for
   // states with more than one category. Clipped to the state's own shape
-  // (map.html), so only the inner half of the stroke shows: 5 draws a 2.5
-  // border inside the edge.
+  // (map.html), so only the inner half of the stroke shows: 7 draws a 3.5
+  // border inside the edge (stroke-width 3, a 1.5 border, on narrow screens,
+  // below).
   stroke: var(--type-fill, var(--type-color));
   stroke-width: 7;
   transition: filter 100ms, stroke-width 100ms;
@@ -265,9 +276,30 @@ $projects-sticky-offset: 7rem;
 }
 
 .projects-map__state-link:hover .projects-map__state--study,
-.projects-map__state-link:focus .projects-map__state--study {
+.projects-map__state-link:focus-visible .projects-map__state--study {
   stroke-width: 7;
   filter: brightness(0.9);
+}
+
+// Clicked or tapped states and pins don't keep a focus ring; keyboard focus
+// (:focus-visible) still shows one, along with the hover look.
+.projects-map__state-link:focus:not(:focus-visible),
+.projects-map__pin:focus:not(:focus-visible) {
+  outline: none;
+}
+
+// Narrow screens: stroke-width 3 (a 1.5 border, half clipped), in step with
+// the smaller map. After the rules above so it wins, hover and focus included.
+@media only screen and (max-width: 900px) {
+  .projects-map__state--study,
+  .projects-map__state-link:hover .projects-map__state--study,
+  .projects-map__state-link:focus-visible .projects-map__state--study {
+    stroke-width: 3;
+  }
+
+  .projects-map__state--study.is-dimmed {
+    stroke-width: 1.5;
+  }
 }
 
 .projects-map__pin {
@@ -276,7 +308,7 @@ $projects-sticky-offset: 7rem;
   }
 
   &:hover .projects-map__dot,
-  &:focus .projects-map__dot {
+  &:focus-visible .projects-map__dot {
     stroke: $mggg-very-dark-blue;
   }
 }
@@ -470,8 +502,18 @@ $projects-sticky-offset: 7rem;
 
 /* card list */
 
-.projects__count {
+// The count line and the layout switcher.
+.projects__toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1.5rem;
   margin: 2rem 0 0;
+}
+
+.projects__count {
+  margin: 0;
   font-family: $font-sans-thin;
   letter-spacing: 0.05rem;
   text-transform: uppercase;
@@ -497,8 +539,16 @@ $projects-sticky-offset: 7rem;
     display: none;
   }
 
-  &:target {
+  // The card a pin or state linked to. projects/script.html sets the class,
+  // and clears it on a click anywhere else; :target is the no-script fallback.
+  &.is-targeted,
+  .projects:not(.projects--js) &:target {
     box-shadow: 0 0 0 3px $mggg-blue, $raised;
+  }
+
+  // In the same grid row as a card opened with Read more (projects/script.html).
+  &.is-beside-expanded {
+    align-self: start;
   }
 }
 
@@ -605,6 +655,43 @@ $projects-sticky-offset: 7rem;
   }
 }
 
+// Descriptions cut to a standard length, with a Read more button
+// (projects/script.html) on those that run over. Grid cards keep the full
+// space even for short ones, so cards in a row line up; Read more opens a
+// card past it. Without the script nothing is cut.
+$projects-description-lines: 4;
+
+.projects--js .projects-card:not(.is-expanded) .projects-card__description .card__teaser {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $projects-description-lines;
+  overflow: hidden;
+}
+
+.projects--js .projects__list[data-view="grid"] .card__teaser {
+  min-height: #{$projects-description-lines * 1.5}em;
+}
+
+.projects-card__more {
+  margin: 0 0 0.25rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  font-family: $font-sans;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: $mggg-blue;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &[hidden] {
+    display: none;
+  }
+}
+
 .projects-card__year {
   font-family: $font-sans;
   font-size: 0.875rem;
@@ -614,5 +701,199 @@ $projects-sticky-offset: 7rem;
 @media only screen and (max-width: 700px) {
   .projects__list {
     grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* layout switcher */
+
+.projects-views {
+  display: inline-flex;
+  border: 1px solid $dark-grey;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.projects-views__button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  margin: 0;
+  padding: 0.25rem 0.75rem;
+  border: 0;
+  background: white;
+  font-family: $font-sans;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: #444;
+  cursor: pointer;
+  transition: background 100ms, color 100ms;
+
+  & + & {
+    border-left: 1px solid $dark-grey;
+  }
+
+  &:hover {
+    background: $light-grey;
+  }
+
+  &[aria-pressed="true"] {
+    background: $mggg-dark-blue;
+    color: white;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $mggg-blue;
+    outline-offset: -2px;
+  }
+
+  svg {
+    width: 0.875rem;
+    height: 0.875rem;
+    fill: currentColor;
+  }
+}
+
+// Switching needs the script. Narrow screens always show the grid
+// (projects/script.html), so there's nothing to switch.
+.projects:not(.projects--js) .projects-views {
+  display: none;
+}
+
+@media only screen and (max-width: 900px) {
+  .projects-views {
+    display: none;
+  }
+}
+
+/* icons layout: smaller cards, no description */
+
+.projects__list[data-view="icons"] {
+  grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+  gap: 1rem;
+
+  .projects-card__header {
+    height: 5.5rem;
+  }
+
+  .projects-card__locator {
+    padding: 0.5rem;
+  }
+
+  .projects-card__scope {
+    font-size: 0.875rem;
+    letter-spacing: 0.1rem;
+  }
+
+  .card__content {
+    padding: 0.75rem;
+  }
+
+  .card__title {
+    font-size: 1rem;
+    line-height: 1.35;
+  }
+
+  .projects-card__description,
+  .projects-card__more {
+    display: none;
+  }
+
+  .projects-card__studies {
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.4;
+
+    li + li {
+      margin-top: 0.375rem;
+    }
+  }
+
+  .projects-card__year {
+    font-size: 0.75rem;
+  }
+}
+
+/* list layout: one card per row, thumbnail beside the details */
+
+.projects__list[data-view="list"] {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.75rem;
+
+  .projects-card {
+    flex-direction: row;
+    // Standard height: fits a two-line description and two studies. Cards
+    // with more studies (Portland), narrow screens, and Read more grow past it
+    // rather than spill over.
+    min-height: 240px;
+  }
+
+  .projects-card__header {
+    flex: 0 0 7rem;
+    height: auto;
+    min-height: 5rem;
+    border-bottom: 0;
+    border-right: 1px solid $mggg-very-dark-blue;
+    position: relative;
+
+    // Fill the row's height whatever it is.
+    .projects-card__locator,
+    .projects-card__image {
+      position: absolute;
+      inset: 0;
+    }
+
+    .projects-card__locator {
+      padding: 0.5rem;
+    }
+  }
+
+  .projects-card__scope {
+    font-size: 0.75rem;
+    letter-spacing: 0.1rem;
+  }
+
+  // Name, badges, description, and studies stacked beside the thumbnail.
+  .card__content {
+    flex: 1 1 auto;
+    min-width: 0;
+    padding: 0.75rem 1rem;
+  }
+
+  .card__title {
+    font-size: 1.125rem;
+    line-height: 1.35;
+  }
+
+  .projects-card__badges {
+    margin: 0.375rem 0 0;
+  }
+
+  .card__teaser {
+    margin: 0.5rem 0 0.25rem;
+    font-size: 0.9375rem;
+    line-height: 1.45;
+  }
+
+  // Two lines here, to keep rows short.
+  .projects-card:not(.is-expanded) .projects-card__description .card__teaser {
+    -webkit-line-clamp: 2;
+  }
+
+  .projects-card__studies {
+    margin: 0.5rem 0 0;
+    padding: 0.5rem 0 0;
+    font-size: 0.9375rem;
+    line-height: 1.4;
+
+    li + li {
+      margin-top: 0.375rem;
+    }
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .projects__list[data-view="list"] .projects-card__header {
+    flex-basis: 4.5rem;
   }
 }
