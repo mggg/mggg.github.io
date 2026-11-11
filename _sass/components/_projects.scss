@@ -795,10 +795,10 @@ $projects-description-lines: 4;
     outline-offset: -2px;
   }
 
-  svg {
-    width: 0.875rem;
-    height: 0.875rem;
-    fill: currentColor;
+  // Font Awesome icon; takes the button's color.
+  .fa-solid {
+    font-size: 0.875rem;
+    line-height: 1.5;
   }
 }
 
