@@ -31,7 +31,7 @@ This guide covers:
 | `_includes/projects/card.html` | One card | Only to change the design |
 | `_includes/projects/sidecar.html` | The National/International list beside the map | Only to change the design |
 | `_includes/projects/script.html` | Places pins, filters, runs the popup and the sidecar dropdowns | Only to change behavior |
-| `_sass/components/_projects.scss` | Styles | Only to change the design |
+| `_sass/components/_projects.scss` | Styles, including each category's color (`$projects-type-colors`) | Changing a category's color, or the design |
 
 When the site builds, Jekyll turns each entry into a card and either outlines
 its state (statewide studies) or records its coordinates (local studies). In the
@@ -188,19 +188,35 @@ as national work and also under its five focus states on the map.
 
 ## Adding a category
 
-Categories live under `types:` at the top of `_data/projects.yml`:
+A category has two parts: its entry under `types:` at the top of
+`_data/projects.yml`, and its color in `_sass/components/_projects.scss`.
 
 ```yaml
 types:
   - key: city-council
     label: City Council
-    color: "#9e4ae6"
 ```
 
-To add one, add an entry with a new `key` (lowercase, hyphens), a `label` for
-the legend and badges, and a `color`. Then add the key to a group's `types` in
-`filter_groups` (see below); a key no group lists falls under Other. The legend
-button, its count, and its swatches are generated automatically.
+```scss
+$projects-type-colors: (
+  "city-council": #9e4ae6,
+  …
+);
+```
+
+To add one:
+
+1. Add an entry under `types:` with a new `key` (lowercase, hyphens) and a
+   `label` for the legend and badges.
+2. Add the same key with its color to `$projects-type-colors`. Every element
+   tagged with that key (`data-type="city-council"`) picks the color up: pins,
+   state borders, legend swatches, badges, and card locator dots. A key missing
+   from the list shows in gray.
+3. Add the key to a group's `types` in `filter_groups` (see below); a key no
+   group lists falls under Other.
+
+The legend button, its count, and its swatches are generated automatically.
+To change a category's color, edit only `$projects-type-colors`.
 
 The colors come from the Districtr palette that the newsletter also uses
 (`$newsletter-accents` in `_sass/components/_newsletter.scss`). Lime (`#a3cc3f`)
