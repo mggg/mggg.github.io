@@ -3,6 +3,40 @@
 // Clears the sticky .site-header when jumping to a card from the map.
 $projects-sticky-offset: 7rem;
 
+// Category colors, by the type keys in _data/projects.yml (`types`). Any
+// element with data-type="<key>" gets --type-color: map pins and borders,
+// the split-border patterns, legend swatches, badges, and card locator dots.
+// The Districtr palette, shared with the newsletter ($newsletter-accents in
+// _newsletter.scss). A key missing here shows in grey.
+$projects-type-colors: (
+  "city-council": #9e4ae6,
+  "school-board": #89b0d1,
+  "county": #5cca9d,
+  "state-legislature": #eb8777,
+  "congressional": #e4607b,
+  "redistricting": #f7cc6e,
+  "expert-report": #4396c8,
+);
+
+//
+// Not scoped under .projects: the card locators reuse the map's states with
+// <use>, and those copies don't match selectors through an ancestor.
+// data-type is only used on this page.
+[data-type] {
+  --type-color: #{$dark-grey};
+}
+
+@each $key, $color in $projects-type-colors {
+  [data-type="#{$key}"] {
+    --type-color: #{$color};
+  }
+}
+
+// The bands of a split border (map.html, script.html).
+.projects pattern [data-type] {
+  fill: var(--type-color);
+}
+
 // Glide down to a card when a pin or state is clicked (as the newsletter's
 // table of contents does), unless the visitor prefers reduced motion.
 html:has(.projects) {

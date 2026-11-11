@@ -14,7 +14,8 @@
       to corner. Each band covers x + y up to its share of 2, in bounding-box
       units; the last category fills the rest. One pattern per combination,
       id'd by its type keys; projects/script.html builds more the same way when
-      filters narrow them.
+      filters narrow them. Colors come from each shape's data-type, via
+      `$projects-type-colors` in _sass/components/_projects.scss.
     {% endcomment %}
     <defs data-projects-patterns>
       {% assign emitted = "|" %}
@@ -24,19 +25,17 @@
           {% capture pattern_key %}|{{ pattern_id }}|{% endcapture %}
           {% unless emitted contains pattern_key %}
             {% assign bands = project.types.size %}
-            {% assign last_type = include.types | where: "key", project.types.last | first %}
             {% assign last_band = bands | minus: 2 %}
       <pattern id="{{ pattern_id }}" patternUnits="objectBoundingBox" patternContentUnits="objectBoundingBox" width="1" height="1">
-        <rect width="1" height="1" fill="{{ last_type.color }}" />
+        <rect width="1" height="1" data-type="{{ project.types.last }}" />
             {% comment %} Largest band first, so each later (smaller) one paints over its corner. {% endcomment %}
             {% for i in (0..last_band) reversed %}
-              {% assign band_type = include.types | where: "key", project.types[i] | first %}
               {% assign t = i | plus: 1 | times: 2.0 | divided_by: bands | round: 4 %}
               {% if t <= 1 %}
-        <polygon points="0,0 {{ t }},0 0,{{ t }}" fill="{{ band_type.color }}" />
+        <polygon points="0,0 {{ t }},0 0,{{ t }}" data-type="{{ project.types[i] }}" />
               {% else %}
                 {% assign u = t | minus: 1 | round: 4 %}
-        <polygon points="0,0 1,0 1,{{ u }} {{ u }},1 0,1" fill="{{ band_type.color }}" />
+        <polygon points="0,0 1,0 1,{{ u }} {{ u }},1 0,1" data-type="{{ project.types[i] }}" />
               {% endif %}
             {% endfor %}
       </pattern>
@@ -64,7 +63,6 @@
       {% for state in map.states %}
         {% assign statewide = include.projects | where: "state", state.abbr | where: "scope", "statewide" | first %}
         {% if statewide %}
-          {% assign type = include.types | where: "key", statewide.types[0] | first %}
       <defs>
         <path id="projects-shape-{{ state.abbr }}" class="projects-map__shape" d="{{ state.d }}" />
         <clipPath id="projects-clip-{{ state.abbr }}"><use href="#projects-shape-{{ state.abbr }}" /></clipPath>
@@ -77,7 +75,8 @@
           clip-path="url(#projects-clip-{{ state.abbr }})"
           data-projects-mark
           data-types="{{ statewide.types | join: ' ' }}"
-          style="--type-color: {{ type.color }};{% if statewide.types.size > 1 %} --type-fill: url(#projects-split-{{ statewide.types | join: '-' }});{% endif %}"
+          data-type="{{ statewide.types[0] }}"
+          {% if statewide.types.size > 1 %}style="--type-fill: url(#projects-split-{{ statewide.types | join: '-' }})"{% endif %}
         />
       </a>
         {% endif %}
@@ -147,7 +146,7 @@
         {% if group_types.size > 1 %}aria-expanded="false" aria-controls="projects-subfilter-{{ group.key }}"{% endif %}
       >
         <span class="projects-filter__dots" aria-hidden="true">
-          {% for type in group_types %}<span class="projects-filter__dot" style="--type-color: {{ type.color }}"></span>{% endfor %}
+          {% for type in group_types %}<span class="projects-filter__dot" data-type="{{ type.key }}"></span>{% endfor %}
         </span>
         {{ group.label }}
         <span class="projects-filter__count">{{ count }}</span>
@@ -170,7 +169,6 @@
         class="projects-filter__item"
         data-type="{{ type.key }}"
         aria-pressed="false"
-        style="--type-color: {{ type.color }}"
       >
         {% if has_statewide %}<span class="projects-filter__swatch projects-filter__swatch--area" aria-hidden="true"></span>{% endif %}
         {% if has_local %}<span class="projects-filter__swatch projects-filter__swatch--pin" aria-hidden="true"></span>{% endif %}
@@ -194,5 +192,4 @@
   </figcaption>
 
   <script type="application/json" data-projects-insets>{{ map.insets | jsonify }}</script>
-  <script type="application/json" data-projects-types>{{ include.types | jsonify }}</script>
 </figure>

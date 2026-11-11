@@ -16,10 +16,8 @@
     var subrows = Array.prototype.slice.call(root.querySelectorAll("[data-subfilter]"));
     var resetButton = root.querySelector("[data-projects-reset]");
     var countText = root.querySelector("[data-projects-count]");
-    var colors = {};
-    JSON.parse(root.querySelector("[data-projects-types]").textContent).forEach(function (type) {
-      colors[type.key] = type.color;
-    });
+    // Colors are CSS: an element's data-type (a type key) sets --type-color,
+    // from `$projects-type-colors` in _sass/components/_projects.scss.
 
     // Conic equal-area projection, matching the one used to draw the state
     // outlines in _data/us_map.json; the settings come from its `insets`.
@@ -76,7 +74,7 @@
     cards.forEach(function (card) {
       if (!card.dataset.lat) return;
       var xy = projectPoint(parseFloat(card.dataset.lon), parseFloat(card.dataset.lat));
-      var color = colors[card.dataset.types.split(" ")[0]];
+      var mainType = card.dataset.types.split(" ")[0];
       var name = card.querySelector(".card__title").textContent;
 
       var pin = svg("a", {
@@ -85,7 +83,7 @@
         "aria-label": name,
         "data-projects-mark": "",
         "data-types": card.dataset.types,
-        style: "--type-color: " + color
+        "data-type": mainType
       });
       var leader = svg("line", { class: "projects-map__leader" });
       var circle = svg("circle", { class: "projects-map__dot", r: PIN_RADIUS });
@@ -102,7 +100,7 @@
           cx: xy[0],
           cy: xy[1],
           r: Math.max(box.width, box.height) * 0.035,
-          style: "--type-color: " + color
+          "data-type": mainType
         }));
       }
     });
@@ -192,14 +190,14 @@
           width: 1,
           height: 1
         });
-        pattern.appendChild(svg("rect", { width: 1, height: 1, fill: colors[types[types.length - 1]] }));
+        pattern.appendChild(svg("rect", { width: 1, height: 1, "data-type": types[types.length - 1] }));
         // Largest band first; band i covers x + y <= its share of 2.
         for (var i = types.length - 2; i >= 0; i--) {
           var t = (2 * (i + 1)) / types.length;
           var points = t <= 1
             ? "0,0 " + t + ",0 0," + t
             : "0,0 1,0 1," + (t - 1) + " " + (t - 1) + ",1 0,1";
-          pattern.appendChild(svg("polygon", { points: points, fill: colors[types[i]] }));
+          pattern.appendChild(svg("polygon", { points: points, "data-type": types[i] }));
         }
         patternDefs.appendChild(pattern);
       }
@@ -231,7 +229,7 @@
         var result = match(mark.dataset.types);
         mark.classList.toggle("is-dimmed", !result.show);
         if (!result.show) return;
-        mark.style.setProperty("--type-color", colors[result.types[0]]);
+        mark.setAttribute("data-type", result.types[0]);
         // Pins stay one color; states split when several types are showing.
         var fill = mark.classList.contains("projects-map__state--study") ? splitFill(result.types) : null;
         if (fill) mark.style.setProperty("--type-fill", fill);

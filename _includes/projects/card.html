@@ -49,7 +49,7 @@
       {% if scope_label %}<li class="projects-badge projects-badge--scope">{{ scope_label }}</li>{% endif %}
       {% for key in project.types %}
         {% assign type = include.types | where: "key", key | first %}
-      <li class="projects-badge" style="--type-color: {{ type.color }}">{{ type.label }}</li>
+      <li class="projects-badge" data-type="{{ key }}">{{ type.label }}</li>
       {% endfor %}
     </ul>
     {% comment %} Cut to a few lines by projects/script.html, with a button to read the rest. {% endcomment %}

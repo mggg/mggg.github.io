@@ -2,10 +2,9 @@
 # Rendered by _includes/projects.html.
 #
 # `types` defines the categories: the badges on each card and the second level
-# of the map legend / filter (see `filter_groups`). `color` is used for map
-# pins, statewide borders, and legend swatches. The colors are the Districtr
-# palette shared with the newsletter (`$newsletter-accents` in
-# _sass/components/_newsletter.scss).
+# of the map legend / filter (see `filter_groups`). Each key's color (map pins,
+# statewide borders, legend swatches, badges) is set in
+# _sass/components/_projects.scss, in `$projects-type-colors`.
 #
 # Each entry in `projects`:
 #   id           unique anchor id (lowercase, hyphens)
@@ -25,25 +24,18 @@
 types:
   - key: city-council
     label: City Council
-    color: "#9e4ae6"
   - key: school-board
     label: School Board
-    color: "#89b0d1"
   - key: county
     label: County Government
-    color: "#5cca9d"
   - key: state-legislature
     label: State Legislature
-    color: "#eb8777"
   - key: congressional
     label: Congressional
-    color: "#e4607b"
   - key: redistricting
     label: Redistricting
-    color: "#f7cc6e"
   - key: expert-report
     label: Expert Report
-    color: "#4396c8"
 
 # The legend's first level. A project is in a group if it has any of the
 # group's `types`; a group with no `types` ("Other") takes every project that
