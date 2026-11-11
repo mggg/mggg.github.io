@@ -98,7 +98,7 @@ outlined and the pin sits on top of it.
 | `state` | yes | Two-letter postal code. Sets the card's locator map, and for statewide entries, which state is outlined |
 | `scope` | yes | `statewide` or `local` |
 | `lat`, `lon` | local only | Decimal degrees. See [Finding coordinates](#finding-coordinates) |
-| `types` | yes | One or more category keys from `types:` at the top of the file, e.g. `[city-council]` or `[congressional, expert-report]`. They also decide which legend group the project falls under (see [Legend groups](#legend-groups)). The **first** sets a pin's color; a statewide entry with several gets a border split diagonally into their colors, the first at top left, in the order listed |
+| `types` | yes | One or more category keys from `filter_groups` (see [Legend groups](#legend-groups)), e.g. `[city-council]` or `[congressional, expert-report]`. They also decide which legend group the project falls under (see [Legend groups](#legend-groups)). The **first** sets a pin's color; a statewide entry with several gets a border split diagonally into their colors, the first at top left, in the order listed |
 | `description` | yes | *(markdown)* One or two sentences on the work there |
 | `studies` | yes | List of studies; see below |
 | `image` | no | Path to a header image (e.g. `/uploads/…`). Without it, the card shows a locator map of the state with a dot for local entries |
@@ -176,7 +176,7 @@ Add an item to a group's `items`, or add a new group with its own `label`.
   `description`, its studies, and its group's label as both the header and a
   badge. Like projects, they can take `types`, which place them in the
   legend's groups (the Fair Representation Act has `[congressional]`, so it
-  shows under Election Modeling); items without any fall under Other. Types
+  shows under Election Modeling); items without any fall under the `untyped` group, Other. Types
   here don't put anything on the map.
 
 Items take `id`, `name`, `description`, `studies`, and optionally `types`, but
@@ -188,13 +188,16 @@ as national work and also under its five focus states on the map.
 
 ## Adding a category
 
-A category has two parts: its entry under `types:` at the top of
+A category has two parts: its entry in a legend group in `filter_groups` in
 `_data/projects.yml`, and its color in `_sass/components/_projects.scss`.
 
 ```yaml
-types:
-  - key: city-council
-    label: City Council
+filter_groups:
+  - key: election-modeling
+    label: Election Modeling
+    types:
+      - key: city-council
+        label: City Council
 ```
 
 ```scss
@@ -206,14 +209,14 @@ $projects-type-colors: (
 
 To add one:
 
-1. Add an entry under `types:` with a new `key` (lowercase, hyphens) and a
-   `label` for the legend and badges.
+1. Add it to the `types` of the legend group it belongs in (see
+   [Legend groups](#legend-groups)), with a new `key` (lowercase, hyphens) and
+   a `label` for the legend and badges. Every category must be in a group, or
+   its badges show no label and no filter selects it.
 2. Add the same key with its color to `$projects-type-colors`. Every element
    tagged with that key (`data-type="city-council"`) picks the color up: pins,
    state borders, legend swatches, badges, and card locator dots. A key missing
    from the list shows in gray.
-3. Add the key to a group's `types` in `filter_groups` (see below); a key no
-   group lists falls under Other.
 
 The legend button, its count, and its swatches are generated automatically.
 To change a category's color, edit only `$projects-type-colors`.
@@ -227,28 +230,42 @@ states, and consider adding it to `$newsletter-accents` so the two stay in step.
 ## Legend groups
 
 The legend has two levels. The first row is `filter_groups` in
-`_data/projects.yml`, one selectable at a time:
+`_data/projects.yml`, one selectable at a time; each group lists its
+categories, which make up the second row:
 
 ```yaml
 filter_groups:
   - key: election-modeling
     label: Election Modeling
-    types: [city-council, school-board, county, state-legislature, congressional]
+    types:
+      - key: city-council
+        label: City Council
+      - key: school-board
+        label: School Board
+      …
   - key: expert-reports
     label: Expert Reports
-    types: [expert-report]
+    types:
+      - key: expert-report
+        label: Expert Report
   - key: other
     label: Other
+    untyped: true
+    types:
+      - key: redistricting
+        label: Redistricting
 ```
 
 - A project (or national/international item) is in a group if it has any of
   the group's `types`, so it can be in more than one: Texas has both FRA
   modeling and an expert report, `[congressional, expert-report]`.
-- A group with no `types` (Other) is the catch-all: every type no other group
-  lists (Redistricting, today), plus anything with no types.
+- `untyped: true` also puts everything with no `types` in that group (UK
+  Boundaries and Data & Data Practices, in Other).
 - A group with more than one type opens a second row of those types when it's
   selected, to narrow it further (any of the selected types). Groups with one
   type don't need one.
+- The order here is the order on the legend and in each group's row of colored
+  dots.
 - Counts on the buttons are cards, including national/international ones.
 
 ## Previewing

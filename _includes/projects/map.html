@@ -101,47 +101,29 @@
   {% comment %}
     Two-level legend/filter. First level: `filter_groups` (Election Modeling,
     Expert Reports, Other), one at a time. A group with more than one type
-    opens a second row of its types, which narrow it like the old legend did.
-    A group with no `types` takes every type and project the others don't.
+    opens a second row of its types, to narrow it. A card is in a group if it
+    has any of the group's types, or none at all if the group is `untyped`.
     projects/script.html does the filtering; counts are cards, not pins.
   {% endcomment %}
-  {% assign claimed = "|" %}
-  {% for group in include.groups %}
-    {% for key in group.types %}{% assign claimed = claimed | append: key | append: "|" %}{% endfor %}
-  {% endfor %}
   {% assign subrows = "" %}
   <figcaption class="projects-filter">
     <div class="projects-filter__groups" role="group" aria-label="Filter projects by kind of work">
       {% for group in include.groups %}
-        {% assign group_types = "" | split: "" %}
-        {% for type in include.types %}
-          {% capture key %}|{{ type.key }}|{% endcapture %}
-          {% if group.types %}
-            {% if group.types contains type.key %}{% assign group_types = group_types | push: type %}{% endif %}
-          {% else %}
-            {% unless claimed contains key %}{% assign group_types = group_types | push: type %}{% endunless %}
-          {% endif %}
-        {% endfor %}
+        {% assign group_types = group.types %}
+        {% assign group_keys = group_types | map: "key" %}
         {% assign count = 0 %}
         {% for card in include.cards %}
           {% assign in_group = false %}
-          {% if group.types %}
-            {% for key in card.types %}{% if group.types contains key %}{% assign in_group = true %}{% endif %}{% endfor %}
-          {% else %}
-            {% assign in_group = true %}
-            {% for key in card.types %}
-              {% capture bar_key %}|{{ key }}|{% endcapture %}
-              {% if claimed contains bar_key %}{% assign in_group = false %}{% endif %}
-            {% endfor %}
-          {% endif %}
+          {% unless card.types.size > 0 %}{% if group.untyped %}{% assign in_group = true %}{% endif %}{% endunless %}
+          {% for key in card.types %}{% if group_keys contains key %}{% assign in_group = true %}{% endif %}{% endfor %}
           {% if in_group %}{% assign count = count | plus: 1 %}{% endif %}
         {% endfor %}
       <button
         type="button"
         class="projects-filter__group"
         data-group="{{ group.key }}"
-        data-types="{{ group_types | map: 'key' | join: ' ' }}"
-        {% unless group.types %}data-catch-all{% endunless %}
+        data-types="{{ group_keys | join: ' ' }}"
+        {% if group.untyped %}data-untyped{% endif %}
         aria-pressed="false"
         {% if group_types.size > 1 %}aria-expanded="false" aria-controls="projects-subfilter-{{ group.key }}"{% endif %}
       >

@@ -1,10 +1,10 @@
 # Place-based electoral studies, shown on the Projects page (/projects).
 # Rendered by _includes/projects.html.
 #
-# `types` defines the categories: the badges on each card and the second level
-# of the map legend / filter (see `filter_groups`). Each key's color (map pins,
-# statewide borders, legend swatches, badges) is set in
-# _sass/components/_projects.scss, in `$projects-type-colors`.
+# `filter_groups` defines the legend and the categories (types) in it; see
+# the note above it. Each type's color (map pins, statewide borders, legend
+# swatches, badges) is set in _sass/components/_projects.scss, in
+# `$projects-type-colors`.
 #
 # Each entry in `projects`:
 #   id           unique anchor id (lowercase, hyphens)
@@ -13,7 +13,8 @@
 #   scope        statewide - the state is outlined on the map
 #                local     - a pin is placed at `lat`/`lon`
 #   lat, lon     pin position, decimal degrees (local only)
-#   types        one or more `types` keys; the first sets the map color
+#   types        one or more type keys from `filter_groups`; the first sets
+#                the map color
 #   image        optional header image; defaults to a locator map of the state
 #   description  (markdown) one or two sentences on the work there
 #   studies      list of { title, year (optional), url }; link to the page that
@@ -21,35 +22,37 @@
 #
 # Cards are sorted by name, so entries can be added anywhere.
 
-types:
-  - key: city-council
-    label: City Council
-  - key: school-board
-    label: School Board
-  - key: county
-    label: County Government
-  - key: state-legislature
-    label: State Legislature
-  - key: congressional
-    label: Congressional
-  - key: redistricting
-    label: Redistricting
-  - key: expert-report
-    label: Expert Report
-
-# The legend's first level. A project is in a group if it has any of the
-# group's `types`; a group with no `types` ("Other") takes every project that
-# isn't in another group, including ones with no types at all. Selecting a
-# group with more than one type opens a second row to narrow it by type.
+# The legend. Its first level is these groups, one selectable at a time; each
+# group lists its categories (types), with the label shown on the legend and
+# on card badges. A project is in a group if it has any of the group's types.
+# A group with more than one type opens a second row to narrow it by type.
+# `untyped: true` puts projects and items with no types in that group too.
+# Every type a project uses must be listed under some group.
 filter_groups:
   - key: election-modeling
     label: Election Modeling
-    types: [city-council, school-board, county, state-legislature, congressional]
+    types:
+      - key: city-council
+        label: City Council
+      - key: school-board
+        label: School Board
+      - key: county
+        label: County Government
+      - key: state-legislature
+        label: State Legislature
+      - key: congressional
+        label: Congressional
   - key: expert-reports
     label: Expert Reports
-    types: [expert-report]
+    types:
+      - key: expert-report
+        label: Expert Report
   - key: other
     label: Other
+    untyped: true
+    types:
+      - key: redistricting
+        label: Redistricting
 
 projects:
   - id: alabama

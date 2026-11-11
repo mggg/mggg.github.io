@@ -147,19 +147,10 @@
       return types ? types.split(" ").filter(Boolean) : [];
     }
 
-    // Types some group lists; the catch-all group ("Other") gets the rest.
-    var claimed = {};
-    groupButtons.forEach(function (button) {
-      if (button.hasAttribute("data-catch-all")) return;
-      splitTypes(button.dataset.types).forEach(function (type) {
-        claimed[type] = true;
-      });
-    });
-
+    // In the group if it has any of the group's types; an `untyped` group
+    // (data-untyped) also takes projects with none.
     function inActiveGroup(types) {
-      if (activeGroup.hasAttribute("data-catch-all")) {
-        return types.every(function (type) { return !claimed[type]; });
-      }
+      if (!types.length) return activeGroup.hasAttribute("data-untyped");
       var groupTypes = splitTypes(activeGroup.dataset.types);
       return types.some(function (type) { return groupTypes.indexOf(type) !== -1; });
     }
