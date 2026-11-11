@@ -7,7 +7,11 @@
   Map geometry: _data/us_map.json (pre-projected state outlines; see its `source` note)
 {% endcomment %}
 {% assign projects = site.data.projects.projects | sort: "name" %}
-{% assign types = site.data.projects.types %}
+{% comment %} Every type, from all the legend groups: card badges look up their labels here. {% endcomment %}
+{% assign types = "" | split: "" %}
+{% for group in site.data.projects.filter_groups %}
+  {% assign types = types | concat: group.types %}
+{% endfor %}
 {% comment %} Cards also cover national/international work (beside the map, not on it). {% endcomment %}
 {% assign cards = site.data.projects.projects %}
 {% for group in site.data.projects.beyond_map %}
