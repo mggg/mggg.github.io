@@ -194,7 +194,7 @@ Categories live under `types:` at the top of `_data/projects.yml`:
 types:
   - key: city-council
     label: City Council
-    color: "#4396c8"
+    color: "#9e4ae6"
 ```
 
 To add one, add an entry with a new `key` (lowercase, hyphens), a `label` for
@@ -243,12 +243,18 @@ bundle exec jekyll serve
 
 Open `http://localhost:4000/projects` and check:
 
-- The count line ("Showing all N projects") went up by one.
+- The count line ("Showing all N projects") went up by the number of new
+  studies. It counts studies, not cards, and a study linked from several cards
+  (same `url`) counts once.
 - The pin is in the right place, or the right state is outlined, in the right color.
 - Hovering the pin or state shows a popup with the project's name and its study
   links, and clicking it jumps to the card.
 - The card's locator map shows the right state, with a dot in the right spot for
   local entries.
+- The card reads well in all three layouts above the list: Grid, Icons (smaller,
+  without the description), and List (one per row). Visitors' choice is
+  remembered in their browser, so switch back to check the others. Screens
+  900px wide or narrower always show Grid, with no switcher.
 - Each legend group and type that includes the project shows and hides it.
 - Every study link opens the right page.
 
