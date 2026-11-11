@@ -243,6 +243,18 @@ html:has(.projects) {
   display: block;
   width: 100%;
   height: auto;
+  // No browser highlight over the map on a click or tap: the tap flash
+  // (Safari, phones), which can cover the whole map for a state's link, and
+  // the selection tint from a quick double-click. Keyboard focus still shows
+  // on the state or pin (below).
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  user-select: none;
+  outline: none;
+
+  a {
+    -webkit-tap-highlight-color: transparent;
+  }
 }
 
 .projects-map__states {
@@ -260,6 +272,9 @@ html:has(.projects) {
 }
 
 .projects-map__state--study {
+  // Its own fill, not inherited from .projects-map__states: once its link has
+  // been clicked (:visited), Chrome draws an inherited SVG fill black.
+  fill: $dark-grey;
   // A border in the category's color; --type-fill is a split pattern for
   // states with more than one category. Clipped to the state's own shape
   // (map.html), so only the inner half of the stroke shows: 7 draws a 3.5
