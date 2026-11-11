@@ -31,6 +31,9 @@
   {% endfor %}
 {% endfor %}
 {% assign study_total = study_urls | uniq | size %}
+{% comment %} Font Awesome (solid icons only), for the layout buttons. Pinned, with integrity hashes. {% endcomment %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/fontawesome.min.css" integrity="sha512-UuQ/zJlbMVAw/UU8vVBhnI4op+/tFOpQZVT+FormmIEhRSCnJWyHiBbEVgM4Uztsht41f3FzVWgLuwzUqOObKw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/solid.min.css" integrity="sha512-Hp+WwK4QdKZk9/W0ViDvLunYjFrGJmNDt6sCflZNkjgvNq9mY+0tMbd6tWMiAlcf1OQyqL4gn2rYp7UsfssZPA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <div class="projects" data-projects>
   {% include projects/map.html projects=projects cards=cards types=types groups=site.data.projects.filter_groups %}
 
@@ -39,16 +42,19 @@
       Showing all {{ study_total }} projects
     </p>
 
-    {% comment %} Card layouts; projects/script.html switches them (and remembers the choice), so they're hidden without it. {% endcomment %}
+    {% comment %}
+      Card layouts; projects/script.html switches them (and remembers the
+      choice), so they're hidden without it. Icons: Font Awesome, loaded below.
+    {% endcomment %}
     <div class="projects-views" role="group" aria-label="Layout">
-      <button type="button" class="projects-views__button" data-projects-view="grid" aria-pressed="true">
-        <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="1" y="1" width="6" height="6" rx="1"/><rect x="9" y="1" width="6" height="6" rx="1"/><rect x="1" y="9" width="6" height="6" rx="1"/><rect x="9" y="9" width="6" height="6" rx="1"/></svg>
+      <button type="button" class="projects-views__button" data-projects-view="grid" aria-pressed="true" aria-label="Grid" title="Grid">
+        <i class="fa-solid fa-table-cells-large" aria-hidden="true"></i>
       </button>
-      <button type="button" class="projects-views__button" data-projects-view="icons" aria-pressed="false">
-        <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="1" y="1" width="3.5" height="3.5" rx="0.75"/><rect x="6.25" y="1" width="3.5" height="3.5" rx="0.75"/><rect x="11.5" y="1" width="3.5" height="3.5" rx="0.75"/><rect x="1" y="6.25" width="3.5" height="3.5" rx="0.75"/><rect x="6.25" y="6.25" width="3.5" height="3.5" rx="0.75"/><rect x="11.5" y="6.25" width="3.5" height="3.5" rx="0.75"/><rect x="1" y="11.5" width="3.5" height="3.5" rx="0.75"/><rect x="6.25" y="11.5" width="3.5" height="3.5" rx="0.75"/><rect x="11.5" y="11.5" width="3.5" height="3.5" rx="0.75"/></svg>
+      <button type="button" class="projects-views__button" data-projects-view="icons" aria-pressed="false" aria-label="Icons" title="Icons">
+        <i class="fa-solid fa-table-cells" aria-hidden="true"></i>
       </button>
-      <button type="button" class="projects-views__button" data-projects-view="list" aria-pressed="false">
-        <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="1" y="1.5" width="14" height="3.5" rx="1"/><rect x="1" y="6.25" width="14" height="3.5" rx="1"/><rect x="1" y="11" width="14" height="3.5" rx="1"/></svg>
+      <button type="button" class="projects-views__button" data-projects-view="list" aria-pressed="false" aria-label="List" title="List">
+        <i class="fa-solid fa-list" aria-hidden="true"></i>
       </button>
     </div>
   </div>
