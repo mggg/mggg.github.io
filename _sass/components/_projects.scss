@@ -3,7 +3,7 @@
 // Clears the sticky .site-header when jumping to a card from the map.
 $projects-sticky-offset: 7rem;
 
-// Category colors, by the type keys in _data/projects.yml (`types`). Any
+// Category colors, by the type keys in _data/projects.yml (`filter_groups`). Any
 // element with data-type="<key>" gets --type-color: map pins and borders,
 // the split-border patterns, legend swatches, badges, and card locator dots.
 // The Districtr palette, shared with the newsletter ($newsletter-accents in
@@ -18,7 +18,6 @@ $projects-type-colors: (
   "expert-report": #4396c8,
 );
 
-//
 // Not scoped under .projects: the card locators reuse the map's states with
 // <use>, and those copies don't match selectors through an ancestor.
 // data-type is only used on this page.
@@ -35,6 +34,103 @@ $projects-type-colors: (
 // The bands of a split border (map.html, script.html).
 .projects pattern [data-type] {
   fill: var(--type-color);
+}
+
+/* shared pieces */
+
+// Rounded, outlined buttons: the legend's groups and types, Show all, and the
+// layout switcher.
+%projects-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.75rem;
+  border: 1px solid $dark-grey;
+  border-radius: 1rem;
+  background: white;
+  font-family: $font-sans;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: #444;
+  cursor: pointer;
+  transition: background 100ms, border-color 100ms, color 100ms;
+
+  &:hover {
+    background: $light-grey;
+  }
+}
+
+// A list of study links, each with an arrow: on cards, in the popup, and
+// beside the map.
+@mixin projects-study-list($gap) {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li + li {
+    margin-top: $gap;
+  }
+
+  a::after {
+    content: " →";
+  }
+}
+
+// A small chevron (for ::after) that points down, and up once open.
+@mixin projects-chevron($size) {
+  content: "";
+  width: $size;
+  height: $size;
+  border-right: 2px solid #666;
+  border-bottom: 2px solid #666;
+  transform: translateY(-25%) rotate(45deg);
+  transition: transform 200ms ease;
+}
+
+@mixin projects-chevron-open {
+  transform: translateY(25%) rotate(225deg);
+}
+
+// A project's name in the popup and beside the map.
+%projects-item-title {
+  font-family: $font-header-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #444;
+}
+
+// Small uppercase labels: sidecar headings, the count line, and the header of
+// national/international cards.
+%projects-label {
+  font-family: $font-sans-thin;
+  letter-spacing: 0.05rem;
+  text-transform: uppercase;
+  color: #666;
+}
+
+// Counts shown in brackets: "(4)".
+.projects-sidecar__count,
+.projects-filter__count {
+  &::before {
+    content: "(";
+  }
+
+  &::after {
+    content: ")";
+  }
+}
+
+// Hidden elements stay hidden, whatever display their class sets (.card's
+// flex, the pills' inline-flex).
+.projects [hidden] {
+  display: none;
+}
+
+// Outlined states' border width, in user units; half of it shows (see
+// .projects-map__state--study). On .projects, not the map, so the card
+// locators' copies of the states inherit it too.
+.projects {
+  --state-border: 7;
 }
 
 // Glide down to a card when a pin or state is clicked (as the newsletter's
@@ -62,8 +158,23 @@ html:has(.projects) {
 }
 
 .projects-map__svg {
+  display: block;
   grid-column: 1;
   grid-row: 1;
+  width: 100%;
+  height: auto;
+  // No browser highlight over the map on a click or tap: the tap flash
+  // (Safari, phones), which can cover the whole map for a state's link, and
+  // the selection tint from a quick double-click. Keyboard focus still shows
+  // on the state or pin (below).
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  user-select: none;
+  outline: none;
+
+  a {
+    -webkit-tap-highlight-color: transparent;
+  }
 }
 
 /* sidecar (_includes/projects/sidecar.html) */
@@ -114,14 +225,8 @@ html:has(.projects) {
   }
 
   &::after {
-    content: "";
-    width: 0.5rem;
-    height: 0.5rem;
+    @include projects-chevron(0.5rem);
     margin: 0 0.25rem 0 auto;
-    border-right: 2px solid #666;
-    border-bottom: 2px solid #666;
-    transform: translateY(-25%) rotate(45deg);
-    transition: transform 200ms ease;
   }
 
   &:hover .projects-sidecar__heading {
@@ -136,45 +241,29 @@ html:has(.projects) {
 
 // .is-closing is set while a section slides shut (see projects/script.html).
 .projects-sidecar__group[open]:not(.is-closing) > .projects-sidecar__summary::after {
-  transform: translateY(25%) rotate(225deg);
+  @include projects-chevron-open;
 }
 
 .projects-sidecar__heading.projects-sidecar__heading {
+  @extend %projects-label;
   margin: 0;
-  font-family: $font-sans-thin;
   font-size: 0.875rem;
   font-weight: 400;
-  letter-spacing: 0.05rem;
   line-height: 1.4;
-  text-transform: uppercase;
-  color: #666;
   transition: color 100ms;
 }
 
 .projects-sidecar__count {
   font-size: 0.8125rem;
   color: #888;
-
-  &::before {
-    content: "(";
-  }
-
-  &::after {
-    content: ")";
-  }
 }
 
 // Doubled classes beat the site's default list and heading styles.
-.projects-sidecar__items.projects-sidecar__items,
-.projects-sidecar__studies.projects-sidecar__studies {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
 // The panel that slides; its padding animates with it.
 .projects-sidecar__items.projects-sidecar__items {
+  margin: 0;
   padding: 0.25rem 0 1rem;
+  list-style: none;
 }
 
 // Styled like the map's hover popup (.projects-popup).
@@ -183,26 +272,16 @@ html:has(.projects) {
 }
 
 .projects-sidecar__name.projects-sidecar__name {
+  @extend %projects-item-title;
   margin: 0;
-  font-family: $font-header-serif;
-  font-size: 1.125rem;
-  font-weight: 700;
   line-height: 1.3;
-  color: #444;
 }
 
 .projects-sidecar__studies.projects-sidecar__studies {
+  @include projects-study-list(0.375rem);
   margin-top: 0.375rem;
   font-size: 0.9rem;
   line-height: 1.4;
-
-  li + li {
-    margin-top: 0.375rem;
-  }
-
-  a::after {
-    content: " →";
-  }
 }
 
 // Not enough room beside the map: one column of sidecar, map, then filter.
@@ -245,50 +324,16 @@ html:has(.projects) {
   box-shadow: $raised;
   line-height: 1.4;
 
-  &[hidden] {
-    display: none;
-  }
 }
 
 .projects-popup__title {
+  @extend %projects-item-title;
   margin: 0 0 0.375rem;
-  font-family: $font-header-serif;
-  font-size: 1.125rem;
-  font-weight: 700;
-  color: #444;
 }
 
 .projects-popup__links {
-  margin: 0;
-  padding: 0;
-  list-style: none;
+  @include projects-study-list(0.375rem);
   font-size: 0.9rem;
-
-  li + li {
-    margin-top: 0.375rem;
-  }
-
-  a::after {
-    content: " →";
-  }
-}
-
-.projects-map__svg {
-  display: block;
-  width: 100%;
-  height: auto;
-  // No browser highlight over the map on a click or tap: the tap flash
-  // (Safari, phones), which can cover the whole map for a state's link, and
-  // the selection tint from a quick double-click. Keyboard focus still shows
-  // on the state or pin (below).
-  -webkit-tap-highlight-color: transparent;
-  -webkit-user-select: none;
-  user-select: none;
-  outline: none;
-
-  a {
-    -webkit-tap-highlight-color: transparent;
-  }
 }
 
 .projects-map__states {
@@ -311,11 +356,10 @@ html:has(.projects) {
   fill: $dark-grey;
   // A border in the category's color; --type-fill is a split pattern for
   // states with more than one category. Clipped to the state's own shape
-  // (map.html), so only the inner half of the stroke shows: 7 draws a 3.5
-  // border inside the edge (stroke-width 3, a 1.5 border, on narrow screens,
-  // below).
+  // (map.html), so only the inner half of the stroke shows: --state-border 7
+  // draws a 3.5 border inside the edge (3, a 1.5 border, on narrow screens).
   stroke: var(--type-fill, var(--type-color));
-  stroke-width: 7;
+  stroke-width: var(--state-border);
   transition: filter 100ms, stroke-width 100ms;
 
   &.is-dimmed {
@@ -326,7 +370,6 @@ html:has(.projects) {
 
 .projects-map__state-link:hover .projects-map__state--study,
 .projects-map__state-link:focus-visible .projects-map__state--study {
-  stroke-width: 7;
   filter: brightness(0.9);
 }
 
@@ -337,17 +380,11 @@ html:has(.projects) {
   outline: none;
 }
 
-// Narrow screens: stroke-width 3 (a 1.5 border, half clipped), in step with
-// the smaller map. After the rules above so it wins, hover and focus included.
+// Narrow screens: a thinner border (1.5, half clipped), in step with the
+// smaller map.
 @media only screen and (max-width: 900px) {
-  .projects-map__state--study,
-  .projects-map__state-link:hover .projects-map__state--study,
-  .projects-map__state-link:focus-visible .projects-map__state--study {
-    stroke-width: 3;
-  }
-
-  .projects-map__state--study.is-dimmed {
-    stroke-width: 1.5;
+  .projects {
+    --state-border: 3;
   }
 }
 
@@ -362,7 +399,9 @@ html:has(.projects) {
   }
 }
 
-.projects-map__dot {
+// Pins on the map and on card locators.
+.projects-map__dot,
+.projects-card__dot {
   fill: var(--type-color);
   stroke: white;
   stroke-width: 1.5;
@@ -399,51 +438,24 @@ html:has(.projects) {
   padding: 0.75rem;
   border-radius: 0.5rem;
   background: $light-grey;
-
-  &[hidden] {
-    display: none;
-  }
 }
 
+// A group's pressed outline is dark blue (see the pressed rule below).
 .projects-filter__group {
-  display: inline-flex;
-  align-items: center;
+  @extend %projects-pill;
+  --type-color: #{$mggg-dark-blue};
   gap: 0.5rem;
   padding: 0.375rem 1rem;
-  border: 1px solid $dark-grey;
   border-radius: 1.25rem;
-  background: white;
-  font-family: $font-sans;
   font-size: 1rem;
-  line-height: 1.5;
-  color: #444;
-  cursor: pointer;
-  transition: background 100ms, border-color 100ms;
-
-  &:hover {
-    background: $light-grey;
-  }
-
-  &[aria-pressed="true"] {
-    border-color: $mggg-dark-blue;
-    background: $grey;
-    font-weight: 600;
-    box-shadow: inset 0 0 0 1px $mggg-dark-blue;
-  }
 
   // Groups with a second row get a chevron that turns when it's open.
   &[aria-expanded]::after {
-    content: "";
-    width: 0.4rem;
-    height: 0.4rem;
-    border-right: 2px solid #666;
-    border-bottom: 2px solid #666;
-    transform: translateY(-25%) rotate(45deg);
-    transition: transform 200ms ease;
+    @include projects-chevron(0.4rem);
   }
 
   &[aria-expanded="true"]::after {
-    transform: translateY(25%) rotate(225deg);
+    @include projects-chevron-open;
   }
 }
 
@@ -452,13 +464,18 @@ html:has(.projects) {
   display: inline-flex;
 }
 
+// Colored dots with a white ring: the group's key and the pin swatch.
+.projects-filter__dot,
+.projects-filter__swatch--pin {
+  border: 2px solid white;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px $dark-grey;
+}
+
 .projects-filter__dot {
   width: 0.75rem;
   height: 0.75rem;
-  border: 2px solid white;
-  border-radius: 50%;
   background: var(--type-color);
-  box-shadow: 0 0 0 1px $dark-grey;
 
   & + & {
     margin-left: -0.25rem;
@@ -467,25 +484,11 @@ html:has(.projects) {
 
 .projects-filter__item,
 .projects-filter__reset {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.375rem;
-  padding: 0.25rem 0.75rem;
-  border: 1px solid $dark-grey;
-  border-radius: 1rem;
-  background: white;
-  font-family: $font-sans;
-  font-size: 0.875rem;
-  line-height: 1.5;
-  color: #444;
-  cursor: pointer;
-  transition: background 100ms, border-color 100ms;
-
-  &:hover {
-    background: $light-grey;
-  }
+  @extend %projects-pill;
 }
 
+// Pressed: outlined in the type's color (dark blue for groups).
+.projects-filter__group[aria-pressed="true"],
 .projects-filter__item[aria-pressed="true"] {
   border-color: var(--type-color);
   background: $grey;
@@ -496,10 +499,6 @@ html:has(.projects) {
 .projects-filter__reset {
   border-style: dashed;
   color: $mggg-dark-blue;
-
-  &[hidden] {
-    display: none;
-  }
 }
 
 // Without JavaScript the legend is still a key, just not a filter.
@@ -523,23 +522,9 @@ html:has(.projects) {
   box-shadow: inset 0 0 0 2px var(--type-color);
 }
 
-.projects-filter__swatch--pin {
-  border: 2px solid white;
-  border-radius: 50%;
-  box-shadow: 0 0 0 1px $dark-grey;
-}
-
 .projects-filter__count {
   color: #666;
   font-weight: 400;
-
-  &::before {
-    content: "(";
-  }
-
-  &::after {
-    content: ")";
-  }
 }
 
 .projects-filter__note {
@@ -562,11 +547,8 @@ html:has(.projects) {
 }
 
 .projects__count {
+  @extend %projects-label;
   margin: 0;
-  font-family: $font-sans-thin;
-  letter-spacing: 0.05rem;
-  text-transform: uppercase;
-  color: #666;
 }
 
 .projects__list {
@@ -582,11 +564,6 @@ html:has(.projects) {
 .projects-card {
   margin: 0;
   scroll-margin-top: $projects-sticky-offset;
-
-  // .card sets display: flex, which would otherwise override [hidden].
-  &[hidden] {
-    display: none;
-  }
 
   // The card a pin or state linked to. projects/script.html sets the class,
   // and clears it on a click anywhere else; :target is the no-script fallback.
@@ -617,15 +594,14 @@ html:has(.projects) {
 
 // Header for national/international cards: the group's label.
 .projects-card__scope {
+  @extend %projects-label;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100%;
   margin: 0;
-  font-family: $font-sans-thin;
   font-size: 1.25rem;
   letter-spacing: 0.15rem;
-  text-transform: uppercase;
   color: $mggg-dark-blue;
 }
 
@@ -644,9 +620,6 @@ html:has(.projects) {
 }
 
 .projects-card__dot {
-  fill: var(--type-color);
-  stroke: white;
-  stroke-width: 1.5;
   vector-effect: non-scaling-stroke;
 }
 
@@ -689,19 +662,11 @@ html:has(.projects) {
 }
 
 .projects-card__studies.projects-card__studies {
+  @include projects-study-list(0.5rem);
   margin: 0.75rem 0 0;
   padding: 0.75rem 0 0;
   border-top: 1px solid $grey;
-  list-style: none;
   line-height: 1.5;
-
-  li + li {
-    margin-top: 0.5rem;
-  }
-
-  a::after {
-    content: " →";
-  }
 }
 
 // Descriptions cut to a standard length, with a Read more button
@@ -735,10 +700,6 @@ $projects-description-lines: 4;
   &:hover {
     text-decoration: underline;
   }
-
-  &[hidden] {
-    display: none;
-  }
 }
 
 .projects-card__year {
@@ -762,27 +723,15 @@ $projects-description-lines: 4;
   overflow: hidden;
 }
 
+// Pills joined into one: the outline is on .projects-views.
 .projects-views__button {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.375rem;
+  @extend %projects-pill;
   margin: 0;
-  padding: 0.25rem 0.75rem;
   border: 0;
-  background: white;
-  font-family: $font-sans;
-  font-size: 0.875rem;
-  line-height: 1.5;
-  color: #444;
-  cursor: pointer;
-  transition: background 100ms, color 100ms;
+  border-radius: 0;
 
   & + & {
     border-left: 1px solid $dark-grey;
-  }
-
-  &:hover {
-    background: $light-grey;
   }
 
   &[aria-pressed="true"] {
