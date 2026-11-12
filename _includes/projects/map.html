@@ -1,0 +1,177 @@
+{% assign map = site.data.us_map %}
+<figure class="projects-map">
+  <svg
+    class="projects-map__svg"
+    viewBox="0 0 {{ map.width }} {{ map.height }}"
+    role="group"
+    aria-label="Map of projects by the Data and Democracy Lab"
+  >
+    {% comment %} No SVG <title>s: browsers show them as hover tooltips over our own popup. {% endcomment %}
+    {% comment %}
+      States with more than one category get a border split diagonally
+      (top-right to bottom-left) into bands, one per category in the order listed, the first
+      at top left. Two categories split the state's bounding box 50/50 corner
+      to corner. Each band covers x + y up to its share of 2, in bounding-box
+      units; the last category fills the rest. One pattern per combination,
+      id'd by its type keys; projects/script.html builds more the same way when
+      filters narrow them. Colors come from each shape's data-type, via
+      `$projects-type-colors` in _sass/components/_projects.scss.
+    {% endcomment %}
+    <defs data-projects-patterns>
+      {% assign emitted = "|" %}
+      {% for project in include.projects %}
+        {% if project.scope == "statewide" and project.types.size > 1 %}
+          {% capture pattern_id %}projects-split-{{ project.types | join: "-" }}{% endcapture %}
+          {% capture pattern_key %}|{{ pattern_id }}|{% endcapture %}
+          {% unless emitted contains pattern_key %}
+            {% assign bands = project.types.size %}
+            {% assign last_band = bands | minus: 2 %}
+      <pattern id="{{ pattern_id }}" patternUnits="objectBoundingBox" patternContentUnits="objectBoundingBox" width="1" height="1">
+        <rect width="1" height="1" data-type="{{ project.types.last }}" />
+            {% comment %} Largest band first, so each later (smaller) one paints over its corner. {% endcomment %}
+            {% for i in (0..last_band) reversed %}
+              {% assign t = i | plus: 1 | times: 2.0 | divided_by: bands | round: 4 %}
+              {% if t <= 1 %}
+        <polygon points="0,0 {{ t }},0 0,{{ t }}" data-type="{{ project.types[i] }}" />
+              {% else %}
+                {% assign u = t | minus: 1 | round: 4 %}
+        <polygon points="0,0 1,0 1,{{ u }} {{ u }},1 0,1" data-type="{{ project.types[i] }}" />
+              {% endif %}
+            {% endfor %}
+      </pattern>
+            {% assign emitted = emitted | append: pattern_key %}
+          {% endunless %}
+        {% endif %}
+      {% endfor %}
+    </defs>
+    {% comment %}
+      Statewide projects outline their state in their category's color (or a
+      diagonally split border for several) and link to their card. The border
+      sits inside the state: it's drawn at double width and clipped to the
+      state's own shape, so outlined neighbors each keep their full border.
+      Each outlined state's shape is defined once (projects-shape-XX) and used
+      both for the visible state and for its clip. Outlined states are drawn
+      after the rest.
+    {% endcomment %}
+    <g class="projects-map__states">
+      {% for state in map.states %}
+        {% assign statewide = include.projects | where: "state", state.abbr | where: "scope", "statewide" | first %}
+        {% unless statewide %}
+      <path id="us-state-{{ state.abbr }}" class="projects-map__state" d="{{ state.d }}" />
+        {% endunless %}
+      {% endfor %}
+      {% for state in map.states %}
+        {% assign statewide = include.projects | where: "state", state.abbr | where: "scope", "statewide" | first %}
+        {% if statewide %}
+      <defs>
+        <path id="projects-shape-{{ state.abbr }}" class="projects-map__shape" d="{{ state.d }}" />
+        <clipPath id="projects-clip-{{ state.abbr }}"><use href="#projects-shape-{{ state.abbr }}" /></clipPath>
+      </defs>
+      <a href="#{{ statewide.id }}" class="projects-map__state-link" aria-label="{{ statewide.name }}">
+        <use
+          href="#projects-shape-{{ state.abbr }}"
+          id="us-state-{{ state.abbr }}"
+          class="projects-map__state projects-map__state--study"
+          clip-path="url(#projects-clip-{{ state.abbr }})"
+          data-projects-mark
+          data-types="{{ statewide.types | join: ' ' }}"
+          data-type="{{ statewide.types[0] }}"
+          {% if statewide.types.size > 1 %}style="--type-fill: url(#projects-split-{{ statewide.types | join: '-' }})"{% endif %}
+        />
+      </a>
+        {% endif %}
+      {% endfor %}
+    </g>
+    <g class="projects-map__pins" data-projects-pins></g>
+  </svg>
+
+  {% comment %} Filled in by projects/script.html when a pin or outlined state is hovered or focused. {% endcomment %}
+  <div class="projects-popup" data-projects-popup hidden>
+    <p class="projects-popup__title"></p>
+    <ul class="projects-popup__links"></ul>
+  </div>
+
+  {% comment %}
+    National/international work. The figure is a grid: map and sidecar side
+    by side, the legend/filter across both underneath (stacked on narrow
+    screens: sidecar, map, filter). See _projects.scss.
+  {% endcomment %}
+  {% include projects/sidecar.html groups=site.data.projects.beyond_map %}
+
+  {% comment %}
+    Two-level legend/filter. First level: `filter_groups` (Election Modeling,
+    Expert Reports, Other), one at a time. A group with more than one type
+    opens a second row of its types, to narrow it. A card is in a group if it
+    has any of the group's types, or none at all if the group is `untyped`.
+    projects/script.html does the filtering; counts are cards, not pins.
+  {% endcomment %}
+  {% assign subrows = "" %}
+  <figcaption class="projects-filter">
+    <div class="projects-filter__groups" role="group" aria-label="Filter projects by kind of work">
+      {% for group in include.groups %}
+        {% assign group_types = group.types %}
+        {% assign group_keys = group_types | map: "key" %}
+        {% assign count = 0 %}
+        {% for card in include.cards %}
+          {% assign in_group = false %}
+          {% unless card.types.size > 0 %}{% if group.untyped %}{% assign in_group = true %}{% endif %}{% endunless %}
+          {% for key in card.types %}{% if group_keys contains key %}{% assign in_group = true %}{% endif %}{% endfor %}
+          {% if in_group %}{% assign count = count | plus: 1 %}{% endif %}
+        {% endfor %}
+      <button
+        type="button"
+        class="projects-filter__group"
+        data-group="{{ group.key }}"
+        data-types="{{ group_keys | join: ' ' }}"
+        {% if group.untyped %}data-untyped{% endif %}
+        aria-pressed="false"
+        {% if group_types.size > 1 %}aria-expanded="false" aria-controls="projects-subfilter-{{ group.key }}"{% endif %}
+      >
+        <span class="projects-filter__dots" aria-hidden="true">
+          {% for type in group_types %}<span class="projects-filter__dot" data-type="{{ type.key }}"></span>{% endfor %}
+        </span>
+        {{ group.label }}
+        <span class="projects-filter__count">{{ count }}</span>
+      </button>
+        {% if group_types.size > 1 %}
+          {% capture subrow %}
+    <div class="projects-filter__items" id="projects-subfilter-{{ group.key }}" data-subfilter="{{ group.key }}" role="group" aria-label="Narrow {{ group.label }} by governing body" hidden>
+            {% for type in group_types %}
+              {% assign type_count = 0 %}
+              {% assign has_local = false %}
+              {% assign has_statewide = false %}
+              {% for card in include.cards %}
+                {% if card.types contains type.key %}
+                  {% assign type_count = type_count | plus: 1 %}
+                  {% if card.scope == "local" %}{% assign has_local = true %}{% elsif card.scope == "statewide" %}{% assign has_statewide = true %}{% endif %}
+                {% endif %}
+              {% endfor %}
+      <button
+        type="button"
+        class="projects-filter__item"
+        data-type="{{ type.key }}"
+        aria-pressed="false"
+      >
+        {% if has_statewide %}<span class="projects-filter__swatch projects-filter__swatch--area" aria-hidden="true"></span>{% endif %}
+        {% if has_local %}<span class="projects-filter__swatch projects-filter__swatch--pin" aria-hidden="true"></span>{% endif %}
+        {{ type.label }}
+        <span class="projects-filter__count">{{ type_count }}</span>
+      </button>
+            {% endfor %}
+    </div>
+          {% endcapture %}
+          {% assign subrows = subrows | append: subrow %}
+        {% endif %}
+      {% endfor %}
+      <button type="button" class="projects-filter__reset" data-projects-reset hidden>Show all</button>
+    </div>
+    {{ subrows }}
+    <p class="projects-filter__note">
+      Outlined states mark statewide studies; dots mark local ones. Choose a kind of
+      work to filter the map and list; Election Modeling can be narrowed by
+      governing body.
+    </p>
+  </figcaption>
+
+  <script type="application/json" data-projects-insets>{{ map.insets | jsonify }}</script>
+</figure>

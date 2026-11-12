@@ -12,6 +12,13 @@
   margin-right: auto;
 }
 
+// Full window width with generous side margins; pair with .l-content.
+// Doubled so its padding beats .l-content's, which comes later.
+.l-full.l-full {
+  padding-left: clamp(1rem, 5vw, 5rem);
+  padding-right: clamp(1rem, 5vw, 5rem);
+}
+
 .l-flex-center {
   display: flex;
   flex-direction: column;

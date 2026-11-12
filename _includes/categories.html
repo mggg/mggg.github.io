@@ -1,7 +1,9 @@
 <nav class="categories">
   <ul class="nav-links nav-links--centered nav-links--wrap">
+    {% comment %} nav_hidden keeps a page published but out of this bar. {% endcomment %}
     {% assign categories = site.category_pages |
-    where_exp:"item","item.show_categories != false" | sort: "index" %} {% for
+    where_exp:"item","item.show_categories != false" |
+    where_exp:"item","item.nav_hidden != true" | sort: "index" %} {% for
     link in categories %}
     {% assign is_current = false %}
     {% if link.key == page.key %}

@@ -50,5 +50,10 @@
 /Brochure.pdf /uploads/Brochure.pdf 200
 /CampusKey.pdf /uploads/CampusKey.pdf 200
 
+# Reports replaced by Projects.
+
+/reports /projects 301!
+/reports.html /projects 301!
+
 ## Pretty Links for publications (should be last line in redirects file)
 /* /publications/:splat.pdf 200

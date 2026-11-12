@@ -1,0 +1,69 @@
+{% assign project = include.project %}
+{% comment %} Assigned variables outlive an include, so clear the last card's. {% endcomment %}
+{% assign state = nil %}
+{% assign scope_label = nil %}
+{% if project.state %}
+  {% comment %} Only look up a real code: `where` with a blank value matches the first state. {% endcomment %}
+  {% assign state = site.data.us_map.states | where: "abbr", project.state | first %}
+{% else %}
+  {% comment %} National/international work (`beyond_map`) has no state; find its group ("National", …) instead. {% endcomment %}
+  {% for group in site.data.projects.beyond_map %}
+    {% assign in_group = group.items | where: "id", project.id | first %}
+    {% if in_group %}{% assign scope_label = group.label %}{% endif %}
+  {% endfor %}
+{% endif %}
+<li
+  class="card projects-card"
+  id="{{ project.id }}"
+  data-types="{{ project.types | join: ' ' }}"
+  {% if project.scope == "local" %}data-lat="{{ project.lat }}" data-lon="{{ project.lon }}"{% endif %}
+>
+  <div class="projects-card__header">
+    {% if scope_label %}
+    <p class="projects-card__scope">{{ scope_label }}</p>
+    {% elsif project.image %}
+    <img class="projects-card__image" src="{{ project.image | relative_url }}" alt="" />
+    {% elsif state %}
+      {% comment %} Locator map: the state from the main map, framed with padding. {% endcomment %}
+      {% assign longest = state.bbox[2] %}
+      {% if state.bbox[3] > longest %}{% assign longest = state.bbox[3] %}{% endif %}
+      {% assign pad = longest | times: 0.15 | plus: 2 %}
+      {% assign vx = state.bbox[0] | minus: pad | round: 1 %}
+      {% assign vy = state.bbox[1] | minus: pad | round: 1 %}
+      {% assign vw = pad | times: 2 | plus: state.bbox[2] | round: 1 %}
+      {% assign vh = pad | times: 2 | plus: state.bbox[3] | round: 1 %}
+    <svg
+      class="projects-card__locator"
+      viewBox="{{ vx }} {{ vy }} {{ vw }} {{ vh }}"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <use href="#us-state-{{ state.abbr }}" class="projects-card__state" />
+    </svg>
+    {% endif %}
+  </div>
+
+  <div class="card__content">
+    <h3 class="card__title">{{ project.name }}</h3>
+    <ul class="projects-card__badges">
+      {% if scope_label %}<li class="projects-badge projects-badge--scope">{{ scope_label }}</li>{% endif %}
+      {% for key in project.types %}
+        {% assign type = include.types | where: "key", key | first %}
+      <li class="projects-badge" data-type="{{ key }}">{{ type.label }}</li>
+      {% endfor %}
+    </ul>
+    {% comment %} Cut to a few lines by projects/script.html, with a button to read the rest. {% endcomment %}
+    <div class="projects-card__description" id="{{ project.id }}-description" data-projects-description>
+      {{ project.description | markdownify | replace: "<p>", '<p class="card__teaser">' }}
+    </div>
+    <button type="button" class="projects-card__more" aria-controls="{{ project.id }}-description" aria-expanded="false" data-projects-more hidden>Read more</button>
+    <ul class="projects-card__studies">
+      {% for study in project.studies %}
+      <li>
+        <a href="{{ study.url | relative_url }}">{{ study.title }}</a>
+        {% if study.year %}<span class="projects-card__year">({{ study.year }})</span>{% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</li>

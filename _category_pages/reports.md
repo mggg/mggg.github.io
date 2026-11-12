@@ -6,6 +6,8 @@ index: 3
 output: true
 layout: category
 show_categories: true
+# Replaced in the sub-nav by Project Map (projects.md); the page stays published at /reports.
+nav_hidden: true
 ---
 
 Not all of our work is for academic audiences; we also collaborate with practitioners to analyze the electoral systems that affect their lives. 
