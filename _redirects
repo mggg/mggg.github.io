@@ -49,9 +49,11 @@
 
 /Brochure.pdf /uploads/Brochure.pdf 200
 /CampusKey.pdf /uploads/CampusKey.pdf 200
-# Locations page renamed to Projects
-/locations /projects 301
-/locations.html /projects 301
+
+# Reports replaced by Projects.
+
+/reports /projects 301!
+/reports.html /projects 301!
 
 ## Pretty Links for publications (should be last line in redirects file)
 /* /publications/:splat.pdf 200
