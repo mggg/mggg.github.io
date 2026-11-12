@@ -1,23 +1,118 @@
 <script>
-  // Projects page: places map pins and card locator dots, and filters the
-  // map and card list with the two-level legend (kind of work, then governing
-  // body). See _includes/projects.html.
+  // Projects page behavior (see _includes/projects.html). Each part of the
+  // page has its own setup function below, run in this order:
+  //   placePins       map pins and card locator dots for local studies
+  //   setupFilter     the two-level legend: filters the map, cards, and count
+  //   setupPopup      the hover/focus popup on pins and outlined states
+  //   setupAccordion  the National/International dropdowns beside the map
+  //   setupReadMore   cut-off descriptions and their Read more buttons
+  //   setupLayouts    the Grid / Icons / List switcher
+  //   setupHighlight  the card a map link jumped to
   (function () {
     var root = document.querySelector("[data-projects]");
     if (!root) return;
     root.classList.add("projects--js");
 
-    var SVG_NS = "http://www.w3.org/2000/svg";
+    // Map pins, in map units (the SVG's viewBox).
     var PIN_RADIUS = 5.5;
-    var insets = JSON.parse(root.querySelector("[data-projects-insets]").textContent);
-    var cards = Array.prototype.slice.call(root.querySelectorAll(".projects-card"));
-    var groupButtons = Array.prototype.slice.call(root.querySelectorAll(".projects-filter__group"));
-    var buttons = Array.prototype.slice.call(root.querySelectorAll(".projects-filter__item"));
-    var subrows = Array.prototype.slice.call(root.querySelectorAll("[data-subfilter]"));
-    var resetButton = root.querySelector("[data-projects-reset]");
-    var countText = root.querySelector("[data-projects-count]");
+    var PIN_GAP = 1.5; // space kept between neighboring pins
+    var SPREAD_STEPS = 120; // rounds of nudging overlapping pins apart
+    var SPREAD_PULL = 0.02; // share of the way back toward its true spot, per round
+    var LOCATOR_DOT_SIZE = 0.035; // card locator dot radius, as a share of the locator's size
+
+    // Popup, in pixels.
+    var POPUP_GAP_ABOVE = 12; // between the popup and the pointer above it
+    var POPUP_GAP_BELOW = 20; // more below, to clear the cursor itself
+    var POPUP_HIDE_DELAY = 100; // ms, so the pointer can cross into the popup
+
+    var VIEW_KEY = "mggg-projects-view"; // localStorage key for the chosen layout
+    var NARROW = "(max-width: 900px)"; // matches the 900px breakpoint in _projects.scss
+
+    var SVG_NS = "http://www.w3.org/2000/svg";
+
     // Colors are CSS: an element's data-type (a type key) sets --type-color,
     // from `$projects-type-colors` in _sass/components/_projects.scss.
+
+    function all(selector) {
+      return Array.prototype.slice.call(root.querySelectorAll(selector));
+    }
+
+    function svg(name, attrs) {
+      var el = document.createElementNS(SVG_NS, name);
+      for (var key in attrs) el.setAttribute(key, attrs[key]);
+      return el;
+    }
+
+    var cards = all(".projects-card");
+    var list = root.querySelector("[data-projects-list]");
+    var mapSvg = root.querySelector(".projects-map__svg");
+
+    placePins();
+    setupFilter();
+    setupPopup();
+    setupAccordion();
+    setupReadMore();
+    setupLayouts();
+    setupHighlight();
+
+    // ---------------------------------------------------------------------
+    // Pins: one per local study, on the map and on its card's locator map.
+
+    function placePins() {
+      var insets = JSON.parse(root.querySelector("[data-projects-insets]").textContent);
+      insets.forEach(function (inset) {
+        inset.project = makeProjection(inset);
+      });
+
+      var pinLayer = root.querySelector("[data-projects-pins]");
+      var pins = [];
+
+      cards.forEach(function (card) {
+        if (!card.dataset.lat) return;
+        var xy = projectPoint(insets, parseFloat(card.dataset.lon), parseFloat(card.dataset.lat));
+        var mainType = card.dataset.types.split(" ")[0];
+
+        var pin = svg("a", {
+          href: "#" + card.id,
+          class: "projects-map__pin",
+          "aria-label": card.querySelector(".card__title").textContent,
+          "data-projects-mark": "",
+          "data-types": card.dataset.types,
+          "data-type": mainType
+        });
+        var leader = svg("line", { class: "projects-map__leader" });
+        var circle = svg("circle", { class: "projects-map__dot", r: PIN_RADIUS });
+        pin.appendChild(leader);
+        pin.appendChild(circle);
+        pinLayer.appendChild(pin);
+        pins.push({ x0: xy[0], y0: xy[1], x: xy[0], y: xy[1], leader: leader, circle: circle });
+
+        var locator = card.querySelector(".projects-card__locator");
+        if (locator) {
+          var box = locator.viewBox.baseVal;
+          locator.appendChild(svg("circle", {
+            class: "projects-card__dot",
+            cx: xy[0],
+            cy: xy[1],
+            r: Math.max(box.width, box.height) * LOCATOR_DOT_SIZE,
+            "data-type": mainType
+          }));
+        }
+      });
+
+      spreadPins(pins);
+
+      // Displaced pins get a leader line back to their true spot.
+      pins.forEach(function (p) {
+        p.circle.setAttribute("cx", p.x.toFixed(1));
+        p.circle.setAttribute("cy", p.y.toFixed(1));
+        var moved = Math.abs(p.x - p.x0) + Math.abs(p.y - p.y0) > 1;
+        p.leader.setAttribute("x1", p.x0.toFixed(1));
+        p.leader.setAttribute("y1", p.y0.toFixed(1));
+        p.leader.setAttribute("x2", (moved ? p.x : p.x0).toFixed(1));
+        p.leader.setAttribute("y2", (moved ? p.y : p.y0).toFixed(1));
+      });
+    }
 
     // Conic equal-area projection, matching the one used to draw the state
     // outlines in _data/us_map.json; the settings come from its `insets`.
@@ -49,11 +144,8 @@
       return box && lon >= box[0] && lat >= box[1] && lon <= box[2] && lat <= box[3];
     }
 
-    insets.forEach(function (inset) {
-      inset.project = makeProjection(inset);
-    });
-
-    function projectPoint(lon, lat) {
+    // The first inset (lower 48, Alaska, ...) whose box holds the point.
+    function projectPoint(insets, lon, lat) {
       for (var i = 0; i < insets.length; i++) {
         var inset = insets[i];
         if (!inset.box || inBox(inset.box, lon, lat) || inBox(inset.extra_box, lon, lat)) {
@@ -62,513 +154,491 @@
       }
     }
 
-    function svg(name, attrs) {
-      var el = document.createElementNS(SVG_NS, name);
-      for (var key in attrs) el.setAttribute(key, attrs[key]);
-      return el;
-    }
-
-    // Map pins and card locator dots for local studies.
-    var pinLayer = root.querySelector("[data-projects-pins]");
-    var pins = [];
-    cards.forEach(function (card) {
-      if (!card.dataset.lat) return;
-      var xy = projectPoint(parseFloat(card.dataset.lon), parseFloat(card.dataset.lat));
-      var mainType = card.dataset.types.split(" ")[0];
-      var name = card.querySelector(".card__title").textContent;
-
-      var pin = svg("a", {
-        href: "#" + card.id,
-        class: "projects-map__pin",
-        "aria-label": name,
-        "data-projects-mark": "",
-        "data-types": card.dataset.types,
-        "data-type": mainType
-      });
-      var leader = svg("line", { class: "projects-map__leader" });
-      var circle = svg("circle", { class: "projects-map__dot", r: PIN_RADIUS });
-      pin.appendChild(leader);
-      pin.appendChild(circle);
-      pinLayer.appendChild(pin);
-      pins.push({ x0: xy[0], y0: xy[1], x: xy[0], y: xy[1], leader: leader, circle: circle });
-
-      var locator = card.querySelector(".projects-card__locator");
-      if (locator) {
-        var box = locator.viewBox.baseVal;
-        locator.appendChild(svg("circle", {
-          class: "projects-card__dot",
-          cx: xy[0],
-          cy: xy[1],
-          r: Math.max(box.width, box.height) * 0.035,
-          "data-type": mainType
-        }));
-      }
-    });
-
-    // Nudge overlapping pins apart (e.g. the Portland suburbs), pulling each
-    // gently back toward its true position. Displaced pins get a leader line.
-    var minGap = PIN_RADIUS * 2 + 1.5;
-    for (var step = 0; step < 120; step++) {
-      for (var i = 0; i < pins.length; i++) {
-        for (var j = i + 1; j < pins.length; j++) {
-          var a = pins[i], b = pins[j];
-          var dx = b.x - a.x, dy = b.y - a.y;
-          var dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist >= minGap) continue;
-          if (dist < 0.01) { dx = 1; dy = 0; dist = 1; }
-          var push = (minGap - dist) / 2;
-          a.x -= (dx / dist) * push; a.y -= (dy / dist) * push;
-          b.x += (dx / dist) * push; b.y += (dy / dist) * push;
+    // Nudges overlapping pins apart (e.g. the Portland suburbs), pulling each
+    // gently back toward its true position (x0, y0) every round.
+    function spreadPins(pins) {
+      var minGap = PIN_RADIUS * 2 + PIN_GAP;
+      for (var step = 0; step < SPREAD_STEPS; step++) {
+        for (var i = 0; i < pins.length; i++) {
+          for (var j = i + 1; j < pins.length; j++) {
+            var a = pins[i], b = pins[j];
+            var dx = b.x - a.x, dy = b.y - a.y;
+            var dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist >= minGap) continue;
+            if (dist < 0.01) { dx = 1; dy = 0; dist = 1; }
+            var push = (minGap - dist) / 2;
+            a.x -= (dx / dist) * push; a.y -= (dy / dist) * push;
+            b.x += (dx / dist) * push; b.y += (dy / dist) * push;
+          }
         }
+        pins.forEach(function (p) {
+          p.x += (p.x0 - p.x) * SPREAD_PULL;
+          p.y += (p.y0 - p.y) * SPREAD_PULL;
+        });
       }
-      pins.forEach(function (p) {
-        p.x += (p.x0 - p.x) * 0.02;
-        p.y += (p.y0 - p.y) * 0.02;
-      });
     }
-    pins.forEach(function (p) {
-      p.circle.setAttribute("cx", p.x.toFixed(1));
-      p.circle.setAttribute("cy", p.y.toFixed(1));
-      var moved = Math.abs(p.x - p.x0) + Math.abs(p.y - p.y0) > 1;
-      p.leader.setAttribute("x1", p.x0.toFixed(1));
-      p.leader.setAttribute("y1", p.y0.toFixed(1));
-      p.leader.setAttribute("x2", (moved ? p.x : p.x0).toFixed(1));
-      p.leader.setAttribute("y2", (moved ? p.y : p.y0).toFixed(1));
-    });
 
-    // Filtering. Nothing selected shows everything. Selecting a group (first
+    // ---------------------------------------------------------------------
+    // Filter. Nothing selected shows everything. Selecting a group (first
     // row) shows the projects in it; a group's second row narrows it to the
     // selected types. Marks take the color of the first type that's showing.
-    var marks = Array.prototype.slice.call(root.querySelectorAll("[data-projects-mark]"));
-    var activeGroup = null; // a .projects-filter__group button
-    var active = []; // selected types in its second row
 
-    function splitTypes(types) {
-      return types ? types.split(" ").filter(Boolean) : [];
-    }
+    function setupFilter() {
+      var marks = all("[data-projects-mark]");
+      var groupButtons = all(".projects-filter__group");
+      var typeButtons = all(".projects-filter__item");
+      var subrows = all("[data-subfilter]");
+      var resetButton = root.querySelector("[data-projects-reset]");
+      var countText = root.querySelector("[data-projects-count]");
+      var patternDefs = root.querySelector("[data-projects-patterns]");
 
-    // In the group if it has any of the group's types; an `untyped` group
-    // (data-untyped) also takes projects with none.
-    function inActiveGroup(types) {
-      if (!types.length) return activeGroup.hasAttribute("data-untyped");
-      var groupTypes = splitTypes(activeGroup.dataset.types);
-      return types.some(function (type) { return groupTypes.indexOf(type) !== -1; });
-    }
+      var activeGroup = null; // a .projects-filter__group button
+      var activeTypes = []; // selected types in its second row
+      var studyTotal = studiesIn(cards);
 
-    // Whether a project shows, and which of its types color it, in the
-    // project's own order.
-    function match(typeList) {
-      var types = splitTypes(typeList);
-      if (!activeGroup) return { show: true, types: types };
-      var pool = active.length ? active : splitTypes(activeGroup.dataset.types);
-      var showing = types.filter(function (type) { return pool.indexOf(type) !== -1; });
-      var show = active.length ? showing.length > 0 : inActiveGroup(types);
-      return { show: show, types: showing.length ? showing : types };
-    }
-
-    // Diagonal bands for a state with several showing types (a 50/50 split,
-    // corner to corner, for two), matching the patterns projects/map.html
-    // renders. Returns null for a single type.
-    var patternDefs = root.querySelector("[data-projects-patterns]");
-    function splitFill(types) {
-      if (types.length < 2) return null;
-      var id = "projects-split-" + types.join("-");
-      if (!document.getElementById(id)) {
-        var pattern = svg("pattern", {
-          id: id,
-          patternUnits: "objectBoundingBox",
-          patternContentUnits: "objectBoundingBox",
-          width: 1,
-          height: 1
-        });
-        pattern.appendChild(svg("rect", { width: 1, height: 1, "data-type": types[types.length - 1] }));
-        // Largest band first; band i covers x + y <= its share of 2.
-        for (var i = types.length - 2; i >= 0; i--) {
-          var t = (2 * (i + 1)) / types.length;
-          var points = t <= 1
-            ? "0,0 " + t + ",0 0," + t
-            : "0,0 1,0 1," + (t - 1) + " " + (t - 1) + ",1 0,1";
-          pattern.appendChild(svg("polygon", { points: points, "data-type": types[i] }));
-        }
-        patternDefs.appendChild(pattern);
+      function splitTypes(types) {
+        return types ? types.split(" ").filter(Boolean) : [];
       }
-      return "url(#" + id + ")";
-    }
 
-    // The count is of studies, not cards: a study linked from several cards
-    // (the Fair Representation Act) counts once. Matches projects.html.
-    function studiesIn(list) {
-      var seen = {};
-      list.forEach(function (card) {
-        card.querySelectorAll(".projects-card__studies a").forEach(function (link) {
-          seen[link.getAttribute("href")] = true;
+      // In the group if it has any of the group's types; an `untyped` group
+      // (data-untyped) also takes projects with none.
+      function inActiveGroup(types) {
+        if (!types.length) return activeGroup.hasAttribute("data-untyped");
+        var groupTypes = splitTypes(activeGroup.dataset.types);
+        return types.some(function (type) { return groupTypes.indexOf(type) !== -1; });
+      }
+
+      // Whether a project shows, and which of its types color it, in the
+      // project's own order.
+      function matchFilter(typeList) {
+        var types = splitTypes(typeList);
+        if (!activeGroup) return { show: true, types: types };
+        var pool = activeTypes.length ? activeTypes : splitTypes(activeGroup.dataset.types);
+        var showing = types.filter(function (type) { return pool.indexOf(type) !== -1; });
+        var show = activeTypes.length ? showing.length > 0 : inActiveGroup(types);
+        return { show: show, types: showing.length ? showing : types };
+      }
+
+      // Diagonal bands for a state with several showing types (a 50/50 split,
+      // corner to corner, for two), matching the patterns projects/map.html
+      // renders. Returns null for a single type.
+      function splitFill(types) {
+        if (types.length < 2) return null;
+        var id = "projects-split-" + types.join("-");
+        if (!document.getElementById(id)) {
+          var pattern = svg("pattern", {
+            id: id,
+            patternUnits: "objectBoundingBox",
+            patternContentUnits: "objectBoundingBox",
+            width: 1,
+            height: 1
+          });
+          pattern.appendChild(svg("rect", { width: 1, height: 1, "data-type": types[types.length - 1] }));
+          // Largest band first; band i covers x + y <= its share of 2.
+          for (var i = types.length - 2; i >= 0; i--) {
+            var t = (2 * (i + 1)) / types.length;
+            var points = t <= 1
+              ? "0,0 " + t + ",0 0," + t
+              : "0,0 1,0 1," + (t - 1) + " " + (t - 1) + ",1 0,1";
+            pattern.appendChild(svg("polygon", { points: points, "data-type": types[i] }));
+          }
+          patternDefs.appendChild(pattern);
+        }
+        return "url(#" + id + ")";
+      }
+
+      // The count is of studies, not cards: a study linked from several cards
+      // (the Fair Representation Act) counts once. Matches projects.html.
+      function studiesIn(someCards) {
+        var seen = {};
+        someCards.forEach(function (card) {
+          card.querySelectorAll(".projects-card__studies a").forEach(function (link) {
+            seen[link.getAttribute("href")] = true;
+          });
+        });
+        return Object.keys(seen).length;
+      }
+
+      function applyFilter() {
+        var shownCards = cards.filter(function (card) {
+          card.hidden = !matchFilter(card.dataset.types).show;
+          return !card.hidden;
+        });
+
+        marks.forEach(function (mark) {
+          var result = matchFilter(mark.dataset.types);
+          mark.classList.toggle("is-dimmed", !result.show);
+          if (!result.show) return;
+          mark.setAttribute("data-type", result.types[0]);
+          // Pins stay one color; states split when several types are showing.
+          var fill = mark.classList.contains("projects-map__state--study") ? splitFill(result.types) : null;
+          if (fill) mark.style.setProperty("--type-fill", fill);
+          else mark.style.removeProperty("--type-fill");
+        });
+
+        groupButtons.forEach(function (button) {
+          var selected = button === activeGroup;
+          button.setAttribute("aria-pressed", selected);
+          if (button.hasAttribute("aria-expanded")) button.setAttribute("aria-expanded", selected);
+        });
+        subrows.forEach(function (row) {
+          row.hidden = !activeGroup || row.dataset.subfilter !== activeGroup.dataset.group;
+        });
+        typeButtons.forEach(function (button) {
+          button.setAttribute("aria-pressed", activeTypes.indexOf(button.dataset.type) !== -1);
+        });
+        resetButton.hidden = !activeGroup;
+        countText.textContent = activeGroup
+          ? "Showing " + studiesIn(shownCards) + " of " + studyTotal + " projects"
+          : "Showing all " + studyTotal + " projects";
+      }
+
+      // Selecting a group (or none) clears the second-row selection.
+      function selectGroup(button) {
+        activeGroup = button;
+        activeTypes = [];
+        applyFilter();
+      }
+
+      // One group at a time; selecting the open group again clears it.
+      groupButtons.forEach(function (button) {
+        button.addEventListener("click", function () {
+          selectGroup(activeGroup === button ? null : button);
         });
       });
-      return Object.keys(seen).length;
-    }
-    var studyTotal = studiesIn(cards);
-
-    function applyFilter() {
-      var shownCards = [];
-      cards.forEach(function (card) {
-        var show = match(card.dataset.types).show;
-        card.hidden = !show;
-        if (show) shownCards.push(card);
+      typeButtons.forEach(function (button) {
+        button.addEventListener("click", function () {
+          var index = activeTypes.indexOf(button.dataset.type);
+          if (index === -1) activeTypes.push(button.dataset.type);
+          else activeTypes.splice(index, 1);
+          applyFilter();
+        });
       });
-      var shown = studiesIn(shownCards);
-      marks.forEach(function (mark) {
-        var result = match(mark.dataset.types);
-        mark.classList.toggle("is-dimmed", !result.show);
-        if (!result.show) return;
-        mark.setAttribute("data-type", result.types[0]);
-        // Pins stay one color; states split when several types are showing.
-        var fill = mark.classList.contains("projects-map__state--study") ? splitFill(result.types) : null;
-        if (fill) mark.style.setProperty("--type-fill", fill);
-        else mark.style.removeProperty("--type-fill");
+      resetButton.addEventListener("click", function () {
+        selectGroup(null);
       });
-      groupButtons.forEach(function (button) {
-        var selected = button === activeGroup;
-        button.setAttribute("aria-pressed", selected);
-        if (button.hasAttribute("aria-expanded")) button.setAttribute("aria-expanded", selected);
-      });
-      subrows.forEach(function (row) {
-        row.hidden = !activeGroup || row.dataset.subfilter !== activeGroup.dataset.group;
-      });
-      buttons.forEach(function (button) {
-        button.setAttribute("aria-pressed", active.indexOf(button.dataset.type) !== -1);
-      });
-      resetButton.hidden = !activeGroup;
-      countText.textContent = activeGroup
-        ? "Showing " + shown + " of " + studyTotal + " projects"
-        : "Showing all " + studyTotal + " projects";
     }
 
-    // One group at a time; selecting the open group again clears it. Changing
-    // groups clears the second-row selection.
-    groupButtons.forEach(function (button) {
-      button.addEventListener("click", function () {
-        activeGroup = activeGroup === button ? null : button;
-        active = [];
-        applyFilter();
-      });
-    });
-    buttons.forEach(function (button) {
-      button.addEventListener("click", function () {
-        var index = active.indexOf(button.dataset.type);
-        if (index === -1) active.push(button.dataset.type);
-        else active.splice(index, 1);
-        applyFilter();
-      });
-    });
-    resetButton.addEventListener("click", function () {
-      activeGroup = null;
-      active = [];
-      applyFilter();
-    });
-
+    // ---------------------------------------------------------------------
     // Popup on hover/focus of a pin or outlined state: the project's name and
     // links to its studies, copied from its card. It follows above the
     // pointer, and stays open while the pointer is over it so the links can
     // be clicked.
-    var figure = root.querySelector(".projects-map");
-    var mapSvg = root.querySelector(".projects-map__svg");
-    var popup = root.querySelector("[data-projects-popup]");
-    var popupTitle = popup.querySelector(".projects-popup__title");
-    var popupLinks = popup.querySelector(".projects-popup__links");
-    var popupTarget = null;
-    var hideTimer = null;
 
-    function markLink(el) {
-      var link = el && el.closest ? el.closest("a") : null;
-      return link && mapSvg.contains(link) ? link : null;
-    }
+    function setupPopup() {
+      var figure = root.querySelector(".projects-map");
+      var popup = root.querySelector("[data-projects-popup]");
+      var popupTitle = popup.querySelector(".projects-popup__title");
+      var popupLinks = popup.querySelector(".projects-popup__links");
+      var popupTarget = null; // the pin or state link it's showing
+      var popupBelow = false; // placed below the pointer rather than above
+      var lastPoint = null;
+      var hideTimer = null;
 
-    var popupBelow = false;
-    var lastPoint = null;
+      // The pin or state link `el` is in, if any.
+      function markLink(el) {
+        var link = el && el.closest ? el.closest("a") : null;
+        return link && mapSvg.contains(link) ? link : null;
+      }
 
-    // Fills the popup for `link` unless it's already showing it. Returns
-    // false for filtered-out projects.
-    function openPopup(link) {
-      clearTimeout(hideTimer);
-      var mark = link.querySelector("[data-projects-mark]") || link;
-      if (mark.classList.contains("is-dimmed")) return false;
-      if (popupTarget === link && !popup.hidden) return true;
-      var card = document.getElementById(link.getAttribute("href").slice(1));
-      if (!card) return false;
+      // Fills the popup for `link` unless it's already showing it. Returns
+      // false for filtered-out projects.
+      function openPopup(link) {
+        clearTimeout(hideTimer);
+        var mark = link.querySelector("[data-projects-mark]") || link;
+        if (mark.classList.contains("is-dimmed")) return false;
+        if (popupTarget === link && !popup.hidden) return true;
+        var card = document.getElementById(link.getAttribute("href").slice(1));
+        if (!card) return false;
 
-      popupTitle.textContent = card.querySelector(".card__title").textContent;
-      popupLinks.innerHTML = "";
-      card.querySelectorAll(".projects-card__studies li").forEach(function (item) {
-        popupLinks.appendChild(item.cloneNode(true));
-      });
-      popupTarget = link;
-      lastPoint = null;
-      popup.hidden = false;
-      return true;
-    }
+        popupTitle.textContent = card.querySelector(".card__title").textContent;
+        popupLinks.innerHTML = "";
+        card.querySelectorAll(".projects-card__studies li").forEach(function (item) {
+          popupLinks.appendChild(item.cloneNode(true));
+        });
+        popupTarget = link;
+        lastPoint = null;
+        popup.hidden = false;
+        return true;
+      }
 
-    // Centers the popup above `anchor` (a viewport rect), or below it if it
-    // would slide under the sticky site header or off the top of the screen.
-    function placePopup(anchor) {
-      var box = figure.getBoundingClientRect();
-      var header = document.querySelector(".site-header");
-      var ceiling = header ? Math.max(0, header.getBoundingClientRect().bottom) : 0;
-      var left = (anchor.left + anchor.right) / 2 - box.left - popup.offsetWidth / 2;
-      left = Math.max(0, Math.min(left, box.width - popup.offsetWidth));
-      var top = anchor.top - popup.offsetHeight - 12;
-      popupBelow = top < ceiling;
-      // Below the pointer, leave room for the cursor itself.
-      if (popupBelow) top = anchor.bottom + 20;
-      popup.style.left = left + "px";
-      popup.style.top = top - box.top + "px";
-    }
+      // Centers the popup above `anchor` (a viewport rect), or below it if it
+      // would slide under the sticky site header or off the top of the screen.
+      function placePopup(anchor) {
+        var box = figure.getBoundingClientRect();
+        var header = document.querySelector(".site-header");
+        var ceiling = header ? Math.max(0, header.getBoundingClientRect().bottom) : 0;
+        var left = (anchor.left + anchor.right) / 2 - box.left - popup.offsetWidth / 2;
+        left = Math.max(0, Math.min(left, box.width - popup.offsetWidth));
+        var top = anchor.top - popup.offsetHeight - POPUP_GAP_ABOVE;
+        popupBelow = top < ceiling;
+        if (popupBelow) top = anchor.bottom + POPUP_GAP_BELOW;
+        popup.style.left = left + "px";
+        popup.style.top = top - box.top + "px";
+      }
 
-    // Keeps the popup above the pointer as it moves, except while the pointer
-    // is heading into the popup, so its links can still be reached.
-    function followPointer(x, y) {
-      if (lastPoint) {
-        var rect = popup.getBoundingClientRect();
-        var under = x >= rect.left && x <= rect.right;
-        var towards = popupBelow ? y > lastPoint.y : y < lastPoint.y;
+      // Keeps the popup above the pointer as it moves, except while the pointer
+      // is heading into the popup, so its links can still be reached.
+      function followPointer(x, y) {
+        if (lastPoint) {
+          var rect = popup.getBoundingClientRect();
+          var under = x >= rect.left && x <= rect.right;
+          var towards = popupBelow ? y > lastPoint.y : y < lastPoint.y;
+          lastPoint = { x: x, y: y };
+          if (under && towards) return;
+        }
         lastPoint = { x: x, y: y };
-        if (under && towards) return;
+        placePopup({ left: x, right: x, top: y, bottom: y });
       }
-      lastPoint = { x: x, y: y };
-      placePopup({ left: x, right: x, top: y, bottom: y });
-    }
 
-    function hidePopup() {
-      clearTimeout(hideTimer);
-      popup.hidden = true;
-      popupTarget = null;
-    }
-
-    function hidePopupSoon() {
-      clearTimeout(hideTimer);
-      hideTimer = setTimeout(hidePopup, 100);
-    }
-
-    mapSvg.addEventListener("mouseover", function (event) {
-      var link = markLink(event.target);
-      if (link && openPopup(link)) followPointer(event.clientX, event.clientY);
-    });
-    mapSvg.addEventListener("mousemove", function (event) {
-      var link = markLink(event.target);
-      if (link && link === popupTarget && !popup.hidden) followPointer(event.clientX, event.clientY);
-    });
-    mapSvg.addEventListener("mouseout", function (event) {
-      if (markLink(event.target) && !markLink(event.relatedTarget)) hidePopupSoon();
-    });
-    // Keyboard focus has no pointer, so anchor to the pin or state itself.
-    mapSvg.addEventListener("focusin", function (event) {
-      var link = markLink(event.target);
-      if (link && openPopup(link)) {
-        placePopup(link.querySelector("circle, use").getBoundingClientRect());
+      function hidePopup() {
+        clearTimeout(hideTimer);
+        popup.hidden = true;
+        popupTarget = null;
       }
-    });
-    mapSvg.addEventListener("focusout", function (event) {
-      if (!popup.contains(event.relatedTarget)) hidePopupSoon();
-    });
-    popup.addEventListener("mouseenter", function () {
-      clearTimeout(hideTimer);
-    });
-    popup.addEventListener("mouseleave", hidePopupSoon);
-    popup.addEventListener("focusout", function (event) {
-      if (!popup.contains(event.relatedTarget)) hidePopupSoon();
-    });
-    document.addEventListener("keydown", function (event) {
-      if (event.key === "Escape" && !popup.hidden) hidePopup();
-    });
-    buttons.concat(groupButtons, resetButton).forEach(function (button) {
-      button.addEventListener("click", hidePopup);
-    });
 
+      function hidePopupSoon() {
+        clearTimeout(hideTimer);
+        hideTimer = setTimeout(hidePopup, POPUP_HIDE_DELAY);
+      }
+
+      // Focus leaving the map or the popup, unless it's going into the popup.
+      function hideUnlessIntoPopup(event) {
+        if (!popup.contains(event.relatedTarget)) hidePopupSoon();
+      }
+
+      mapSvg.addEventListener("mouseover", function (event) {
+        var link = markLink(event.target);
+        if (link && openPopup(link)) followPointer(event.clientX, event.clientY);
+      });
+      mapSvg.addEventListener("mousemove", function (event) {
+        var link = markLink(event.target);
+        if (link && link === popupTarget && !popup.hidden) followPointer(event.clientX, event.clientY);
+      });
+      mapSvg.addEventListener("mouseout", function (event) {
+        if (markLink(event.target) && !markLink(event.relatedTarget)) hidePopupSoon();
+      });
+      // Keyboard focus has no pointer, so anchor to the pin or state itself.
+      mapSvg.addEventListener("focusin", function (event) {
+        var link = markLink(event.target);
+        if (link && openPopup(link)) {
+          placePopup(link.querySelector("circle, use").getBoundingClientRect());
+        }
+      });
+      mapSvg.addEventListener("focusout", hideUnlessIntoPopup);
+      popup.addEventListener("focusout", hideUnlessIntoPopup);
+      popup.addEventListener("mouseenter", function () {
+        clearTimeout(hideTimer);
+      });
+      popup.addEventListener("mouseleave", hidePopupSoon);
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape" && !popup.hidden) hidePopup();
+      });
+      // Any legend button: the project it shows may be filtered out.
+      all(".projects-filter__group, .projects-filter__item, [data-projects-reset]").forEach(function (button) {
+        button.addEventListener("click", hidePopup);
+      });
+    }
+
+    // ---------------------------------------------------------------------
     // Sidecar accordion (projects/sidecar.html): sections slide open and shut
     // (the same approach as newsletter/disclosure.html), and opening one
     // closes any other. <details> can't transition its content natively, so
     // the list after <summary> is animated; `is-closing` turns the chevron
     // back while it collapses.
-    var sections = Array.prototype.slice.call(root.querySelectorAll("[data-projects-sidecar] details"));
-    var slide = { duration: 250, easing: "ease" };
-    var collapsed = { height: "0px", paddingTop: "0px", paddingBottom: "0px", opacity: 0 };
-    var reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-    var accordion = sections.map(function (details) {
-      var summary = details.querySelector(":scope > summary");
-      var content = summary.nextElementSibling;
-      var animation = null;
+    function setupAccordion() {
+      var slide = { duration: 250, easing: "ease" };
+      var collapsed = { height: "0px", paddingTop: "0px", paddingBottom: "0px", opacity: 0 };
+      var reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-      function current() {
-        var style = getComputedStyle(content);
-        return {
-          height: style.height,
-          paddingTop: style.paddingTop,
-          paddingBottom: style.paddingBottom,
-          opacity: style.opacity
-        };
-      }
+      var sections = all("[data-projects-sidecar] details").map(function (details) {
+        var summary = details.querySelector(":scope > summary");
+        var content = summary.nextElementSibling;
+        var animation = null;
 
-      function isOpen() {
-        return details.open && !details.classList.contains("is-closing");
-      }
-
-      function setOpen(open) {
-        if (open === isOpen() && !animation) return;
-        if (open) {
-          accordion.forEach(function (other) {
-            if (other.details !== details && other.isOpen()) other.setOpen(false);
-          });
+        function current() {
+          var style = getComputedStyle(content);
+          return {
+            height: style.height,
+            paddingTop: style.paddingTop,
+            paddingBottom: style.paddingBottom,
+            opacity: style.opacity
+          };
         }
-        if (!content.animate || reducedMotion.matches) {
-          if (animation) animation.cancel();
-          animation = null;
-          details.classList.remove("is-closing");
-          details.open = open;
-          return;
-        }
-        var from = animation || !open ? current() : collapsed;
-        if (animation) animation.cancel();
-        details.classList.toggle("is-closing", !open);
-        details.open = true;
-        var to = open ? current() : collapsed;
 
-        content.style.overflow = "hidden";
-        // Closing holds its collapsed frame until <details> is shut, so the
-        // content can't flash back to full height in between.
-        var running = content.animate([from, to], Object.assign({ fill: open ? "none" : "forwards" }, slide));
-        animation = running;
-        running.onfinish = function () {
-          animation = null;
-          content.style.overflow = "";
-          if (!open) {
-            details.open = false;
-            details.classList.remove("is-closing");
-            running.cancel();
+        function isOpen() {
+          return details.open && !details.classList.contains("is-closing");
+        }
+
+        function setOpen(open) {
+          if (open === isOpen() && !animation) return;
+          if (open) {
+            sections.forEach(function (other) {
+              if (other.details !== details && other.isOpen()) other.setOpen(false);
+            });
           }
-        };
-      }
+          if (!content.animate || reducedMotion.matches) {
+            if (animation) animation.cancel();
+            animation = null;
+            details.classList.remove("is-closing");
+            details.open = open;
+            return;
+          }
+          var from = animation || !open ? current() : collapsed;
+          if (animation) animation.cancel();
+          details.classList.toggle("is-closing", !open);
+          details.open = true;
+          var to = open ? current() : collapsed;
 
-      summary.addEventListener("click", function (event) {
-        event.preventDefault();
-        setOpen(!isOpen());
+          content.style.overflow = "hidden";
+          // Closing holds its collapsed frame until <details> is shut, so the
+          // content can't flash back to full height in between.
+          var running = content.animate([from, to], Object.assign({ fill: open ? "none" : "forwards" }, slide));
+          animation = running;
+          running.onfinish = function () {
+            animation = null;
+            content.style.overflow = "";
+            if (!open) {
+              details.open = false;
+              details.classList.remove("is-closing");
+              running.cancel();
+            }
+          };
+        }
+
+        summary.addEventListener("click", function (event) {
+          event.preventDefault();
+          setOpen(!isOpen());
+        });
+
+        return { details: details, isOpen: isOpen, setOpen: setOpen };
       });
+    }
 
-      return { details: details, isOpen: isOpen, setOpen: setOpen };
-    });
-
+    // ---------------------------------------------------------------------
     // Descriptions are cut to a few lines (CSS) so cards share a standard
     // height; a Read more button appears only on ones that are cut, and opens
     // that card past the standard height. Rechecked whenever a description
     // changes size: window resizes, layout switches, a card being filtered
     // back in, web fonts loading.
-    cards.forEach(function (card) {
-      var description = card.querySelector("[data-projects-description]");
-      var more = card.querySelector("[data-projects-more]");
-      if (!description || !more) return;
 
-      // The clamp is on the paragraph (one per description).
-      var text = description.querySelector("p") || description;
+    function setupReadMore() {
+      cards.forEach(function (card) {
+        var description = card.querySelector("[data-projects-description]");
+        var more = card.querySelector("[data-projects-more]");
+        if (!description || !more) return;
 
-      function update() {
-        if (card.classList.contains("is-expanded")) return;
-        more.hidden = text.scrollHeight <= text.clientHeight + 1;
+        // The clamp is on the paragraph (one per description).
+        var text = description.querySelector("p") || description;
+
+        function update() {
+          if (card.classList.contains("is-expanded")) return;
+          more.hidden = text.scrollHeight <= text.clientHeight + 1;
+        }
+
+        more.addEventListener("click", function () {
+          var expanded = card.classList.toggle("is-expanded");
+          more.setAttribute("aria-expanded", expanded);
+          more.textContent = expanded ? "Show less" : "Read more";
+          if (!expanded) update();
+          syncRows();
+        });
+
+        if (window.ResizeObserver) new ResizeObserver(update).observe(text);
+        if (document.fonts) document.fonts.ready.then(update);
+        update();
+      });
+
+      // In the grid, cards in a row stretch to the tallest, so an opened card
+      // would stretch its neighbors too. Those keep their own height instead.
+      function syncRows() {
+        var tops = cards
+          .filter(function (card) {
+            return list.dataset.view === "grid" && card.classList.contains("is-expanded") && !card.hidden;
+          })
+          .map(function (card) { return card.offsetTop; });
+        cards.forEach(function (card) {
+          card.classList.toggle("is-beside-expanded",
+            !card.classList.contains("is-expanded") && tops.indexOf(card.offsetTop) !== -1);
+        });
       }
 
-      more.addEventListener("click", function () {
-        var expanded = card.classList.toggle("is-expanded");
-        more.setAttribute("aria-expanded", expanded);
-        more.textContent = expanded ? "Show less" : "Read more";
-        if (!expanded) update();
-        syncRows();
-      });
-
-      if (window.ResizeObserver) new ResizeObserver(update).observe(text);
-      if (document.fonts) document.fonts.ready.then(update);
-      update();
-    });
-
-    // In the grid, cards in a row stretch to the tallest, so an opened card
-    // would stretch its neighbors too. Those keep their own height instead.
-    var listEl = root.querySelector("[data-projects-list]");
-    function syncRows() {
-      var tops = cards
-        .filter(function (card) {
-          return listEl.dataset.view === "grid" && card.classList.contains("is-expanded") && !card.hidden;
-        })
-        .map(function (card) { return card.offsetTop; });
-      cards.forEach(function (card) {
-        card.classList.toggle("is-beside-expanded",
-          !card.classList.contains("is-expanded") && tops.indexOf(card.offsetTop) !== -1);
-      });
+      // Rows reflow on resize, filtering, and layout switches.
+      if (window.ResizeObserver) new ResizeObserver(syncRows).observe(list);
     }
-    // Rows reflow on resize, filtering, and layout switches.
-    if (window.ResizeObserver) new ResizeObserver(syncRows).observe(listEl);
 
+    // ---------------------------------------------------------------------
     // Card layouts: grid (the default), icons (compact, no description), and
     // list (one card per row). The choice is remembered in this browser.
     // Narrow screens always get the grid, and the switcher is hidden (CSS);
     // a remembered choice comes back on a wider screen.
-    var list = root.querySelector("[data-projects-list]");
-    var viewButtons = Array.prototype.slice.call(root.querySelectorAll("[data-projects-view]"));
-    var VIEW_KEY = "mggg-projects-view";
-    var narrow = window.matchMedia("(max-width: 900px)");
-    var chosenView = "grid";
 
-    function setView(view, remember) {
-      var known = viewButtons.some(function (button) { return button.dataset.projectsView === view; });
-      if (!known) view = "grid";
-      chosenView = view;
-      list.dataset.view = narrow.matches ? "grid" : view;
+    function setupLayouts() {
+      var viewButtons = all("[data-projects-view]");
+      var narrow = window.matchMedia(NARROW);
+      var chosenView = "grid";
+
+      function setView(view, remember) {
+        var known = viewButtons.some(function (button) { return button.dataset.projectsView === view; });
+        if (!known) view = "grid";
+        chosenView = view;
+        list.dataset.view = narrow.matches ? "grid" : view;
+        viewButtons.forEach(function (button) {
+          button.setAttribute("aria-pressed", button.dataset.projectsView === view);
+        });
+        if (!remember) return;
+        try { localStorage.setItem(VIEW_KEY, view); } catch (e) {}
+      }
+
       viewButtons.forEach(function (button) {
-        button.setAttribute("aria-pressed", button.dataset.projectsView === view);
+        button.addEventListener("click", function () {
+          setView(button.dataset.projectsView, true);
+        });
       });
-      if (!remember) return;
-      try { localStorage.setItem(VIEW_KEY, view); } catch (e) {}
+
+      var savedView = null;
+      try { savedView = localStorage.getItem(VIEW_KEY); } catch (e) {}
+      setView(savedView || "grid", false);
+
+      function onWidthChange() { setView(chosenView, false); }
+      if (narrow.addEventListener) narrow.addEventListener("change", onWidthChange);
+      else if (narrow.addListener) narrow.addListener(onWidthChange);
     }
 
-    viewButtons.forEach(function (button) {
-      button.addEventListener("click", function () {
-        setView(button.dataset.projectsView, true);
-      });
-    });
-
-    var savedView = null;
-    try { savedView = localStorage.getItem(VIEW_KEY); } catch (e) {}
-    setView(savedView || "grid", false);
-
-    function onWidthChange() { setView(chosenView, false); }
-    if (narrow.addEventListener) narrow.addEventListener("change", onWidthChange);
-    else if (narrow.addListener) narrow.addListener(onWidthChange);
-
+    // ---------------------------------------------------------------------
     // Highlight the card a pin, state, or /projects#id link points to, until
     // the next click anywhere outside it. Clearing also drops the #id from
     // the URL, so following the same link again highlights it again.
-    var targeted = null;
 
-    function highlightFromHash() {
-      if (targeted) targeted.classList.remove("is-targeted");
-      var id = decodeURIComponent(location.hash.slice(1));
-      targeted = id ? document.getElementById(id) : null;
-      if (targeted && targeted.classList.contains("projects-card")) targeted.classList.add("is-targeted");
-      else targeted = null;
+    function setupHighlight() {
+      var targeted = null;
+
+      function highlightFromHash() {
+        if (targeted) targeted.classList.remove("is-targeted");
+        var id = decodeURIComponent(location.hash.slice(1));
+        targeted = id ? document.getElementById(id) : null;
+        if (targeted && targeted.classList.contains("projects-card")) targeted.classList.add("is-targeted");
+        else targeted = null;
+      }
+
+      // A click on the map but off every state and pin lets go of the last
+      // one clicked, so it doesn't stay highlighted.
+      mapSvg.addEventListener("click", function (event) {
+        if (event.target.closest("a")) return;
+        var focused = document.activeElement;
+        if (focused && mapSvg.contains(focused) && focused.blur) focused.blur();
+      });
+
+      document.addEventListener("click", function (event) {
+        if (!targeted || targeted.contains(event.target)) return;
+        targeted.classList.remove("is-targeted");
+        targeted = null;
+        if (history.replaceState) history.replaceState(null, "", location.pathname + location.search);
+      });
+
+      window.addEventListener("hashchange", highlightFromHash);
+      highlightFromHash();
     }
-
-    // A click on the map but off every state and pin lets go of the last
-    // one clicked, so it doesn't stay highlighted.
-    mapSvg.addEventListener("click", function (event) {
-      if (event.target.closest("a")) return;
-      var focused = document.activeElement;
-      if (focused && mapSvg.contains(focused) && focused.blur) focused.blur();
-    });
-
-    document.addEventListener("click", function (event) {
-      if (!targeted || targeted.contains(event.target)) return;
-      targeted.classList.remove("is-targeted");
-      targeted = null;
-      if (history.replaceState) history.replaceState(null, "", location.pathname + location.search);
-    });
-
-    window.addEventListener("hashchange", highlightFromHash);
-    highlightFromHash();
   })();
 </script>
