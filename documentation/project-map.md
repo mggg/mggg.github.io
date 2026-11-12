@@ -291,8 +291,8 @@ Open `http://localhost:4000/projects` and check:
 - Each legend group and type that includes the project shows and hides it.
 - Every study link opens the right page.
 
-If the page looks unstyled after switching branches, hard-reload (⌘⇧R). The
-stylesheet URL now changes on every build, so this should be rare.
+If the page looks unstyled or out of date after switching branches, your
+browser may be using an old copy of the stylesheet; hard-reload (⌘⇧R).
 
 If the build fails, the usual cause is a YAML error in `_data/projects.yml`:
 the message gives a line number, and it's most often an unquoted value containing
