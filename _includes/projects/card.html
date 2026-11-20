@@ -39,7 +39,11 @@
       aria-hidden="true"
       focusable="false"
     >
+      {% if project.scope == "local" %}
+      <path d="{{ state.d }}" class="projects-card__state" />
+      {% else %}
       <use href="#us-state-{{ state.abbr }}" class="projects-card__state" />
+      {% endif %}
     </svg>
     {% endif %}
   </div>
