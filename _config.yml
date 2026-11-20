@@ -44,6 +44,17 @@ sass:
   sass_dir: _sass
 include:
   - _redirects
+exclude:
+  # Jekyll's defaults; setting `exclude` replaces them rather than adding to them
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  # Contributor docs, not site pages
+  - documentation
 defaults:
   values:
     hidden: false

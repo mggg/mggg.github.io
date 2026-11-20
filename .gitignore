@@ -1,4 +1,5 @@
 .vscode/
 _site/
 .sass-cache/
-.bundle/
+.bundle
+.DS_Store
