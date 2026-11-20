@@ -290,7 +290,8 @@
         resetButton.hidden = !activeGroup;
         countText.textContent = activeGroup
           ? "Showing " + studiesIn(shownCards) + " of " + studyTotal + " projects"
-          : "Showing all " + studyTotal + " projects";
+        countText.textContent = `${studiesIn(shownCards)} projects\u2002\u2022\u2002${shownCards.length} jurisdictions`;
+
       }
 
       // Selecting a group (or none) clears the second-row selection.
