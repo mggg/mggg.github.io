@@ -568,7 +568,7 @@ html:has(.projects) {
 
 .projects-card {
   margin: 0;
-  scroll-margin-top: $projects-sticky-offset;
+  scroll-margin-top: calc(var(--projects-header-height, #{$projects-sticky-offset}) + 0.5rem);
 
   // The card a pin or state linked to. projects/script.html sets the class,
   // and clears it on a click anywhere else; :target is the no-script fallback.

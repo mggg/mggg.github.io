@@ -305,7 +305,8 @@
         resetButton.hidden = !activeGroup;
         countText.textContent = activeGroup
           ? "Showing " + studiesIn(shownCards) + " of " + studyTotal + " projects"
-          : "Showing all " + studyTotal + " projects";
+        countText.textContent = `${studiesIn(shownCards)} projects\u2002\u2022\u2002${shownCards.length} jurisdictions`;
+
       }
 
       // Selecting a group (or none) clears the second-row selection.
@@ -688,6 +689,15 @@
         button.blur();
         window.scrollTo(0, 0);
       });
+    }
+
+    function setupScrollOffset() {
+      var header = document.querySelector(".site-header");
+      if (!header || !window.ResizeObserver) return;
+
+      new ResizeObserver(function () {
+        root.style.setProperty("--projects-header-height", header.offsetHeight + "px");
+      }).observe(header);
     }
   })();
 </script>
