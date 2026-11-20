@@ -8,6 +8,7 @@
   //   setupReadMore   cut-off descriptions and their Read more buttons
   //   setupLayouts    the Grid / Icons / List switcher
   //   setupHighlight  the card a map link jumped to
+  //   setupBackToTop  the Return to top button over the card list
   (function () {
     var root = document.querySelector("[data-projects]");
     if (!root) return;
@@ -54,6 +55,7 @@
     setupReadMore();
     setupLayouts();
     setupHighlight();
+    setupBackToTop();
 
     // ---------------------------------------------------------------------
     // Pins: one per local study, on the map and on its card's locator map.
@@ -639,6 +641,40 @@
 
       window.addEventListener("hashchange", highlightFromHash);
       highlightFromHash();
+    }
+
+    // ---------------------------------------------------------------------
+    // Return to top: shown (faded in by CSS) once the toolbar above the card
+    // list has scrolled out the top of the window, i.e. the visitor is in the
+    // list. The scroll is smooth unless they prefer reduced motion (CSS).
+
+    function setupBackToTop() {
+      var button = root.querySelector("[data-projects-top]");
+      var toolbar = root.querySelector(".projects__toolbar");
+      if (!button || !toolbar) return;
+
+      // Checked on every scroll (at most once a frame), not with an
+      // IntersectionObserver: a jump straight past the toolbar, like a map
+      // link to a card, never crosses the screen, so an observer misses it.
+      var pending = false;
+      function update() {
+        pending = false;
+        button.classList.toggle("is-shown", toolbar.getBoundingClientRect().bottom < 0);
+      }
+      function updateSoon() {
+        if (pending) return;
+        pending = true;
+        requestAnimationFrame(update);
+      }
+
+      window.addEventListener("scroll", updateSoon, { passive: true });
+      window.addEventListener("resize", updateSoon);
+      update();
+
+      button.addEventListener("click", function () {
+        button.blur();
+        window.scrollTo(0, 0);
+      });
     }
   })();
 </script>

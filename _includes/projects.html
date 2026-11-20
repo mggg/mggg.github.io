@@ -64,5 +64,11 @@
       {% include projects/card.html project=project types=types %}
     {% endfor %}
   </ul>
+
+  {% comment %} Fades in at the bottom of the window once the list is scrolled into (projects/script.html). {% endcomment %}
+  <button type="button" class="projects-top" data-projects-top>
+    <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
+    Return to top
+  </button>
 </div>
 {% include projects/script.html %}

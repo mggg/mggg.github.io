@@ -895,3 +895,61 @@ $projects-description-lines: 4;
     flex-basis: 4.5rem;
   }
 }
+
+/* return to top (projects.html, projects/script.html) */
+
+// Fixed at the bottom center of the window; faded out, and out of the tab
+// order (visibility), until the script marks it shown.
+.projects-top {
+  @extend %projects-pill;
+  position: fixed;
+  z-index: 20;
+  left: 50%;
+  bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px));
+  box-shadow: $raised;
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, 0.5rem);
+  transition: opacity 200ms ease, transform 200ms ease, visibility 0s 200ms,
+    background 100ms;
+
+  &.is-shown {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, 0);
+    transition: opacity 200ms ease, transform 200ms ease, visibility 0s,
+      background 100ms;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $mggg-blue;
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transform: translate(-50%, 0);
+  }
+
+  // Bigger on tablets and desktops; phones keep the compact size.
+  @media only screen and (min-width: 501px) {
+    gap: 0.5rem;
+    padding: 0.5rem 1.25rem;
+    border-radius: 1.5rem;
+    font-size: 1rem;
+    bottom: calc(2rem + env(safe-area-inset-bottom, 0px));
+  }
+
+  // Tablets (501-1199px): bigger still, an easy touch target. Desktops
+  // (1200px and up) keep the size above.
+  @media only screen and (min-width: 501px) and (max-width: 1199px) {
+    gap: 0.625rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 2rem;
+    font-size: 1.125rem;
+  }
+}
+
+// It needs the script to appear at all.
+.projects:not(.projects--js) .projects-top {
+  display: none;
+}
