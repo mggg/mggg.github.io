@@ -9,6 +9,7 @@
   //   setupLayouts    the Grid / Icons / List switcher
   //   setupHighlight  the card a map link jumped to
   //   setupBackToTop  the Return to top button over the card list
+  //   setupScrollOffset  keeps cards clear of the sticky header when jumped to
   (function () {
     var root = document.querySelector("[data-projects]");
     if (!root) return;
@@ -56,6 +57,7 @@
     setupLayouts();
     setupHighlight();
     setupBackToTop();
+    setupScrollOffset();
 
     // ---------------------------------------------------------------------
     // Pins: one per local study, on the map and on its card's locator map.
@@ -196,7 +198,6 @@
 
       var activeGroup = null; // a .projects-filter__group button
       var activeTypes = []; // selected types in its second row
-      var studyTotal = studiesIn(cards);
 
       function splitTypes(types) {
         return types ? types.split(" ").filter(Boolean) : [];
@@ -261,6 +262,10 @@
         return Object.keys(seen).length;
       }
 
+      function plural(n, word) {
+        return n + " " + word + (n === 1 ? "" : "s");
+      }
+
       function applyFilter() {
         var shownCards = cards.filter(function (card) {
           card.hidden = !matchFilter(card.dataset.types).show;
@@ -303,10 +308,11 @@
           button.setAttribute("aria-pressed", activeTypes.indexOf(button.dataset.type) !== -1);
         });
         resetButton.hidden = !activeGroup;
-        countText.textContent = activeGroup
-          ? "Showing " + studiesIn(shownCards) + " of " + studyTotal + " projects"
-        countText.textContent = `${studiesIn(shownCards)} projects\u2002\u2022\u2002${shownCards.length} jurisdictions`;
-
+        // "N projects • N jurisdictions", like projects.html. Jurisdictions are
+        // place cards only, not national/international work.
+        var places = shownCards.filter(function (card) { return card.hasAttribute("data-jurisdiction"); });
+        countText.textContent = plural(studiesIn(shownCards), "project") + "\u2002\u2022\u2002" +
+          plural(places.length, "jurisdiction");
       }
 
       // Selecting a group (or none) clears the second-row selection.
@@ -690,6 +696,11 @@
         window.scrollTo(0, 0);
       });
     }
+
+    // ---------------------------------------------------------------------
+    // A card jumped to from the map stops just below the sticky site header,
+    // whose height changes with the window: this keeps --projects-header-height
+    // (used for the cards' scroll-margin-top in _projects.scss) in step with it.
 
     function setupScrollOffset() {
       var header = document.querySelector(".site-header");

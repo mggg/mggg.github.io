@@ -222,8 +222,8 @@ The legend button, its count, and its swatches are generated automatically.
 To change a category's color, edit only `$projects-type-colors`.
 
 The colors come from the Districtr palette that the newsletter also uses
-(`$newsletter-accents` in `_sass/components/_newsletter.scss`). Lime (`#a3cc3f`)
-and magenta (`#bd2795`) are the accents still free. Beyond that,
+(`$newsletter-accents` in `_sass/components/_newsletter.scss`). Magenta (`#bd2795`)
+is the accent still free (lime, `#a3cc3f`, is Judicial). Beyond that,
 pick a color that stays distinct from the others and from the gray of unstudied
 states, and consider adding it to `$newsletter-accents` so the two stay in step.
 
@@ -276,9 +276,10 @@ bundle exec jekyll serve
 
 Open `http://localhost:4000/projects` and check:
 
-- The count line ("Showing all N projects") went up by the number of new
-  studies. It counts studies, not cards, and a study linked from several cards
-  (same `url`) counts once.
+- The count line ("N projects • N jurisdictions") went up: projects by the
+  number of new studies (a study linked from several cards, by the same `url`,
+  counts once), jurisdictions by one for a new place. National and
+  international items aren't jurisdictions.
 - The pin is in the right place, or the right state is outlined, in the right color.
 - Hovering the pin or state shows a popup with the project's name and its study
   links, and clicking it jumps to the card.

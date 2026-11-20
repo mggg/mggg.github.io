@@ -42,6 +42,8 @@ filter_groups:
         label: State Legislature
       - key: congressional
         label: Congressional
+      - key: judicial
+        label: Judicial
   - key: expert-reports
     label: Expert Reports
     types:
