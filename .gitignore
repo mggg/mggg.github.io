@@ -3,3 +3,6 @@ _site/
 .sass-cache/
 .bundle
 .DS_Store
+
+# Local Netlify folder
+.netlify
