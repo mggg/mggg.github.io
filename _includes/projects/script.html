@@ -270,6 +270,19 @@
         marks.forEach(function (mark) {
           var result = matchFilter(mark.dataset.types);
           mark.classList.toggle("is-dimmed", !result.show);
+          // A filtered-out state can't be hovered, clicked, or tabbed to
+          // (CSS turns off its pointer events); filtered-out pins are hidden.
+          var stateLink = mark.closest(".projects-map__state-link");
+          if (stateLink) {
+            stateLink.classList.toggle("is-dimmed", !result.show);
+            if (result.show) {
+              stateLink.removeAttribute("tabindex");
+              stateLink.removeAttribute("aria-hidden");
+            } else {
+              stateLink.setAttribute("tabindex", "-1");
+              stateLink.setAttribute("aria-hidden", "true");
+            }
+          }
           if (!result.show) return;
           mark.setAttribute("data-type", result.types[0]);
           // Pins stay one color; states split when several types are showing.

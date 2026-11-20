@@ -85,7 +85,7 @@ projects:
     description: Experiments on Navajo and Pima Counties testing differential privacy in Census data, finding no threat to Voting Rights Act enforcement or to reasonable population balance in redistricting.
     studies:
       - title: Privacy, Census Data, and Arizona Redistricting
-        url: /publications/AZ-DP.pdf
+        url: /posts/arizona-diff-privacy
 
   - id: beaverton-or
     name: Beaverton, Oregon
@@ -227,7 +227,7 @@ projects:
         url: /publications/Michigan-COI.pdf
       - title: Michigan Independent Citizens Redistricting Commission Post-Mortem
         year: 2024
-        url: /publications/MICRC-Report.pdf
+        url: /posts/micrc
 
   - id: missouri
     name: Missouri
@@ -484,7 +484,7 @@ projects:
     studies:
       - title: Analysis of County Commission Elections in Yakima County, WA
         year: 2020
-        url: /publications/Yakima.pdf
+        url: /posts/stv-yakima
 
 # Work that isn't tied to one place. Each group (`label` and `items`) is a
 # dropdown beside the map listing its items' names and study links

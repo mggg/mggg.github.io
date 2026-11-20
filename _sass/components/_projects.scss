@@ -368,6 +368,11 @@ html:has(.projects) {
   }
 }
 
+// Filtered out (projects/script.html): no hover look, popup, or click.
+.projects-map__state-link.is-dimmed {
+  pointer-events: none;
+}
+
 .projects-map__state-link:hover .projects-map__state--study,
 .projects-map__state-link:focus-visible .projects-map__state--study {
   filter: brightness(0.9);
