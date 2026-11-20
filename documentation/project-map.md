@@ -148,8 +148,8 @@ place: it would make a second card and a second pin.
 
 ## Adding national or international work
 
-Work that isn't tied to one place (UK Boundaries, the Fair Representation Act,
-the data practices notes) is listed beside the map rather than on it, and gets
+Work outside the US map or spanning the country (UK Boundaries, the Fair
+Representation Act, the data practices notes) is listed beside the map and gets
 a card in the list below like any project. It lives
 under `beyond_map:` at the bottom of `_data/projects.yml`, in groups:
 
@@ -182,6 +182,9 @@ Add an item to a group's `items`, or add a new group with its own `label`.
 Items take `id`, `name`, `description`, `studies`, and optionally `types`, but
 no `state`, `scope`, coordinates, or `image`. The `id` is the
 card's anchor (`/projects#uk-boundaries`), so it must not match any project's.
+
+As with state and local work, group international studies for the same
+geographic location in one entry.
 
 A study can appear in both places. The Fair Representation Act is listed here
 as national work and also under its five focus states on the map.
@@ -275,10 +278,9 @@ bundle exec jekyll serve
 
 Open `http://localhost:4000/projects` and check:
 
-- The count line ("N projects • N jurisdictions") went up: projects by the
-  number of new studies (a study linked from several cards, by the same `url`,
-  counts once), jurisdictions by one for a new place. National and
-  international items aren't jurisdictions.
+- The count line ("N studies • M locations") counts distinct study URLs and
+  one location per visible entry, except that National entries collectively
+  count as one. Filtering updates both totals; clearing filters restores them.
 - The pin is in the right place, or the right state is outlined, in the right color.
 - Hovering the pin or state shows a popup with the project's name and its study
   links, and clicking it jumps to the card.

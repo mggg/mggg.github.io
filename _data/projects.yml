@@ -488,13 +488,13 @@ projects:
         year: 2020
         url: /posts/stv-yakima
 
-# Work that isn't tied to one place. Each group (`label` and `items`) is a
+# Work outside the US map or spanning the country. Each group (`label` and `items`) is a
 # dropdown beside the map listing its items' names and study links
 # (_includes/projects/sidecar.html), in the order listed. Each item also gets a
 # card in the list below the map, sorted in with the projects, labeled with its
 # group, whose label is also the card's header. Items take `id` (the card's
 # anchor), `name`, `description` (markdown, shown on the card), and `studies` in
-# the same form as above.
+# the same form as above. Group international studies by geographic location.
 beyond_map:
   - label: International
     items:

@@ -14,8 +14,14 @@
 {% endfor %}
 {% comment %} Cards also cover national/international work (beside the map, not on it). {% endcomment %}
 {% assign cards = site.data.projects.projects %}
+{% assign location_total = cards | size %}
 {% for group in site.data.projects.beyond_map %}
   {% assign cards = cards | concat: group.items %}
+  {% assign group_locations = group.items | size %}
+  {% if group.label == "National" and group_locations > 0 %}
+    {% assign group_locations = 1 %}
+  {% endif %}
+  {% assign location_total = location_total | plus: group_locations %}
 {% endfor %}
 {% assign cards = cards | sort: "name" %}
 {% comment %}
@@ -39,7 +45,8 @@
 
   <div class="projects__toolbar">
     <p class="projects__count" aria-live="polite" data-projects-count>
-      {{ study_total }} projects&ensp;&bull;&ensp;{{ projects | size }} jurisdictions
+      {{ study_total }} {% if study_total == 1 %}study{% else %}studies{% endif %}&ensp;&bull;&ensp;
+      {{ location_total }} {% if location_total == 1 %}location{% else %}locations{% endif %}
     </p>
 
     {% comment %}

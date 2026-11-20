@@ -16,7 +16,7 @@
   class="card projects-card"
   id="{{ project.id }}"
   data-types="{{ project.types | join: ' ' }}"
-  {% if project.state %}data-jurisdiction{% endif %}
+  {% if scope_label == "National" %}data-national{% endif %}
   {% if project.scope == "local" %}data-lat="{{ project.lat }}" data-lon="{{ project.lon }}"{% endif %}
 >
   <div class="projects-card__header">

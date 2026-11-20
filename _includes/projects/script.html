@@ -262,8 +262,8 @@
         return Object.keys(seen).length;
       }
 
-      function plural(n, word) {
-        return n + " " + word + (n === 1 ? "" : "s");
+      function plural(n, word, pluralWord) {
+        return n + " " + (n === 1 ? word : pluralWord || word + "s");
       }
 
       function applyFilter() {
@@ -308,11 +308,12 @@
           button.setAttribute("aria-pressed", activeTypes.indexOf(button.dataset.type) !== -1);
         });
         resetButton.hidden = !activeGroup;
-        // "N projects • N jurisdictions", like projects.html. Jurisdictions are
-        // place cards only, not national/international work.
-        var places = shownCards.filter(function (card) { return card.hasAttribute("data-jurisdiction"); });
-        countText.textContent = plural(studiesIn(shownCards), "project") + "\u2002\u2022\u2002" +
-          plural(places.length, "jurisdiction");
+        var nationalCount = shownCards.filter(function (card) {
+          return card.hasAttribute("data-national");
+        }).length;
+        var locationCount = shownCards.length - nationalCount + (nationalCount ? 1 : 0);
+        countText.textContent = plural(studiesIn(shownCards), "study", "studies") + "\u2002\u2022\u2002" +
+          plural(locationCount, "location");
       }
 
       // Selecting a group (or none) clears the second-row selection.

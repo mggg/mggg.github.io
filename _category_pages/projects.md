@@ -16,6 +16,6 @@ school boards, county governments, and state legislatures whose systems of
 election shape representation, and the courts and commissions that decide
 how those bodies are drawn. Here you will find the projects, white papers, case studies, and reference documents that we've completed. Our [academic research](/research), [expository materials](/basics), and [civic tech software initiatives](/civic-tech) are detailed on separate pages.
 
-Explore the jurisdictions we've studied below by clicking on the map or filters!
+Explore the locations we've studied below by clicking on the map or filters!
 
 {% include projects.html %}
