@@ -218,7 +218,7 @@ To add one:
    state borders, legend swatches, badges, and card locator dots. A key missing
    from the list shows in gray.
 
-The legend button, its count, and its swatches are generated automatically.
+The legend button and its swatches are generated automatically.
 To change a category's color, edit only `$projects-type-colors`.
 
 The colors come from the Districtr palette that the newsletter also uses
@@ -266,7 +266,6 @@ filter_groups:
   type don't need one.
 - The order here is the order on the legend and in each group's row of colored
   dots.
-- Counts on the buttons are cards, including national/international ones.
 
 ## Previewing
 

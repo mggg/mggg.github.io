@@ -103,7 +103,7 @@
     Expert Reports, Other), one at a time. A group with more than one type
     opens a second row of its types, to narrow it. A card is in a group if it
     has any of the group's types, or none at all if the group is `untyped`.
-    projects/script.html does the filtering; counts are cards, not pins.
+    projects/script.html does the filtering.
   {% endcomment %}
   {% assign subrows = "" %}
   <figcaption class="projects-filter">
@@ -111,13 +111,6 @@
       {% for group in include.groups %}
         {% assign group_types = group.types %}
         {% assign group_keys = group_types | map: "key" %}
-        {% assign count = 0 %}
-        {% for card in include.cards %}
-          {% assign in_group = false %}
-          {% unless card.types.size > 0 %}{% if group.untyped %}{% assign in_group = true %}{% endif %}{% endunless %}
-          {% for key in card.types %}{% if group_keys contains key %}{% assign in_group = true %}{% endif %}{% endfor %}
-          {% if in_group %}{% assign count = count | plus: 1 %}{% endif %}
-        {% endfor %}
       <button
         type="button"
         class="projects-filter__group"
@@ -131,18 +124,15 @@
           {% for type in group_types %}<span class="projects-filter__dot" data-type="{{ type.key }}"></span>{% endfor %}
         </span>
         {{ group.label }}
-        <span class="projects-filter__count">{{ count }}</span>
       </button>
         {% if group_types.size > 1 %}
           {% capture subrow %}
     <div class="projects-filter__items" id="projects-subfilter-{{ group.key }}" data-subfilter="{{ group.key }}" role="group" aria-label="Narrow {{ group.label }} by governing body" hidden>
             {% for type in group_types %}
-              {% assign type_count = 0 %}
               {% assign has_local = false %}
               {% assign has_statewide = false %}
               {% for card in include.cards %}
                 {% if card.types contains type.key %}
-                  {% assign type_count = type_count | plus: 1 %}
                   {% if card.scope == "local" %}{% assign has_local = true %}{% elsif card.scope == "statewide" %}{% assign has_statewide = true %}{% endif %}
                 {% endif %}
               {% endfor %}
@@ -155,7 +145,6 @@
         {% if has_statewide %}<span class="projects-filter__swatch projects-filter__swatch--area" aria-hidden="true"></span>{% endif %}
         {% if has_local %}<span class="projects-filter__swatch projects-filter__swatch--pin" aria-hidden="true"></span>{% endif %}
         {{ type.label }}
-        <span class="projects-filter__count">{{ type_count }}</span>
       </button>
             {% endfor %}
     </div>

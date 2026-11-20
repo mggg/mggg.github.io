@@ -109,18 +109,6 @@ $projects-type-colors: (
   color: #666;
 }
 
-// Counts shown in brackets: "(4)".
-.projects-sidecar__count,
-.projects-filter__count {
-  &::before {
-    content: "(";
-  }
-
-  &::after {
-    content: ")";
-  }
-}
-
 // Hidden elements stay hidden, whatever display their class sets (.card's
 // flex, the pills' inline-flex).
 .projects [hidden] {
@@ -252,11 +240,6 @@ html:has(.projects) {
   font-weight: 400;
   line-height: 1.4;
   transition: color 100ms;
-}
-
-.projects-sidecar__count {
-  font-size: 0.8125rem;
-  color: #888;
 }
 
 // Doubled classes beat the site's default list and heading styles.
@@ -526,11 +509,6 @@ html:has(.projects) {
   border-radius: 2px;
   background: $dark-grey;
   box-shadow: inset 0 0 0 2px var(--type-color);
-}
-
-.projects-filter__count {
-  color: #666;
-  font-weight: 400;
 }
 
 .projects-filter__note {
