@@ -641,5 +641,13 @@
       window.addEventListener("hashchange", highlightFromHash);
       highlightFromHash();
     }
+    function setupScrollOffset() {
+      var header = document.querySelector(".site-header");
+      if (!header || !window.ResizeObserver) return;
+
+      new ResizeObserver(function () {
+        root.style.setProperty("--projects-header-height", header.offsetHeight + "px");
+      }).observe(header);
+    }
   })();
 </script>
