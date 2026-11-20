@@ -393,7 +393,7 @@ projects:
     scope: local
     lat: 29.596
     lon: -90.719
-    types: [city-council]
+    types: [judicial]
     description: Modeling for the 32nd District Court, whose five judges are elected to designated seats by majority vote, and where a Voting Rights Act challenge won in 2017 was overturned in 2020. With Black residents about 18% of citizens of voting age, no five-district plan with a majority-Black district could be found, while single transferable vote (STV) would typically elect 1 or 2 Black-preferred judges.
     studies:
       - title: Ranked Choice Voting and Minority Representation
